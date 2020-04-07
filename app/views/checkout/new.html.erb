@@ -1,0 +1,161 @@
+<section id="payment" class="solo_checkout well mx-auto my-3 my-md-5 centre-well"
+					ng-controller="CheckoutPageController"
+					data-payment-error-prefix="<%= I18n.t('views.subscription.form.errors.prefix') %>"
+					data-card-error-number-invalid="<%= I18n.t('views.subscription.form.errors.card_number') %>"
+					data-card-error-expiry-invalid="<%= I18n.t('views.subscription.form.errors.expiry') %>"
+					data-card-error-cv2-invalid="<%= I18n.t('views.subscription.form.errors.cv2') %>"
+					data-card-error-email-invalid="<%= I18n.t('views.subscription.form.errors.email') %>"
+					data-card-error-name-invalid="<%= I18n.t('views.subscription.form.errors.name') %>"
+					data-server-error-options="<%= I18n.t('mobile.views.subscribe.error_loading_options') %>"
+					data-preselected-payment-type="<%= @paypal_cancelled || @paypal_error ? 'paypal' : nil %>">
+
+
+	<h5 class="loading text-center text-dark" ng-show="!basket.loaded">Loading checkout...</h5>
+
+	<div ng-show="basket.loaded">
+		<h3 class="text-center">Checkout</h3>
+		<p class="empty_basket mt-3 text-center" ng-show="basket.items.length == 0">
+			<% if @singlecheckout %>
+				Sorry, cannot find that file!
+			<% else %>
+				There are no items in your cart!
+			<% end %>
+		</p>
+
+		<form id="payment_form" name="payment_form" class="" novalidate
+					method="post" action="<%= process_checkout_path %>"
+					ng-show="basket.items.length > 0">
+	    <div id="selected_option" class="d-flex">
+	      <p><strong class="item_label" style="width: 15%;">Items in cart: </strong></p>
+	      <ul class="pt-0 mb-4 mt-0">
+		      <li ng-repeat="item in basket.items">
+		      	{{item.product.nameWithType}} ({{item.product.price}})
+		      </li>
+	    	</ul>
+	    </div>
+
+	    <p><strong class="item_label">Total to pay today: {{basket.total}}</strong></p>
+
+	    <% if notice %>
+	      <p class="container alert alert-success"><%= notice %></p>
+	    <% end %>
+	    <% if alert %>
+	      <p class="container alert alert-danger"><%= alert %></p>
+	    <% end %>
+
+		  <div class="form_item d-flex mb-3">
+		    <label class="pt-2" for="choose_payment_type">
+		      <%= t('views.subscription.form.labels.card_type') %>
+		    </label>
+
+		    <ul id="choose_payment_type" style="top: 0px;">
+		      <li>
+		       <label class="payment_chooser">
+		        <input type="radio" name="payment_type" value="visa" ng-model="payment.type" />
+		        <%= image_tag 'subscribe/visa.png', alt: 'Visa' %>
+		      </label>
+			    </li>
+			    <li>
+			      <label class="payment_chooser">
+			        <input type="radio" name="payment_type" value="mastercard" ng-model="payment.type" />
+			        <%= image_tag 'subscribe/mastercard.png', alt: 'Mastercard' %>
+			      </label>
+			    </li>
+			    <li>
+			      <label class="payment_chooser">
+			        <input type="radio" name="payment_type" value="paypal" ng-model="payment.type" />
+			        <%= image_tag 'subscribe/paypal.png', alt: 'Paypal' %>
+			      </label>
+			    </li>
+		  	</ul>
+		  </div>
+
+		  <div ng-show="payment.type == 'paypal'">
+			   <button id="checkout_with_paypal" class="pay_btn" ng-if="!paying">Checkout with Paypal</button>
+			   <h5 ng-if="paying" id="paypal_forwarding" style="text-align: center; padding-top: 15px;">Contacting paypal to complete your payment details, please wait...</h5>
+		  </div>
+
+		  <div ng-hide="payment.type == 'paypal'">
+
+		   	<div class="form_item d-flex">
+		    	<label class="pt-2" for="firstName">First name</label>
+
+		    	<div class="">
+			   		<input type="text" id="first_name" ng-model="payment.firstName" />
+			   	</div>
+		  	</div>
+
+		   	<div class="form_item d-flex">
+		    	<label class="pt-2" for="lastName">Last name</label>
+
+		    	<div class="">
+			   		<input type="text" id="last_name" ng-model="payment.lastName" />
+			   	</div>
+		  	</div>
+
+		   	<div class="form_item d-flex">
+		    	<label class="pt-2" for="email">Email address</label>
+
+		    	<div class="">
+			   		<input type="text" id="email" ng-model="payment.email" />
+			   		<p class='hint m-0 text-secondary text-small'>
+			   			<small class="">Why? So we can email you a link to your file<span ng-show="basket.items.length > 1">s</span></small>
+			   		</p>
+			   	</div>
+		  	</div>
+
+		   	<div class="form_item d-flex">
+		    	<label class="pt-2" for="card_number">
+		     	<%= t('views.subscription.form.labels.card_number') %>
+		   		</label>
+
+		   		<input type="text" id="card_number" ng-model="payment.cardNumber" />
+		  	</div>
+
+
+			  <div class="form_item d-flex">
+					<label class="pt-3" for="expiry">Expiration</label>
+					<div class="">
+						<%= select_month(Date.today, { use_two_digit_numbers: true }, { "ng-model": "payment.expiry.month" }) %>
+						<%= select_year(Date.today, { start_year: Date.today.year, end_year: Date.today.year + 8 }, { "ng-model": "payment.expiry.year" }) %>
+					</div>
+				</div>
+
+
+			  <div class="form_item d-flex">
+			    <label class="pt-2" for="cv2">Security code</label>
+			    <input type="text" id="cv2" class="small" ng-model="payment.cv2" />
+			  </div>
+
+			  <button type="submit" id="pay_btn" class="pay_btn ladda-button btn btn-success mb-2"
+			  data-size="xs" data-style="expand-left" ng-class="{ 'paying': paying == true }">
+			    <span class='ladda-label'>
+			     <span ng-if="!paying">Pay {{basket.total}}</span>
+			     <span ng-if="paying == true"><%= t('views.subscription.form.labels.paying') %></span>
+			    </span>
+			  </button>
+			  <p class="text-center mt-1 pt-0">
+			  	<small>or <a ng-href='{{basket.store.url}}' class="text-success">
+			  		<% if @singlecheckout %>
+							see all files in {{basket.store.name}}
+						<% else %>
+			  			go back to {{basket.store.name}}
+						<% end %>
+			  	</a></small>
+			  </p>
+			</div>
+
+			<div class="form_item" id="secured_by">
+				<label>
+				  <%= t('views.subscription.form.labels.secured_by') %>
+				</label>
+
+				<div id="comodo">
+				  <%= image_tag 'subscribe/comodo.png', alt: 'Secure site' %>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<%= render partial: "payment_error", locals: { current_user: user_signed_in? ? current_user : nil } %>
+</section>

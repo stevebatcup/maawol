@@ -1,0 +1,2 @@
+class CustomUserSubscriptionOption < ApplicationRecord
+end

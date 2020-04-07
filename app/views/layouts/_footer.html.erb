@@ -1,0 +1,109 @@
+<footer class="site-footer pt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 px-4">
+        <div class="widget widget_about">
+          <div class="widget-details">
+            <% if site_image("footer_logo").present? %>
+              <a href="/" class="d-block">
+                <img src="<%= site_image("footer_logo").url(:large_square) %>" alt="<%= site_setting("Site name") %>" class="footer-logo" />
+              </a>
+            <% end %>
+
+            <% if (!site_setting("Site blurb").nil?) %>
+              <p><%= site_setting("Site blurb") %></p>
+            <% end %>
+            <% if params[:show_env] %><p><small>[<%= Rails.env.to_s %>]</small></p><% end %>
+
+            <div class="footer-social text-center mt-3 mt-md-4">
+              <% if (!site_setting("Facebook page URL").nil?) %>
+                <a href="<%= site_setting("Facebook page URL") %>" target="_blank">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              <% end %>
+
+              <% if (!site_setting("Twitter username").nil?) %>
+                <a href="https://www.twitter.com/<%= site_setting("Twitter username") %>" target="_blank">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              <% end %>
+
+               <% if (!site_setting("Instagram username").nil?) %>
+                <a href="https://www.instagram.com/<%= site_setting("Instagram username") %>" target="_blank">
+                  <i class="fa fa-instagram"></i>
+                </a>
+              <% end %>
+
+              <% if (!site_setting("YouTube channel ID").nil?) %>
+                <a href="https://www.youtube.com/channel/<%= site_setting("YouTube channel ID") %>" target="_blank">
+                  <i class="fa fa-youtube"></i>
+                </a>
+              <% end %>
+
+              <% if (!site_setting("Vimeo ID").nil?) %>
+                <a href="https://vimeo.com/<%= site_setting("Vimeo ID") %>" target="_blank">
+                  <i class="fa fa-vimeo-square"></i>
+                </a>
+              <% end %>
+            </div>
+
+          </div><!-- /.widget-details -->
+        </div><!-- /.widget -->
+      </div>
+
+      <div class="col-md-3 px-4">
+        <div class="widget widget_popular_posts">
+          <h3 class="widget-title">Recent lessons</h3>
+
+          <div class="widget-details">
+
+            <% recent_lessons(4).each do |rl| %>
+              <article class="post type-post media">
+                <% unless rl.main_video.thumbnail.nil? %>
+                <div class="entry-thumbnail media-left">
+                  <%= link_to image_tag(rl.main_video.thumbnail.url(:small), alt: rl.name), lesson_path(id: rl.slug) unless rl.main_video.nil? || rl.main_video.thumbnail.url.nil? %>
+                </div>
+                <% end %>
+
+                <div class="entry-content media-body">
+                  <h3 class="entry-title">
+                    <%= link_to rl.name, lesson_path(id: rl.slug) %>
+                  </h3>
+                </div>
+              </article>
+            <% end %>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 px-4">
+        <div class="widget widget_tags">
+          <h3 class="widget-title">Tags</h3>
+          <div class="widget-details">
+            <% cached_tags.each do |tag| %>
+              <%= link_to tag.name, lessons_path(tag: tag.slug), class: "tag-link" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 px-4">
+        <% if footer_navbar && footer_navbar.navbar_items.any? %>
+          <h3 class="widget-title">Other pages</h3>
+          <ul class="other_pages p-0">
+          <% footer_navbar.navbar_items.each do |item| %>
+            <li class="menu-item <%= 'active' if request.url.include?(item.url) %>">
+              <a href="<%= item.url %>" data-turbolinks="false"><%= item.name %></a>
+            </li>
+          <% end %>
+          </ul>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="copyright pt-2 py-2 text-center">&copy; <%= "#{Date.today.strftime("%Y")} #{site_setting("Site name")}" %></div>
+</footer>

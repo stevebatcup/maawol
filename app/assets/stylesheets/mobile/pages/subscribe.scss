@@ -1,0 +1,86 @@
+#subscribe.content_wrapper {
+	margin-top: 0;
+
+	section#choose_option {
+		// padding: 0 !important;
+		margin-bottom: 12px !important;
+
+		div.subscription_option {
+			height: initial !important;
+
+			label {
+				// border: none !important;
+				margin-top: 10px !important;
+			}
+
+			ul.option_desc {
+				height: initial !important;
+			}
+		}
+	}
+
+	section#payment {
+		// padding: 0 !important;
+
+		form#payment_form {
+			margin-top: 0;
+			border-radius: 3px;
+			padding: 15px 3% !important;
+			width: 100%;
+
+			a#back_to_options {
+				color: #28a745;
+			}
+
+			button {
+				width: 100%;
+				font-size: 1.2em;
+			}
+
+			.form_item {
+				select {
+					border: 1px solid #ccc;
+				}
+
+				label {
+					width: 46%;
+				}
+
+				input[type=text] {
+					border: 1px solid #ccc;
+					width: 50%;
+					border-radius: 3px;
+
+					&.small {
+						width: 25%;
+					}
+				}
+			}
+		}
+	}
+
+	#discount_form {
+		margin-top: 0 !important;
+
+		input[type=text] {
+			max-width: none !important;
+			width: 82%;
+		}
+
+		button {
+			width: 18%;
+		}
+	}
+
+	#discount_and_summary {
+		table {
+			width: 100%;
+		}
+	}
+}
+
+#settings {
+	#my_membership {
+		margin: 40px 0;
+	}
+}

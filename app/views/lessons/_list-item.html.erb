@@ -1,0 +1,23 @@
+<article class="post type-post well">
+  <div class="entry-thumbnail">
+    <a href="{{lesson.path}}" class="img_wrap" ng-if="lesson.image">
+      <img ng-src="{{lesson.image}}" alt="{{lesson.name}}" />
+    </a>
+  </div>
+
+  <div class="entry-content">
+    <h3 class="entry-title">
+      <a href="{{lesson.path}}">
+        {{lesson.name}}
+      </a>
+    </h3>
+
+    <div class="entry-meta mt-1 lesson_course_link" ng-if="lesson.course">
+      Part of the <a href="{{lesson.course.path}}">{{lesson.course.name}}</a> course
+    </div>
+  </div>
+</article>
+
+<a href="{{lesson.path}}" class="img_wrap">
+  <i class="fa fa-lock" ng-if="!lesson.available"></i>
+</a>

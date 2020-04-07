@@ -1,0 +1,97 @@
+en:
+  helpers:
+    submit:
+      create: Create %{model}
+      update: Update %{model}
+      site_image:
+        update: Update image
+    label:
+      course:
+        name: Name of course
+        description: Description of course
+        skill_level_ids: Skill levels
+        teachings: Lessons
+      tag:
+        name: Tag name
+        lesson_ids: Tagged to these lessons
+        show_in_cloud: Show in tag cloud
+        when_associated: Tagged with
+      category:
+        when_associated: In categories
+        lesson_ids: Lessons in this category
+      listening_lab:
+        spotify_url: Spotify playlist URL
+      subscriber:
+        subscription_created: Subscription purchased at
+        subscription_referring_author_name: Referred by
+      users_subscription_payment:
+        processed_at: Paid at
+        author_fee: Author receives
+        author_name: Author
+      product_payment:
+        user_name: Buyer
+        processed_at: Bought at
+        name: Item
+        author_fee: Author receives
+        author_name: Author
+      downloadable:
+        when_associated: Downloadables
+        image: Thumbnail
+        full_url: Download URL (only for subscribers)
+        basket_url: Bakset URL (for YouTube etc)
+      downloadable_store:
+        products: Files
+      lesson:
+        name: Lesson name
+        tag_ids: Tagged with
+        category_ids: In categories
+        is_free: Available for free?
+      user:
+        encrypted_password: Password
+        status: Membership status
+        is_admin: Administrator?
+        from_old_site: Migrated from old website?
+      stuck_question:
+        stuck_answers: Answers
+        sort: Order on page
+      subscription_option:
+        payment_system_plan: Chargebee plan ID
+      video:
+        tmp_video_file: Video
+        human_status: Status
+        when_associated: Videos
+  administrate:
+    actions:
+      confirm: Are you sure?
+      destroy: Destroy
+      edit: Edit
+      edit_resource: Edit %{name}
+      show_resource: Show %{name}
+      show: Show
+      new_resource: Add new %{name}
+      back: Back
+    controller:
+      create:
+        success: "%{resource} was successfully created."
+      destroy:
+        success: "%{resource} was successfully destroyed."
+      update:
+        success: "%{resource} has been updated."
+      resources:
+        content_block:
+          create:
+            success: Content created
+          destroy:
+            success: Content destroyed
+          update:
+            success: Content updated
+    fields:
+      has_many:
+        more: Showing %{count} of %{total_count}
+        none: None
+    form:
+      error: error
+      errors: "%{pluralized_errors} prohibited this %{resource_name} from being saved:"
+    search:
+      clear: Clear search
+      label: Search %{resource}

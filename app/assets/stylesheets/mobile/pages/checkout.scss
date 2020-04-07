@@ -1,0 +1,53 @@
+section#payment  {
+	padding-left: 1.5vw;
+	padding-right: 1.5vw;
+
+	form#payment_form {
+		#selected_option {
+			p {
+				width: 55%;
+			}
+			ul {
+				max-width: 70%;
+
+				li {
+					font-weight: normal;
+					line-height: 1.2em;
+					margin-bottom: 0.8em;
+				}
+			}
+		}
+
+
+		.form_item.d-flex {
+			label + * {
+				width: 60% !important;
+
+				input[type=text] {
+					width: 100%;
+				}
+			}
+
+			p.hint {
+				line-height: 1.1em;
+				font-size: 0.9em;
+				text-align: right;
+				padding-left: 6px;
+				padding-right: 2px;
+			}
+
+			ul#choose_payment_type {
+				li {
+					margin-right: 8px;
+					label {
+						img {
+							height: 15px;
+							position: relative;
+							top: -3px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

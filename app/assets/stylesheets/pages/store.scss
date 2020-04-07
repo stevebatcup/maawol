@@ -1,0 +1,51 @@
+#store_listing {
+	.downloadable_item {
+		border: 1px solid #434343;
+		border-radius: 3px;
+		cursor: pointer;
+
+		h3 {
+			font-size: 1.1em;
+			height: 2.4em;
+		}
+
+		img {
+			height: 140px;
+			border-radius: 2px;
+		}
+	}
+}
+
+#basket {
+	table {
+		i.fa-times {
+			cursor: pointer;
+		}
+
+		td {
+			&.description {
+				width: 75%;
+			}
+
+			&.right {
+				text-align: right;
+			}
+
+			a.clear_basket {
+				color: $mainColour_a;
+			}
+
+			&.total {
+				font-weight: bold;
+				border-top: 1px solid #999;
+				border-bottom: 1px solid #999;
+			}
+		}
+	}
+}
+
+#payment.solo_checkout {
+	form#payment_form {
+		border: none;
+	}
+}

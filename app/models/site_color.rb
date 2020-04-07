@@ -1,0 +1,2 @@
+class SiteColor < ApplicationRecord
+end

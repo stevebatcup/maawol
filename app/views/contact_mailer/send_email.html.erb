@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>New <%= site_setting("Site easy name") %> contact form submitted by <%= @contact.name %></h1>
+    <ul>
+    	<li><b>Name: </b><%= @contact.name %></li>
+    	<li><b>Email: </b><%= @contact.email %></li>
+    	<li><b>Subject: </b><%= @contact.subject %></li>
+    	<li><b>Message: </b><%= simple_format @contact.message %></li>
+    </ul>
+    <p>Get on it like a car bonnet!</p>
+  </body>
+</html>

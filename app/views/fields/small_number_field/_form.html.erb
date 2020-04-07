@@ -1,0 +1,7 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+<div class="field-unit__field small_number_field">
+	<%= f.number_field field.attribute, placeholder: 0, min: field.min, max: field.max, step: field.step %>
+	<% if field.show_percentage %><span>%</span><% end %>
+</div>

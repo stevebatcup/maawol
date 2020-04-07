@@ -1,0 +1,179 @@
+<section ng-controller="SettingsController"
+  data-recurring-cancellation-error="Sorry, there has been an error cancelling your subscription"
+  data-payment-error-prefix="<%= I18n.t('views.subscription.form.errors.prefix') %>"
+  data-card-error-number-invalid="<%= I18n.t('views.subscription.form.errors.card_number') %>"
+  data-card-error-expiry-invalid="<%= I18n.t('views.subscription.form.errors.expiry') %>"
+  data-card-error-cv2-invalid="<%= I18n.t('views.subscription.form.errors.cv2') %>"
+  id="settings">
+  <div class="container" style="padding-bottom: 50px;">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="section">
+          <h2 class="section-title">My account details</h2>
+          <%= form_for current_user, url: "/settings/#{current_user.id}" do |f| %>
+            <p class="form-input">
+              <%= f.label :first_name %>:
+              <%= f.text_field :first_name, { class: 'form-control' } %>
+            </p>
+            <p class="form-input">
+              <%= f.label :last_name %>:
+              <%= f.text_field :last_name, { class: 'form-control' } %>
+            </p>
+            <p class="form-input">
+              <%= f.label :email %>:
+              <%= f.email_field :email, { class: 'form-control' } %>
+            </p>
+            <p class="form-input">
+              <%= f.label :receives_weekly_digest do %>
+                <span class="checkbox_label">Opt me into the <%= site_setting("Site easy name") %> weekly digest email?</span>
+                <%= f.check_box :receives_weekly_digest, { class: 'form-control' } %>
+              <% end %>
+            </p>
+            <p class="form-input">
+              <%= f.label :avatar %>:
+              <%= f.file_field :avatar %>
+            </p>
+            <% if current_user.avatar %>
+              <img src="<%= current_user.avatar.url(:thumbnail) %>" alt="<%= current_user.username %>" />
+              <div class="clearfix"></div>
+            <% end %>
+            <hr />
+            <p class="actions">
+              <%= f.submit "Update my details", { class: 'btn btn-success btn-large' } %>
+            </p>
+          <% end %>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">My Password</h2>
+          <%= form_for current_user, url: "/update_password" do |f| %>
+            <p class="form-input">
+              <%= f.label :existing_password %>:
+              <%= f.password_field :existing_password, { class: 'form-control' } %>
+            </p>
+            <p class="form-input">
+              <%= f.label :password %>:
+              <%= f.password_field :password, { class: 'form-control' } %>
+            </p>
+            <p class="form-input">
+              <%= f.label :password_confirm %>:
+              <%= f.password_field :password_confirm, { class: 'form-control' } %>
+            </p>
+            <p class="actions">
+              <%= f.submit "Change my password", { class: 'btn btn-success btn-large' } %>
+            </p>
+          <% end %>
+        </div>
+
+      </div>
+      <div class="col-md-6 col-sm-12" id="my_membership">
+        <h2 class="section-title">My Membership</h2>
+        <p>
+          <label>Current subscription status: </label>
+          <%= current_user.membership_status %>
+        </p>
+        <% if current_user.status.to_sym == :free %>
+          <a href="/subscribe" class="btn btn-success btn-large">Subscribe now</a>
+        <% elsif [:paying, :expiring].include?(current_user.status.to_sym) && current_user.is_subscriber? %>
+          <%
+              user_sub = current_user.current_subscription
+              subscription_option = user_sub.subscription_option
+          %>
+          <p>
+            <label>Subscription level: </label>
+            <%= subscription_option.name %>
+          </p>
+          <p>
+            <ul><%= subscription_option.description.html_safe %></ul>
+          </p>
+          <% if current_user.has_recurring_subscription? %>
+            <p data-current-subscription-id="<%= user_sub.id %>">
+              <label>Next payment due: </label>
+              <%= user_sub.next_payment_due_at.strftime("%B %d, %Y") %>
+            </p>
+            <p>
+              <label>Payment method: </label>
+              <%= user_sub.is_paypal? ? "Paypal" : "Card" %>
+            </p>
+            <%= render partial: "subscriptions/cancel_recurring", locals: { current_user: current_user } %>
+            <a href="#" id="cancel_recurring" class="btn btn-danger btn-mgn-btm">Cancel my subscription</a>
+          <% else %>
+            <p>
+              <label>Subscription ends: </label>
+              <%= user_sub.ends_at.strftime("%B, %d, %Y") %>
+            </p>
+            <a href="/subscribe" class="btn btn-success btn-large" style="white-space: normal;">Resubscribe now to continue enjoying the site</a>
+          <% end %>
+        <% end %>
+
+
+         <% if current_user.has_recurring_subscription? && !user_sub.is_paypal? %>
+            <a class="btn btn-primary btn-mgn-btm" data-toggle="collapse" href="#update_card" role="button" aria-expanded="false" aria-controls="update_card">
+                Update my payment card details
+            </a>
+            <div class="collapse" id="update_card">
+            <%= form_tag('/card_details', { method: :patch, id: 'update_card_form' }) do %>
+              <h2 class="section-title">Update my card</h2>
+
+              <p class="form-input">
+                <label for="choose_payment_type">
+                  <%= t('views.subscription.form.labels.card_type') %>
+                </label>
+
+                <ul id="choose_payment_type">
+                 <li>
+                    <label class="payment_chooser">
+                      <input type="radio" name="card[type]" value="visa" ng-model="card.type" />
+                      <%= image_tag 'subscribe/visa.png', alt: 'Visa', style: 'max-width: 58%;' %>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="payment_chooser">
+                      <input type="radio" name="card[type]" value="mastercard" ng-model="card.type" />
+                      <%= image_tag 'subscribe/mastercard.png', alt: 'Mastercard', style: 'max-width: 70%;' %>
+                    </label>
+                  </li>
+                </ul>
+              </p>
+
+
+              <p class="form-input">
+                <label for="card_number">
+                  <%= t('views.subscription.form.labels.card_number') %>
+                </label>
+
+                <input type="text" id="card_number" class="form-control" name="card[cardNumber]"  ng-model="card.cardNumber"/>
+              </p>
+
+
+              <p class="form-input">
+                <label for="expiry">
+                  Expiry date
+                </label><br />
+
+                <%= select_month(Date.today, { field_name: 'month', :prefix => 'card[expiry]', use_two_digit_numbers: true }, { "ng-model": "card.expiry.month" }) %>
+                <%= select_year(Date.today, { field_name: 'year', :prefix => 'card[expiry]', start_year: Date.today.year, end_year: Date.today.year + 8 }, { "ng-model": "card.expiry.year" } ) %>
+              </p>
+
+
+              <p class="form-input">
+                <label for="cv2">
+                  <%= t('views.subscription.form.labels.cv2') %>
+                </label>
+
+                <input type="text" id="cv2" class="small form-control" name="card[cv2]" ng-model="card.cv2" />
+              </p>
+
+              <button type="submit" id="update_card_btn" class="btn btn-success btn-large">
+                Update card
+              </button>
+          <% end %>
+
+          <%= render partial: "checkout/payment_error", locals: { current_user: current_user } %>
+         </div>
+         <% end %>
+
+      </div>
+    </div>
+  </div>
+</section>

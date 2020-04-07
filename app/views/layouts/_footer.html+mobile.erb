@@ -1,0 +1,56 @@
+<footer class="site-footer pt-4">
+  <div class="container">
+    <div class="text-center mb-4">
+      <% if site_image("footer_logo").present? %>
+      <a href="/" class="d-block">
+        <img src="<%= site_image("footer_logo").url(:large_square) %>" alt="<%= site_setting("Site name") %>" class="footer-logo d-block mx-auto" />
+      </a>
+      <% end %>
+    </div>
+
+    <div class="text-center footer-social text-center mb-1">
+      <% if (!site_setting("Facebook page URL").nil?) %>
+        <a href="<%= site_setting("Facebook page URL") %>" target="_blank">
+          <i class="fa fa-facebook"></i>
+        </a>
+      <% end %>
+
+      <% if (!site_setting("Twitter username").nil?) %>
+        <a href="https://www.twitter.com/<%= site_setting("Twitter username") %>" target="_blank">
+          <i class="fa fa-twitter"></i>
+        </a>
+      <% end %>
+
+       <% if (!site_setting("Instagram username").nil?) %>
+        <a href="https://www.instagram.com/<%= site_setting("Instagram username") %>" target="_blank">
+          <i class="fa fa-instagram"></i>
+        </a>
+      <% end %>
+
+      <% if (!site_setting("YouTube channel ID").nil?) %>
+        <a href="https://www.youtube.com/channel/<%= site_setting("YouTube channel ID") %>" target="_blank">
+          <i class="fa fa-youtube"></i>
+        </a>
+      <% end %>
+
+      <% if (!site_setting("Vimeo ID").nil?) %>
+        <a href="https://vimeo.com/<%= site_setting("Vimeo ID") %>" target="_blank">
+          <i class="fa fa-vimeo-square"></i>
+        </a>
+      <% end %>
+    </div>
+
+    <% if footer_navbar && footer_navbar.navbar_items.any? %>
+      <ul class="other_pages mt-3 text-center p-0">
+      <% footer_navbar.navbar_items.each do |item| %>
+        <li class="d-inline-block mr-3 menu-item <%= 'active' if request.url.include?(item.url) %>">
+          <a href="<%= item.url %>" data-turbolinks="false"><%= item.name %></a>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
+
+  </div>
+
+  <div class="copyright pt-2 py-2 text-center">&copy; <%= "#{Date.today.strftime("%Y")} #{site_setting("Site name")}" %></div>
+</footer>

@@ -1,0 +1,28 @@
+footer.site-footer {
+	.footer-social {
+		margin-top: 15px;
+		margin-bottom: 30px;
+	}
+
+	.widget.widget_tags {
+		margin-bottom: 15px;
+	}
+
+	ul.other_pages {
+		max-width: 75vw;
+		margin-left: auto;
+		margin-right: auto;
+
+	  li {
+	    font-size: 0.95em;
+
+	    a {
+	      text-decoration: underline;
+	    }
+	  }
+	}
+
+	.copyright {
+		font-size: 1em;
+	}
+}

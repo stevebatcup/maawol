@@ -1,0 +1,8 @@
+<div id="answers" class="field-unit__field" style="width: 90rem;">
+  <%= f.fields_for field.attribute do |a| %>
+    <%= render 'navbar_item_fields', f: a %>
+  <% end %>
+  <div class="links" id="nested_insertion_point">
+    <%= link_to_add_association '<i class="fa fa-plus"></i> Add another item to this navbar'.html_safe, f, field.attribute %>
+  </div>
+</div>

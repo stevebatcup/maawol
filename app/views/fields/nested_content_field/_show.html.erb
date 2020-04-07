@@ -1,0 +1,9 @@
+<% if field.data.any? %>
+	<ul>
+		<% field.data.each do |f| %>
+			<li><%= f.sort %>. <%= f.content_block.title %></li>
+		<% end %>
+	</ul>
+<% else %>
+	None
+<% end %>

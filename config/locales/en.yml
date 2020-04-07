@@ -1,0 +1,83 @@
+en:
+  errors:
+    messages:
+      extension_whitelist_error: Please upload an acceptable file type
+  views:
+    defaults:
+      save: Save
+    lesson:
+      must_register: "You must be a paid member to view that lesson"
+    register:
+      redirected: "You must first create your account before you can view any of the lessons. Joining is quick, easy and FREE using the form below!"
+    subscription:
+      persuasion_items:
+        messages: Send and read messages
+        views: See who's viewed your profile
+        interested: Find out who's interested in you
+        secure: Secure, safe and trusted
+      steps:
+        one: Choose your package
+        two: Choose your payment method
+      options:
+        most_popular: most popular
+        select: Select
+        selected: Selected
+        save: save
+      discount:
+        error:
+          prefix: Sorry there was an error applying that discount code
+          invalid: "Please enter a valid discount code"
+      form:
+        errors:
+          prefix: Error processing payment
+          email: Please enter a valid email address
+          name: Please fill in both your first and last name
+          card_number: Please enter a valid card number
+          expiry: Please select the correct expiry date for your card
+          cv2: Please enter the last 3 digits from the back of your card in the 'Security number' field
+        labels:
+          selected: selected
+          card_type: Payment by
+          card_number: Card number
+          expiry: Expiration date
+          cv2: Security number
+          submit: Confirm payment
+          paying: Submitting payment...
+          secured_by: Secured by
+          discount_code:
+            applying: "Applying discount code: %{code}..."
+            applied: Discount code %{code} has been applied
+            placeholder: Enter a promo code
+            button: Apply
+      summary:
+        title: Your order
+        total: Pay today
+        daily_calculation: "works out at $%{dailyPrice} a day"
+      small_print_terms_html: "Your subscription will be automatically extended at the standard rate of ${{ subscription.fullPrice }} for successive renewal periods. You can cancel the automatic renewal by following the instructions given on your 'Account settings' page. Please allow 24 hours after the purchase of a subscription to cancel your automatic renewal. Notification of your wish to cancel must be given at least 24 hours prior to the renewal date."
+      success: Thanks for subscribing
+      recurring_cancelled: Your recurring billing has now been cancelled and your subscription will terminate on
+      errors:
+        already_recurring: Looks like you already have a recurring subscription
+        editing_auth: You do not have permission to edit this subscription
+        not_recurring: You do not currently have recurring billing setup on your subscription
+        cancel_recurring: There was a problem cancelling your recurring billing, please try again
+        card_fail: Sorry we were unable to process your subscription using the card details you entered
+      visits_restricted: You must be a subscriber to see who has visited your profile
+      favourites_restricted: You must be a subscriber to see who has added you to their favourites
+      messaging_restricted: You must be a subscriber to view and send messages
+
+  recaptcha:
+    errors:
+      verification_failed: Please check the box at the bottom of the form labelled "I'm not a robot"!
+      recaptcha_unreachable: Oops, there was an error verifying that you are not a ROBOT. Please try again.
+
+  mobile:
+    views:
+      subscribe:
+        error_loading_options: Sorry there was an error loading the subscription options
+        error_loading_option: Sorry there was an error loading the data for this subscription option
+        full_price: Full price
+        benefits:
+          title: Benefits
+          text_html: Read and reply to your messages.<br />Find out who's interested in you
+

@@ -1,0 +1,19 @@
+<p>Steve,</p>
+
+<p>	<%= site_setting("Site easy name") %> incomplete paypal session subscription: </p>
+<table>
+	<tr>
+		<th>User</th>
+		<td><%= @user.id %></td>
+	</tr>
+	<tr>
+		<th>Paypal token</th>
+		<td><%= @token %></td>
+	</tr>
+	<tr>
+		<th>Exception message</th>
+		<td><%= @exc.message %></td>
+	</tr>
+</table>
+
+<p>Love,<br />Steve</p>

@@ -1,0 +1,14 @@
+<% if field.data.any? %>
+	<ul>
+		<% field.data.each do |f| %>
+			<li>
+				<%= f.sort %>. <%= f.productable.name_for_admin_selector %> - <%= number_to_currency(f.price) %>
+				<% if f.author_fee_split > 0 %>
+					(<em>Author gets <%= f.author_fee_split %>% of each sale</span>)
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
+<% else %>
+	None
+<% end %>

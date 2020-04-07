@@ -1,0 +1,35 @@
+.container {
+	width: 100vw;
+}
+
+@media screen and (orientation: portrait) {
+	header .header-top form.search-form input[type=text] {
+		width: 230px;
+	}
+
+	.list .lesson_result article.post {
+		.entry-thumbnail {
+			max-height: 65px;
+			a {
+				height: initial;
+			}
+		}
+
+		.entry-title {
+			font-size: 0.9em;
+		}
+	}
+
+	article.lesson {
+		#playlist {
+			height: initial;
+		}
+
+		#actions button {
+			width: 80% !important;
+			margin-bottom: 10px;
+		}
+	}
+}
+
+@import 'tablet/library/_header';

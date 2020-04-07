@@ -1,0 +1,88 @@
+<section id="dashboard" ng-controller="DashboardController">
+  <div class="video-contents list">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+
+          <h2 class="section-title" id="recent_lessons">
+            <i class="fa fa-bolt" aria-hidden="true"></i>
+            <span class="text"><span class="first-word">Recent</span> lessons</span>
+          </h2>
+          <div class="row">
+            <% if @latest.any? %>
+              <div id="recent-lessons-carousel" class="owl-carousel">
+                <% @latest.each do |lesson| %>
+                  <div class="lesson_result search_result well">
+                    <%= render partial: 'item', locals: { lesson: lesson } %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <div class="clearfix"></div>
+
+          <h2 class="section-title" id="watch_list">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <span class="text"><span class="first-word">Watch</span> list</span>
+          </h2>
+          <div class="row">
+            <% if @watch_laters.any? %>
+              <div id="watchlist-carousel" class="owl-carousel">
+                <% @watch_laters.each do |wl| %>
+                  <div class="lesson_result search_result well">
+                    <%= render partial: 'item', locals: { lesson: wl.lesson } %>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <p class="none_found" >You have not yet marked any lessons to watch later</p>
+            <% end %>
+          </div>
+          <div class="clearfix"></div>
+
+          <h2 class="section-title" id="favourite_lessons">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <span class="text"><span class="first-word">Favorite</span> lessons</span>
+          </h2>
+          <div class="row">
+            <% if @favourites.any? %>
+              <div id="favourites-carousel" class="owl-carousel">
+                <% @favourites.each do |fave| %>
+                  <div class="lesson_result search_result well">
+                    <%= render partial: 'item', locals: { lesson: fave.lesson } %>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <p class="none_found" >You have not yet added any lessons to your favorites</p>
+            <% end %>
+          </div>
+          <div class="clearfix"></div>
+
+
+          <h2 class="section-title" id="viewed_lessons">
+            <i class="fa fa-check-square" aria-hidden="true"></i>
+            <span class="text"><span class="first-word">Viewed</span> lessons</span>
+          </h2>
+          <div class="row">
+            <% if @views.any? %>
+              <div id="viewed-carousel" class="owl-carousel">
+                <% @views.each do |view| %>
+                  <div class="lesson_result search_result well">
+                    <%= render partial: 'item', locals: { lesson: view.lesson } %>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <p class="none_found" >You have not yet marked any lessons as viewed</p>
+            <% end %>
+          </div>
+          <div class="clearfix"></div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

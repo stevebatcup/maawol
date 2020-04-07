@@ -1,0 +1,9 @@
+<% if field.data.any? %>
+	<ul>
+		<% field.data.each do |f| %>
+			<li><%= f.sort %>. <%= f.answer %></li>
+		<% end %>
+	</ul>
+<% else %>
+	None
+<% end %>

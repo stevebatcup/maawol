@@ -1,0 +1,35 @@
+<section class="form-elements style-2" id="clearance">
+  <div id="registration_box">
+    <div class="right-panel">
+
+      <%= render 'layouts/auth-logo' %>
+
+      <h4>Create Your Account</h4>
+
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
+      <%= form_for @user do |form| %>
+        <%= render partial: 'users/form', object: form %>
+
+        <p class="submit-input">
+          <%= form.submit "Register for FREE", { class: 'btn btn-success btn-large' } %>
+          <span class="alt-methods" style="display: none;">
+            <span>Or Register With</span>
+            <a class="facebook" href="#"><i class="fa fa-facebook-official"></i></a>
+            <a class="google" href="#"><i class="fa fa-google-plus"></i></a>
+          </span>
+        </p>
+
+      <% end %>
+    </div>
+
+    <span class="bottom-text">
+      Already have an account? <%= link_to "Sign in", sign_in_path %>
+    </span>
+  </div>
+</section>

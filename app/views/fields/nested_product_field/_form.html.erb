@@ -1,0 +1,11 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+<div id="answers" class="field-unit__field">
+  <%= f.fields_for field.attribute do |a| %>
+    <%= render 'product_fields', f: a %>
+  <% end %>
+  <div class="links" id="nested_insertion_point">
+    <%= link_to_add_association '<i class="fa fa-plus"></i> Add a downloadable or course to this store'.html_safe, f, field.attribute %>
+  </div>
+</div>

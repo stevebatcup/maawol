@@ -1,0 +1,90 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zxx"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <title><%= html_title %></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <% unless site_setting('Meta description').nil? %>
+      <meta name="description" content="<%= site_setting('Meta description') %>" />
+    <% end %>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <% unless site_image("favicon").nil? %>
+      <link rel="icon" type="image/x-icon" href="<%= site_image("favicon").url(:tiny) %>" />
+    <% end %>
+    <%= render 'layouts/analytics-tag' %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= render 'layouts/dynamic-colors' %>
+
+    <%= csrf_meta_tags %>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+  </head>
+
+  <body>
+    <% unless is_auth_page?  %>
+      <header class="header" ng-controller="NavController" data-signed-in="0">
+        <div class="header-top">
+          <div class="container">
+            <div class="row">
+              <div class="col-6">
+                <% if site_image("main_logo").present? %>
+                <a href="/" id="logo_top">
+                  <img src="<%= site_image("main_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="site-logo" />
+                </a>
+                <% end %>
+              </div>
+              <div class="col-6 text-right account_links d-flex align-items-end justify-content-end">
+                <span><a href="<%= sign_up_path %>"><i class="fa fa-user mr-1"></i> Register for FREE</a></span>
+                <span> <a href="<%= sign_in_path %>"><i class="fa fa-lock mr-1"></i> Sign in</a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="header-bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <nav class="navbar navbar-default navbar-expand-md">
+
+                  <div id="menu" class="main-menu pull-left">
+
+                    <ul class="nav navbar-nav">
+
+                      <% navbar.navbar_items.each do |item| %>
+                        <% if item.can_be_seen_by_user(current_user) %>
+                          <li class="menu-item <%= 'active' if nav_item_is_current_request(item) %>">
+                            <a href="<%= item.url %>" data-turbolinks="false" ng-click="navigateUri($event, '<%= item.url %>')"><%= item.name %></a>
+                          </li>
+                        <% end %>
+                      <% end %>
+
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </header>
+    <% end %>
+
+    <div id="yield_wrapper" class=''>
+      <%= yield %>
+    </div>
+
+    <% unless is_auth_page?  %>
+      <%= render 'layouts/footer' %>
+    <% end %>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  </body>
+</html>

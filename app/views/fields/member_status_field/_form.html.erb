@@ -1,0 +1,18 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+<div class="field-unit__field">
+	<% if field.data == 'paying' %>
+		<input type="radio" checked disabled name="user[<%= field.attribute %>]" />Recurring subscriber
+	<% elsif field.data == 'expiring' %>
+		<input type="radio" checked disabled name="user[<%= field.attribute %>]" />Expiring Subscriber
+	<% elsif field.data == 'deleted' %>
+		<input type="radio" checked disabled name="user[<%= field.attribute %>]" />Deleted
+	<% else %>
+	  <input type="radio" name="user[<%= field.attribute %>]" value="free" <%= 'checked' if field.data == 'free' %> />Free member
+	  <br />
+	  <input type="radio" name="user[<%= field.attribute %>]" value="complimentary" <%= 'checked' if field.data == 'complimentary' %> />Complimentary member
+	 	<br />
+	  <input type="radio" name="user[<%= field.attribute %>]" value="paying" <%= 'checked' if field.data == 'paying' %> />Paying
+	<% end %>
+</div>

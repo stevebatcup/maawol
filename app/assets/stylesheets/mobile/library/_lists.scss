@@ -1,0 +1,74 @@
+body.mobile {
+	.section-title {
+		font-size: 19px;
+	}
+
+	.list {
+		#filters.mobile_filters {
+			border-radius: 0;
+			margin: 10px 0 15px;
+			box-shadow: none;
+			padding-top: 10px;
+			padding-bottom: 10px;
+
+			.card-header {
+				padding: 0;
+
+				h4 {
+					margin: 0;
+					position: relative;
+					font-size: 1.2em;
+
+					i {
+						position: absolute;
+						right: 0;
+					}
+
+					a {
+						color: #444;
+					}
+				}
+			}
+
+			#filterBox {
+				overflow: hidden;
+
+				select {
+					font-size: 1.1em;
+					width: 100%;
+					display: block;
+					margin: 10px 0;
+					background: #fff;
+					padding: 2px 3px;
+				}
+
+				button, input[type=submit] {
+					font-size: 1em;
+					font-weight: bold;
+				}
+
+				#submit_filters {
+					width: 100%;
+					font-size: 1.2em;
+					text-transform: uppercase;
+					padding: 1px 0;
+				}
+			}
+		}
+
+		.lesson_result {
+			min-height: 290px;
+			border-radius: 1px !important;
+
+			article.post {
+				border-radius: 1px;
+				margin: 0 0 -10px;
+				height: 292px;
+
+				a.img_wrap {
+					height: 190px;
+				}
+			}
+		}
+	}
+}

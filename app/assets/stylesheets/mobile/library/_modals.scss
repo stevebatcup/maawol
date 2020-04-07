@@ -1,0 +1,21 @@
+.modal-dialog {
+	width: 94% !important;
+	width: 94vw !important;
+
+	.modal-body {
+		h4 {
+			margin-top: 0 !important;
+		}
+	}
+
+	.modal-header {
+		button {
+			margin-top: -3px !important;
+			right: 12px !important;
+		}
+
+		h3 {
+			font-size: 1em !important;
+		}
+	}
+}

@@ -1,0 +1,30 @@
+class AuthorAvatarUploader < BaseUploader
+
+  include CarrierWave::MiniMagick
+
+  storage :fog
+
+  def default_url(*args)
+    ActionController::Base.helpers.asset_path "no-avatar.png"
+  end
+
+  version :thumbnail do
+    process resize_to_fill: [120, 120]
+
+    def store_dir
+      "#{Rails.env}/#{site_basket_dir}/avatars/authors/#{model.id}"
+    end
+  end
+
+  version :small do
+    process resize_to_fill: [80, 80]
+
+    def store_dir
+      "#{Rails.env}/#{site_basket_dir}/avatars/authors/#{model.id}"
+    end
+  end
+
+  def store_dir
+    "#{Rails.env}/#{site_basket_dir}/avatars/authors/#{model.id}"
+  end
+end

@@ -1,0 +1,7 @@
+<% if block.title.length > 0 %>
+	<h2 class='section-title'><%= block.title %></h2>
+<% end %>
+
+<% if block.content.length > 0 %>
+	<%= block.content.html_safe %>
+<% end %>

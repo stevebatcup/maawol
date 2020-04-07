@@ -1,0 +1,29 @@
+<div class='nested-fields navbar'>
+  <div class='field sort'>
+  	<label>Order</label>
+    <%= f.number_field :sort, placeholder: 'Order', autofocus: true %>
+  </div>
+  <div class='field name'>
+  	<label>Text</label>
+    <%= f.text_field :name %>
+  </div>
+  <div class='field name'>
+    <label>URL</label>
+    <%= f.text_field :url %>
+  </div>
+  <div class='field desktop'>
+    <label>
+      Show on desktop and tablet devices
+      <%= f.check_box :desktop %>
+    </label>
+  </div>
+  <div class='field mobile'>
+    <label>
+      Show on mobile devices
+      <%= f.check_box :mobile %>
+    </label>
+  </div>
+  <div class='field remove'>
+	  <%= link_to_remove_association '<i class="fa fa-times"></i>'.html_safe, f %>
+	</div>
+</div>

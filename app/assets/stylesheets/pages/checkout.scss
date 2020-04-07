@@ -1,0 +1,154 @@
+section#payment {
+	margin-bottom: 40px;
+
+	h3.step_denoter {
+		margin-bottom: 1.5em;
+	}
+
+	form#payment_form {
+		border: 1px solid #c8c8c8;
+		padding: 15px 3.5% 0;
+		margin-top: 15px;
+		color: #929292;
+		width: 100%;
+		height: 100%;
+
+		button#checkout_with_paypal {
+			margin: 25px auto 20px;
+			background: asset_url('subscribe/paypal-checkout.png') no-repeat left top;
+			background-size: 100%;
+			border: none;
+			text-indent: -9999px;
+			width: 240px;
+			height: 70px;
+			padding: 0;
+			display: block;
+			box-shadow: none;
+		}
+
+		#paypal_forwarding {
+			font-size: 0.9em;
+			width: 70%;
+	    margin: 0 auto 40px;
+	    display: block;
+	    line-height: 1.5em;
+		}
+
+		p#selected_option {
+			margin-bottom: 0.4em;
+
+			span.item_label {
+				font-weight: bold;
+				text-transform: uppercase;
+				width: 27%;
+				display: inline-block;
+			}
+		}
+
+		button {
+			@extend .btn.btn-success !optional;
+			width: 100%;
+			box-shadow: 1px 1px 3px #ccc;
+			margin: 15px 0;
+
+			.ladda-spinner {
+				left: 24px;
+			}
+
+			&.paying {
+				// width: initial;
+		    background: #bbb;
+		    padding-left: 48px !important;
+		    padding-right: 25px !important;
+		    border-color: #ababab;
+			}
+		}
+
+		.form_item {
+			margin-bottom: 10px;
+			clear: both;
+
+			&.d-flex {
+				label + * {
+					width: 60%;
+
+					input[type=text] {
+						width: 100%;
+					}
+				}
+			}
+
+			input[type=text] {
+				width: 54%;
+				font-size: 1.1em;
+				padding: 3px 5px;
+				position: relative;
+				// top: -2px;
+				border: 1px solid #ccc;
+				border-radius: 3px;
+
+				&.small {
+					width: 70px;
+				}
+			}
+
+			select {
+				font-size: 1.1em;
+				margin: 6px 3% 6px 0;
+				position: relative;
+				// top: -2px;
+				border: 1px solid #ccc;
+				border-radius: 3px;
+			}
+
+			label {
+				width: 39%;
+				display: inline-block;
+				font-weight: normal;
+				font-size: 0.8em;
+			}
+
+			ul#choose_payment_type {
+				overflow: hidden;
+				padding: 0 0 0 2px;
+		    position: relative;
+		    top: 8px;
+				margin: 0;
+				display: inline-block;
+
+				li {
+					list-style: none;
+					float: left;
+					margin-right: 17px;
+					font-weight: normal;
+
+					label {
+						width: inherit;
+
+						img {
+							height: 21px;
+						}
+
+						input {
+							display: inline-block;
+						}
+					}
+				}
+			}
+
+			&#secured_by {
+				position: relative;
+		    top: 2px;
+
+				#comodo {
+					display: inline-block;
+					position: relative;
+			    top: -7px;
+					img {
+						width: 80px;
+					}
+				}
+			}
+		}
+	}
+}

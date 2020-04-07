@@ -1,0 +1,14 @@
+<div class="field-unit__label">
+	<% label_text = t(
+	    "helpers.label.#{f.object.class.name.underscore}.#{field.attribute_key}",
+	    default: field.attribute.to_s,
+	  ).titleize %>
+
+	  <%= f.label field.attribute_key, label_text %>
+</div>
+
+<div class="field-unit__field">
+  <%= f.select(field.attribute_key, nil, {}, multiple: true) do %>
+    <%= options_for_select(field.associated_resource_options, field.selected_options) %>
+  <% end %>
+</div>

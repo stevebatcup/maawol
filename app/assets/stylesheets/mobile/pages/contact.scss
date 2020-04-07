@@ -1,0 +1,23 @@
+form#new_contact {
+	.answer {
+		width: 49%;
+		line-height: 1.2em;
+
+		label {
+			font-size: 0.85em;
+
+			input {
+				width: 1.3em;
+			}
+
+			span {
+				top: -3px;
+				left: 2px;
+			}
+		}
+	}
+
+	input[name=commit] {
+		width: 100% !important;
+	}
+}

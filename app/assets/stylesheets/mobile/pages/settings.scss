@@ -1,0 +1,15 @@
+form.edit_user {
+	label[for=user_receives_weekly_digest] {
+		span {
+			font-size: 0.9em;
+		}
+		input[type=checkbox] {
+			top: 1px;
+			-ms-transform: scale(1.8); /* IE */
+			-moz-transform: scale(1.8); /* FF */
+			-webkit-transform: scale(1.8); /* Safari and Chrome */
+			-o-transform: scale(1.8); /* Opera */
+			transform: scale(1.8);
+		}
+	}
+}

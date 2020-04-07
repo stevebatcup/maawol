@@ -1,0 +1,138 @@
+#yield_wrapper {
+	padding-top: 2rem;
+}
+
+.well {
+	min-height: 20px;
+	padding: 0.6em 0.8em;
+	margin-bottom: 20px;
+	border-radius: 3px;
+  box-shadow: none;
+  border-width: 1px;
+  border-style: solid;
+
+	&.centre-well {
+		width: 30%;
+	}
+}
+
+.w-15 {
+	width: 15% !important;
+}
+
+.w-10 {
+	width: 10% !important;
+}
+
+.w-20 {
+	width: 20% !important;
+}
+
+.w-30 {
+	width: 30% !important;
+}
+
+.w-70 {
+	width: 70% !important;
+}
+
+.w-80 {
+	width: 80% !important;
+}
+
+.w-85 {
+	width: 90% !important;
+}
+
+.w-90 {
+	width: 90% !important;
+}
+
+.w-95 {
+	width: 95% !important;
+}
+
+.transition {
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+iframe {
+  border: none;
+  box-shadow: none;
+}
+
+.overlay {
+  background: rgba(59, 62, 82, 0.25);
+  height: 100%;
+  width: 100%;
+}
+.section-padding {
+  padding: 70px 0;
+}
+
+.background-bg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+article:hover .play-video {
+  opacity: 1;
+}
+.entry-thumbnail {
+  overflow: hidden;
+  position: relative;
+}
+.entry-thumbnail .play-video {
+  color: #fff;
+  font-size: 45px;
+  opacity: .65;
+  position: absolute;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.entry-thumbnail img {
+  height: 100%;
+  width: 130%!important;
+  max-width: none;
+  margin-top: 0!important;
+  margin-left: -15%;
+}
+.entry-meta {
+  font-size: 0.9em;
+}
+.entry-meta span {
+  margin-right: 8px;
+}
+.entry-meta span.author {
+  display: block;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 8px 0 8px;
+}
+.entry-meta span a {
+  color: #90a4ae;
+}
+.entry-meta span a:hover {
+  color: #90a4ae;
+}
+.entry-meta span i {
+  margin-right: 2px;
+}
+.entry-meta span span {
+  margin: 0;
+}
+.entry-meta span:last-child {
+  margin-right: 0;
+}
+.right-panel article {
+  min-height: inherit !important;
+}

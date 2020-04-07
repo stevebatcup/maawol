@@ -1,0 +1,68 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #4d4d4d;
+  font-family: 'Poppins';
+  font-weight: 700;
+}
+
+p,
+.description {
+  line-height: 2em;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.68;
+  margin: 0 0 25px;
+  padding: 0;
+  position: relative;
+  text-transform: uppercase;
+}
+.section-title:before,
+.section-title:after {
+  content: '';
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+.section-title:before {
+  background: #cfd8dc;
+  width: 100%;
+}
+.section-title:after {
+  width: 15%;
+}
+.section-title a {
+  color: #90a4ae;
+}
+.widget-title {
+  color: #455a64;
+  font-family: 'Poppins';
+  font-size: 16px;
+  line-height: 32px;
+  margin: -10px 0 30px;
+  position: relative;
+  text-transform: uppercase;
+}
+.widget-title:before,
+.widget-title:after {
+  content: '';
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+.widget-title:before {
+  background: #cfd8dc;
+  width: 100%;
+}
+.widget-title:after {
+  width: 15%;
+}

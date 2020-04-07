@@ -1,0 +1,27 @@
+<% if session[:referral_author_id] %>
+  <%= hidden_field_tag :referral_author_id, session[:referral_author_id] %>
+<% end %>
+
+<p class="form-input">
+  <%= form.label :first_name %><br />
+  <%= form.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name" %>
+</p>
+
+<p class="form-input">
+  <%= form.label :last_name %><br />
+  <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+</p>
+
+<p class="form-input">
+  <%= form.label :email %>
+  <%= form.text_field :email, class: "form-control", type: 'email' %>
+</p>
+
+<p class="form-input">
+  <%= form.label :password %>
+  <%= form.password_field :password, class: "form-control" %>
+</p>
+
+<div class="mb-4" style="clear: both;">
+  <%= recaptcha_tags(site_key: recaptcha_site_key) %>
+</div>

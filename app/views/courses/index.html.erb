@@ -1,0 +1,51 @@
+<section class="lessons" id="courses" ng-controller="CoursesController">
+  <div class="list">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+
+          <div class="section">
+            <% if params[:skill_level] %>
+              <h2 class="section-title">Courses > <%= @skill_level %></h2>
+              <p class="show_all"><a href="/courses">show all courses</a></p>
+            <% else %>
+              <h2 class="section-title">Courses</h2>
+              <div class="mb-5"><%= render_content_block_by_name("course_introduction") %></div>
+            <% end %>
+
+
+            <div class="row">
+            <% @courses.each do |course| %>
+              <div class="course_result search_result col-sm-12 col-md-4">
+                <article class="post type-post well">
+                  <div class="entry-thumbnail">
+                    <a href="courses/<%= course.id %>" class="img_wrap">
+                      <img src="<%= course.image.url(:square) %>" alt="<%= course.name %>" />
+                    </a>
+                  </div>
+
+                  <div class="entry-content">
+                    <h3 class="entry-title mt-3 mb-1">
+                      <a href="courses/<%= course.id %>">
+                        <%= course.name %>
+                      </a>
+                    </h3>
+
+                    <div class="entry-meta">
+                      <p><%= course.snippet(200) %></p>
+                      <b><%= course.author.name %> &bullet; <span class="count"><%= pluralize(course.lessons.size, "lesson") %></span></b>
+                      <br /><br />
+                      <%= linked_skills_list(course.skill_levels) if course.skill_levels.any? %>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            <% end %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

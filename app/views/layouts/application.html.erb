@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+  <title><%= html_title %></title>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <% unless site_setting('Meta description').nil? %>
+    <meta name="description" content="<%= site_setting('Meta description') %>" />
+  <% end %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <% unless site_image("favicon").nil? %>
+    <link rel="icon" type="image/x-icon" href="<%= site_image("favicon").url(:tiny) %>" />
+  <% end %>
+  <%= render 'layouts/analytics-tag' %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= render 'layouts/dynamic-colors' %>
+
+  <% if browser.device.tablet? %>
+    <%= stylesheet_link_tag 'tablet/overrides', media: 'all', 'data-turbolinks-track' => true %>
+  <% end %>
+
+  <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+</head>
+
+<body onunload="" ng-app="Maawol_NG">
+  <header class="header" ng-controller="NavController" data-signed-in="1">
+    <div class="header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-3">
+            <% unless site_image("main_logo").nil? %>
+              <a href="/" id="logo_top">
+                <img src="<%= site_image("main_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="site-logo" />
+              </a>
+            <% end %>
+          </div>
+          <div class="col-6 text-center d-flex align-items-end">
+            <form class="search-form" method="get" action="/lessons">
+              <input name="search" type="text" class="search-input" size="20" maxlength="20" placeholder="Search..." required="">
+              <input type="submit" name="submit" class="search-submit">
+            </form>
+          </div>
+          <div class="col-3 d-flex align-items-end">
+            <div class="account_links">
+              <span><a href="/settings"><i class="fa fa-user mr-1"></i> My account</a></span>
+              <span> <a data-method="delete" href="<%= sign_out_path %>"><i class="fa fa-lock mr-1"></i> Sign out</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 px-0">
+            <nav class="navbar navbar-default navbar-expand-md">
+
+              <div id="menu" class="main-menu pull-left">
+
+                <ul class="nav navbar-nav">
+                  <% navbar.navbar_items.each do |item| %>
+                    <% if item.can_be_seen_by_user(current_user) %>
+                    <li class="menu-item <%= 'active' if request.url.include?(item.url) %>">
+                      <a href="<%= item.url %>" data-turbolinks="false"><%= item.name %></a>
+                    </li>
+                    <% end %>
+                  <% end %>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </nav><!-- /.navbar -->
+          </div>
+
+        </div>
+      </div><!-- /.container -->
+    </div><!-- /.header-bottom -->
+  </header><!-- /.header -->
+
+  <div id='yield_wrapper'>
+    <% if notice %>
+      <p class="container alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="container alert alert-danger"><%= alert %></p>
+    <% end %>
+    <%= yield %>
+  </div>
+
+  <%= render 'layouts/footer' %>
+  <%= render 'layouts/angular_bootstrap' %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</body>
+</html>

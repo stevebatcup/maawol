@@ -1,0 +1,17 @@
+#home_slides {
+	.section,
+	.cms_section {
+		margin-bottom: 30px;
+
+		&#register {
+			ul {
+				height: initial;
+			}
+
+			.btn {
+				position: relative;
+				width: 100% !important;
+			}
+		}
+	}
+}

@@ -1,0 +1,17 @@
+section.cms_section {
+	h2 {
+		@extend .section-title;
+	}
+
+	img {
+		&.align_left {
+			margin: 10px 25px 15px 0;
+			border-radius: 2px;
+		}
+
+		&.align_right {
+			margin: 10px 0 15px 25px;
+			border-radius: 2px;
+		}
+	}
+}

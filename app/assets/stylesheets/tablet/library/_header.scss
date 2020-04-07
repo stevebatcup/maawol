@@ -1,0 +1,62 @@
+@media (max-width: 1200px) {
+  header .header-bottom .navbar-default .navbar-nav li a {
+    padding: 2px 23px 0;
+  }
+  header .header-bottom .navbar-default .navbar-nav li.menu-item-has-children a {
+    padding: 2px 29px 0 17px;
+  }
+  header .header-bottom .navbar-default .navbar-nav li.menu-item-has-children a:before {
+    right: 17px;
+  }
+  header .header-bottom .navbar-default .navbar-nav li ul.children li a {
+    line-height: 30px;
+    padding: 7.5px 15px 7.5px 23px;
+  }
+}
+
+@media (max-width: 992px) {
+  header .header-middle .navbar-brand {
+    padding: 4px 0 0;
+    width: 200px;
+  }
+  header .header-bottom .navbar-default .navbar-nav li a {
+    font-size: 13px;
+    line-height: 47px;
+    padding: 2px 13px 0;
+  }
+  header .header-bottom .navbar-default .navbar-nav li.menu-item-has-children a {
+    padding: 3px 26px 0 19px;
+  }
+  header .header-bottom .navbar-default .navbar-nav li.menu-item-has-children a:before {
+    top: 3px;
+    right: 8px;
+  }
+  header .header-bottom .navbar-default .navbar-nav li.menu-item-has-children:hover ul.children {
+    top: 50px;
+  }
+  header .header-bottom .navbar-default .navbar-nav li ul.children {
+    min-width: 170px;
+  }
+  header .header-bottom .navbar-default .navbar-nav li ul.children li a {
+    line-height: 30px;
+    padding: 5.5px 15px 5.5px 12px;
+  }
+  header .header-bottom .navbar-default .navbar-nav li ul.children li.menu-item-has-children a:before {
+    right: 15px;
+    top: 6px;
+  }
+  header .header-bottom .navbar-default .navbar-nav li ul.children li.menu-item-has-children:hover ul.children {
+    top: 0;
+  }
+  header .search-form input {
+    padding: 14px 50px 13px 15px;
+  }
+  header .search-form input[type="submit"] {
+    line-height: 47px;
+    width: 45px;
+  }
+  header .search-form:before {
+    line-height: 50px;
+    width: 45px;
+  }
+}

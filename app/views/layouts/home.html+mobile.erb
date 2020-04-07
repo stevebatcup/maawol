@@ -1,0 +1,81 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <title><%= html_title %></title>
+    <% unless site_setting('Meta description').nil? %>
+      <meta name="description" content="<%= site_setting('Meta description') %>" />
+    <% end %>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <% unless site_image("favicon").nil? %>
+      <link rel="icon" type="image/x-icon" href="<%= site_image("favicon").url(:tiny) %>" />
+    <% end %>
+    <%= render 'layouts/analytics-tag' %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'mobile/overrides', media: 'all', 'data-turbolinks-track' => true %>
+    <%= render 'layouts/dynamic-colors' %>
+
+    <%= javascript_include_tag '_setup', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+  </head>
+
+  <body class="mobile" data-turbolinks='false'>
+
+    <% unless is_auth_page?  %>
+      <header class="header fixed" ng-controller="NavController" data-signed-in="0">
+        <div class="header-top container">
+          <div class="row">
+            <div class="col-8">
+              <div class="d-flex justify-content-start align-items-center">
+                <button type="button" class="navbar-toggle mr-3" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                  <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/">
+                  <img src="<%= site_image("mobile_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="site-logo" />
+                </a>
+              </div>
+            </div>
+            <div class="col-4">
+              <% unless signed_in? %>
+                <a href="<%= sign_in_path %>" class="d-block btn btn-success btn-sm mt-2 py-1" id="sign_in_btn">Sign In</a>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="header-bottom main-menu collapse w-100 pt-2" id="menu">
+          <div class="container">
+            <nav class="navbar navbar-default">
+              <ul class="nav navbar-nav mb-3 mt-1 w-100">
+                <% navbar.navbar_items.each do |item| %>
+                  <% if item.can_be_seen_by_user(current_user) %>
+                    <li class="menu-item <%= 'active' if nav_item_is_current_request(item) %>">
+                      <a href="#" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2"
+                              ng-click="navigateUri($event, '<%= item.url %>')"><%= item.name %></a>
+                    </li>
+                  <% end %>
+                <% end %>
+
+                <li class="menu-item <%= 'active' if (params[:action].to_sym == :new && params[:controller].to_sym == :sessions) %>">
+                  <a href="/users/login" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)">Sign in</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+    <% end %>
+
+    <div id="yield_wrapper" class='<%= 'has-fixed-header' unless is_auth_page?  %>'>
+      <%= yield %>
+    </div>
+
+  	<%= render 'layouts/footer' %>
+    <%= render 'layouts/angular_bootstrap' %>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  </body>
+</html>

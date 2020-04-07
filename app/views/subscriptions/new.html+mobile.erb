@@ -1,0 +1,198 @@
+<section id="subscription">
+  <div class="container content_wrapper"
+      id="subscribe"
+      ng-controller="MobileSubscriptionsController"
+      data-redirected-from="<%= params[:from] %>"
+      data-redirected-message-profile_messaging="<%= t('views.subscription.messaging_restricted') %>"
+      data-redirected-message-views="<%= t('views.subscription.visits_restricted') %>"
+      data-redirected-message-favourites="<%= t('views.subscription.favourites_restricted') %>"
+      data-redirected-message-messages="<%= t('views.subscription.messaging_restricted') %>"
+      data-payment-error-prefix="<%= I18n.t('views.subscription.form.errors.prefix') %>"
+      data-card-error-number-invalid="<%= I18n.t('views.subscription.form.errors.card_number') %>"
+      data-card-error-expiry-invalid="<%= I18n.t('views.subscription.form.errors.expiry') %>"
+      data-card-error-cv2-invalid="<%= I18n.t('views.subscription.form.errors.cv2') %>"
+      data-server-error-options="<%= I18n.t('mobile.views.subscribe.error_loading_options') %>"
+      data-discount-error-prefix="<%= I18n.t('views.subscription.discount.error.prefix') %>"
+      data-discount-code="<%= session[:discount_code].present? ? session[:discount_code] : '' %>"
+      data-discount-applying-text="<%= t('views.subscription.form.labels.discount_code.applying') %>"
+      data-discount-applied-text="<%= t('views.subscription.form.labels.discount_code.applied') %>"
+      data-daily-calculation-text="<%= t('views.subscription.summary.daily_calculation') %>">
+
+      <flash-message></flash-message>
+
+      <section id="choose_option" class="col-12" ng-hide="slide != 'options'">
+        <h2 class="section-title">Subscribe to <%= site_setting("Site easy name") %></h2>
+        <h3 class="step_denoter" style="display: none"><b><%= t('views.defaults.step') %> 1.</b> <%= t('views.subscription.steps.one') %></h3>
+
+        <h4>Subscribe now to receive:</h4>
+        <ul class="option_desc mb-4">
+          <li>Access to all video lessons</li>
+          <li>Lesson requests</li>
+          <li>Email your questions to Justin</li>
+        </ul>
+
+        <h4>Choose an option:</h4>
+        <div class="subscription_option" ng-repeat="option in subscription_options" ng-class="{ 'most_popular': option.mostPopular, 'normal': !option.mostPopular }">
+
+          <p id="most_popular" ng-class="{'selected': subscription.months == option.months }" ng-if="option.mostPopular"><%= t('views.subscription.options.most_popular') %></p>
+
+          <label class="option pt-3" data-level="{{ option.level }}"
+                  data-full-price="{{ option.fullPrice }}"
+                  data-price="{{ option.price }}"
+                  data-monthly-price="{{ option.monthlyPrice }}"
+                  data-name="{{ option.monthsText }}"
+                  data-discounted-price="{{ option.discountedPrice }}"
+                  data-discounted-percentage="{{ option.discountedPercentage }}"
+                  ng-class="{
+                              'selected': subscription.level == option.level,
+                              'normal': !option.mostPopular,
+                              'most_popular': option.mostPopular
+                            }">
+
+            <input type="radio" value='{{ option.level }}' name='chosen_subscription' ng-model="subscription.level" />
+
+            <h6>{{ option.description }}</h6>
+
+            <h3 class="option_length" ng-if="!option.mostPopular" style="display: none">{{ option.name }}</h3>
+
+            <h3 class="monthly_price" ng-bind-html="option.monthlyPriceFullText | rawHtml"></h3>
+            <button class="button selector" data-level="{{option.level}}" style="display: none">
+              <span ng-if="subscription.level != option.level"><%= t('views.subscription.options.select') %></span>
+              <span ng-if="subscription.level == option.level"><%= t('views.subscription.options.selected') %></span>
+           </button>
+          </label>
+        </div>
+
+        <p id="discount_applied" ng-if="discount.applied" ng-bind-html="discount.description"></p>
+        <form id="discount_form" ng-if="!discount.applied" class="d-flex w-100">
+          <input type="text" placeholder="<%= t('views.subscription.form.labels.discount_code.placeholder') %>" id="discount_code_input" ng-model="discount.code" />
+          <button id="discount_code_button"><%= t('views.subscription.form.labels.discount_code.button') %></button>
+        </form>
+
+      </section>
+
+      <section class="col-12" ng-hide="slide != 'payment'">
+        <h2 class="section-title"><%= t('views.subscription.summary.title') %></h2>
+        <section id="discount_and_summary" class="">
+
+          <div id="summary">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td class="last_row">{{ subscription.name }}</td>
+                <td class="right last_row">${{ subscription.fullPrice }}</td>
+              </tr>
+              <tr ng-if="discount.applied && subscription.discounted.percentage > 0">
+                <td class="last_row">Discount (-{{ subscription.discounted.percentage }}%)</td>
+                <td class="right last_row">-${{ subscription.discounted.price }}</td>
+              </tr>
+              <tr>
+                <td class="total total_label"><%= t('views.subscription.summary.total') %></td>
+                <td class="total right">${{ total }}</td>
+              </tr>
+              <tr>
+                <td colspan="2" id="summary_daily_calculation" class="right">
+                 ({{ dailyPriceText }})
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <p id="terms">* <%= t('views.subscription.small_print_terms_html') %></p>
+        </section>
+
+        <section id="payment">
+         <h3 class="step_denoter" style="display: none"><b><%= t('views.defaults.step') %> 2.</b> <%= t('views.subscription.steps.two') %></h3>
+
+         <form id="payment_form" name="payment_form" class="" novalidate method="post" action="<%= subscriptions_path %>">
+            <p id="selected_option">
+              <span class="item_label" style="width: 30%;"><%= t('views.subscription.form.labels.selected') %>: </span>
+              <span class="selected_months">{{subscription.name}} @</span>
+              <span id="selected_total">
+               ${{subscription.price}}
+             </span>
+            </p>
+
+            <p><a href='#' id="back_to_options" ng-if="subscription_options.length > 1">&lt; Change selected option</a></p>
+
+           <div class="form_item">
+             <label for="choose_payment_type">
+              <%= t('views.subscription.form.labels.card_type') %>
+            </label>
+
+            <ul id="choose_payment_type">
+              <li>
+               <label class="payment_chooser">
+                <input type="radio" name="payment_type" value="visa" ng-model="payment.type" />
+                <%= image_tag 'subscribe/visa.png', alt: 'Visa' %>
+              </label>
+            </li>
+            <li>
+              <label class="payment_chooser">
+                <input type="radio" name="payment_type" value="mastercard" ng-model="payment.type" />
+                <%= image_tag 'subscribe/mastercard.png', alt: 'Mastercard' %>
+              </label>
+            </li>
+            <li>
+              <label class="payment_chooser">
+                <input type="radio" name="payment_type" value="paypal" ng-model="payment.type" />
+                <%= image_tag 'subscribe/paypal.png', alt: 'Paypal' %>
+              </label>
+            </li>
+          </ul>
+          </div>
+
+          <div ng-show="payment.type == 'paypal'">
+           <button id="checkout_with_paypal" class="pay_btn" ng-if="!paying">Checkout with Paypal</button>
+           <h5 ng-if="paying" id="paypal_forwarding" style="text-align: center; padding-top: 15px;">Contacting paypal to complete your payment details, please wait...</h5>
+          </div>
+
+          <div ng-hide="payment.type == 'paypal'">
+           <div class="form_item">
+            <label for="card_number">
+             <%= t('views.subscription.form.labels.card_number') %>
+           </label>
+
+           <input type="text" id="card_number" ng-model="payment.cardNumber" />
+          </div>
+
+
+          <div class="form_item">
+            <label for="expiry">
+             Expiration
+           </label>
+
+           <%= select_month(Date.today, { use_two_digit_numbers: true }, { "ng-model": "payment.expiry.month" }) %>
+           <%= select_year(Date.today, { start_year: Date.today.year, end_year: Date.today.year + 8 }, { "ng-model": "payment.expiry.year" }) %>
+          </div>
+
+
+          <div class="form_item">
+            <label for="cv2">Security code</label>
+            <input type="text" id="cv2" class="small" ng-model="payment.cv2" />
+          </div>
+
+          <button type="submit" id="pay_btn" class="pay_btn ladda-button btn btn-success"
+          data-size="xs" data-style="expand-left" ng-class="{ 'paying': paying == true }">
+            <span class='ladda-label'>
+             <span ng-if="!paying">Submit</span>
+             <span ng-if="paying == true"><%= t('views.subscription.form.labels.paying') %></span>
+            </span>
+          </button>
+        </div>
+
+        <div class="form_item" id="secured_by">
+         <label>
+          <%= t('views.subscription.form.labels.secured_by') %>
+        </label>
+
+        <div id="comodo">
+          <%= image_tag 'subscribe/comodo.png', alt: 'Secure site' %>
+        </div>
+        </div>
+      </form>
+    </section>
+  </section>
+
+<%= render partial: "checkout/payment_error", locals: { current_user: current_user } %>
+
+</section>

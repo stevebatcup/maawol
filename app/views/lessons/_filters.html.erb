@@ -1,0 +1,23 @@
+<div class='well desktop_filters' id='filters'>
+	<form name="filter_form" action="/lessons">
+	  <h4>Find lessons: </h4>
+	  <select name="root_category" id="root_category">
+	    <option value=''>Select main category....</option>
+	    <% @root_categories.each do |root_category| %>
+			  <option value="<%= root_category.id %>" <%= 'selected="selected"' if params[:root_category] && params[:root_category].to_i == root_category.id %>><%= root_category.name %></option>
+	    <% end %>
+	  </select>
+	  <% if params[:root_category] && params[:root_category].to_i > 0 %>
+	  	<select name="category" id="category">
+	  		<option value=''>select...</option>
+		    <% @categories.each do |category| %>
+				  <option value="<%= category.id %>"  <%= 'selected="selected"' if params[:category] && params[:category].to_i == category.id %>><%= category.name %></option>
+		    <% end %>
+	  	</select>
+	  <% else %>
+		  <select name="category" id="category" style="display:none;"><!-- --></select>
+		 <% end %>
+
+	  <input type="submit" class="btn btn-success" id="submit_filters" value="Go" />
+	</form>
+</div>

@@ -1,0 +1,50 @@
+<section id="home_slides" class="container pt-4" ng-controller="HomePageController">
+  <div class="row">
+    <div class="col-sm-12">
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
+      <div class="section" id="about">
+        <% unless homepage_video.nil? %>
+        <h2 class="section-title" style="">Welcome to <%= site_setting('Site name') %></h2>
+        <div id="homepage_video_box">
+          <%= video_iframe(homepage_video) %>
+        </div>
+        <% end %>
+      </div>
+
+      <section class="cms_section mb-4 mb-md-5" id="register">
+        <%= render_content_block_by_name("home_register_options") %>
+      </section>
+
+      <% if @latest_lessons.any? %>
+        <div class="section" id="recent_lessons">
+          <h2 class="section-title" style="">Recent lessons</h2>
+          <div class="video-contents list">
+              <div class="row">
+                  <% @latest_lessons.each do |lesson| %>
+                    <div class="lesson_result search_result col-12 col-md-5ths col-lg-3 mb-3 mb-md-1">
+                      <%= render partial: 'recent_lesson', locals: { lesson: lesson } %>
+                    </div>
+                  <% end %>
+              </div>
+          </div>
+        </div>
+      <% end %>
+
+
+      <section class="cms_section" id="bio">
+        <%= render_content_block_by_name("bio") %>
+      </section>
+
+      <section class="contact-details pt-md-4 pb-0 pb-md-5" id="contact">
+        <%= render 'contact/contact' %>
+      </section>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,72 @@
+a {
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+
+	&.disabled {
+		opacity: 0.2;
+	}
+
+	&:hover,
+	&:focus {
+	  outline: 0;
+	  text-decoration: none;
+	}
+}
+
+.btn {
+	color: #fff;
+}
+
+.btn-large {
+	font-size: 18px !important;
+}
+
+.btn.read-more {
+  background: #353641;
+  border: none;
+  border-radius: 0;
+  color: #b0bec5;
+  display: inline-block;
+  font-family: 'Poppins';
+  font-size: 14px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 60px;
+  padding: 0 35px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.btn.read-more:hover {
+  background: #b0bec5;
+  color: #353641;
+}
+.follow-btn,
+.followed-btn {
+  border-radius: 0;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+  margin: 0;
+  padding: 0 11.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.follow-btn {
+  color: #fff;
+}
+.follow-btn:hover {
+  color: #fff;
+}
+.followed-btn {
+  background: #cfd8dc;
+  color: #455a64;
+}
+input:focus,
+button:focus {
+  outline: 0;
+}

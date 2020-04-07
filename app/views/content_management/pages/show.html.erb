@@ -1,0 +1,5 @@
+<div class="container pt-3 pt-md-1" id="cms_page">
+	<% @page.content_blocks.each do |content_block| %>
+		<%= render_content_block_by_id(content_block.id) %>
+	<% end %>
+</div>

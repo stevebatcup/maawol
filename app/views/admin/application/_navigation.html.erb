@@ -1,0 +1,175 @@
+<%#
+# Navigation
+
+This partial is used to display the navigation in Administrate.
+By default, the navigation contains navigation links
+for all resources in the admin dashboard,
+as defined by the routes in the `admin/` namespace
+%>
+
+<nav id="admin_sidenav" class="navigation" role="navigation">
+  <h1 id="logo">
+    <a href="/dashboard" target="_blank"
+        title="Open main website in another window">
+        <% if site_image("mobile_logo").nil? %>
+          <%= site_setting("Site easy name") %> admin
+        <% else %>
+          <img src="<%= site_image("mobile_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="footer-logo" />
+        <% end %>
+    </a>
+  </h1>
+
+  <h3>Video lessons</h3>
+  <ul>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/lessons') %>"
+            href="/admin/lessons">Lessons
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/videos') %>"
+            href="/admin/videos">Videos
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/courses') %>"
+            href="/admin/courses">Courses
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/downloadables') %>"
+            href="/admin/downloadables">Downloadable files
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/root_categories') %>"
+            href="/admin/root_categories">Primary categories
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/categories') %>"
+            href="/admin/categories">Secondary categories
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/tags') %>"
+            href="/admin/tags">Tags
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/skill_levels') %>"
+            href="/admin/skill_levels">Skill levels
+      </a>
+    </li>
+  </ul>
+
+  <h3>E-commerce</h3>
+  <ul>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/stores') %>"
+            href="/admin/stores">Stores
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/product_payments') %>"
+            href="/admin/product_payments">Store payments
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/subscription_options') %>"
+            href="/admin/subscription_options">Subscription levels
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/users_subscription_payments') %>"
+            href="/admin/users_subscription_payments">Subscription payments
+      </a>
+    </li>
+  </ul>
+
+  <h3>People</h3>
+  <ul>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.fullpath == '/admin/users' %>"
+            href="/admin/users">All members</a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.fullpath == '/admin/subscribers' %>"
+            href="/admin/subscribers">Subscribers</a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/authors') %>"
+            href="/admin/authors">Authors</a>
+    </li>
+  </ul>
+
+  <h3>Static Pages</h3>
+  <ul>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/content_blocks') %>"
+            href="/admin/content_management/content_blocks">Content blocks
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/pages') %>"
+            href="/admin/content_management/pages">Pages</a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/images') %>"
+            href="/admin/content_management/images">Images</a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/stuck') %>"
+            href="/admin/stuck_questions">'Not sure what to work on' page</a>
+    </li>
+  </ul>
+
+  <h3>Navbars</h3>
+    <ul>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/edit_signed_out_nav') %>"
+            href="/admin/content_management/edit_nav/signed_out">Signed out navbar</a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/edit_signed_in_nav') %>"
+            href="/admin/content_management/edit_nav/signed_in">Signed in navbar</a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/edit_footer_nav') %>"
+            href="/admin/content_management/edit_nav/footer">Footer navbar</a>
+    </li>
+  </ul>
+
+  <h3>Application</h3>
+  <ul>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/site_settings') %>"
+            href="/admin/site_settings">Settings
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/site_images') %>"
+            href="/admin/site_images">Images
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/site_colors') %>"
+            href="/admin/site_colors">Colors
+      </a>
+    </li>
+  </ul>
+
+  <h3>Listening labs</h3>
+  <ul>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/listening_labs') %>"
+            href="/admin/listening_labs">Labs
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/albums') %>"
+            href="/admin/albums">Albums
+      </a>
+    </li>
+  </ul>
+</nav>

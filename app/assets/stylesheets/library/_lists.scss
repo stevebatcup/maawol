@@ -1,0 +1,78 @@
+.list {
+	p.none_found {
+		padding: 10px 0;
+		clear: both;
+		font-weight: bold;
+		text-align: center;
+		width: 100%;
+	}
+
+	.lesson_result {
+		min-height: 272px;
+
+		&.blocked {
+			article {
+				opacity: 0.5;
+			}
+
+			i.fa-lock {
+				font-size: 70px;
+		    position: absolute;
+		    top: 109px;
+		    left: 42%;
+		    opacity: 1;
+		    z-index: 10;
+		    color: #949494;
+		    text-shadow: 1px 1px 8px #ececec;
+			}
+		}
+
+		article.post {
+			margin-bottom: 10px;
+			height: 272px;
+
+			.entry-title {
+			  font-size: 1em;
+			  line-height: 1.4em;
+			}
+
+			.lesson_course_link {
+				margin-top: 11px;
+				line-height: 1.3em;
+			}
+
+			.entry-thumbnail {
+				max-height: 190px;
+				margin-bottom: 5px !important;
+
+				a.img_wrap {
+					width: 100%;
+					display: block;
+					height: 123px;
+					overflow: hidden;
+
+					img {
+						width: 100% !important;
+						margin-left: 0;
+						height: initial;
+					}
+				}
+			}
+		}
+	}
+}
+
+p.show_all {
+  position: absolute;
+  right: 22px;
+  top: 3px;
+	font-size: 0.8em;
+}
+
+ul {
+	padding-left: 20px;
+
+	li {
+		line-height: 2em;
+	}
+}

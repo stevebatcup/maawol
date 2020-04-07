@@ -1,0 +1,14 @@
+.search {
+	position: relative;
+  top: -3px;
+
+  label {
+		display: block;
+	}
+}
+
+.admin_index_header {
+	.search {
+		max-width: 27rem;
+	}
+}

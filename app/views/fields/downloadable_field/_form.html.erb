@@ -1,0 +1,7 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+<div class="field-unit__field">
+	<p><small style="margin-bottom: 10px;"><%= link_to("Show uploaded file", field.file.url, target: '_blank') unless field.file.nil? %></small></p>
+  <%= f.file_field field.attribute %>
+</div>

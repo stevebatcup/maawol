@@ -1,0 +1,32 @@
+#home_slides {
+	.section {
+		margin-bottom: 65px;
+	}
+
+	.cms_section {
+		margin-bottom: 38px;
+
+		&#register {
+			ul {
+				height: 150px;
+			}
+
+			.btn {
+				width: 80% !important;
+			}
+		}
+	}
+}
+
+#homepage_video_box {
+	padding-top: 56.25%;
+	position: relative;
+
+	iframe {
+		position:absolute !important;
+		top:0 !important;
+		left:0 !important;
+		width:100% !important;
+		height:100% !important;
+	}
+}

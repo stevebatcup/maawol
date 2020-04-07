@@ -1,0 +1,33 @@
+<article class="post type-post">
+  <div class="entry-thumbnail">
+  	<% if lesson.main_video && lesson.main_video.thumbnail? %>
+    <a href="<%= lesson_path(id: lesson.slug) %>">
+      <img src="<%= lesson.main_video.thumbnail.url(:small) %>" alt="<%= lesson.name %>" />
+    </a>
+    <% end %>
+  </div>
+
+  <div class="entry-content">
+    <h3 class="entry-title">
+      <a href="<%= lesson_path(id: lesson.slug) %>">
+        <%= lesson.name %>
+      </a>
+    </h3>
+
+    <div class="entry-meta">
+      <span>
+        <i class="fa fa-clock-o"></i>
+        <time datetime="PT5M">
+          <%= time_ago_in_words(lesson.publish_date) %> ago</time>
+      </span>
+      <span>
+        <a href="<%= lesson_path(id: lesson.slug) %>#comments">
+          <i class="fa fa-comment-o"></i>
+          <span class="count">
+            <%= lesson.comment_count %>
+          </span>
+        </a>
+      </span>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,5 @@
+<% if field.to_s.to_i > 0 %>
+	<%= field.to_s %><% if field.show_percentage %><span>%</span><% end %>
+<% else %>
+	None
+<% end %>

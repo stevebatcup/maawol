@@ -1,0 +1,26 @@
+<p>Hey Justin,</p>
+
+<p>Sadly a subscription has been cancelled on <%= site_setting("Site name") %>, doh!</p>
+
+<table cellpadding='1' cellspacing='1' border='1'>
+	<tr>
+		<td><b>Name: </b></td>
+		<td><%= @subscription.user.full_name %></td>
+	</tr>
+	<tr>
+		<td><b>Payment method: </b></td>
+		<td><%= @subscription.payment_system %></td>
+	</tr>
+	<tr>
+		<td><b><%= @subscription.payment_system.capitalize %> subscription ID: </b></td>
+		<td><%= @subscription.remote_subscription_id %></td>
+	</tr>
+	<tr>
+		<td><b><%= @subscription.payment_system.capitalize %> customer ID: </b></td>
+		<td><%= @subscription.remote_customer_id %></td>
+	</tr>
+</table>
+
+<p>Go check out this tragedy, immediately!</p>
+
+<p>Peace from your own website</p>

@@ -1,0 +1,199 @@
+.field-unit__field {
+	.tinymce {
+		width: 60%;
+		height: 600px;
+
+		textarea {
+			height: 500px;
+		}
+	}
+
+	&.color_picker {
+		// width: 2000px;
+
+		input[type=color] {
+			width: 5em;
+			height: 2em;
+			padding: 2px;
+			display: inline-block;
+		}
+
+		a {
+			display: inline-block;
+			margin-left: 12px;
+			position: relative;
+			top: -4px;
+			font-size: 0.85em;
+			color: #555;
+		}
+	}
+}
+
+.field-unit__label {
+	&.color_picker {
+		width: 320px;
+	}
+}
+
+.attribute-label {
+	font-size: 1em;
+}
+
+.field-unit--nested-navbar-item-field + .form-actions {
+	width: 80rem;
+	text-align: right;
+	margin-left: 0;
+}
+
+#nested_insertion_point {
+	padding: 1.2em 0 0 1.2em;
+
+	a.add_fields {
+		outline: none;
+		color: green;
+		font-size: 1.2em;
+	}
+}
+
+#answers {
+	&.navbar {
+		width: 90rem;
+	}
+
+	.nested-fields {
+		overflow: hidden;
+
+		.field {
+			float: left;
+			padding: 3px 2%;
+
+			&.sort,
+			&.price,
+			&.answer,
+			&.fee_split {
+				padding: 12px 15px 10px 0;
+				width: 12%;
+				padding-left: 0;
+
+				input {
+					width: 100%;
+					font-size: 0.9em;
+					padding: 4px 6px;
+				}
+			}
+
+			&.answer {
+				width: 385px;
+			}
+
+			&.price {
+				position: relative;
+				left: 10px;
+			}
+
+			&.choose {
+				padding: 12px 0;
+				width: 40%;
+
+				select {
+					width: 100%;
+					outline: none;
+					position: relative;
+					top: 2px;
+					font-size: 0.9em;
+				}
+			}
+
+			&.remove {
+				padding: 11px 0 10px 22px;
+				width: 20%;
+
+				a {
+					color: red;
+					outline: none;
+					font-size: 1em;
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+
+		&.navbar {
+			.field {
+				padding: 0;
+				margin: 0.5em 1em;
+
+				&.remove {
+					width: 5%;
+				}
+
+				&.desktop,
+				&.mobile {
+					padding-top: 1.6em;
+
+					input[type=checkbox] {
+						width: 1.3em;
+						height: 1.3em;
+						position: relative;
+						top: 6px;
+						left: 8px;
+					}
+				}
+
+				input {
+					font-size: 1em;
+					padding: 0.4em 0.6em;
+				}
+
+				.remove_fields {
+					position: relative;
+					top: 1.8em;
+				}
+			}
+		}
+
+		& + .links {
+			margin-top: 20px;
+		}
+	}
+}
+
+dd.attribute-data--image-field {
+	img {
+		width: initial;
+		max-width: 200px;
+	}
+}
+
+.field-unit--author-select-field {
+	select {
+		background-color: #fff;
+		border: 1px solid #dfe0e1;
+		border-radius: 4px;
+		padding: 0.5em;
+	}
+}
+
+.field-unit--text {
+	.field-unit__field {
+		height: 16em;
+
+		textarea {
+			height: 100%;
+		}
+	}
+}
+
+.small_number_field {
+	display: flex;
+
+	input {
+		width: 60px;
+		font-size: 0.9em;
+	}
+
+	span {
+		font-size: 1.1em;
+		padding: 4px 0 0 6px;
+	}
+}

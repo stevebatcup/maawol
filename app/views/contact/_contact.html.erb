@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-12 col-md-8">
+    <% unless user_signed_in? %>
+      <% if notice %>
+        <p class="alert alert-success w-100"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger w-100"><%= alert %></p>
+      <% end %>
+    <% end %>
+
+    <%= form_for(@contact, html: { class: 'contact-form' }) do |f| %>
+      <% if @stuck %>
+        <div class="col-12">
+          <h2 class="section-title">Help! I don't know what to work on!</h2>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :email %>
+          <%= f.hidden_field :subject %>
+
+          <% @questions.each do |q| %>
+            <div class="question">
+              <p><%= q.question_with_number %></p>
+              <% q.stuck_answers.each do |a| %>
+                <div class="answer">
+                  <%= f.label q.form_parameter, value: a.id do %>
+                    <%= f.radio_button q.form_parameter, a.id, checked: a.sort == 1 %>
+                    <span><%= a.answer %></span>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+            <div class="clearfix"></div>
+          <% end %>
+
+          <%= f.submit 'Get suggestions', { class: 'btn btn-success btn-large' } %>
+        </div>
+      <% else %>
+        <h2 class="section-title">Get in touch</h2>
+        <%= f.text_field :name, { placeholder: "Name (required)", :required => true, class: 'contact-form-control' } %>
+        <%= f.email_field :email, { placeholder: "Email (required)", :required => true, class: 'contact-form-control' } %>
+        <%= f.text_field :subject, { placeholder: "Subject", class: 'contact-form-control' } %>
+        <%= f.text_area :message, { placeholder: "Message (required)", :required => true, class: 'contact-form-control' } %>
+        <%= f.hidden_field(:from_home, value: 1) if params[:controller].to_sym == :home %>
+
+        <% unless user_signed_in? %>
+          <div class="mb-4" style="clear: both;">
+            <%= recaptcha_tags(site_key: recaptcha_site_key) %>
+          </div>
+        <% end %>
+        <%= f.submit 'Send Message', { class: 'btn btn-success btn-large' } %>
+
+      <% end %>
+
+      <div class="contact-message"></div>
+      <div class="error-message"></div>
+    <% end %>
+
+  </div>
+
+  <% unless @stuck %>
+    <div class="col-md-4 pt-md-5">
+      <aside class="sidebar">
+        <div class="widget widget_address">
+          <div class="item media">
+            <div class="item-icon media-left item-photo">
+            <% unless site_image("contact").nil? %>
+              <img src="<%= site_image("contact") %>" alt="<%= site_setting("Site name") %>" />
+            <% end %>
+
+            </div>
+            <div class="item-details media-body">
+              <h3 class="item-title">Or email me at...</h3>
+              <span>
+                <a href="mailto:<%= site_setting('Contact email address') %>"><%= site_setting('Contact email address') %></a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  <% end %>
+
+</div>

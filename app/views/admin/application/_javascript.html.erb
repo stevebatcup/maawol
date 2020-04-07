@@ -1,0 +1,48 @@
+<%#
+# Javascript Partial
+
+This partial imports the necessary javascript on each page.
+By default, it includes the application JS,
+but each page can define additional JS sources
+by providing a `content_for(:javascript)` block.
+%>
+
+<% Administrate::Engine.add_javascript :'tinymce' %>
+<% Administrate::Engine.javascripts.each do |js_path| %>
+  <%= javascript_include_tag js_path %>
+<% end %>
+
+<%= yield :javascript %>
+
+<% if Rails.env.test? %>
+  <%= javascript_tag do %>
+    $.fx.off = true;
+    $.ajaxSetup({ async: false });
+  <% end %>
+<% end %>
+
+<!-- Bootstrap the app -->
+<script type="text/javascript">
+  var moduleName = "Maawol"
+  window.App = angular.module(moduleName, ['rails',
+    'angularUtils.directives.dirPagination',
+    'ngAnimate',
+    'ngRoute',
+    'ngFlash',
+    'Maawol.directives',
+    'Maawol.factories',
+    'Maawol.filters',
+    'Maawol.controllers'
+  ]);
+  $(document).on('ready page:load', function() {
+    $root = $('[ng-controller]').first();
+    if (!$root.hasClass('ng-scope')) {
+      angular.bootstrap($root, [moduleName]);
+      <% if Rails.env.to_sym == :production %>
+        ga('send', 'pageview', location.pathname);
+      <% end %>
+    }
+  });
+</script>
+
+<%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>

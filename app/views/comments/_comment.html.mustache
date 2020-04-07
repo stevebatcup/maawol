@@ -1,0 +1,17 @@
+<div class="comment-item w-100" data-comment-id="{{id}}" data-name="{{firstName}}">
+  <div class="d-flex align-items-start">
+    <div class="author-avatar media-left">
+      <img src="{{photo}}" alt="Image of {{firstName}}">
+    </div>
+    <div class="comment-body media-body">
+      <div class="comment-metadata">
+        <span class="name">{{firstName}} &bullet; </span>
+        <span class="time"><time datetime="{{timeActual}}">{{timeHuman}}</time></span>
+      </div>
+      {{{body}}}
+      {{#canReply}}
+        <p class="my-0 pt-0"><a href='#' class="reply">Reply</a></p>
+      {{/canReply}}
+    </div>
+  </div>
+</div>

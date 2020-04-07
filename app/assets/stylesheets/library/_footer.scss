@@ -1,0 +1,47 @@
+footer {
+  font-family: 'Poppins';
+  font-size: 14px;
+  font-weight: 400;
+
+  p {
+    font-size: 1em;
+    line-height: 2em;
+    margin: 0;
+  }
+
+  ul.other_pages {
+    li {
+      list-style: none;
+    }
+  }
+
+  .footer-logo {
+    margin-bottom: 28px;
+  }
+
+  .footer-social {
+    margin-top: 40px;
+
+    a {
+      display: inline-block;
+      font-size: 28px;
+      height: 34px;
+      width: 34px;
+      text-align: left;
+      margin-right: 8px;
+    }
+  }
+
+  .copyright {
+    width: 100%;
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 767px) {
+	 footer.site-footer {
+    img.footer-logo {
+	    width: 50%;
+    }
+	}
+}

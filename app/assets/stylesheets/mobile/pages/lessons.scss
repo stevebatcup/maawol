@@ -1,0 +1,140 @@
+body.mobile {
+	article.lesson {
+		margin-top: -1em;
+
+		h2.entry-title {
+			font-size: 1.2em;
+			margin: 0.85em 0 0.3em;
+		}
+
+		.tab-content {
+			padding-top: 0;
+			padding-bottom: 0;
+
+			p {
+				a {
+					color: #3aaec1;
+				}
+			}
+		}
+
+		video {
+			width: 100%;
+			height: initial;
+			min-height: 31vh;
+			margin-bottom: 5px;
+		}
+
+		iframe {
+			min-height: 233px;
+		}
+
+		#prev_lesson,
+		#next_lesson {
+			width: 100%;
+		}
+
+		.nav-tabs {
+			li {
+				margin-bottom: 7px;
+			}
+		}
+
+		#actions {
+			margin: 12px 0 0;
+
+			button {
+				font-size: 0.8em;
+			}
+		}
+	}
+
+	#text_content {
+		p#excerpt {
+			margin: 1.5em 0;
+			width: 88%;
+
+			&.full {
+				width: 100%;
+			}
+		}
+
+		#toggle_remaining_content {
+			width: 7%;
+			text-align: center;
+
+			a {
+				font-size: 1.5em;
+				font-weight: normal;
+				color: #676767;
+				margin: 1em 0 0;
+				display: block;
+
+				i {
+					font-size: 18px;
+				}
+
+				&.collapsed {
+					margin-top: 0.9em;
+					i {
+						transform: rotate(180deg);
+					}
+				}
+
+				&:hover,
+				&:focus,
+				&:active {
+					color: #676767;
+				}
+			}
+		}
+	}
+
+	#downloadables {
+		padding-top: 0.6em;
+		border-top: 1px solid #ccc;
+		padding-bottom: 0.4em;
+	}
+
+	.comments {
+		border-top: 1px solid #ccc;
+		margin-bottom: 20px !important;
+
+		ol.comment-list {
+			padding-top: 20px;
+
+			&.has_children {
+				border-top: 1px solid #ccc;
+			}
+
+			li.comment {
+
+				.children {
+					padding-left: 4%;
+				}
+
+				.comment-item {
+					.comment-body {
+						width: 70%;
+						display: inline-block;
+						padding-left: 5%;
+						padding-top: 1%;
+					}
+				}
+
+				.respond {
+					margin: 0 0 20px;
+					textarea {
+						height: 6em;
+					}
+				}
+			}
+		}
+	}
+
+	#listening_labs {
+		padding-top: 0.6em;
+		border-top: 1px solid #ccc;
+		padding-bottom: 0.4em;
+	}
+}

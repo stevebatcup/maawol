@@ -1,0 +1,192 @@
+<article class="single-post lesson"
+        ng-controller="LessonsController"
+        data-lesson-id="<%= @lesson.id %>"
+        data-video-url="<%= @lesson.main_video.present? ? @lesson.main_video.url : '' %>"
+        data-video-host="vimeo">
+
+  <div class="content-tabs">
+    <div class="post type-post format-standard">
+
+      <!-- Video player -->
+      <div class="tab-content">
+      	<% @lesson.videos.each do |video| %>
+      		<div class="w-100 tab-pane <%= 'active' if video == @lesson.videos.first %>" role="tabpanel" id="<%= video.name.parameterize %>">
+            <%= video_iframe(video) %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="container">
+        <!-- Title -->
+        <h2 class="entry-title text-center">
+          <%= @lesson.name %>
+        </h2>
+
+        <div id="lesson_meta">
+          <div class="entry-meta text-center">
+            <!-- Published at -->
+            <% if @lesson.is_published %>
+              <span><i class="fa fa-clock-o"></i> <time datetime="PT5M">Published <%= time_ago_in_words(@lesson.publish_date) %> ago</time></span>
+            <% end %>
+
+            <!-- Course info -->
+            <% unless @course.nil? %>
+              <span id="part_of_course">
+                Lesson <%= @course.lesson_index(@lesson) %> of the <a href='/courses/<%= @course.id %>?token=<%= params[:token] %>'>
+                  <%= @course.name %>
+                </a> course
+              </span>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Interactive Buttons -->
+        <% if full_access %>
+          <div id='actions' data-lesson-id="<%= @lesson.id %>" class="mt-3 justify-content-center d-flex align-items-start">
+           <button id="viewed" class="<%= 'disabled' if current_user.in_views(@lesson) %>">
+             <i class="fa fa-check-square" aria-hidden="true"></i>
+             <span class="text">Viewed</span>
+           </button>
+           <button id="watchlater" class="mx-2 <%= 'disabled' if current_user.in_watch_laters(@lesson) %>">
+             <i class="fa fa-clock-o" aria-hidden="true"></i>
+             <span class="text">Watch later</span>
+           </button>
+           <button id="favourite" class="<%= 'disabled' if current_user.in_favourites(@lesson) %>">
+             <i class="fa fa-star" aria-hidden="true"></i>
+             <span class="text">Favorites</span>
+           </button>
+          </div>
+        <% end %>
+
+       <!-- Playlist -->
+        <% if @lesson.videos.length > 1 %>
+          <div id="playlist" class="mt-3">
+            <ul class="nav nav-tabs" role="tablist">
+              <li id="summary">
+                <%= pluralize(@lesson.videos.count, "video") %> in this lesson
+              </li>
+              <% @lesson.videos.each_with_index do |video, index| %>
+                <li role="presentation">
+                  <a href="#<%= video.name.parameterize %>" aria-controls="casts"
+                        role="tab"
+                        data-toggle="tab"
+                        class="<%= 'active' if video == @lesson.videos.first %>">
+                    <% if video == @lesson.videos.first %>
+                      <i class="fa fa-play"></i>
+                    <% else %>
+                      <i class="fa fa-play"></i>
+                    <% end %>
+                    <span class="text"><%= index+1 %>. <%= video.name %></span>
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <!-- Text content -->
+  <div id="text_content" class="container">
+    <div class="d-flex align-items-start mb-3">
+      <p id="excerpt" class="mb-0 pl-1 <%= 'full' if @lesson.content_with_omitted_excerpt.length > 0 %>">
+        <%= image_tag(@lesson.author.avatar.url(:thumbnail), alt: @lesson.author.name, class: 'rounded-circle w-20 mr-3', align: 'left') if @lesson.author && @lesson.author.avatar? %>
+        <%= @lesson.content_excerpt %>
+      </p>
+      <% if @lesson.content_with_omitted_excerpt.length > 0 %>
+      <div id="toggle_remaining_content">
+        <a data-toggle="collapse" href="#remaining_content" class="collapsed">
+          <i class="fa fa-chevron-up"></i>
+        </a>
+      </div>
+      <% end %>
+    </div>
+    <div class="collapse" id="remaining_content">
+      <% if @lesson.content_with_omitted_excerpt.length > 0 %>
+        <%= @lesson.content_with_omitted_excerpt.html_safe %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Downloadables -->
+  <% if @lesson.downloadables.any? %>
+    <div id="downloadables" class="container">
+      <h5>PDFs</h5>
+      <p>Click on the <%= "link".pluralize(@lesson.downloadables.size) %> to download.</p>
+      <% @lesson.downloadables.each do |file| %>
+        <p class="pl-1"><i class="mr-2 fa fa-file"></i><a href="<%= file.full_url %>" target="_blank"><%= file.name %></a></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <!-- Listening labs -->
+  <% if @lesson.listening_labs.any? %>
+    <div id="listening_labs" class="container">
+      <h5>Further listening</h5>
+      <% @lesson.listening_labs.each do |lab| %>
+        <div class="widget listening_lab my-4">
+          <% if lab.spotify_embed_url.present? %>
+            <iframe src="<%= lab.spotify_url %>"
+                    frameborder="0"
+                    allowtransparency="true"
+                    allow="encrypted-media"></iframe>
+          <% elsif lab.albums.any? %>
+            <div class="widget-details d-flex">
+              <% lab.albums.each do |album| %>
+                <article class="post type-post col-4 col-md-3 px-1 mb-0">
+                  <%= image_tag(album.cover.url(:small), alt: "#{album.name} by #{album.artist}") if album.cover %>
+                  <p><small><%= "<b>#{album.name}</b> <br />by #{album.artist}".html_safe %></small></p>
+                </article>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <!-- Comments -->
+  <div class="comments">
+    <div id="comments_top" class="container">
+      <% if @lesson.comment_count > 0 %>
+        <h5>Comments &bullet; <%= @lesson.comment_count %></h5>
+      <% else %>
+        <h5>Comments</h5>
+      <% end %>
+      <script type="text/html" id="comment_template">
+        <%= render 'comments/comment' %>
+      </script>
+      <div class="respond" id="respond">
+        <form class="comment-form">
+          <textarea id="comment" class="form-control" name="comment" placeholder="Add a comment..." rows="4"></textarea>
+          <div class="d-flex justify-content-end px-2">
+            <a id="cancel_reply" href='#' style="display: none;" class="btn">CANCEL REPLY</a>
+            <input class="btn btn-small btn-success" id="post_comment" type="submit" value="COMMENT" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <ol class="comment-list px-3 <%= 'has_children' if @lesson.root_comments.any? %>">
+      <% @lesson.root_comments.each do |root_comment| %>
+        <li class="comment parent py-2">
+          <%= render 'comments/comment', mustache: comment_for_mustache(root_comment, true) %>
+          <% if root_comment.has_children? %>
+            <ol class="children">
+              <% root_comment.children.each do |child_comment| %>
+              <li class="comment py-1">
+                <%= render 'comments/comment', mustache: comment_for_mustache(child_comment, false) %>
+              </li>
+              <% end %>
+            </ol>
+          <% end %>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+
+</article>

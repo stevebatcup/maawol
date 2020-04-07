@@ -1,0 +1,58 @@
+<section class="list store <%= column_browser_class %>"
+				ng-controller="StoreController"
+				data-store_id="<%= @store.id %>"
+				id="store_listing">
+  <div class="container mt-1 mb-5">
+
+  	<div class="row mb-3">
+  		<div class="<%= user_signed_in? ? 'col-12' : 'col-8 col-xl-9' %> pr-2">
+		  	<h2><%= @store.name %></h2>
+		  	<%= @store.description.html_safe unless @store.description.nil? %>
+		  	<%#= image_tag(@store.image.url(:large), alt: @store.name, class: 'w-100') unless @store.image.nil? %>
+
+  	    <div class="w-100">
+  	    	<h3 class="section-title"><%= @store.name %> files</h3>
+  	    	<div class="row">
+  		      <div class="lesson_result search_result <%= user_signed_in? ? 'col-4 col-xl-3' : 'col-6 col-xl-4' %> mb-4"
+  		      			ng-repeat="item in products.items"
+  		      			ng-if="products.items.length > 0 && products.loaded">
+  					  <%= render 'products/list-item' %>
+  					</div>
+
+  					<p ng-if="products.items.length == 0  && products.loaded"">No files found for this store</p>
+  				</div>
+
+  				<p ng-if="!products.loaded">Loading list of files....</p>
+  			</div>
+
+		  </div>
+
+		  <% unless user_signed_in? %>
+		  <aside id="basket" class="col-4 col-xl-3">
+		  	<h3 class="widget-title">Shopping cart</h3>
+		  	<p ng-show="basket.items.length == 0">No items in your cart just yet</p>
+		  	<table cellpadding="0" cellspacing="0" border="0" ng-show="basket.items.length > 0">
+		  	  <tr ng-repeat="basketItem in basket.items">
+		  	    <td class="py-2 px-2 description">{{ basketItem.product.name }}</td>
+		  	    <td class="py-2 px-2 right">{{ basketItem.product.price }}</td>
+		  	    <td class="py-2 px-1 right"><i class="fa fa-times mb-1" ng-click="removeFromBasket(basketItem)"></i></td>
+		  	  </tr>
+		  	  <tr>
+		  	    <td class="py-2 px-2 total right total_label">Total</td>
+		  	    <td class="py-2 px-2 total right">{{ basket.total }}</td>
+		  	    <td class="py-2 px-1 total">&nbsp;</td>
+		  	  </tr>
+		  	  <tr>
+		  	    <td colspan="3" class="pt-1 px-0 right text-green">
+		  	    	<a class="btn btn-success w-100 text-center mt-2 d-block" href='/checkout'>Go to checkout</a>
+		  	    	<small class="pt-2 d-block">or <a href='#' class="clear_basket" ng-click="clearBasket($event)">Remove all items</a></small>
+		  	    </td>
+		  	  </tr>
+		  	</table>
+		  </aside>
+		  <% end %>
+
+	  </div>
+
+	</div>
+</section>
