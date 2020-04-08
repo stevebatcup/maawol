@@ -40,10 +40,11 @@ Gem::Specification.new do |spec|
   spec.add_dependency "bootstrap", "~> 4.4"
   spec.add_dependency "underscore-rails"
   spec.add_dependency "ladda-rails"
+  spec.add_dependency "mustache"
   spec.add_dependency "mustache-js-rails"
   spec.add_dependency "mini_magick", '>= 4.9.5'
   spec.add_dependency 'tinymce-rails', '~> 5.0'
-  spec.add_dependency 'coffee-rails', '~> 5.0'
+  spec.add_dependency 'coffee-rails', '~> 4.2'
   spec.add_dependency 'angularjs-rails', '~> 1.6'
   spec.add_dependency 'angularjs-rails-resource', '~> 2.0.0'
   spec.add_dependency 'credit_card_validations', '~> 3.5'

@@ -25,7 +25,8 @@ By default, it renders:
     <%= stylesheet_link_tag 'admin/overrides', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+
+  <body onunload="" ng-app="Maawol_NG">
     <%= render "icons" %>
 
     <div class="app-container">
@@ -48,8 +49,5 @@ By default, it renders:
         });
       });
     </script>
-
-    <%= javascript_include_tag 'admin', 'data-turbolinks-track' => false %>
-
   </body>
 </html>

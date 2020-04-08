@@ -1,7 +1,10 @@
-//= require jquery
-//= require rails-ujs
-//= require bootstrap
 //= require underscore
+//= require bootstrap
+
+//= require vendor/modernizr.custom
+//= require vendor/jquery.match-height
+//= require vendor/video-stories-theme
+//= require vendor/console-hook
 
 //= require angular
 //= require angular-animate

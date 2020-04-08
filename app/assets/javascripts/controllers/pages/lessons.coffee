@@ -149,7 +149,7 @@ class Maawol.Lessons extends Maawol.Page
 			.create().then (comment) =>
 				if comment.status is 'success'
 					$li = $('<li class="comment">')
-					$li.append Mustache.to_html($('#comment_template').html(), comment)
+					$li.append Mustache.render($('#comment_template').html(), comment)
 					if $commentBox.length
 						$listItem = $commentBox.parent()
 						$childList = $listItem.find('ol.children')

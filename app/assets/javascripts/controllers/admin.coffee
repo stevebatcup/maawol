@@ -59,13 +59,16 @@ class Maawol.Admin extends Maawol.Page
 
 	resetColor: ($event, inputId, defaultColor) =>
 		$event.preventDefault()
-		angular.element("##{inputId}").val defaultColor
-		true
+		$("##{inputId}").val defaultColor
 
 	resetAllColors: ($event) =>
 		$event.preventDefault()
-		angular.element('a.reset_color').click()
 		@timeout =>
-			angular.element('#update_colors').click()
+			$('a.reset_color').click()
+			@timeout =>
+				$('#update_colors').click()
+			, 1
+		, 1
+		true
 
 Maawol.ControllerModule.controller('AdminController', Maawol.Admin)

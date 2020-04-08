@@ -4,9 +4,9 @@ class AvatarUploader < BaseUploader
 
   storage :fog
 
-  # def default_url(*args)
-  #   ActionController::Base.helpers.asset_path "maawol/no-avatar.png"
-  # end
+  def default_url(*args)
+    ActionController::Base.helpers.asset_path "no-avatar.png"
+  end
 
   version :thumbnail do
     process resize_to_fit: [90, 105]
