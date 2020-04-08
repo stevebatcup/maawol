@@ -11,10 +11,10 @@ as defined by the routes in the `admin/` namespace
   <h1 id="logo">
     <a href="/dashboard" target="_blank"
         title="Open main website in another window">
-        <% if site_image("mobile_logo").nil? %>
+        <% if site_image("landscape_logo").nil? %>
           <%= site_setting("Site easy name") %> admin
         <% else %>
-          <img src="<%= site_image("mobile_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="footer-logo" />
+          <img src="<%= site_image("landscape_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="footer-logo" />
         <% end %>
     </a>
   </h1>

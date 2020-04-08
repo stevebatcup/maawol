@@ -17,9 +17,7 @@
     <%= stylesheet_link_tag    'mobile/overrides', media: 'all', 'data-turbolinks-track' => true %>
     <%= render 'layouts/dynamic-colors' %>
 
-    <%= javascript_include_tag '_setup', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-
   </head>
 
   <body class="mobile" data-turbolinks='false'>
@@ -34,7 +32,7 @@
                   <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="/">
-                  <img src="<%= site_image("mobile_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="site-logo" />
+                  <img src="<%= site_image("landscape_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="site-logo" />
                 </a>
               </div>
             </div>

@@ -185,20 +185,15 @@ colors_data.each do |color_data|
 end
 
 puts "#Site Images"
-images = [
-	{ name: "Desktop logo", slug: 'main_logo', remote_image_url: landscape_logo_url },
-	{ name: "Mobile logo", slug: 'mobile_logo', remote_image_url: landscape_mobile_logo_url },
-	{ name: "Footer logo", slug: 'footer_logo', remote_image_url: square_logo_url },
-	{ name: "Contact mugshot", slug: 'contact', remote_image_url: avatar_url },
-	{ name: "Favicon", slug: 'favicon', remote_image_url: favicon_url }
+images_data = [
+	{ name: "Landscape logo", slug: 'landscape_logo', remote_image_url: landscape_logo_url, width: 600, height: 200 },
+	{ name: "Square logo", slug: 'square_logo', remote_image_url: square_logo_url, width: 500, height: 500 },
+	{ name: "Contact mugshot", slug: 'contact', remote_image_url: avatar_url, width: 400, height: 400 },
+	{ name: "Favicon", slug: 'favicon', remote_image_url: favicon_url, width: 32, height: 32 }
 ]
-images.each do |image|
-	unless SiteImage.find_by(slug: image[:slug], name: image[:name])
-		SiteImage.create({
-			slug: image[:slug],
-			name: image[:name],
-			remote_image_url: image[:remote_image_url]
-		})
+images_data.each do |image_data|
+	unless SiteImage.find_by(name: image_data[:name])
+		SiteImage.create(image_data)
 	end
 end
 

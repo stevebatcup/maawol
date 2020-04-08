@@ -20,13 +20,14 @@ PATH
       chargebee (~> 2)
       clearance (~> 2.1)
       cocoon (~> 1.2)
-      coffee-rails (~> 5.0)
+      coffee-rails (~> 4.2)
       credit_card_validations (~> 3.5)
       fog-aws (~> 3.5)
       ladda-rails
       mailchimp-api (~> 2.0)
       mandrill-api (~> 1.0)
       mini_magick (>= 4.9.5)
+      mustache
       mustache-js-rails
       paypal-sdk-rest (~> 1.7)
       pg
@@ -146,9 +147,9 @@ GEM
       email_validator (~> 2.0)
       railties (>= 5.0)
     cocoon (1.2.14)
-    coffee-rails (5.0.0)
+    coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
-      railties (>= 5.2.0)
+      railties (>= 4.0.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -263,6 +264,7 @@ GEM
       railties (>= 3.0)
     multi_json (1.14.1)
     multi_xml (0.6.0)
+    mustache (1.1.1)
     mustache-js-rails (4.0.1)
       railties (>= 3.1)
     netrc (0.11.0)

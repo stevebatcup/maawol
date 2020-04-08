@@ -4,9 +4,9 @@
       <div class="col-md-3 px-4">
         <div class="widget widget_about">
           <div class="widget-details">
-            <% if site_image("footer_logo").present? %>
+            <% if site_image("square_logo").present? %>
               <a href="/" class="d-block">
-                <img src="<%= site_image("footer_logo").url(:large_square) %>" alt="<%= site_setting("Site name") %>" class="footer-logo" />
+                <img src="<%= site_image("square_logo").url(:large_square) %>" alt="<%= site_setting("Site name") %>" class="footer-logo" />
               </a>
             <% end %>
 

@@ -19,8 +19,6 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'mobile/overrides', media: 'all', 'data-turbolinks-track' => true %>
   <%= render 'layouts/dynamic-colors' %>
-
-  <%= javascript_include_tag '_setup', 'data-turbolinks-track' => true %>
 </head>
 
 <body class="mobile" data-turbolinks='false' onunload="" ng-app="Maawol_NG">
@@ -34,7 +32,7 @@
               <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="/">
-              <img src="<%= site_image("footer_logo") %>" alt="<%= site_setting("Site name") %>" class="site-logo" />
+              <img src="<%= site_image("landscape_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="site-logo" />
             </a>
           </div>
         </div>
@@ -54,7 +52,7 @@
             <% end %>
 
             <li class="menu-item">
-              <a href="/users/logout" data-method="delete" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)">Sign out</a>
+              <a href="<%= sign_out_path %>" data-method="delete" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)">Sign out</a>
             </li>
           </ul>
         </nav>

@@ -13,6 +13,7 @@ module Maawol
       	administrate/application.css
       	admin.js
       	admin/overrides.css
+        mobile/overrides.css
       	subscribe/visa.png
       	subscribe/mastercard.png
       	subscribe/paypal.png

@@ -32,9 +32,9 @@
           <div class="container">
             <div class="row">
               <div class="col-6">
-                <% if site_image("main_logo").present? %>
+                <% if site_image("landscape_logo").present? %>
                 <a href="/" id="logo_top">
-                  <img src="<%= site_image("main_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="site-logo" />
+                  <img src="<%= site_image("landscape_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="site-logo" />
                 </a>
                 <% end %>
               </div>

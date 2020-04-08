@@ -24,9 +24,10 @@ class MaawolController < Maawol.application_controller_class
 		"#{signed_in? ? 'application' : 'home'}"
 	end
 
-	def require_full_account
-		if require_login
-			redirect_to lessons_path unless current_user.has_full_account?
+	def require_subscription
+		unless current_user.has_full_account?
+			flash[:alert] = "Sorry, that page requires a subcription"
+			redirect_to lessons_path
 		end
 	end
 

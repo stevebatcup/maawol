@@ -34,9 +34,9 @@
       <div class="container">
         <div class="row">
           <div class="col-3">
-            <% unless site_image("main_logo").nil? %>
+            <% unless site_image("landscape_logo").nil? %>
               <a href="/" id="logo_top">
-                <img src="<%= site_image("main_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="site-logo" />
+                <img src="<%= site_image("landscape_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="site-logo" />
               </a>
             <% end %>
           </div>

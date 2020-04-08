@@ -6,6 +6,7 @@ class SiteImageField < Administrate::Field::Base
   end
 
   def custom_version
+    return if resource.slug.nil?
   	case resource.slug.to_sym
   	when :favicon
   		tiny
