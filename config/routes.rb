@@ -6,13 +6,11 @@ Rails.application.routes.draw do
 
 	root to: 'home#index'
 
-	resources :passwords, controller: "clearance/passwords", only: [:create, :new]
+	resources :passwords, controller: "passwords", only: [:create, :new]
 	resource :session, controller: "sessions", only: [:create]
 
 	resources :users, controller: "clearance/users", only: [:create] do
-	resource :password,
-	controller: "clearance/passwords",
-	only: [:edit, :update]
+		resource :password, controller: "passwords", only: [:edit, :update]
 	end
 
 	get "/sign_in" => "sessions#new", as: "sign_in"

@@ -2,6 +2,7 @@ Maawol.configure do |config|
 	config.site_name = "Music Academy"
 
 	config.application_controller_class = 'ApplicationController'
+	config.application_mailer_class = 'ApplicationMailer'
 
 	config.recaptcha_site_key =  "my_recaptcha_site_key"
 	config.recaptcha_secret_key =  "my_recaptcha_secret_key"

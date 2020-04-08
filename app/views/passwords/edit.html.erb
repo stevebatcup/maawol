@@ -1,18 +1,31 @@
-<div id="clearance" class="password-reset">
-  <h2><%= t(".title") %></h2>
+<section class="form-elements style-2" id="clearance">
+  <div id="login_box">
+    <div class="right-panel">
+      <%= render 'layouts/auth-logo' %>
+      <h4 class="mb-3"><%= t(".title") %></h4>
 
-  <p><%= t(".description") %></p>
+      <p class="form-input"><%= t(".description") %></p>
 
-  <%= form_for :password_reset,
-        url: user_password_path(@user, token: @user.confirmation_token),
-        html: { method: :put } do |form| %>
-    <div class="password-field">
-      <%= form.label :password %>
-      <%= form.password_field :password %>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
+      <%= form_for :password_reset,
+            url: user_password_path(@user, token: @user.confirmation_token),
+            html: { method: :put } do |form| %>
+
+        <p class="form-input">
+          <%= form.label :password %>
+          <%= form.password_field :password, autofocus: true, autocomplete: "off", class: 'input form-control' %>
+        </p>
+
+        <p class="submit-input">
+          <%= form.submit "Change my password", { class: 'btn btn-success btn-large' } %>
+        </p>
+      <% end %>
     </div>
-
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
-  <% end %>
-</div>
+  </div>
+</section>

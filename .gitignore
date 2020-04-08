@@ -23,3 +23,5 @@ node_modules/
 /config/master.key
 
 *.sublime-*
+
+jdr-secrets.yml

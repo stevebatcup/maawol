@@ -24,6 +24,7 @@ require 'paypal-sdk-rest'
 
 # Email APIs
 require 'mandrill'
+require "mandrill_mailer"
 require 'mailchimp'
 
 # Admin
@@ -48,11 +49,23 @@ module Maawol
     @@application_controller_class.constantize
   end
 
+  mattr_accessor :application_mailer_class
+  @@application_mailer_class = 'ApplicationMailer'
+  def self.application_mailer_class
+    @@application_mailer_class.constantize
+  end
+
   mattr_accessor :recaptcha_site_key
   @@recaptcha_site_key = nil
 
   mattr_accessor :recaptcha_secret_key
   @@recaptcha_secret_key = nil
+
+  mattr_accessor  :mandrill_api_key
+  @mandrill_api_key = nil
+
+  mattr_accessor  :mailchimp_api_key
+  @mailchimp_api_key = nil
 
   mattr_accessor :mail_admin_to
   @@mail_admin_to = nil

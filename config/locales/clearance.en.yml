@@ -43,14 +43,14 @@ en:
       sign_out: Sign out
   passwords:
     create:
-      description: You will receive an email within the next few minutes. It
+      description: If you have an account with us you will receive an email within the next few minutes. It
         contains instructions for changing your password.
     edit:
-      description: Your password has been reset. Choose a new password below.
+      description: Choose a new password below.
       title: Change your password
     new:
-      description: To be emailed a link to reset your password, please enter
-        your email address.
+      description: Enter your email address below and if we have an account for you we will send you
+        instructions on how to reset your password.
       title: Reset your password
   sessions:
     form:
