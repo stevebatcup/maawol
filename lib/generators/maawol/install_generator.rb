@@ -4,36 +4,28 @@ require 'rails/generators/base'
 
 module Maawol
   module Generators
-  	class SetupGenerator < Rails::Generators::Base
-			desc "Setting up maawol..."
+  	class InstallGenerator < Rails::Generators::Base
+			desc "Installing maawol files..."
 			source_root File.expand_path("../../templates", __FILE__)
 
-		  def copy_initializers
+		  def initializers
 		    template "maawol.rb", "config/initializers/maawol.rb"
 		    template "mustache.rb", "config/initializers/mustache.rb"
 		  end
 
-		  def copy_git_ignore
+		  def credentials_templates
+		    template "credentials-development.yml", "config/_credentials-development.yml"
+		    template "credentials-production.yml", "config/_credentials-production.yml"
+		  end
+
+		  def git_ignore_template
 		    template "gitignore_tpl", ".gitignore"
 		  end
 
-		  def copy_locales
+		  def locales
 				copy_file "../../../config/locales/en.yml", "config/locales/maawol.en.yml"
 				copy_file "../../../config/locales/admin.en.yml", "config/locales/admin.en.yml"
 				copy_file "../../../config/locales/clearance.en.yml", "config/locales/clearance.en.yml"
-		  end
-
-		  def run_migrations
-		  	rake "maawol_engine:install:migrations"
-		  	rake "db:migrate"
-		  end
-
-		  def copy_seeds
-				copy_file "../../../db/seeds.rb", "db/seeds/maawol.rb"
-				inject_into_file "db/seeds.rb" do <<-'RUBY'
-					Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each { |seed| load seed }
-				RUBY
-				end
 		  end
 
 		  def update_asset_manifest

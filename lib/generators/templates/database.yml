@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: <%= Maawol::Config.site_slug %>_development
+  username: <%= Rails.application.credentials.database[:username] %>
+  password: <%= Rails.application.credentials.database[:password] %>
+
+test:
+  <<: *default
+  database: <%= Maawol::Config.site_slug %>_test
+
+production:
+  <<: *default
+  database: <%= Maawol::Config.site_slug %>_production
+  username: <%= Maawol::Config.site_slug %>
+  password: <%= Rails.application.credentials.database[:password] %>

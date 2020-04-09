@@ -129,11 +129,11 @@ module Maawol
 			end
 
 			def recaptcha_site_key
-				Maawol.recaptcha_site_key
+				Maawol::Config.recaptcha_site_key
 			end
 
 			def recaptcha_secret_key
-				Maawol.recaptcha_secret_key
+				Maawol::Config.recaptcha_secret_key
 			end
 
 			def homepage_video

@@ -1,4 +1,4 @@
-class MaawolController < Maawol.application_controller_class
+class MaawolController < Maawol::Config.application_controller_class
   include Clearance::Controller
 	include Maawol::Controllers::Helpers
 	helper Maawol::Engine.helpers

@@ -1,4 +1,4 @@
-puts "### Seeding database for #{Maawol.site_name} ###"
+puts "### Seeding database for #{Maawol::Config.site_name} ###"
 
 avatar_url = "https://maawol.s3.amazonaws.com/seeds/contact-mugshot.png"
 favicon_url = "https://maawol.s3.amazonaws.com/seeds/favicon.png"
@@ -11,10 +11,10 @@ puts "> Seeding skill levels...."
 
 puts "> Seeding dite settings...."
 settings = [
-	{ name: "Site name", value: "#{Maawol.site_name}" },
-	{ name: "Site easy name", value: "#{Maawol.site_name}" },
-	{ name: "Site blurb", value: "#{Maawol.site_name} - lorem	ipsum doo dah day" },
-	{ name: "Site byline", value: "#{Maawol.site_name} - lorem ipsum doo dah day" },
+	{ name: "Site name", value: "#{Maawol::Config.site_name}" },
+	{ name: "Site easy name", value: "#{Maawol::Config.site_name}" },
+	{ name: "Site blurb", value: "#{Maawol::Config.site_name} - lorem	ipsum doo dah day" },
+	{ name: "Site byline", value: "#{Maawol::Config.site_name} - lorem ipsum doo dah day" },
 	{ name: "Meta description", value: "Please enter your meta description, this will help your site's SEO ranking" },
 	{ name: "Contact email address", value: Maawol.site_owner_email },
 	{ name: "Google Analytics ID", value: "" },
@@ -39,7 +39,7 @@ lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 blocks = [{
   name: "bio",
-  title: "About #{Maawol.site_name}",
+  title: "About #{Maawol::Config.site_name}",
   content: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -142,9 +142,9 @@ qandas_data.each do |qanda_data|
 end
 
 puts "> Seeding Author...."
-unless author = Author.find_by(name: "#{Maawol.site_owner_fname} #{Maawol.site_owner_lname}")
+unless author = Author.find_by(name: "#{Maawol::Config.site_owner_fname} #{Maawol::Config.site_owner_lname}")
 	author = Author.create({
-		name: "#{Maawol.site_owner_fname} #{Maawol.site_owner_lname}",
+		name: "#{Maawol::Config.site_owner_fname} #{Maawol::Config.site_owner_lname}",
 		remote_avatar_url: avatar_url
 	})
 end

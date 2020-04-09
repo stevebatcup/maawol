@@ -30,3 +30,6 @@ config/paypal.yml
 Capfile
 config/deploy
 config/deploy.rb
+
+config/_credentials-tpl-development.yml
+config/_credentials-tpl-production.yml

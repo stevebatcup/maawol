@@ -7,7 +7,7 @@ module Maawol
 			    remote_video_data = vimeo_client.upload_video(video_file, **{name: self.name})
 
 			    remote_id = remote_id_from_uri(remote_video_data['uri'])
-			    add_remote_video_to_folder(remote_id, Maawol.vimeo_project_id)
+			    add_remote_video_to_folder(remote_id, Maawol::Config.vimeo_project_id)
 
 			    sleep(20)
 			    update_local(remote_video_data, remote_id)
@@ -22,11 +22,11 @@ module Maawol
 			  end
 
 			  def vimeo_client
-			    @vimeo_client ||= VimeoMe2::User.new(Maawol.vimeo_api_key)
+			    @vimeo_client ||= VimeoMe2::User.new(Maawol::Config.vimeo_api_key)
 			  end
 
 			  def update_remote_video_name(video_id, name)
-			    video = VimeoMe2::Video.new(Maawol.vimeo_api_key, video_id)
+			    video = VimeoMe2::Video.new(Maawol::Config.vimeo_api_key, video_id)
 			    video.name = name
 			    video.update
 			  end
@@ -47,7 +47,7 @@ module Maawol
 
 			  def delete_from_vimeo
 			    begin
-			      v = VimeoMe2::Video.new(Maawol.vimeo_api_key, self.vimeo_id)
+			      v = VimeoMe2::Video.new(Maawol::Config.vimeo_api_key, self.vimeo_id)
 			      v.destroy
 			    rescue
 			    end
