@@ -25,3 +25,4 @@ node_modules/
 *.sublime-*
 
 jdr-secrets.yml
+setup-procedure.markdown

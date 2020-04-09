@@ -10,6 +10,7 @@
 .sass-cache/
 public/assets/*
 
+.yarn-integrity
 node_modules/
 /yarn-error.log
 .byebug_history

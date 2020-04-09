@@ -20,13 +20,11 @@ module Maawol
 					response = api.lists.subscribe(*request_data)
 					log_request(:subscribe, request_data, response)
 		    rescue ::Mailchimp::ListAlreadySubscribedError => e
-		    	raise Exception.new("It looks like the email address #{@user.email} has already been registered.")
+		    	# raise Exception.new("It looks like the email address #{@user.email} has already been registered.")
 		    rescue ::Mailchimp::Error => e
-		    	puts e.message
-		    	raise Exception.new(default_subscribe_error_msg)
+		    	# raise Exception.new(default_subscribe_error_msg)
 		    rescue Exception => e
-		    	puts e.message
-		    	raise Exception.new(default_subscribe_error_msg)
+		    	# raise Exception.new(default_subscribe_error_msg)
 		    end
 			end
 
@@ -45,9 +43,9 @@ module Maawol
 						response = api.lists.update_member(*request_data)
 						log_request(:update, request_data, response)
 					rescue ::Mailchimp::Error => e
-						raise e
+						# raise e
 					rescue Exception => e
-						raise e
+						# raise e
 					end
 			  end
 			end
@@ -64,7 +62,7 @@ module Maawol
 					response = api.lists.unsubscribe(*request_data)
 					log_request(:remove, request_data, response)
 			    rescue ::Mailchimp::Error => e
-			    	raise e
+			    	# raise e
 			    end
 			end
 
@@ -75,18 +73,18 @@ module Maawol
 			end
 
 			def api
-				@api ||= ::Mailchimp::API.new(Maawol.mailchimp_api_key)
+				@api ||= ::Mailchimp::API.new(Maawol::Config.mailchimp_api_key)
 			end
 
 			def list_id
-				@list_id ||= Maawol.mailchimp_list_id
+				@list_id ||= Maawol::Config.mailchimp_list_id
 			end
 
 			def merge_vars
 				{
 					FNAME: @user.first_name,
 					LNAME: @user.last_name,
-					SITE: Maawol.site_slug,
+					SITE: Maawol::Config.site_slug,
 					GROUPINGS: groupings
 				}
 			end

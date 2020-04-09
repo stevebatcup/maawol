@@ -1,6 +1,3 @@
-Maawol::Engine.routes.draw do
-end
-
 Rails.application.routes.draw do
   default_url_options :host => Maawol::Config.site_host
 

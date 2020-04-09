@@ -3,8 +3,11 @@ module Maawol
     module Concerns
       module Mailable
         def add_to_mailchimp
-          mailchimp_service = Maawol::Email::Mailchimp.new(self)
-          mailchimp_service.subscribe_to_list
+          begin
+            mailchimp_service = Maawol::Email::Mailchimp.new(self)
+            mailchimp_service.subscribe_to_list
+          rescue
+          end
         end
 
         def send_welcome_email

@@ -5,18 +5,19 @@ favicon_url = "https://maawol.s3.amazonaws.com/seeds/favicon.png"
 landscape_logo_url = "https://maawol.s3.amazonaws.com/seeds/landscape-blue-logo.png"
 square_logo_url = "https://maawol.s3.amazonaws.com/seeds/square-blue-logo.png"
 email_banner_url = "https://maawol.s3.amazonaws.com/seeds/email-banner.png"
+admin_user_password = "sonmi451"
 
-puts "> Seeding skill levels...."
+puts "> Seeding Skill levels...."
 %w{ Beginner Intermediate Advanced }.each { |level| SkillLevel.find_or_create_by(name: level) }
 
-puts "> Seeding dite settings...."
+puts "> Seeding Site settings...."
 settings = [
 	{ name: "Site name", value: "#{Maawol::Config.site_name}" },
 	{ name: "Site easy name", value: "#{Maawol::Config.site_name}" },
 	{ name: "Site blurb", value: "#{Maawol::Config.site_name} - lorem	ipsum doo dah day" },
 	{ name: "Site byline", value: "#{Maawol::Config.site_name} - lorem ipsum doo dah day" },
 	{ name: "Meta description", value: "Please enter your meta description, this will help your site's SEO ranking" },
-	{ name: "Contact email address", value: Maawol.site_owner_email },
+	{ name: "Contact email address", value: Maawol::Config.site_owner_email },
 	{ name: "Google Analytics ID", value: "" },
 	{ name: "Facebook page URL", value: "" },
 	{ name: "Twitter username", value: "" },
@@ -142,9 +143,10 @@ qandas_data.each do |qanda_data|
 end
 
 puts "> Seeding Author...."
-unless author = Author.find_by(name: "#{Maawol::Config.site_owner_fname} #{Maawol::Config.site_owner_lname}")
+author_name = "#{Maawol::Config.site_owner_fname} #{Maawol::Config.site_owner_lname}"
+unless author = Author.find_by(name: author_name)
 	author = Author.create({
-		name: "#{Maawol::Config.site_owner_fname} #{Maawol::Config.site_owner_lname}",
+		name: author_name,
 		remote_avatar_url: avatar_url
 	})
 end
@@ -198,15 +200,15 @@ images_data.each do |image_data|
 end
 
 puts "> Seeding Admin User...."
-unless User.find_by(email: Maawol.site_owner_email, is_admin: true)
+unless User.find_by(email: Maawol::Config.site_owner_email, is_admin: true)
 	u = User.new({
-		first_name: Maawol.site_owner_fname,
-		last_name: Maawol.site_owner_lname,
-		email: Maawol.site_owner_email,
+		first_name: Maawol::Config.site_owner_fname,
+		last_name: Maawol::Config.site_owner_lname,
+		email: Maawol::Config.site_owner_email,
 		is_admin: true,
 		author_id: author.id
 	})
-	u.password = "sonmi451"
+	u.password = admin_user_password
 	u.save
 end
 
@@ -277,9 +279,10 @@ tags = [
 tags.each { |tag| Tag.find_or_create_by(name: tag, show_in_cloud: true) }
 
 puts "# Seeding Downloadable file sample...."
-unless Downloadable.find_by(name: "Sample downloadable PDF")
-	Downloadable.create({
-		name: "Sample downloadable PDF",
+sample_downloadable_name = "Sample downloadable PDF"
+unless downloadable_file = Downloadable.find_by(name: sample_downloadable_name)
+	downloadable_file = Downloadable.create({
+		name: sample_downloadable_name,
 		remote_file_url: "http://www.africau.edu/images/default/sample.pdf",
 		author_id: author.id
 	})
@@ -377,7 +380,7 @@ lessons_data = [
 		comments_count: 0,
 		author_id: author.id,
 		video_ids: video_ids.sample(1),
-		downloadable_ids: Downloadable.first.id,
+		downloadable_ids: downloadable_file.id,
 		tag_ids: tag_ids.sample(1),
 		category_ids: category_ids.sample(2),
 		listening_lab_ids: lab_ids.sample(1)
@@ -422,7 +425,8 @@ puts "> Seeding Courses...."
 skill_level_ids = SkillLevel.all.map(&:id)
 lesson_ids = Lesson.all.map(&:id)
 courses_data = [
-	{ name: 'Sample course',
+	{
+		name: 'Sample course',
 		description: lorem,
 		publish_date: 1.week.ago,
 		remote_image_url: 'https://maawol.s3.amazonaws.com/seeds/sample-course-1.png',
@@ -432,7 +436,8 @@ courses_data = [
 		tag_ids: tag_ids.sample(2),
 		teachings_attributes: [{lesson_id: lesson_ids.sample, sort: 1}, {lesson_id: lesson_ids.sample, sort: 2}]
 	},
-	{ name: 'Another sample course',
+	{
+		name: 'Another sample course',
 		description: lorem,
 		publish_date: 2.days.ago,
 		remote_image_url: 'https://maawol.s3.amazonaws.com/seeds/sample-course-2.png',
@@ -445,7 +450,7 @@ courses_data = [
 ]
 courses_data.each do |course_data|
 	unless Course.find_by(name: course_data[:name])
-		Course.create(course_data)
+		course = Course.create(course_data)
 	end
 end
 
@@ -457,7 +462,7 @@ Store.create({
 		{
 			sort: 1,
 			price: 2.50,
-			productable: Downloadable.first,
+			productable: downloadable_file,
 			author_fee_split: 0
 		},
 		{
@@ -468,3 +473,8 @@ Store.create({
 		}
 	]
 })
+
+puts "##### All Done. Yaay!"
+puts "You can login to admin with:"
+puts "email address:   #{Maawol::Config.site_owner_email}"
+puts "and password:   #{admin_user_password}"

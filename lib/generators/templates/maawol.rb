@@ -10,8 +10,8 @@ Maawol.configure do |config|
 	config.application_controller_class = 'ApplicationController'
 	config.application_mailer_class = 'ApplicationMailer'
 
-	config.recaptcha_site_key =  Rails.application.credentials.recaptcaha[:site_key]
-	config.recaptcha_secret_key =  Rails.application.credentials.recaptcaha[:secret_key],
+	config.recaptcha_site_key =  Rails.application.credentials.recaptcha[:site_key]
+	config.recaptcha_secret_key =  Rails.application.credentials.recaptcha[:secret_key],
 
 	config.mandrill_api_key = Rails.application.credentials.mail[:mandrill_api_key]
 	config.mailchimp_api_key = Rails.application.credentials.mail[:mailchimp_api_key]
