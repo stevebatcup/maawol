@@ -1,16 +1,15 @@
-# Example run of this file `bundle exec rake db:seed name="Bass Academy"
+puts "### Seeding database for #{Maawol.site_name} ###"
 
-puts "### Seeding database for #{Maawol.site_name}..."
-avatar_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/440px-President_Barack_Obama.jpg"
-favicon_url = "https://maawol.s3.amazonaws.com/seeds/sample-favicon.png"
-landscape_logo_url = "https://maawol.s3.amazonaws.com/seeds/sample-landscape-logo.png"
-landscape_mobile_logo_url = "https://maawol.s3.amazonaws.com/seeds/sample-landscape-bright-logo.png"
-square_logo_url = "https://maawol.s3.amazonaws.com/seeds/sample-square-logo.jpg"
+avatar_url = "https://maawol.s3.amazonaws.com/seeds/contact-mugshot.png"
+favicon_url = "https://maawol.s3.amazonaws.com/seeds/favicon.png"
+landscape_logo_url = "https://maawol.s3.amazonaws.com/seeds/landscape-blue-logo.png"
+square_logo_url = "https://maawol.s3.amazonaws.com/seeds/square-blue-logo.png"
+email_banner_url = "https://maawol.s3.amazonaws.com/seeds/email-banner.png"
 
-puts "#Skill levels"
+puts "> Seeding skill levels...."
 %w{ Beginner Intermediate Advanced }.each { |level| SkillLevel.find_or_create_by(name: level) }
 
-puts "#Site settings"
+puts "> Seeding dite settings...."
 settings = [
 	{ name: "Site name", value: "#{Maawol.site_name}" },
 	{ name: "Site easy name", value: "#{Maawol.site_name}" },
@@ -26,12 +25,12 @@ settings = [
 ]
 settings.each { |setting| SiteSetting.find_or_create_by(name: setting[:name], value: setting[:value]) }
 
-puts "#CMS Pages"
+puts "> Seeding CMS Pages...."
 homepage =  ContentManagement::Page.find_or_create_by(title: "Homepage", slug: "")
 privacy =  ContentManagement::Page.find_or_create_by(title: "Privacy Policy")
 tandcs =  ContentManagement::Page.find_or_create_by(title: "Terms and Conditions")
 
-puts "#CMS Blocks"
+puts "> Seeding CMS Blocks...."
 lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -76,7 +75,7 @@ blocks = [{
 }]
 blocks.each { |block| ContentManagement::ContentBlock.find_or_create_by(block) }
 
-puts "#CMS Navbars"
+puts "> Seeding CMS Navbars...."
 navbars_data = [
 	{ slug: :signed_out, items: [
 		{ name: "Welcome", url: "/", desktop: true, mobile: true },
@@ -111,7 +110,7 @@ navbars_data.each do |navbar_data|
 	navbar.save
 end
 
-puts "#Stuck Questions and Answers"
+puts "> Seeding Stuck Question and Answers...."
 qandas_data = [
 	{ question: "What are you looking for?", sort: 1, answers: [
 		{ answer: "Something quick", sort: 1 },
@@ -142,7 +141,7 @@ qandas_data.each do |qanda_data|
 	question.save
 end
 
-puts "#Author"
+puts "> Seeding Author...."
 unless author = Author.find_by(name: "#{Maawol.site_owner_fname} #{Maawol.site_owner_lname}")
 	author = Author.create({
 		name: "#{Maawol.site_owner_fname} #{Maawol.site_owner_lname}",
@@ -150,7 +149,7 @@ unless author = Author.find_by(name: "#{Maawol.site_owner_fname} #{Maawol.site_o
 	})
 end
 
-puts "#Default colors"
+puts "> Seeding Default colors...."
 colors_data = [
 	{ name: "Main background", slug: "body_background", value: "#ffffff", default_value: "#ffffff" },
 	{ name: "Main text color", slug: "main_text", value: "#3e464a", default_value: "#3e464a" },
@@ -184,12 +183,13 @@ colors_data.each do |color_data|
 	SiteColor.find_or_create_by(name: color_data[:name], slug: color_data[:slug], value: color_data[:value], default_value: color_data[:default_value])
 end
 
-puts "#Site Images"
+puts "> Seeding Site Images...."
 images_data = [
-	{ name: "Landscape logo", slug: 'landscape_logo', remote_image_url: landscape_logo_url, width: 600, height: 200 },
-	{ name: "Square logo", slug: 'square_logo', remote_image_url: square_logo_url, width: 500, height: 500 },
-	{ name: "Contact mugshot", slug: 'contact', remote_image_url: avatar_url, width: 400, height: 400 },
-	{ name: "Favicon", slug: 'favicon', remote_image_url: favicon_url, width: 32, height: 32 }
+	{ name: "Landscape logo", slug: 'landscape_logo', remote_image_url: landscape_logo_url },
+	{ name: "Square logo", slug: 'square_logo', remote_image_url: square_logo_url },
+	{ name: "Contact mugshot", slug: 'contact', remote_image_url: avatar_url },
+	{ name: "Email banner", slug: 'email_banner', remote_image_url: email_banner_url },
+	{ name: "Favicon", slug: 'favicon', remote_image_url: favicon_url }
 ]
 images_data.each do |image_data|
 	unless SiteImage.find_by(name: image_data[:name])
@@ -197,7 +197,7 @@ images_data.each do |image_data|
 	end
 end
 
-puts "#Admin User"
+puts "> Seeding Admin User...."
 unless User.find_by(email: Maawol.site_owner_email, is_admin: true)
 	u = User.new({
 		first_name: Maawol.site_owner_fname,
@@ -210,7 +210,7 @@ unless User.find_by(email: Maawol.site_owner_email, is_admin: true)
 	u.save
 end
 
-puts "#Categories"
+puts "> Seeding Categories...."
 categories_data = [
 	{ root_category: "Technique", secondary_categories: [
 		{ name: "Co-ordination", description: "One of the biggest challenges to swing/latin, etc. is getting all those limbs to cooperate. Look here for exercise to help, mostly in a musical setting." },
@@ -236,7 +236,7 @@ categories_data.each do |category_data|
 	root_category.save
 end
 
-puts "#Subscription options"
+puts "> Seeding Subscription options...."
 sub_options = [
 	{ days: 30,
 		level:	1,
@@ -264,7 +264,7 @@ sub_options.each do |sub_option|
 	SubscriptionOption.find_or_create_by(sub_option)
 end
 
-puts "#Tags"
+puts "> Seeding Tags...."
 tags = [
 	'Theory',
  	'Comping',
@@ -276,7 +276,7 @@ tags = [
 ]
 tags.each { |tag| Tag.find_or_create_by(name: tag, show_in_cloud: true) }
 
-puts "#Downloadable file sample"
+puts "# Seeding Downloadable file sample...."
 unless Downloadable.find_by(name: "Sample downloadable PDF")
 	Downloadable.create({
 		name: "Sample downloadable PDF",
@@ -285,7 +285,7 @@ unless Downloadable.find_by(name: "Sample downloadable PDF")
 	})
 end
 
-puts "#Videos"
+puts "> Seeding Videos...."
 videos_data = [
 	{ name: 'Homepage sample video',
 		url: 'https://vimeo.com/405177296',
@@ -324,7 +324,7 @@ videos_data.each do |video_data|
 	end
 end
 
-puts "#Listening labs"
+puts "> Seeding Listening labs...."
 labs_data = [
 	{ name: "Big Band", spotify_url: "https://open.spotify.com/playlist/6YrkhXFSoo24wdaX680PXw" },
 	{ name: "Ballads", spotify_url: "https://open.spotify.com/playlist/5G6gcY3qRlB8oFjpEfMIUe" },
@@ -332,7 +332,7 @@ labs_data = [
 ]
 labs_data.each { |lab_data| ListeningLab.find_or_create_by(lab_data) }
 
-puts "#Lessons"
+puts "> Seeding Lessons...."
 long_lorem = "
 <p>Do eiusmod tempor incididunt ut labore et dolore magna aliqua. Architecto beatae vitae dicta sunt explicabo. Eaque ipsa quae ab illo inventore veritatis et quasi. Do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 <p>Itaque earum rerum hic tenetur a sapiente delectus. Itaque earum rerum hic tenetur a sapiente delectus. Et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -418,7 +418,7 @@ lessons_data.each do |lesson_data|
 end
 
 
-puts "#Courses"
+puts "> Seeding Courses...."
 skill_level_ids = SkillLevel.all.map(&:id)
 lesson_ids = Lesson.all.map(&:id)
 courses_data = [
@@ -449,7 +449,7 @@ courses_data.each do |course_data|
 	end
 end
 
-puts "#Sample store"
+puts "> Seeding Sample store...."
 Store.create({
 	name: "Sample store",
 	description: lorem,

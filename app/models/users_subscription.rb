@@ -5,7 +5,7 @@ class UsersSubscription < ApplicationRecord
 	validate	:check_for_existing_recurring, on: :create
 	after_create :send_receipt
   after_create  :send_admin_subscription_email
-  after_create  :move_mailchimp_list
+  after_create  :update_mailchimp
 
 	attr_accessor	:length
 
@@ -42,7 +42,7 @@ class UsersSubscription < ApplicationRecord
 				new_status = self.starts_at > Time.now ? :cancelled : :ending
 			end
 			if self.update_attributes({status: new_status, ends_at: self.next_payment_due_at, next_payment_due_at: nil})
-				MailchimperService.downgrade_to_free_members_list(self.user) unless Rails.env.development?
+				update_mailchimp
 				UserMailer.cancel_recurring_billing(self).deliver
 				true
 			else
@@ -65,8 +65,9 @@ class UsersSubscription < ApplicationRecord
 		self.payment_system.to_sym == :chargebee
 	end
 
-	def move_mailchimp_list
-		MailchimperService.upgrade_to_subscription_list(self.user) unless Rails.env.development?
+	def update_mailchimp
+		mailchimp_service = Maawol::Email::Mailchimp.new(self)
+		mailchimp_service.update_on_list
 	end
 
 	def send_receipt

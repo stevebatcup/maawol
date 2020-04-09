@@ -1,11 +1,11 @@
 class CheckoutMailer < ApplicationMailer
 	def products_purchased(email, first_name, product_permissions)
-		merge_vars = {
+		vars = {
 			"FNAME" => first_name,
 			"FILE_LINKS" => build_file_links(product_permissions)
 		}
 		subject = "Here are the custom links for your purchases"
-		body = mandrill_template('file-purchased', merge_vars)
+		body = mandrill_template('file-purchased', merge_vars(vars))
 		send_non_user_mail(email, subject, body)
 	end
 

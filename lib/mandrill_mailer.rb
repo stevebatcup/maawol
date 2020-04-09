@@ -23,6 +23,18 @@ private
     log_mandrill_request(nil, "send_non_user_mail", data, response)
   end
 
+  def merge_vars(vars)
+    site_vars = {
+      SITE_NAME: Maawol.site_name,
+      SITE_HOST: Maawol.site_host,
+      FROM_NAME: "#{Maawol.site_owner_fname} #{Maawol.site_owner_lname}",
+      FROM_EMAIL: Maawol.site_owner_email,
+      SITE_HEADER_IMG: SiteImage.email_banner_url,
+      SITE_HEADER_ALT: Maawol.site_name
+    }
+    vars.merge(site_vars)
+  end
+
   def send_mail(email_address, subject, body, user_name='', user_id=nil, tags=[])
     if requires_interception?
       to = Maawol.mail_interceptor_to

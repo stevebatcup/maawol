@@ -1,5 +1,5 @@
 class AdminMailer < MaawolMailer
-	include MandrillMailer
+	include Maawol::Email::Mandrill
 
 	def registration(user)
 		@user = user

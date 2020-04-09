@@ -9,9 +9,9 @@ class SettingsController < MaawolController
 		old_digest_setting = current_user.receives_weekly_digest
 		if current_user.update_attributes(user_params)
 			if old_email != user_params[:email]
-				MailchimperService.update_mailchimp_list(current_user, old_email)
+				mailchimp_service.update_on_list(old_email)
 			elsif old_digest_setting != current_user.receives_weekly_digest
-				MailchimperService.update_mailchimp_list(current_user, current_user.email)
+				mailchimp_service.update_on_list
 			end
 			redirect_to settings_path, notice: "Settings updated"
 		else
@@ -45,6 +45,10 @@ class SettingsController < MaawolController
 	end
 
 private
+
+	def mailchimp_service
+		@mailchimp_service ||= Maawol::Email::Mailchimp.new(current_user)
+	end
 
 	def user_params
 		params.require(:user).permit!

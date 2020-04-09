@@ -13,6 +13,10 @@ module Maawol
 		    template "mustache.rb", "config/initializers/mustache.rb"
 		  end
 
+		  def copy_git_ignore
+		    template "gitignore_tpl", ".gitignore"
+		  end
+
 		  def copy_locales
 				copy_file "../../../config/locales/en.yml", "config/locales/maawol.en.yml"
 				copy_file "../../../config/locales/admin.en.yml", "config/locales/admin.en.yml"

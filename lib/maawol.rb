@@ -1,45 +1,13 @@
-require 'coffee-rails'
-require 'clearance'
-require 'browser'
-require 'acts_as_commentable_with_threading'
-require 'acts_as_shopping_cart'
-require 'carrierwave'
-require 'fog-aws'
-require 'recaptcha'
-require 'bootstrap'
-require 'underscore-rails'
-require 'ladda-rails'
-require 'mustache'
-require 'mustache-js-rails'
-require 'mini_magick'
-require 'sidekiq'
-
-require 'angularjs-rails'
-require 'angularjs-rails-resource'
-require 'vimeo_me2'
-
-# Payment APIs
-require 'credit_card_validations'
-require 'chargebee'
-require 'paypal-sdk-rest'
-
-# Email APIs
-require 'mandrill'
-require "mandrill_mailer"
-require 'mailchimp'
-
-# Admin
-require 'tinymce-rails'
-require 'administrate'
-require 'cocoon'
-require 'rinku'
-
+require "maawol/externals"
 require "maawol/engine"
 
 module Maawol
 
   mattr_accessor :site_name
   @site_name = nil
+
+  mattr_accessor :site_slug
+  @site_slug = nil
 
   mattr_accessor :site_host
   @site_host = nil
@@ -67,6 +35,9 @@ module Maawol
 
   mattr_accessor  :mailchimp_api_key
   @mailchimp_api_key = nil
+
+  mattr_accessor  :mailchimp_list_id
+  @mailchimp_list_id = nil
 
   mattr_accessor :mail_admin_to
   @@mail_admin_to = nil
@@ -165,4 +136,8 @@ module Maawol
     end
   end
 
+  module Email
+    autoload :Mandrill,        'maawol/email/mandrill'
+    autoload :Mailchimp,        'maawol/email/mailchimp'
+  end
 end
