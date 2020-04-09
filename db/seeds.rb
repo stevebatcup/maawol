@@ -5,7 +5,7 @@ favicon_url = "https://maawol.s3.amazonaws.com/seeds/favicon.png"
 landscape_logo_url = "https://maawol.s3.amazonaws.com/seeds/landscape-blue-logo.png"
 square_logo_url = "https://maawol.s3.amazonaws.com/seeds/square-blue-logo.png"
 email_banner_url = "https://maawol.s3.amazonaws.com/seeds/email-banner.png"
-admin_user_password = "sonmi451"
+admin_user_password = "c-ke4wd3jhc51"
 
 puts "> Seeding Skill levels...."
 %w{ Beginner Intermediate Advanced }.each { |level| SkillLevel.find_or_create_by(name: level) }

@@ -28,10 +28,8 @@ module Maawol
 				copy_file "../../../config/locales/clearance.en.yml", "config/locales/clearance.en.yml"
 		  end
 
-		  def update_asset_manifest
-		  	inject_into_file "app/assets/config/manifest.js" do
-		  		"\n//= link_tree ../javascripts js"
-		  	end
+		  def routes
+		    template "routes.rb", "config/routes.rb"
 		  end
 		end
 	end

@@ -21,7 +21,7 @@ class MaawolController < Maawol::Config.application_controller_class
 	end
 
 	def set_layout
-		"#{signed_in? ? 'application' : 'home'}"
+		"#{signed_in? ? 'maawol' : 'home'}"
 	end
 
 	def require_subscription
