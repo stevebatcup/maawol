@@ -26,55 +26,73 @@ settings = [
 ]
 settings.each { |setting| SiteSetting.find_or_create_by(name: setting[:name], value: setting[:value]) }
 
-puts "> Seeding CMS Pages...."
-homepage =  ContentManagement::Page.find_or_create_by(title: "Homepage", slug: "")
-privacy =  ContentManagement::Page.find_or_create_by(title: "Privacy Policy")
-tandcs =  ContentManagement::Page.find_or_create_by(title: "Terms and Conditions")
-
-puts "> Seeding CMS Blocks...."
+puts "> Seeding CMS Blocks for homepage et al...."
 lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-blocks = [{
-  name: "bio",
-  title: "About #{Maawol::Config.site_name}",
-  content: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>
-				<a class=\"btn btn-success btn-large\" title=\"Drop me a line\" href=\"/contact\">Drop me a line</a></p>",
-  is_editable: 1
-},
-{
-  name: "home_register_options",
-  title: "Register or subscribe",
-  content: "<div class=\"row\">\r\n<div class=\"col-12 col-md-6 px-md-4 pb-4 pb-md-3 pt-md-3\">\r\n<h5>Subscribed Members:</h5>\r\n<ul>\r\n<li>$25/month</li>\r\n<li>Access to FULL Lesson Library and Courses</li>\r\n<li>Lesson Requests</li>\r\n<li>1-on-1 help</li>\r\n<li>Access to Exclusive Facebook Group</li>\r\n</ul>\r\n<a class=\"mt-3 mb-md-5 btn btn-success btn-large\" style=\"bottom: 0;\" href=\"../../../users/register/sign_up?remember=/subscribe\">Subscribe now</a></div>\r\n<div class=\"col-12 col-md-6 align-items-end px-md-4 pb-md-3 pt-md-3\">\r\n<h5>Registered Members:</h5>\r\n<ul>\r\n<li>FREE</li>\r\n<li>Access to Selected Video Lessons</li>\r\n<li>Access to Exclusive Facebook Group</li>\r\n<li>Access to Exclusive Offers</li>\r\n</ul>\r\n<a class=\"mt-3 mb-md-5 btn btn-info btn-large\" style=\"bottom: 0;\" href=\"/sign_up\">Register now</a></div>\r\n</div>",
-  is_editable: 1
-},
-{
-  name: "course_introduction",
-  title: "",
-  content: "<p>Feel like digging a little deeper into something? That&rsquo;s what this section is for. Each course is a multi-lesson exploration into some subjects that can&rsquo;t be summed up in a lesson or two.</p>\r\n<p>Take a course from start to finish, or just pop in and work on any of the lessons individually.</p>",
-  is_editable: 1
-},
-{
-  name: "Privacy policy",
+blocks = [
+	{
+	  name: "bio",
+	  title: "About #{Maawol::Config.site_name}",
+	  content: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>
+					<a class=\"btn btn-success btn-large\" title=\"Drop me a line\" href=\"/contact\">Drop me a line</a></p>",
+	  is_editable: 1
+	},
+	{
+	  name: "home_register_options",
+	  title: "Register or subscribe",
+	  content: "<div class=\"row\">\r\n<div class=\"col-12 col-md-6 px-md-4 pb-4 pb-md-3 pt-md-3\">\r\n<h5>Subscribed Members:</h5>\r\n<ul>\r\n<li>$25/month</li>\r\n<li>Access to FULL Lesson Library and Courses</li>\r\n<li>Lesson Requests</li>\r\n<li>1-on-1 help</li>\r\n<li>Access to Exclusive Facebook Group</li>\r\n</ul>\r\n<a class=\"mt-3 mb-md-5 btn btn-success btn-large\" style=\"bottom: 0;\" href=\"../../../users/register/sign_up?remember=/subscribe\">Subscribe now</a></div>\r\n<div class=\"col-12 col-md-6 align-items-end px-md-4 pb-md-3 pt-md-3\">\r\n<h5>Registered Members:</h5>\r\n<ul>\r\n<li>FREE</li>\r\n<li>Access to Selected Video Lessons</li>\r\n<li>Access to Exclusive Facebook Group</li>\r\n<li>Access to Exclusive Offers</li>\r\n</ul>\r\n<a class=\"mt-3 mb-md-5 btn btn-info btn-large\" style=\"bottom: 0;\" href=\"/sign_up\">Register now</a></div>\r\n</div>",
+	  is_editable: 1
+	},
+	{
+	  name: "course_introduction",
+	  title: "",
+	  content: "<p>Feel like digging a little deeper into something? That&rsquo;s what this section is for. Each course is a multi-lesson exploration into some subjects that can&rsquo;t be summed up in a lesson or two.</p>\r\n<p>Take a course from start to finish, or just pop in and work on any of the lessons individually.</p>",
+	  is_editable: 1
+	}
+]
+blocks.each { |block| ContentManagement::ContentBlock.find_or_create_by(block) }
+
+puts "> Creating Homepage...."
+homepage = ContentManagement::Page.find_or_create_by(title: "Homepage", slug: "")
+
+puts "> Creating Privacy Policy page...."
+privacy_block_data = {
+  name: "Privacy Policy",
   title: "Privacy Policy",
-  content: "<p>Privacy policy stuff here</p><p>#{lorem}</p>",
+  content: "<p>Privacy Policy stuff here</p><p>#{lorem}</p>",
   is_editable: 1
-},
-{
+}
+privacy_block = ContentManagement::ContentBlock.find_or_create_by(privacy_block_data)
+unless ContentManagement::Page.find_by(title: "Privacy Policy")
+	ContentManagement::Page.create({
+		title: "Privacy Policy",
+		sections_attributes: [{ sort: 1, content_block_id: privacy_block.id }]
+	})
+end
+
+puts "> Creating Terms and Conditions page...."
+terms_and_conditions_data = {
   name: "Terms and Conditions",
   title: "Terms and Conditions",
   content: "<p>Terms and Conditions stuff here</p><p>#{lorem}</p>",
   is_editable: 1
-}]
-blocks.each { |block| ContentManagement::ContentBlock.find_or_create_by(block) }
+}
+terms_and_conditions_block = ContentManagement::ContentBlock.find_or_create_by(terms_and_conditions_data)
+unless ContentManagement::Page.find_by(title: "Terms and Conditions")
+	ContentManagement::Page.create({
+		title: "Terms and Conditions",
+		sections_attributes: [{ sort: 1, content_block_id: terms_and_conditions_block.id }]
+	})
+end
 
 puts "> Seeding CMS Navbars...."
 navbars_data = [
