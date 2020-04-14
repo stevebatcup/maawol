@@ -34,3 +34,6 @@ config/deploy.rb
 
 config/_credentials-tpl-development.yml
 config/_credentials-tpl-production.yml
+/config/credentials/development.key
+
+/config/credentials/production.key

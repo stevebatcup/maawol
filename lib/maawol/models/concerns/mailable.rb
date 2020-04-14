@@ -15,7 +15,9 @@ module Maawol
         end
 
         def send_admin_registration_email
-          AdminMailer.registration(self).deliver_now unless self.is_admin?
+          if SiteSetting.site_admin_gets_new_registration_email?
+            AdminMailer.registration(self).deliver_now unless self.is_admin?
+          end
         end
       end
     end

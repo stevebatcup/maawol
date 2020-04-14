@@ -107,7 +107,9 @@ class SubscriptionsController < MaawolController
 						current_user.update_attribute(:status, :expiring)
 						@status = :success
 						@message = "#{t('views.subscription.recurring_cancelled')} #{@subscription.ends_at.strftime("%d %B, %Y")}"
-						AdminMailer.subscription_cancelled(@subscription).deliver_now
+						if SiteSetting.site_admin_gets_subscription_cancelled_email?
+							AdminMailer.subscription_cancelled(@subscription).deliver_now
+						end
 					else
 						@status = :error
 						@message = t('views.subscription.errors.cancel_recurring')

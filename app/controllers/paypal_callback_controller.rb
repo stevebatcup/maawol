@@ -96,7 +96,9 @@ private
 			@user_subscription.cancel(action)
 			unless action == :recurring_payment_profile_cancel
 				UserMailer.payment_failed(@user_subscription.user).deliver_now
-				AdminMailer.payment_failed(@user_subscription).deliver_now
+				if SiteSetting.site_admin_gets_failed_payment_email?
+					AdminMailer.payment_failed(@user_subscription).deliver_now
+				end
 			end
 		end
 		render json: { result: payment_messages[result] }

@@ -4,6 +4,10 @@ module Admin
       %w[show new destroy].exclude?(name.to_s) && super
     end
 
+    def scoped_resource
+      SiteSetting.editable.page(params[:page]).per(10)
+    end
+
     def update
       if requested_resource.update(resource_params)
         redirect_to("/admin/site_settings", notice: "Setting updated")

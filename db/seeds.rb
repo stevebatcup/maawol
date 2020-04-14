@@ -11,20 +11,31 @@ puts "> Seeding Skill levels...."
 %w{ Beginner Intermediate Advanced }.each { |level| SkillLevel.find_or_create_by(name: level) }
 
 puts "> Seeding Site settings...."
-settings = [
-	{ name: "Site name", value: "#{Maawol::Config.site_name}" },
-	{ name: "Site easy name", value: "#{Maawol::Config.site_name}" },
-	{ name: "Site blurb", value: "#{Maawol::Config.site_name} - lorem	ipsum doo dah day" },
-	{ name: "Site byline", value: "#{Maawol::Config.site_name} - lorem ipsum doo dah day" },
-	{ name: "Meta description", value: "Please enter your meta description, this will help your site's SEO ranking" },
-	{ name: "Contact email address", value: Maawol::Config.site_owner_email },
-	{ name: "Google Analytics ID", value: "" },
-	{ name: "Facebook page URL", value: "" },
-	{ name: "Twitter username", value: "" },
-	{ name: "Instagram username", value: "" },
-	{ name: "YouTube channel ID", value: "" }
+settings_data = [
+	{ name: "Site name", value: "#{Maawol::Config.site_name}", is_editable: true },
+	{ name: "Site easy name", value: "#{Maawol::Config.site_name}", is_editable: true },
+	{ name: "Site blurb", value: "#{Maawol::Config.site_name} - lorem	ipsum doo dah day", is_editable: true },
+	{ name: "Site byline", value: "#{Maawol::Config.site_name} - lorem ipsum doo dah day", is_editable: true },
+	{ name: "Meta description", value: "Please enter your meta description, this will help your site's SEO ranking", is_editable: true },
+	{ name: "Contact email address", value: Maawol::Config.site_owner_email, is_editable: true },
+	{ name: "Google Analytics ID", value: "", is_editable: true },
+	{ name: "Facebook page URL", value: "", is_editable: true },
+	{ name: "Twitter username", value: "", is_editable: true },
+	{ name: "Instagram username", value: "", is_editable: true },
+	{ name: "YouTube channel ID", value: "", is_editable: true },
+	{ name: "Owner profit split percentage", value: "80", is_editable: false },
+	{ name: "Receives new-registration admin email", value: "yes", is_editable: false },
+	{ name: "Receives new-subscription admin email", value: "yes", is_editable: false },
+	{ name: "Receives subscription-cancelled admin email", value: "yes", is_editable: false },
+	{ name: "Receives failed-payment admin email", value: "yes", is_editable: false },
 ]
-settings.each { |setting| SiteSetting.find_or_create_by(name: setting[:name], value: setting[:value]) }
+settings_data.each do |setting_data|
+	SiteSetting.find_or_create_by(name: setting_data[:name]) do
+		setting.value = setting_data[:value]
+		setting.is_editable = setting_data[:is_editable]
+		setting.save
+	end
+end
 
 puts "> Seeding CMS Blocks for homepage et al...."
 lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

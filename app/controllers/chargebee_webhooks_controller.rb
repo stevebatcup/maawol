@@ -79,7 +79,9 @@ class ChargebeeWebhooksController < MaawolController
 		if result == :success
 			@user_subscription.cancel(:payment_failed)
 			UserMailer.payment_failed(@user_subscription.user).deliver_now
-			AdminMailer.payment_failed(@user_subscription).deliver_now
+			if SiteSetting.site_admin_gets_failed_payment_email?
+				AdminMailer.payment_failed(@user_subscription).deliver_now
+			end
 		end
 		render json: { result: payment_messages[result] }
 	end

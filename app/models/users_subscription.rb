@@ -75,6 +75,8 @@ class UsersSubscription < ApplicationRecord
 	end
 
 	def send_admin_subscription_email
-	  AdminMailer.new_subscription(self).deliver_now unless self.status == 'pending_paypal'
+		if SiteSetting.site_admin_gets_new_subscription_email?
+		  AdminMailer.new_subscription(self).deliver_now unless self.status == 'pending_paypal'
+		end
 	end
 end
