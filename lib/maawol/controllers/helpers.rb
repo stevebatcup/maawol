@@ -31,7 +31,7 @@ module Maawol
 			end
 
 			def host
-				@host ||= Rails.application.config.domain
+				@host ||= Maawol::Config.site_host
 			end
 
 			def site_settings

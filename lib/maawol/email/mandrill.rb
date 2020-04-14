@@ -38,7 +38,7 @@ module Maawol
         api.templates.render(template_name, [], merge_vars)["html"]
       end
 
-      private
+      protected
 
       def site_vars
         {

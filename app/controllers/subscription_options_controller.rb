@@ -1,6 +1,4 @@
 class SubscriptionOptionsController < MaawolController
-	respond_to :json
-
 	def index
 		custom_option = CustomUserSubscriptionOption.where(user_id: current_user.id, redeemed: false).first
 		if params[:migration] && custom_option

@@ -15,9 +15,9 @@ class SubscriptionOption < ApplicationRecord
 			dot_index = amount.to_s.index('.')
 			pence = amount[dot_index, amount.length]
 			pence_html = "<span class='pence'>#{pence}</span>"
-			amount[dot_index, amount.length] = pence_html
+			amount[dot_index, amount.length] = pence_html.html_safe
 		end
-		amount.html_safe
+		amount
 	end
 
 	def yearly_price(currency=false, small_pence=false)
@@ -28,8 +28,8 @@ class SubscriptionOption < ApplicationRecord
 			dot_index = amount.to_s.index('.')
 			pence = amount[dot_index, amount.length]
 			pence_html = "<span class='pence'>#{pence}</span>"
-			amount[dot_index, amount.length] = pence_html
+			amount[dot_index, amount.length] = pence_html.html_safe
 		end
-		amount.html_safe
+		amount
 	end
 end

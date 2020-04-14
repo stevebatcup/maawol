@@ -9,13 +9,17 @@ module Maawol
 			source_root File.expand_path("../../templates", __FILE__)
 
 		  def initializers
-		    template "maawol.rb", "config/initializers/maawol.rb"
-		    template "mustache.rb", "config/initializers/mustache.rb"
+		    template "maawol-initializer.rb", "config/initializers/maawol.rb"
+		    template "mustache-initializer.rb", "config/initializers/mustache.rb"
 		  end
 
 		  def credentials_templates
 		    template "credentials-development.yml", "config/_credentials-development.yml"
 		    template "credentials-production.yml", "config/_credentials-production.yml"
+		  end
+
+		  def paypal_settings
+		    template "paypal.yml", "config/paypal.yml"
 		  end
 
 		  def git_ignore_template
