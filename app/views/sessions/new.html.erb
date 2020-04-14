@@ -1,5 +1,10 @@
 <section class="form-elements style-2" id="clearance">
   <div id="login_box">
+
+    <p class="mb-2">
+      Don't have an account yet? <%= link_to "Register here", sign_up_path %>
+    </p>
+
     <div class="right-panel">
       <%= render 'layouts/auth-logo' %>
 
@@ -18,9 +23,5 @@
 
       <%= render partial: 'sessions/form' %>
     </div>
-
-    <span class="bottom-text">
-      Don't yet have an account? <%= link_to "Register here", sign_up_path %>
-    </span>
   </div>
 </section>

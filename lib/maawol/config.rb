@@ -1,13 +1,13 @@
 module Maawol
 	module Config
 		mattr_accessor :site_name
-		@site_name = nil
+		@@site_name = nil
 
 		mattr_accessor :site_slug
-		@site_slug = nil
+		@@site_slug = nil
 
 		mattr_accessor :site_host
-		@site_host = nil
+		@@site_host = nil
 
 		mattr_accessor :application_controller_class
 		@@application_controller_class = 'ApplicationController'
@@ -28,13 +28,13 @@ module Maawol
 		@@recaptcha_secret_key = nil
 
 		mattr_accessor  :mandrill_api_key
-		@mandrill_api_key = nil
+		@@mandrill_api_key = nil
 
 		mattr_accessor  :mailchimp_api_key
-		@mailchimp_api_key = nil
+		@@mailchimp_api_key = nil
 
 		mattr_accessor  :mailchimp_list_id
-		@mailchimp_list_id = nil
+		@@mailchimp_list_id = nil
 
 		mattr_accessor :mail_admin_to
 		@@mail_admin_to = nil
@@ -58,18 +58,37 @@ module Maawol
 		@@aws_basket = nil
 
 		mattr_accessor :site_owner_fname
-		@site_owner_fname = nil
+		@@site_owner_fname = nil
 
 		mattr_accessor :site_owner_lname
-		@site_owner_lname = nil
+		@@site_owner_lname = nil
+
+		def self.site_owner_name
+			"#{@@site_owner_fname} #{@@site_owner_lname}"
+		end
 
 		mattr_accessor :site_owner_email
-		@site_owner_email = nil
+		@@site_owner_email = nil
 
 		mattr_accessor :vimeo_api_key
-		@vimeo_api_key = nil
+		@@vimeo_api_key = nil
 
 		mattr_accessor :vimeo_project_id
-		@vimeo_project_id = nil
+		@@vimeo_project_id = nil
+
+		mattr_accessor :paypal_client_id
+		@@paypal_client_id = nil
+
+		mattr_accessor :paypal_client_secret
+		@@paypal_client_secret = nil
+
+		mattr_accessor :chargebee_site
+		@@chargebee_site = nil
+
+		mattr_accessor :chargebee_api_key
+		@@chargebee_api_key = nil
+
+		mattr_accessor :chargebee_gateway
+		@@chargebee_gateway = nil
 	end
 end

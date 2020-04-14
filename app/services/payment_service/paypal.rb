@@ -81,14 +81,19 @@ module PaymentService
 		    agreement = create_agreement(options[:site_name], plan, start_date, initial_price, options[:current_user], payment_details[:chosen_option].months, currency)
 		  end
 
-		  options[:current_user].find_or_create_pending_paypal_subscription({
+		  local_subscrpition_item = options[:current_user].find_or_create_pending_paypal_subscription({
 		  	initial_price: initial_price,
 		  	subscription_option: payment_details[:chosen_option],
 		  	future_start: payment_details[:future_start],
 		  	discount_code: options[:session_discount_code]
 		  })
 
-		  (plan unless plan.success?) || agreement
+		  if local_subscrpition_item.errors.any?
+		  	plan.error = local_subscrpition_item.errors.full_messages
+		  	plan
+			else
+			  (plan unless plan.success?) || agreement
+			 end
 		end
 
 		def self.create_recurring_plan(site_name, recurring_price, return_url, cancel_url, user, monthly_frequency=1, currency="USD")
@@ -151,9 +156,7 @@ module PaymentService
 	    agreement.create
 			log(user, :create_agreement, { plan_id: plan.id }, agreement.to_json)
 
-			if agreement.error
-				DevMailer.notify_error_paypal_agreement(agreement).deliver_now
-			end
+			DevMailer.notify_error_paypal_agreement(agreement).deliver_now if agreement.error
 
 	    agreement # If any error occured, the message will be saved in agreement.error
 	  end

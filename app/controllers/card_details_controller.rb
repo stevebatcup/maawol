@@ -1,6 +1,4 @@
 class CardDetailsController < MaawolController
-	respond_to	:html
-
 	def update
 		card = params[:card]
     if error_msg = PaymentService::Chargebee.detect_card_errors(card)

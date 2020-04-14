@@ -155,7 +155,7 @@ module PaymentService
 
 		def self.chargebee_card_data(card)
 			{
-				gateway: Rails.application.credentials.chargebee[:gateway],
+				gateway_account_id: Maawol::Config.chargebee_gateway,
 				number: card[:cardNumber],
 				type: card[:type],
 				expiry_month: card[:expiry][:month],

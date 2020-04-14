@@ -107,7 +107,7 @@
         <% end %>
 
 
-         <% if current_user.has_recurring_subscription? && !user_sub.is_paypal? %>
+         <% if current_user.has_recurring_subscription? && !current_user.current_subscription.is_paypal? %>
             <a class="btn btn-primary btn-mgn-btm" data-toggle="collapse" href="#update_card" role="button" aria-expanded="false" aria-controls="update_card">
                 Update my payment card details
             </a>

@@ -16,7 +16,7 @@ class UserMailer < MaawolMailer
 		  "INITIAL_PRICE" => number_to_currency(subscription.initial_price),
 		  "NEXT_PAYMENT_DUE" => subscription.next_payment_due_at.strftime("%A %B %d, %Y"),
 		  "NEXT_PAYMENT_AMOUNT" => number_to_currency(subscription.initial_price),
-		  "LOGIN_LINK" => new_user_session_url
+		  "LOGIN_LINK" => sign_in_url
 		}
 		subject = "Thanks for subscribing to #{site_setting('Site name')}"
 		body = template('subscription-receipt', merge_vars)
@@ -29,7 +29,7 @@ class UserMailer < MaawolMailer
 		  "SUBSCRIPTION_ENDS" => subscription.ends_at.strftime("%A %B %d, %Y")
 		}
 		subject = "Your subscription to #{site_setting('Site name')} has been cancelled"
-		body = template('subscription-canceled', merge_vars)
+		body = template('subscription-cancellation', merge_vars)
 		send_mail(subscription.user.email, subject, body, subscription.user.first_name, subscription.user.id)
 	end
 

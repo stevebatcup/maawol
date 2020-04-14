@@ -85,7 +85,8 @@ module Maawol
 			def is_auth_page?
 			  params[:controller].include?('clearance') ||
 			  	params[:controller].include?('sessions') ||
-			  		params[:controller].include?('passwords')
+			  		params[:controller].include?('passwords') ||
+			  			params[:controller].include?('users')
 			end
 
 			def results_per_row

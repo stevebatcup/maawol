@@ -36,6 +36,7 @@ module Maawol
 						subscription.discount_code_id = discount_code.id
 					end
 					subscription.save
+					subscription
 				end
 
 				def get_pending_paypal_subscription

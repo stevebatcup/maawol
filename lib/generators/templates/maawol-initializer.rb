@@ -29,5 +29,10 @@ Maawol.configure do |config|
 	config.vimeo_api_key = Rails.application.credentials.vimeo[:api_key]
 	config.vimeo_project_id = Rails.application.credentials.vimeo[:project_id]
 
-	# config.chargebee Rails.application.credentials[:chargebee]
+	config.chargebee_site = Rails.application.credentials.chargebee[:site]
+	config.chargebee_api_key = Rails.application.credentials.chargebee[:api_key]
+	config.chargebee_gateway = Rails.application.credentials.chargebee[:gateway]
+
+	config.paypal_client_id = Rails.application.credentials.paypal[:client_id]
+	config.paypal_client_secret = Rails.application.credentials.paypal[:client_secret]
 end

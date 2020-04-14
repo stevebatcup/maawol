@@ -44,13 +44,13 @@ module Maawol
 			def setup_carrierwave
 			  fog_credentials = {
 			    provider:              'AWS',
-			    aws_access_key_id:     Config::aws_access_key_id,
-			    aws_secret_access_key: Config::aws_secret_access_key,
+			    aws_access_key_id:     Config.aws_access_key_id,
+			    aws_secret_access_key: Config.aws_secret_access_key,
 			    region:                'us-east-1'
 			  }
 			  CarrierWave.configure do |config|
 			    config.fog_credentials = fog_credentials
-			    config.fog_directory  = Config::aws_basket
+			    config.fog_directory  = Config.aws_basket
 			  end
 			  Fog::Storage.new(fog_credentials).sync_clock
 			end
@@ -60,10 +60,10 @@ module Maawol
 			    config.routes = false
 			    config.allow_sign_up = true
 			    config.cookie_expiration = lambda { |cookies| 1.year.from_now.utc }
-			    config.cookie_name = "#{Config::site_slug}_remember_token"
+			    config.cookie_name = "#{Config.site_slug}_remember_token"
 			    config.cookie_path = "/"
 			    config.httponly = false
-			    config.mailer_sender = Config::mail_from
+			    config.mailer_sender = Config.mail_from
 			    config.redirect_url = "/dashboard"
 			    config.rotate_csrf_on_sign_in = true
 			    config.secure_cookie = false
@@ -77,6 +77,10 @@ module Maawol
 			def setup_administrate
 			  Administrate::Engine.add_javascript :'tinymce'
 			  Administrate::Engine.add_javascript :'admin'
+			end
+
+			def setup_chargebee
+				ChargeBee.configure(:site => Config.chargebee_site,  :api_key => Config.chargebee_api_key)
 			end
 		end
 	end

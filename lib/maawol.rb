@@ -37,5 +37,6 @@ module Maawol
     setup_carrierwave
     setup_clearance
     setup_administrate
+    setup_chargebee
   end
 end

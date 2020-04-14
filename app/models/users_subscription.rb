@@ -1,7 +1,7 @@
 class UsersSubscription < ApplicationRecord
 	belongs_to	:user
 	belongs_to	:subscription_option
-	belongs_to	:discount_code
+	belongs_to	:discount_code, optional: true
 	validate	:check_for_existing_recurring, on: :create
 	after_create :send_receipt
   after_create  :send_admin_subscription_email
