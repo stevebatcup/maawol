@@ -2,11 +2,11 @@ class UserMailer < MaawolMailer
 	include ActionView::Helpers::NumberHelper
 
 	def welcome(user)
-		merge_merge_vars = {
+		merge_vars = {
 		  "FNAME" => user.first_name
 		}
 		subject = "Welcome to #{site_setting('Site name')}"
-		body = mandrill_template('welcome-registration', merge_vars)
+		body = template('welcome', merge_vars)
 		send_mail(user.email, subject, body, user.first_name, user.id)
 	end
 
@@ -19,7 +19,7 @@ class UserMailer < MaawolMailer
 		  "LOGIN_LINK" => new_user_session_url
 		}
 		subject = "Thanks for subscribing to #{site_setting('Site name')}"
-		body = mandrill_template('welcome-subscription', merge_vars)
+		body = template('subscription-receipt', merge_vars)
 		send_mail(subscription.user.email, subject, body, subscription.user.first_name, subscription.user.id)
 	end
 
@@ -29,7 +29,7 @@ class UserMailer < MaawolMailer
 		  "SUBSCRIPTION_ENDS" => subscription.ends_at.strftime("%A %B %d, %Y")
 		}
 		subject = "Your subscription to #{site_setting('Site name')} has been cancelled"
-		body = mandrill_template('subscription-canceled', merge_vars)
+		body = template('subscription-canceled', merge_vars)
 		send_mail(subscription.user.email, subject, body, subscription.user.first_name, subscription.user.id)
 	end
 
@@ -38,7 +38,7 @@ class UserMailer < MaawolMailer
 	  merge_vars = {
 	    "FNAME" => user.display_name,
 	  }
-	  body = mandrill_template('payment-failed', merge_vars)
+	  body = template('failed-subscription-payment', merge_vars)
 	  send_mail(user.email, subject, body, user.first_name, user.id)
 	end
 
@@ -48,7 +48,7 @@ class UserMailer < MaawolMailer
 	    "FNAME" => user.display_name,
 	    "AMOUNT" => number_to_currency(amount)
 	  }
-	  body = mandrill_template('payment-confirmation', merge_vars)
+	  body = template('subscription-payment-received', merge_vars)
 	  send_mail(user.email, subject, body, user.first_name, user.id)
 	end
 
@@ -58,7 +58,7 @@ class UserMailer < MaawolMailer
 	    "FNAME" => user.display_name,
 	    "EXPIRY" => "#{Date::MONTHNAMES[month]} #{year}"
 	  }
-	  body = mandrill_template('card-expiry-reminder', merge_vars)
-	  send_mail(subscription.user.email, subject, body, subscription.user.first_name, subscription.user.id)
+	  body = template('card-expiry-reminder', merge_vars)
+	  send_mail(user.email, subject, body, user.first_name, user.id)
 	end
 end

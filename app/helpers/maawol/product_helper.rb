@@ -2,9 +2,9 @@ module Maawol
 	module ProductHelper
 		def can_be_accessed_by_user_without_purchase?(item)
 			if item.is_a?(Downloadable)
-				user_signed_in? && item.token.present? && current_user.can_download_files_without_purchase?
+				signed_in? && item.token.present? && current_user.can_download_files_without_purchase?
 			elsif item.is_a?(Course)
-				user_signed_in? && current_user.is_subscriber?
+				true
 			else
 				false
 			end

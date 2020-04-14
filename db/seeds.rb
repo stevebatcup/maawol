@@ -301,7 +301,8 @@ sample_downloadable_name = "Sample downloadable PDF"
 unless downloadable_file = Downloadable.find_by(name: sample_downloadable_name)
 	downloadable_file = Downloadable.create({
 		name: sample_downloadable_name,
-		remote_file_url: "http://www.africau.edu/images/default/sample.pdf",
+		remote_image_url: "https://maawol.s3.amazonaws.com/seeds/sample-downloadable-image.png",
+		remote_file_url: "https://maawol.s3.amazonaws.com/seeds/sample-downloadable-pdf.pdf",
 		author_id: author.id
 	})
 end

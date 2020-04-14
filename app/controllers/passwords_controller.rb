@@ -13,6 +13,6 @@ class PasswordsController < Clearance::PasswordsController
 	private
 
 	def url_after_update
-		dashboard_path
+		current_user.has_full_account? ? dashboard_path : lessons_path
 	end
 end

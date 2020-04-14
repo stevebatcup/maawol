@@ -68,7 +68,7 @@ private
 				result = :success
 			else
 				result = :not_recurring
-				DevMailer.notify_subscription_out_of_sync_with_paypal(@user_subscription, "payment_#{outcome}").deliver_now
+				DevMailer.notify_subscription_out_of_sync(@user_subscription, "payment_#{outcome}").deliver_now
 			end
 		else
 			user_id = nil

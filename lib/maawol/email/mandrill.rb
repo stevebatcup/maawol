@@ -33,13 +33,7 @@ module Maawol
         }
       end
 
-      # def send_admin_mail(subject, body)
-      #   data = { to: Rails.application.credentials.mail[:admin_email], subject: subject, body: body, content_type: "text/html" }
-      #   response = mail(**data)
-      #   log_request(0, "send_admin_mail", data, response)
-      # end
-
-      def mandrill_template(template_name, vars)
+      def template(template_name, vars)
         merge_vars = vars.merge(site_vars).map { |key, value| { name: key, content: value } }
         api.templates.render(template_name, [], merge_vars)["html"]
       end
@@ -50,6 +44,7 @@ module Maawol
         {
           FROM_NAME: Maawol::Config.site_name,
           FROM_EMAIL: Maawol::Config.mail_from,
+          ADMIN_NAME: Maawol::Config.site_owner_name,
           SITE_NAME: Maawol::Config.site_name,
           SITE_HOST: Maawol::Config.site_host,
           SITE_HEADER_IMG: SiteImage.email_banner_url,

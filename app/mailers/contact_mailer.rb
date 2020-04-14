@@ -1,6 +1,6 @@
 class ContactMailer < MaawolMailer
 	def contact(submission)
-		vars = {
+		merge_vars = {
 		  "NAME" => submission.name,
 		  "EMAIL" => submission.email,
 		  "MESSAGE" => submission.message
@@ -9,19 +9,19 @@ class ContactMailer < MaawolMailer
 		  vars["SUBJECT"] = submission.subject
 		end
 		subject = "New 'contact us' form submission"
-		body = mandrill_template('contact-us', merge_vars(vars))
+		body = template('contact-us', merge_vars)
 		send_admin_mail(subject, body)
 	end
 
 	def stuck(submission)
-		vars = {
+		merge_vars = {
 		  "NAME" => submission.name,
 		  "EMAIL" => submission.email,
 		  "ANSWERS" => build_answers(submission),
 		  "SUBJECT" => submission.subject
 		}
 		subject = "Someone on the site is not sure what to work on!"
-		body = mandrill_template('stuck', merge_vars(vars))
+		body = template('stuck', merge_vars)
 		send_admin_mail(subject, body)
 	end
 

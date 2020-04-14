@@ -2,7 +2,6 @@ class MaawolController < Maawol::Config.application_controller_class
   include Clearance::Controller
 	include Maawol::Controllers::Helpers
 	helper Maawol::Engine.helpers
-	# helper Maawol::ApplicationHelper
 
 	protect_from_forgery with: :exception
 
@@ -25,7 +24,7 @@ class MaawolController < Maawol::Config.application_controller_class
 	end
 
 	def require_subscription
-		unless current_user.has_full_account?
+		unless signed_in? && current_user.has_full_account?
 			flash[:alert] = "Sorry, that page requires a subcription"
 			redirect_to lessons_path
 		end

@@ -5,7 +5,7 @@ class ClearanceMailer < MaawolMailer
       FNAME: user.first_name
     }
     subject = "Reset your password"
-    body = mandrill_template('password-reset', merge_vars)
+    body = template('password-reset', merge_vars)
     send_mail(user.email, subject, body, user.first_name, user.id)
   end
 end

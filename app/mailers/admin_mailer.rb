@@ -2,26 +2,52 @@ class AdminMailer < MaawolMailer
 	include Maawol::Email::Mandrill
 
 	def registration(user)
-		@user = user
-		subject = "New user registration"
-		send_admin_mail({to: Rails.application.credentials.mail[:admin_to], subject: subject })
+		merge_vars = {
+			USER_NAME: user.full_name,
+			USER_EMAIL: user.email
+		}
+		body = template('new-registration', merge_vars)
+		send_admin_mail("New user registration", body)
 	end
 
 	def payment_failed(subscription)
-		@subscription = subscription
-		subject = "Subscription cancelled due to failed payment"
-		send_admin_mail({to: Rails.application.credentials.mail[:admin_to], subject: subject })
+		merge_vars = {
+			USER_NAME: subscription.user.full_name,
+			PAYMENT_METHOD: subscription.payment_system,
+			REMOTE_SUBSCRIPTION_ID: subscription.remote_subscription_id,
+			REMOTE_CUSTOMER_ID: subscription.remote_customer_id
+		}
+		body = template('failed-subscription-payment-admin', merge_vars)
+		send_admin_mail("Subscription cancelled due to a failed payment", body)
 	end
 
 	def new_subscription(subscription)
-		@subscription = subscription
-		subject = "New Subscription"
-		send_admin_mail({to: Rails.application.credentials.mail[:admin_to], subject: subject })
+		merge_vars = {
+			USER_NAME: subscription.user.full_name,
+			PAYMENT_METHOD: subscription.payment_system,
+			REMOTE_SUBSCRIPTION_ID: subscription.remote_subscription_id,
+			REMOTE_CUSTOMER_ID: subscription.remote_customer_id
+		}
+		body = template('new-subscription', merge_vars)
+		send_admin_mail("New Subscription", body)
 	end
 
 	def subscription_cancelled(subscription)
-		@subscription = subscription
-		subject = "Subscription has been cancelled"
-		send_admin_mail({to: Rails.application.credentials.mail[:admin_to], subject: subject })
+		merge_vars = {
+			USER_NAME: subscription.user.full_name,
+			PAYMENT_METHOD: subscription.payment_system,
+			REMOTE_SUBSCRIPTION_ID: subscription.remote_subscription_id,
+			REMOTE_CUSTOMER_ID: subscription.remote_customer_id
+		}
+		body = template('subscription-cancelled', merge_vars)
+		send_admin_mail("Subscription has been cancelled", body)
+	end
+
+	private
+
+	def send_admin_mail(subject, body)
+	  data = mail_data(Maawol::Config.mail_admin_to, subject, body)
+	  response = api.messages.send(data)
+	  log_request(nil, "send_admin_mail", data, response)
 	end
 end

@@ -7,7 +7,7 @@
   	<div class="row mb-3">
   		<div class="<%= user_signed_in? ? 'col-12' : 'col-8 col-xl-9' %> pr-2">
 		  	<h2><%= @store.name %></h2>
-		  	<%= @store.description.html_safe unless @store.description.nil? %>
+		  	<p><%= @store.description.html_safe unless @store.description.nil? %></p>
 		  	<%#= image_tag(@store.image.url(:large), alt: @store.name, class: 'w-100') unless @store.image.nil? %>
 
   	    <div class="w-100">

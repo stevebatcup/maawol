@@ -1,28 +1,24 @@
-<% if user_signed_in? && current_user.is_subscriber? %>
-	<div class="downloadable_item px-2 py-2" data-id="{{item.id}}">
-<% else %>
-	<div class="downloadable_item px-2 py-2" data-id="{{item.id}}">
-<% end %>
-		<img ng-src="{{item.image}}" ng-if="item.image.length > 0" alt="{{item.name}}" class="mr-md-2 w-100" />
-		<div class="w-100 ng-cloak">
-			<h3 class="mt-3">{{item.nameWithType}}</h3>
-			<% if user_signed_in? && current_user.can_download_files_without_purchase? %>
-				<a class="btn btn-success btn-sm w-100 text-center mt-2"
-						ng-href='{{item.accessLink}}'
-						ng-if="item.accessLink"
-						ng-click="downloadItem(item)">{{item.accessLabel}}</a>
-			<% else %>
-				<h6 ng-show="item.inBasket" class="text-center text-success mb-0 mb-1">
-					<small><i class="fa fa-check mr-1"></i>Added to cart</small>
-				</h6>
-				<h5 ng-show="item.price.length > 0"
-						class="btn btn-success w-100 text-center p-0"
-						ng-cloak>
-							<span ng-show="item.inBasket" ng-click="proceedToCheckout(item)" class="d-block w-100 h-100 p-2">
-								<i class="fa fa-shopping-cart mr-2"></i>Go to checkout
-							</span>
-							<span ng-show="!item.inBasket" ng-click="addToBasket(item)" class="d-block w-100 h-100 p-2">Add to cart - {{item.price}}</span>
-				</h5>
-			<% end %>
-		</div>
+<div class="downloadable_item px-2 py-2" data-id="{{item.id}}">
+	<img ng-src="{{item.image}}" ng-if="item.image.length > 0" alt="{{item.name}}" class="mr-md-2 w-100" />
+	<div class="w-100 ng-cloak">
+		<h3 class="mt-3">{{item.nameWithType}}</h3>
+		<% if user_signed_in? && current_user.can_download_files_without_purchase? %>
+			<a class="btn btn-success btn-sm w-100 text-center mt-2"
+					ng-href='{{item.accessLink}}'
+					ng-if="item.accessLink"
+					ng-click="downloadItem(item)">{{item.accessLabel}}</a>
+		<% else %>
+			<h6 ng-show="item.inBasket" class="text-center text-success mb-0 mb-1">
+				<small><i class="fa fa-check mr-1"></i>Added to cart</small>
+			</h6>
+			<h5 ng-show="item.price.length > 0"
+					class="btn btn-success w-100 text-center p-0"
+					ng-cloak>
+						<span ng-show="item.inBasket" ng-click="proceedToCheckout(item)" class="d-block w-100 h-100 p-2">
+							<i class="fa fa-shopping-cart mr-2"></i>Go to checkout
+						</span>
+						<span ng-show="!item.inBasket" ng-click="addToBasket(item)" class="d-block w-100 h-100 p-2">Add to cart - {{item.price}}</span>
+			</h5>
+		<% end %>
+	</div>
 </div>

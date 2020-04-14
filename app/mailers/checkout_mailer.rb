@@ -1,12 +1,12 @@
-class CheckoutMailer < ApplicationMailer
+class CheckoutMailer < MaawolMailer
 	def products_purchased(email, first_name, product_permissions)
-		vars = {
+		merge_vars = {
 			"FNAME" => first_name,
 			"FILE_LINKS" => build_file_links(product_permissions)
 		}
 		subject = "Here are the custom links for your purchases"
-		body = mandrill_template('file-purchased', merge_vars(vars))
-		send_non_user_mail(email, subject, body)
+		body = template('store-receipt', merge_vars)
+		send_mail(email, subject, body, first_name)
 	end
 
 	def build_file_links(permissions)

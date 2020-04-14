@@ -37,7 +37,7 @@ class LessonsController < MaawolController
 			end
 
 			format.html do
-				return redirect_to(root_path) unless user_signed_in?
+				return redirect_to(root_path) unless signed_in?
 				@root_categories = RootCategory.all
 				if params[:root_category] && params[:root_category].to_i > 0
 					@categories = Category.where(root_category_id: params[:root_category])
