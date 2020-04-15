@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_095846) do
+ActiveRecord::Schema.define(version: 2020_04_15_163458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -268,6 +268,7 @@ ActiveRecord::Schema.define(version: 2020_04_15_095846) do
     t.boolean "is_free", default: false
     t.integer "comments_count", default: 0
     t.integer "author_id", default: 1
+    t.integer "access_level", default: 0
     t.index ["publish_date"], name: "index_lessons_on_publish_date"
     t.index ["slug"], name: "index_lessons_on_slug"
   end
@@ -284,6 +285,13 @@ ActiveRecord::Schema.define(version: 2020_04_15_095846) do
     t.integer "tag_id"
     t.index ["lesson_id"], name: "index_lessons_tags_on_lesson_id"
     t.index ["tag_id"], name: "index_lessons_tags_on_tag_id"
+  end
+
+  create_table "lessons_users", id: false, force: :cascade do |t|
+    t.bigint "lesson_id"
+    t.bigint "user_id"
+    t.index ["lesson_id"], name: "index_lessons_users_on_lesson_id"
+    t.index ["user_id"], name: "index_lessons_users_on_user_id"
   end
 
   create_table "lessons_videos", id: false, force: :cascade do |t|

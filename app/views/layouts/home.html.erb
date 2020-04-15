@@ -56,7 +56,7 @@
 
                     <ul class="nav navbar-nav">
 
-                      <% navbar.navbar_items.each do |item| %>
+                      <% navbar.sorted_navbar_items_for_device_type(:desktop).each do |item| %>
                         <% if item.can_be_seen_by_user(current_user) %>
                           <li class="menu-item <%= 'active' if nav_item_is_current_request(item) %>">
                             <a href="<%= item.url %>" data-turbolinks="false" ng-click="navigateUri($event, '<%= item.url %>')"><%= item.name %></a>

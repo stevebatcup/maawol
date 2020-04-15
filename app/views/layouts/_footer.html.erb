@@ -6,7 +6,7 @@
           <div class="widget-details">
             <% if site_image("square_logo").present? %>
               <a href="/" class="d-block">
-                <img src="<%= site_image("square_logo").url(:large_square) %>" alt="<%= site_setting("Site name") %>" class="footer-logo" />
+                <img src="<%= site_image("square_logo").url(:large_square) %>" alt="<%= site_setting("Site name") %>" class="footer-logo d-block w-50 mx-auto" />
               </a>
             <% end %>
 
@@ -91,7 +91,7 @@
 
       <div class="col-md-3 px-4">
         <% if footer_navbar && footer_navbar.navbar_items.any? %>
-          <h3 class="widget-title">Other pages</h3>
+          <h3 class="widget-title">Info</h3>
           <ul class="other_pages p-0">
           <% footer_navbar.navbar_items.each do |item| %>
             <li class="menu-item <%= 'active' if request.url.include?(item.url) %>">
@@ -105,7 +105,7 @@
     </div>
   </div>
 
-  <div class="copyright pt-2 py-2 text-center">&copy; <%= "#{Date.today.strftime("%Y")} #{site_setting("Site name")}" %><br />
+  <div class="copyright mt-3 pt-2 pb-3 text-center">&copy; <%= "#{Date.today.strftime("%Y")} #{site_setting("Site name")}" %><br />
     <small class="mt-2 d-block">Built using <a href='' target='_blank'>Maawol</a>, a web platform for music education</small>
   </div>
 </footer>

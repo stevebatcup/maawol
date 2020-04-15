@@ -18,11 +18,11 @@ settings_data = [
 	{ name: "Site byline", value: "#{Maawol::Config.site_name} - lorem ipsum doo dah day", is_editable: true },
 	{ name: "Meta description", value: "Please enter your meta description, this will help your site's SEO ranking", is_editable: true },
 	{ name: "Contact email address", value: Maawol::Config.site_owner_email, is_editable: true },
+	{ name: "Facebook page URL", value: "https://www.facebook.com/#{Maawol::Config.site_slug}", is_editable: true },
+	{ name: "Twitter username", value: "#{Maawol::Config.site_slug}", is_editable: true },
+	{ name: "Instagram username", value: "#{Maawol::Config.site_slug}", is_editable: true },
+	{ name: "YouTube channel ID", value: "123456rty", is_editable: true },
 	{ name: "Google Analytics ID", value: "", is_editable: true },
-	{ name: "Facebook page URL", value: "", is_editable: true },
-	{ name: "Twitter username", value: "", is_editable: true },
-	{ name: "Instagram username", value: "", is_editable: true },
-	{ name: "YouTube channel ID", value: "", is_editable: true },
 	{ name: "Owner profit split percentage", value: "80", is_editable: false },
 	{ name: "Receives new-registration admin email", value: "yes", is_editable: false },
 	{ name: "Receives new-subscription admin email", value: "yes", is_editable: false },
@@ -47,20 +47,13 @@ lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo
 blocks = [
 	{
 	  name: "bio",
-	  title: "About #{Maawol::Config.site_name}",
+	  title: "#{Maawol::Config.site_name}",
 	  content: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>
-					<a class=\"btn btn-success btn-large\" title=\"Drop me a line\" href=\"/contact\">Drop me a line</a></p>",
-	  is_editable: 1
-	},
-	{
-	  name: "home_register_options",
-	  title: "Register or subscribe",
-	  content: "<div class=\"row\">\r\n<div class=\"col-12 col-md-6 px-md-4 pb-4 pb-md-3 pt-md-3\">\r\n<h5>Subscribed Members:</h5>\r\n<ul>\r\n<li>$25/month</li>\r\n<li>Access to FULL Lesson Library and Courses</li>\r\n<li>Lesson Requests</li>\r\n<li>1-on-1 help</li>\r\n<li>Access to Exclusive Facebook Group</li>\r\n</ul>\r\n<a class=\"mt-3 mb-md-5 btn btn-success btn-large\" style=\"bottom: 0;\" href=\"../../../users/register/sign_up?remember=/subscribe\">Subscribe now</a></div>\r\n<div class=\"col-12 col-md-6 align-items-end px-md-4 pb-md-3 pt-md-3\">\r\n<h5>Registered Members:</h5>\r\n<ul>\r\n<li>FREE</li>\r\n<li>Access to Selected Video Lessons</li>\r\n<li>Access to Exclusive Facebook Group</li>\r\n<li>Access to Exclusive Offers</li>\r\n</ul>\r\n<a class=\"mt-3 mb-md-5 btn btn-info btn-large\" style=\"bottom: 0;\" href=\"/sign_up\">Register now</a></div>\r\n</div>",
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>",
 	  is_editable: 1
 	},
 	{
@@ -109,10 +102,10 @@ puts "> Seeding CMS Navbars...."
 navbars_data = [
 	{ slug: :signed_out, items: [
 		{ name: "Welcome", url: "/", desktop: true, mobile: true },
-		{ name: "Register for FREE", url: "#register", desktop: true, mobile: true },
+		{ name: "Register for FREE", url: "/sign_up", desktop: true, mobile: true },
 		{ name: "Recent lessons", url: "#recent_lessons", desktop: true, mobile: true },
-		{ name: "About", url: "#bio", desktop: true, mobile: true },
-		{ name: "Get in touch", url: "#contact", desktop: true, mobile: true }
+		{ name: "Sample store", url: "/store/sample-store", desktop: true, mobile: true },
+		{ name: "Get in touch", url: "/contact", desktop: true, mobile: true }
 	]},
 	{ slug: :signed_in, items: [
 		{ name: "Home", url: "/lessons", desktop: true, mobile: true },

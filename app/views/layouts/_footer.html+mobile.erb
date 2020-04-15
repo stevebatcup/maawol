@@ -3,7 +3,7 @@
     <div class="text-center mb-4">
       <% if site_image("square_logo").present? %>
       <a href="/" class="d-block">
-        <img src="<%= site_image("square_logo").url(:large_square) %>" alt="<%= site_setting("Site name") %>" class="footer-logo d-block mx-auto" />
+        <img src="<%= site_image("square_logo").url(:large_square) %>" alt="<%= site_setting("Site name") %>" class="footer-logo w-25 d-block mx-auto" />
       </a>
       <% end %>
     </div>
@@ -52,5 +52,6 @@
 
   </div>
 
-  <div class="copyright pt-2 py-2 text-center">&copy; <%= "#{Date.today.strftime("%Y")} #{site_setting("Site name")}" %></div>
+  <div class="copyright pt-2 py-2 text-center">&copy; <%= "#{Date.today.strftime("%Y")} #{site_setting("Site name")}" %><br />
+    <small class="mt-2 d-block">Built using <a href='' target='_blank'>Maawol</a>, a web platform for music education</small></div>
 </footer>

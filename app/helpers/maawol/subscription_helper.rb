@@ -7,5 +7,11 @@ module Maawol
 				"#{option.yearly_price("<span class='currency'>&dollar;</span>", true)}<span class='month'> / year</span>"
 			end
 		end
+
+		def monthly_fee
+			if fee = SubscriptionOption.find_by(payment_system_plan: :monthly)
+				number_to_currency(fee.price.round(2), locale: :fr)
+			end
+		end
 	end
 end

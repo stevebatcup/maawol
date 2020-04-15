@@ -1,71 +1,102 @@
-<section id="dashboard" ng-controller="DashboardController">
-  <div class="video-contents list">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
+<section class="video-contents list" id="dashboard" ng-controller="DashboardController">
+  <div class="container">
+    <div class="row">
 
-          <h2 class="section-title" id="watch_list">
-            <i class="fa fa-clock-o" aria-hidden="true"></i>
-            <span class="text"><span class="first-word">Watch</span> list</span>
-          </h2>
-          <div class="row dashboard_row">
-            <% if @watch_laters.any? %>
-              <div id="watchlist-carousel" class="owl-carousel">
-                <% @watch_laters.each do |wl| %>
-                  <div class="lesson_result search_result well">
-                    <%= render partial: 'item', locals: { lesson: wl.lesson } %>
-                  </div>
-                <% end %>
-              </div>
-            <% else %>
-              <p class="none_found my-3 my-md-4 my-lg-5 w-75 mx-auto" >You have not yet marked any lessons to watch later</p>
-            <% end %>
-          </div>
-          <div class="clearfix"></div>
+      <div class="col-12 col-lg-6">
+        <% if current_user.is_subscriber? || current_user.is_admin? %>
+        <h2 class="section-title" id="personalised_lessons">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <span class="text"><span class="first-word">Personalised</span> lessons</span>
+        </h2>
+        <div class="row dashboard_row">
+          <% if @personalised_lessons.any? %>
+            <div id="personalised-carousel" class="owl-carousel owl-theme" data-items-per-row="2">
+              <% @personalised_lessons.each do |personalised_lesson| %>
+                <div class="item well">
+                  <%= render partial: 'item', locals: { lesson: personalised_lesson } %>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <p class="none_found my-3 my-md-4 my-lg-5 w-75 mx-auto" >
+              As a subscriber you can request personalised lessons from <%= Maawol::Config.site_owner_name %> as part of your package<br />
+              <a href='/contact?request_lesson' class='mt-2 btn btn-success'>Request a personalised lesson</a>
+            </p>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
 
-          <h2 class="section-title" id="favourite_lessons">
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <span class="text"><span class="first-word">Favorite</span> lessons</span>
-          </h2>
-          <div class="row dashboard_row">
-            <% if @favourites.any? %>
-              <div id="favourites-carousel" class="owl-carousel">
-                <% @favourites.each do |fave| %>
-                  <div class="lesson_result search_result well">
-                    <%= render partial: 'item', locals: { lesson: fave.lesson } %>
-                  </div>
-                <% end %>
-              </div>
-            <% else %>
-              <p class="none_found my-3 my-md-4 my-lg-5 w-75 mx-auto" >You have not yet added any lessons to your favorites</p>
-            <% end %>
-          </div>
-          <div class="clearfix"></div>
-
-
-          <h2 class="section-title" id="viewed_lessons">
-            <i class="fa fa-check-square" aria-hidden="true"></i>
-            <span class="text"><span class="first-word">Viewed</span> lessons</span>
-          </h2>
-          <div class="row dashboard_row">
-            <% if @views.any? %>
-              <div id="viewed-carousel" class="owl-carousel">
-                <% @views.each do |view| %>
-                  <div class="lesson_result search_result well">
-                    <%= render partial: 'item', locals: { lesson: view.lesson } %>
-                  </div>
-                <% end %>
-              </div>
-            <% else %>
-              <p class="none_found my-3 my-md-4 my-lg-5 w-75 mx-auto" >You have not yet marked any lessons as viewed</p>
-            <% end %>
-          </div>
-          <div class="clearfix"></div>
-
-
-
+      <div class="col-12 col-lg-6">
+        <h2 class="section-title" id="watch_list">
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+          <span class="text"><span class="first-word">Watch</span> List</span>
+        </h2>
+        <div class="row dashboard_row">
+          <% if @watch_laters.any? %>
+            <div id="watchlist-carousel" class="owl-carousel owl-theme" data-items-per-row="2">
+              <% @watch_laters.each do |wl| %>
+                <div class="item well">
+                  <%= render partial: 'item', locals: { lesson: wl.lesson } %>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <p class="none_found my-3 my-md-4 my-lg-5 w-75 mx-auto" >
+              You have not yet marked any lessons to watch later<br />
+              <a href='/lessons' class='mt-2 btn btn-success'>Find a lesson to add to your Watch List</a>
+            </p>
+          <% end %>
         </div>
       </div>
+
+
+      <div class="col-12 col-lg-6  mt-3">
+        <h2 class="section-title" id="favourite_lessons">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <span class="text"><span class="first-word">Favorite</span> lessons</span>
+        </h2>
+        <div class="row dashboard_row">
+          <% if @favourites.any? %>
+            <div id="favourites-carousel" class="owl-carousel owl-theme" data-items-per-row="2">
+              <% @favourites.each do |fave| %>
+                <div class="item well">
+                  <%= render partial: 'item', locals: { lesson: fave.lesson } %>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <p class="none_found my-3 my-md-4 my-lg-5 w-75 mx-auto" >
+              You have not yet added any lessons to your favorites<br />
+              <a href='/lessons' class='mt-2 btn btn-success'>Find a lesson to add to your Favourites</a>
+            </p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6 mt-3">
+        <h2 class="section-title" id="viewed_lessons">
+          <i class="fa fa-check-square" aria-hidden="true"></i>
+          <span class="text"><span class="first-word">Viewed</span> lessons</span>
+        </h2>
+        <div class="row dashboard_row">
+          <% if @views.any? %>
+            <div id="viewed-carousel" class="owl-carousel owl-theme" data-items-per-row="2">
+              <% @views.each do |view| %>
+                <div class="item well">
+                  <%= render partial: 'item', locals: { lesson: view.lesson } %>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <p class="none_found my-3 my-md-4 my-lg-5 w-75 mx-auto" >
+              You have not yet marked any lessons as viewed<br />
+              <a href='/lessons' class='mt-2 btn btn-success'>Find a lesson to add click 'viewed'</a>
+            </p>
+          <% end %>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

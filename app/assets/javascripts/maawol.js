@@ -5,6 +5,7 @@
 
 //= require vendor/modernizr.custom
 //= require vendor/jquery.match-height
+//= require vendor/owl-carousel.min
 //= require vendor/video-stories-theme
 //= require vendor/console-hook
 

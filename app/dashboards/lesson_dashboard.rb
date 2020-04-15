@@ -8,8 +8,8 @@ class LessonDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    id: Field::Number,
     name: Field::String,
+    human_access_level: NonEditableStringField,
     videos: AttachableField,
     downloadables: AttachableField,
     tags: HasLotsField,
@@ -19,6 +19,7 @@ class LessonDashboard < Administrate::BaseDashboard
     course_only: Field::Boolean,
     is_free: Field::Boolean,
     listening_labs: HasLotsField,
+    users: HasLotsField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     publish_date: Field::DateTime.with_options(
@@ -35,6 +36,7 @@ class LessonDashboard < Administrate::BaseDashboard
     :name,
     :author,
     :is_free,
+    :human_access_level,
     :publish_date
   ].freeze
 
@@ -45,7 +47,7 @@ class LessonDashboard < Administrate::BaseDashboard
     :author,
     :content,
     :course_only,
-    :created_at,
+    :human_access_level,
     :publish_date,
   ].freeze
 
@@ -63,6 +65,7 @@ class LessonDashboard < Administrate::BaseDashboard
     :tags,
     :categories,
     :listening_labs,
+    :users,
     :publish_date
   ].freeze
 

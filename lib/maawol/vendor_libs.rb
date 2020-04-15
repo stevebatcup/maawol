@@ -64,7 +64,7 @@ module Maawol
 			    config.cookie_path = "/"
 			    config.httponly = false
 			    config.mailer_sender = Config.mail_from
-			    config.redirect_url = "/dashboard"
+			    config.redirect_url = "/lessons"
 			    config.rotate_csrf_on_sign_in = true
 			    config.secure_cookie = false
 			    config.sign_in_guards = []

@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :favourites
   has_many :views
   has_many  :subscriptions, class_name: 'UsersSubscription'
+  has_and_belongs_to_many :lessons
   belongs_to  :author, optional: true
 
   mount_uploader :avatar, AvatarUploader

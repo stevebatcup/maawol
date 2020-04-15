@@ -4,16 +4,24 @@ class Maawol.Dashboard extends Maawol.Page
 	@helpers = Maawol.FormHelpers
 
 	@$inject: [
-	  '$scope'
-	  '$http'
+		'$scope'
+		'$rootScope'
+		'$http'
+		'$element'
+		'$timeout'
 	]
 
 	init: ->
-		$(".owl-carousel").each (index, box) =>
-			if $(box).find('.lesson_result').length > 0
-				$(box).owlCarousel
-					items: if @isMobile() then 1 else 4
-					stagePadding: 10
+		$(".owl-carousel").owlCarousel
+			stagePadding: 10
+			loop: false
+			nav: false
+			dots: true
+			responsive:
+				0:
+					items:1
+				900:
+					items:2
 		@bindEvents()
 
 	bindEvents: =>

@@ -6,12 +6,16 @@ class Lesson < ApplicationRecord
   has_and_belongs_to_many :tags
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :listening_labs
+  has_and_belongs_to_many :users
   has_many :teachings
   has_many :courses, through: :teachings
   belongs_to :author, optional: false
 
   validates_presence_of :name
   before_save :set_slug
+  before_save :set_access_level
+
+  enum  access_level: [:global, :users]
 
   def self.table_name
     'lessons'
@@ -28,7 +32,7 @@ class Lesson < ApplicationRecord
   end
 
   def self.published
-  	where('publish_date <= ?', Time.now)
+  	where('publish_date <= ?', Time.now).where(access_level: :global)
   end
 
   def self.in_category(id)
@@ -89,10 +93,18 @@ class Lesson < ApplicationRecord
     self.tags.any? || self.categories.any?
   end
 
+  def human_access_level
+    self.access_level.to_sym == :global ? "All users" : "#{self.users.size} user#{self.users.size > 1 ? 's' : ''}"
+  end
+
 private
 
   def set_slug
     self.slug = self.name.parameterize
+  end
+
+  def set_access_level
+    self.access_level = self.users.any? ? :users : :global
   end
 
   def content_fragment

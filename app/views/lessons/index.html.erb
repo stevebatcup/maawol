@@ -1,67 +1,50 @@
-<section class="list lessons video-contents <%= column_browser_class %>" ng-controller="LessonsController">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
+<section class="container list lessons video-contents <%= column_browser_class %>" ng-controller="LessonsController">
 
-        <% unless current_user.has_full_account? %>
-          <div class="well w-100 mx-auto mb-3" id="subscribe_instructions">
-            <h2>Subscribe now for:</h2>
-            <ul>
-              <li>Access to FULL Lesson Library and Courses </li>
-              <li>Lesson Requests</li>
-              <li>1-on-1 help from <%= Maawol::Config.site_owner_fname %></li>
-              <li>Access to Exclusive Facebook Group</li>
-              <li>Cancel Anytime</li>
-            </ul>
-            <a href="/subscribe" class="btn btn-success btn-large mt-3">Subscribe now</a>
+    <%= render(partial: 'subscribe_callout') unless current_user.has_full_account? %>
+
+    <% if params[:paid] %>
+      <div class="well" id="paid">
+        <h2>Thanks!</h2>
+        <p>You are now a subscriber and can view the lessons below.</p>
+      </div>
+    <% end %>
+
+    <div class="section">
+      <% if params[:tag] %>
+        <h2 class="section-title" data-tag="<%= params[:tag] %>"><%= params[:tag] %></h2>
+      <% elsif params[:root_category] %>
+        <h2 class="section-title" data-root-category="<%= params[:root_category] %>" data-category="<%= params[:category] %>"><%= @category_title %></h2>
+      <% elsif params[:search] %>
+        <h2 class="section-title" data-search="<%= params[:search] %>">Showing results for: '<%= params[:search] %>'</h2>
+      <% else %>
+        <h2 class="section-title">All lessons</h2>
+      <% end %>
+
+      <div ng-if="loaded" class="fader" ng-cloak>
+        <%= render 'lessons/filters' if current_user.has_full_account? && !params[:search] %>
+        <div class="row">
+          <div ng-repeat="lesson in lessons"
+                    class="lesson_result search_result col-sm-3 col-md-5ths col-lg-3 mb-3"
+                    ng-class="{'blocked': !lesson.available}"
+                   id="item_{{lesson.id}}">
+            <%= render partial: 'lessons/list-item' %>
           </div>
-        <% end %>
-
-        <% if params[:paid] %>
-          <div class="well" id="paid">
-            <h2>Thanks!</h2>
-            <p>You are now a subscriber and can view the lessons below.</p>
-          </div>
-        <% end %>
-
-        <div class="section">
-          <% if params[:tag] %>
-            <h2 class="section-title" data-tag="<%= params[:tag] %>"><%= params[:tag] %></h2>
-          <% elsif params[:root_category] %>
-            <h2 class="section-title" data-root-category="<%= params[:root_category] %>" data-category="<%= params[:category] %>"><%= @category_title %></h2>
-          <% elsif params[:search] %>
-            <h2 class="section-title" data-search="<%= params[:search] %>">Showing results for: '<%= params[:search] %>'</h2>
-          <% else %>
-            <h2 class="section-title">All lessons</h2>
-          <% end %>
-
-          <div ng-if="loaded" class="fader" ng-cloak>
-            <%= render 'lessons/filters' if current_user.has_full_account? && !params[:search] %>
-            <div class="row">
-              <div ng-repeat="lesson in lessons"
-                        class="lesson_result search_result col-sm-3 col-md-5ths col-lg-3 mb-3"
-                        ng-class="{'blocked': !lesson.available}"
-                       id="item_{{lesson.id}}">
-                <%= render partial: 'lessons/list-item' %>
-              </div>
-            </div>
-          </div>
-
-          <h3 id="loading" ng-if="!loaded" class="fader" ng-cloak>
-            <span class="spinner"></span>
-            Loading lessons...
-          </h3>
-
-          <p class="none_found" ng-if="loaded && !lessons.length" ng-cloak>
-            <% if params[:tag] %>
-              Sorry there are no lessons found for tag '<%= params[:tag] %>
-            <% else %>
-              No lessons found
-            <% end %>
-          </p>
-
         </div>
       </div>
+
+      <h3 id="loading" ng-if="!loaded" class="fader" ng-cloak>
+        <span class="spinner"></span>
+        Loading lessons...
+      </h3>
+
+      <p class="none_found" ng-if="loaded && !lessons.length" ng-cloak>
+        <% if params[:tag] %>
+          Sorry there are no lessons found for tag '<%= params[:tag] %>
+        <% else %>
+          No lessons found
+        <% end %>
+      </p>
+
     </div>
-  </div>
+
 </section>
