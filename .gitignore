@@ -26,3 +26,5 @@ node_modules/
 
 jdr-secrets.yml
 setup-procedure.markdown
+
+spec/dummy/config/database.yml

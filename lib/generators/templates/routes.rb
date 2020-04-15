@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 	  resources :listening_labs
 	  resources :albums
 	  resources :stuck_questions
+	  resources :income_reports, only: [:index, :show]
 	  namespace :content_management do
 	    resources :content_blocks
 	    resources :pages

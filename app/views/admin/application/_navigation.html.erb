@@ -66,6 +66,11 @@ as defined by the routes in the `admin/` namespace
   <h3>E-commerce</h3>
   <ul>
     <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/income_reports') %>"
+            href="/admin/income_reports">Monthly income
+      </a>
+    </li>
+    <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/stores') %>"
             href="/admin/stores">Stores
       </a>

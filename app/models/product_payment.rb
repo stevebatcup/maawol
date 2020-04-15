@@ -1,5 +1,6 @@
 class ProductPayment < ApplicationRecord
 	belongs_to :product
+	after_create :regenerate_income_report
 
 	def item_name
 		self.product.productable.name
@@ -28,5 +29,10 @@ class ProductPayment < ApplicationRecord
 
 	def processed_at
 		self.created_at.strftime("%H:%M on %B %d, %Y")
+	end
+
+	def regenerate_income_report
+		report = IncomeReport.find_or_create_for_current_month
+		report.generate_stats
 	end
 end

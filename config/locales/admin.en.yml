@@ -60,6 +60,13 @@ en:
         tmp_video_file: Video
         human_status: Status
         when_associated: Videos
+      income_report:
+        month_and_year: Month
+        earnings: You earned
+        store_payments_count: Store payments
+        subscription_payments_count: Subscription payments
+        profit_split_percentage: Your income percentage (Maawol gets the reaminder)
+        total_income: Total income for website
   administrate:
     actions:
       confirm: Are you sure?

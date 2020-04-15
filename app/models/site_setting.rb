@@ -24,4 +24,8 @@ class SiteSetting < ApplicationRecord
 	def self.editable
 		where(is_editable: true)
 	end
+
+	def self.get_profit_split_percentage
+		find_by(name: "Owner profit split percentage").value.to_i
+	end
 end

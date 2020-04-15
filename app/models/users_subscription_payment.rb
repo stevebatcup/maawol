@@ -1,5 +1,6 @@
 class UsersSubscriptionPayment < ApplicationRecord
-	belongs_to	:users_subscription
+	belongs_to	:users_subscription, optional: true
+	after_create	:regenerate_income_report
 
 	def self.initial_price_to_pay(subscription_option, session_discount_code=nil)
 		if session_discount_code.present?
@@ -31,4 +32,9 @@ class UsersSubscriptionPayment < ApplicationRecord
 	def author_name
 		users_subscription.user.subscription_referring_author_name
 	end
+
+  def regenerate_income_report
+  	report = IncomeReport.find_or_create_for_current_month
+  	report.generate_stats
+  end
 end
