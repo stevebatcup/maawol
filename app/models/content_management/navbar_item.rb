@@ -1,6 +1,7 @@
 module ContentManagement
 	class NavbarItem < ApplicationRecord
 		belongs_to	:navbar
+		default_scope { order(sort: :asc) }
 
 		def self.table_name
 			'cms_navbar_items'

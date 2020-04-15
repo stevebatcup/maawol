@@ -37,7 +37,7 @@ class ContactController < MaawolController
 						redirect_to new_contact_path, notice: notice
 					end
 				else
-					redirect_to dashboard_path(stuck: true), notice: "Thanks! I'll get back to you ASAP with some suggestions of things to work on."
+					redirect_to lessons_path(stuck: true), notice: "Thanks! I'll get back to you ASAP with some suggestions of things to work on."
 				end
 			else
 				flash[:alert] = "Sorry there was an error sending your message: #{legible_form_errors(@contact.errors)}"

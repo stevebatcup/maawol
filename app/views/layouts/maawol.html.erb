@@ -65,7 +65,7 @@
               <div id="menu" class="main-menu pull-left">
 
                 <ul class="nav navbar-nav">
-                  <% navbar.navbar_items.each do |item| %>
+                  <% navbar.sorted_navbar_items.each do |item| %>
                     <% if item.can_be_seen_by_user(current_user) %>
                     <li class="menu-item <%= 'active' if request.url.include?(item.url) %>">
                       <a href="<%= item.url %>" data-turbolinks="false"><%= item.name %></a>

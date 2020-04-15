@@ -42,12 +42,4 @@ class AdminMailer < MaawolMailer
 		body = template('subscription-cancelled', merge_vars)
 		send_admin_mail("Subscription has been cancelled", body)
 	end
-
-	private
-
-	def send_admin_mail(subject, body)
-	  data = mail_data(Maawol::Config.mail_admin_to, subject, body)
-	  response = api.messages.send(data)
-	  log_request(nil, "send_admin_mail", data, response)
-	end
 end

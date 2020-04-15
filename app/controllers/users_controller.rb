@@ -19,7 +19,7 @@ class UsersController < Clearance::UsersController
   private
 
   def url_after_create
-  	@user.has_full_account? ? dashboard_path : lessons_path
+  	lessons_path
   end
 
   def user_params

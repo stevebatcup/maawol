@@ -68,4 +68,8 @@ class User < ApplicationRecord
   def can_download_files_without_purchase?
     self.is_subscriber? || self.is_admin?
   end
+
+  def can_access_dashboard?
+    has_full_account? || is_admin?
+  end
 end

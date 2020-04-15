@@ -24,7 +24,7 @@ class MaawolController < Maawol::Config.application_controller_class
 	end
 
 	def require_subscription
-		unless signed_in? && current_user.has_full_account?
+		unless signed_in? && current_user.can_access_dashboard?
 			flash[:alert] = "Sorry, that page requires a subcription"
 			redirect_to lessons_path
 		end

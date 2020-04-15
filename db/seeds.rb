@@ -115,12 +115,12 @@ navbars_data = [
 		{ name: "Get in touch", url: "#contact", desktop: true, mobile: true }
 	]},
 	{ slug: :signed_in, items: [
-		{ name: "My dashboard", url: "/home", desktop: true, mobile: true },
-		{ name: "Lessons", url: "/lessons", desktop: true, mobile: true },
+		{ name: "Home", url: "/lessons", desktop: true, mobile: true },
 		{ name: "Courses", url: "/courses", desktop: true, mobile: true },
+		{ name: "My lessons", url: "/home", desktop: true, mobile: true },
+		{ name: "My account", url: "/settings", desktop: false, mobile: true }
 		{ name: "Not sure what to work on?", url: "/stuck", desktop: true, mobile: true },
 		{ name: "Contact", url: "/contact", desktop: true, mobile: true },
-		{ name: "My account", url: "/settings", desktop: false, mobile: true }
 	]},
 	{ slug: :footer, items: [
 		{ name: "Privacy policy", url: "/privacy-policy", desktop: true, mobile: true },
@@ -146,9 +146,9 @@ qandas_data = [
 		{ answer: "Something quick", sort: 1 },
 		{ answer: "Something to sink my teeth into", sort: 2, }
 	]},
-	{ question: "Do you have time to work on something on the kit, or will you be mostly away from the kit?", sort: 2, answers: [
-		{ answer: "On the kit", sort: 1 },
-		{ answer: "Away from the kit", sort: 2, }
+	{ question: "Do you have time to work on something on your instrument, or will you be mostly away from your instrument?", sort: 2, answers: [
+		{ answer: "On your instrument", sort: 1 },
+		{ answer: "Away from your instrument", sort: 2, }
 	]},
 	{ question: "Do you want to work on something technique-related, or something more open and improvisational?", sort: 3, answers: [
 		{ answer: "Technique", sort: 1 },
@@ -211,7 +211,9 @@ colors_data = [
 	{ name: "Buttons > Favourite", slug: "buttons_favourite", value: "#9f74ba", default_value: "#9f74ba" }
 ]
 colors_data.each do |color_data|
-	SiteColor.find_or_create_by(name: color_data[:name], slug: color_data[:slug], value: color_data[:value], default_value: color_data[:default_value])
+	unless SiteColor.find_by(name: color_data[:name])
+		SiteColor.create(color_data)
+	end
 end
 
 puts "> Seeding Site Images...."
@@ -292,7 +294,9 @@ sub_options = [
 	}
 ]
 sub_options.each do |sub_option|
-	SubscriptionOption.find_or_create_by(sub_option)
+	unless SubscriptionOption.find_by(level: sub_option[:level])
+		SubscriptionOption.create(sub_option)
+	end
 end
 
 puts "> Seeding Tags...."
@@ -321,31 +325,31 @@ end
 puts "> Seeding Videos...."
 videos_data = [
 	{ name: 'Homepage sample video',
-		url: 'https://vimeo.com/405177296',
+		url: 'https://vimeo.com/407902224',
 		is_for_homepage: true,
-		vimeo_data: {"type":"video","version":"1.0","provider_name":"Vimeo","provider_url":"https:\/\/vimeo.com\/","title":"homepage-sample","author_name":"Steve Batcup","author_url":"https:\/\/vimeo.com\/user65939366","is_plus":"1","account_type":"plus","html":"<iframe src=\"https:\/\/player.vimeo.com\/video\/405177296?app_id=122963\" width=\"640\" height=\"358\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen title=\"homepage-sample\"><\/iframe>","width":640,"height":358,"duration":19,"description":"","thumbnail_url":"https:\/\/i.vimeocdn.com\/video\/875250161_640.webp","thumbnail_width":640,"thumbnail_height":358,"thumbnail_url_with_play_button":"https:\/\/i.vimeocdn.com\/filter\/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F875250161_640.webp&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png","upload_date":"2020-04-07 16:12:26","video_id":405177296,"uri":"\/videos\/405177296"},
-		vimeo_id:  '405177296',
+		vimeo_data: {"type":"video","version":"1.0","provider_name":"Vimeo","provider_url":"https:\/\/vimeo.com\/","title":"Homepage","author_name":"Steve Batcup","author_url":"https:\/\/vimeo.com\/user65939366","is_plus":"1","account_type":"plus","html":"<iframe src=\"https:\/\/player.vimeo.com\/video\/407902224?app_id=122963\" width=\"426\" height=\"240\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen title=\"Homepage\"><\/iframe>","width":426,"height":240,"duration":20,"description":"","thumbnail_url":"https:\/\/i.vimeocdn.com\/video\/878651551_295x166.webp","thumbnail_width":295,"thumbnail_height":166,"thumbnail_url_with_play_button":"https:\/\/i.vimeocdn.com\/filter\/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F878651551_295x166.webp&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png","upload_date":"2020-04-15 04:19:28","video_id":407902224,"uri":"\/videos\/407902224"},
+		vimeo_id:  '407902224',
 		remote_thumbnail_url: 'https://maawol.s3.amazonaws.com/seeds/thumbnail-sample-video-homepage.png'
 	},
 	{ name: 'Sample video 1',
-		url: 'https://vimeo.com/404939755',
+		url: 'https://vimeo.com/407902352',
 		is_for_homepage: false,
-		vimeo_data: {"type":"video","version":"1.0","provider_name":"Vimeo","provider_url":"https://vimeo.com/","title":"sample-1","author_name":"Steve Batcup","author_url":"https://vimeo.com/user65939366","is_plus":"1","account_type":"plus","html":"<iframe src='https://player.vimeo.com/video/404939755?app_id=122963' width='426' height='238' frameborder='0' allow='autoplay; fullscreen' allowfullscreen title='sample-1'></iframe>","width":426,"height":238,"duration":25,"description":"","thumbnail_url":"https://i.vimeocdn.com/video/874949710_295x166.webp","thumbnail_width":295,"thumbnail_height":165,"thumbnail_url_with_play_button":"https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F874949710_295x166.webp&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png","upload_date":"2020-04-07 04:44:57","video_id":404939755,"uri":"/videos/404939755"},
-		vimeo_id:  '404939755',
+		vimeo_data: {"type":"video","version":"1.0","provider_name":"Vimeo","provider_url":"https:\/\/vimeo.com\/","title":"Sample Video 1","author_name":"Steve Batcup","author_url":"https:\/\/vimeo.com\/user65939366","is_plus":"1","account_type":"plus","html":"<iframe src=\"https:\/\/player.vimeo.com\/video\/407902352?app_id=122963\" width=\"426\" height=\"240\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen title=\"Sample Video 1\"><\/iframe>","width":426,"height":240,"duration":20,"description":"","thumbnail_url":"https:\/\/i.vimeocdn.com\/video\/878651864_295x166.webp","thumbnail_width":295,"thumbnail_height":166,"thumbnail_url_with_play_button":"https:\/\/i.vimeocdn.com\/filter\/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F878651864_295x166.webp&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png","upload_date":"2020-04-15 04:20:06","video_id":407902352,"uri":"\/videos\/407902352"},
+		vimeo_id:  '407902352',
 		remote_thumbnail_url: 'https://maawol.s3.amazonaws.com/seeds/thumbnail-sample-video-1.png'
 	},
 	{ name: 'Sample video 2',
-		url: 'https://vimeo.com/404939719',
+		url: 'https://vimeo.com/407902261',
 		is_for_homepage: false,
-		vimeo_data: {"type":"video","version":"1.0","provider_name":"Vimeo","provider_url":"https://vimeo.com/","title":"sample-2","author_name":"Steve Batcup","author_url":"https://vimeo.com/user65939366","is_plus":"1","account_type":"plus","html":"<iframe src='https://player.vimeo.com/video/404939719?app_id=122963' width='426' height='238' frameborder='0' allow='autoplay; fullscreen' allowfullscreen title='sample-2'></iframe>","width":426,"height":238,"duration":20,"description":"","thumbnail_url":"https://i.vimeocdn.com/video/874949654_295x166.webp","thumbnail_width":295,"thumbnail_height":165,"thumbnail_url_with_play_button":"https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F874949654_295x166.webp&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png","upload_date":"2020-04-07 04:44:48","video_id":404939719,"uri":"/videos/404939719"},
-		vimeo_id:  '404939719',
+		vimeo_data: {"type":"video","version":"1.0","provider_name":"Vimeo","provider_url":"https:\/\/vimeo.com\/","title":"Sample Video 2","author_name":"Steve Batcup","author_url":"https:\/\/vimeo.com\/user65939366","is_plus":"1","account_type":"plus","html":"<iframe src=\"https:\/\/player.vimeo.com\/video\/407902261?app_id=122963\" width=\"426\" height=\"240\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen title=\"Sample Video 2\"><\/iframe>","width":426,"height":240,"duration":20,"description":"","thumbnail_url":"https:\/\/i.vimeocdn.com\/video\/878651558_295x166.webp","thumbnail_width":295,"thumbnail_height":166,"thumbnail_url_with_play_button":"https:\/\/i.vimeocdn.com\/filter\/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F878651558_295x166.webp&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png","upload_date":"2020-04-15 04:19:40","video_id":407902261,"uri":"\/videos\/407902261"},
+		vimeo_id:  '407902261',
 		remote_thumbnail_url: 'https://maawol.s3.amazonaws.com/seeds/thumbnail-sample-video-2.png'
 	},
 	{ name: 'Sample video 3',
-		url: 'https://vimeo.com/404939676',
+		url: 'https://vimeo.com/407902320',
 		is_for_homepage: false,
-		vimeo_data: {"type":"video","version":"1.0","provider_name":"Vimeo","provider_url":"https://vimeo.com/","title":"sample-3","author_name":"Steve Batcup","author_url":"https://vimeo.com/user65939366","is_plus":"1","account_type":"plus","html":"<iframe src='https://player.vimeo.com/video/404939676?app_id=122963' width='426' height='238' frameborder='0' allow='autoplay; fullscreen' allowfullscreen title='sample-3'></iframe>","width":426,"height":238,"duration":21,"description":"","thumbnail_url":"https://i.vimeocdn.com/video/874949565_295x166.webp","thumbnail_width":295,"thumbnail_height":165,"thumbnail_url_with_play_button":"https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F874949565_295x166.webp&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png","upload_date":"2020-04-07 04:44:38","video_id":404939676,"uri":"/videos/404939676"},
-		vimeo_id:  '404939676',
+		vimeo_data: {"type":"video","version":"1.0","provider_name":"Vimeo","provider_url":"https:\/\/vimeo.com\/","title":"Sample Video 3","author_name":"Steve Batcup","author_url":"https:\/\/vimeo.com\/user65939366","is_plus":"1","account_type":"plus","html":"<iframe src=\"https:\/\/player.vimeo.com\/video\/407902320?app_id=122963\" width=\"426\" height=\"240\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen title=\"Sample Video 3\"><\/iframe>","width":426,"height":240,"duration":20,"description":"","thumbnail_url":"https:\/\/i.vimeocdn.com\/video\/878651697_295x166.webp","thumbnail_width":295,"thumbnail_height":166,"thumbnail_url_with_play_button":"https:\/\/i.vimeocdn.com\/filter\/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F878651697_295x166.webp&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png","upload_date":"2020-04-15 04:19:57","video_id":407902320,"uri":"\/videos\/407902320"},
+		vimeo_id:  '407902320',
 		remote_thumbnail_url: 'https://maawol.s3.amazonaws.com/seeds/thumbnail-sample-video-3.png'
 	},
 ]

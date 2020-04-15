@@ -10,6 +10,10 @@ module ContentManagement
 			'cms_navbars'
 		end
 
+		def sorted_navbar_items
+			navbar_items.order(sort: :asc)
+		end
+
 		def cannot_have_too_many_items_on_desktop
 			if navbar_items.map(&:desktop).count(true) > NAVBAR_ITEM_LIMIT
 				errors.add(:navbar_items, ": cannot select more than #{NAVBAR_ITEM_LIMIT} for desktop/tablet devices")

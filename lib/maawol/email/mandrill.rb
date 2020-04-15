@@ -15,6 +15,12 @@ module Maawol
         log_request(recipient_id, "send_mail", data, response)
       end
 
+      def send_admin_mail(subject, body)
+        data = mail_data(Maawol::Config.mail_admin_to, subject, body)
+        response = api.messages.send(data)
+        log_request(nil, "send_admin_mail", data, response)
+      end
+
       def mail_data(email_address, subject, body, recipient_name=nil)
         data = {
           subject: subject,
