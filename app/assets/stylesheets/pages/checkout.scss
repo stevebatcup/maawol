@@ -113,7 +113,7 @@ section#payment {
 				padding: 0 0 0 2px;
 		    position: relative;
 		    top: 8px;
-				margin: 0;
+				margin: 0 0 1em;
 				display: inline-block;
 
 				li {
@@ -126,7 +126,9 @@ section#payment {
 						width: inherit;
 
 						img {
-							height: 21px;
+							max-width: 110px;
+							min-width: 48px;
+							min-height: 25px;
 						}
 
 						input {

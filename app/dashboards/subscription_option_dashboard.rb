@@ -15,7 +15,7 @@ class SubscriptionOptionDashboard < Administrate::BaseDashboard
     price: Field::Number.with_options(
       searchable: false,
       decimals: 2,
-      prefix: "$",
+      prefix: Maawol::Config.currency_symbol,
     ),
     display_sort: SmallNumberField,
     description: Field::Text,

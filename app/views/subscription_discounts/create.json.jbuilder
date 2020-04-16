@@ -11,7 +11,7 @@ if @discount
 			json.monthsText pluralize option.months, 'month'
 			json.discounted_by option.discounted_by.to_i
 			json.monthlyPrice option.monthly_price
-			json.monthlyPriceFullText "#{option.monthly_price("<span class='currency'>&dollar;</span>", true)}<span class='month'> / month</span>"
+			json.monthlyPriceFullText "#{option.monthly_price("<span class='currency'>#{Maawol::Config.currency_symbol}</span>", true)}<span class='month'> / month</span>"
 			json.mostPopular option.tag && option.tag.to_sym == :most_popular
 			json.fullPrice option.price
 			if option.discounted_price

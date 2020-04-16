@@ -114,12 +114,10 @@ class Maawol.Subscriptions extends Maawol.Page
 		@scope.subscription.level = level
 
 	setupSubscriptionOptions: ->
-		isMigration = @element.data('migration')
-		url = if isMigration then "/subscription_options?migration=1" else "/subscription_options"
-		@http.get(url).then (response) =>
+		@http.get("/subscription_options").then (response) =>
 			@scope.subscription_options = response.data.subscriptionOptions
 			@timeout =>
-				@setDefaultLevel(if isMigration then @scope.subscription_options[0].level else response.data.selectedLevel)
+				@setDefaultLevel(response.data.selectedLevel)
 				if @element.data('discount-code').toString().length
 					@timeout =>
 						@scope.discount.code = @element.data('discount-code')
@@ -137,7 +135,7 @@ class Maawol.Subscriptions extends Maawol.Page
 	calculateTotals: (fullPrice, monthlyPrice) =>
 		@scope.total = fullPrice.toFixed(2)
 		@scope.dailyPrice = (monthlyPrice / 30).toFixed(2)
-		@scope.dailyPriceText = @element.data('daily-calculation-text').replace('%{dailyPrice}', @scope.dailyPrice)
+		@scope.dailyPriceText = @element.data('daily-calculation-text').replace('@{dailyPrice}', @scope.dailyPrice)
 
 	bindRedirectedMessage: ->
 		from = @element.data('redirected-from')

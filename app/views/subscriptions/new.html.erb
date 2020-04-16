@@ -17,7 +17,7 @@
     data-discount-code="<%= session[:discount_code].present? ? session[:discount_code] : '' %>"
     data-discount-applying-text="<%= t('views.subscription.form.labels.discount_code.applying') %>"
     data-discount-applied-text="<%= t('views.subscription.form.labels.discount_code.applied') %>"
-    data-daily-calculation-text="<%= t('views.subscription.summary.daily_calculation') %>">
+    data-daily-calculation-text="<%= t('views.subscription.summary.daily_calculation', currency_symbol: Maawol::Config.currency_symbol) %>">
 
     <flash-message></flash-message>
 
@@ -79,15 +79,15 @@
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td class="last_row">{{ subscription.name }}</td>
-                <td class="right last_row">${{ subscription.fullPrice }}</td>
+                <td class="right last_row"><%= Maawol::Config.currency_symbol %>{{ subscription.fullPrice }}</td>
               </tr>
               <tr ng-if="discount.applied && subscription.discounted.percentage > 0">
                 <td class="last_row">Discount (-{{ subscription.discounted.percentage }}%)</td>
-                <td class="right last_row">-${{ subscription.discounted.price }}</td>
+                <td class="right last_row">-<%= Maawol::Config.currency_symbol %>{{ subscription.discounted.price }}</td>
               </tr>
               <tr>
                 <td class="total total_label"><%= t('views.subscription.summary.total') %></td>
-                <td class="total right">${{ total }}</td>
+                <td class="total right"><%= Maawol::Config.currency_symbol %>{{ total }}</td>
               </tr>
               <tr>
                 <td colspan="2" id="summary_daily_calculation" class="right">
@@ -97,7 +97,7 @@
             </table>
           </div>
 
-          <p id="terms">* <%= t('views.subscription.small_print_terms_html') %></p>
+          <p id="terms">* <%= t('views.subscription.small_print_terms_html', currency_symbol: Maawol::Config.currency_symbol) %></p>
 
           <p id="discount_applied" ng-if="discount.applied" ng-bind-html="discount.description"></p>
           <form id="discount_form" ng-if="!discount.applied" class="d-flex">
@@ -115,7 +115,7 @@
               <span class="item_label" style="width: 30%;"><%= t('views.subscription.form.labels.selected') %>: </span>
               <span class="selected_months">{{subscription.name}} @</span>
               <span id="selected_total">
-               ${{subscription.price}}
+               <%= Maawol::Config.currency_symbol %>{{subscription.price}}
              </span>
             </p>
 

@@ -9,7 +9,7 @@ class IncomeReportDashboard < Administrate::BaseDashboard
     subscription_payments_total: Field::Number.with_options(
       searchable: false,
       decimals: 2,
-      prefix: "$",
+      prefix: Maawol::Config.currency_symbol,
     ),
     store_payments_count: Field::Number.with_options(
       searchable: false,
@@ -17,17 +17,17 @@ class IncomeReportDashboard < Administrate::BaseDashboard
     store_payments_total: Field::Number.with_options(
       searchable: false,
       decimals: 2,
-      prefix: "$",
+      prefix: Maawol::Config.currency_symbol,
     ),
     total_income: Field::Number.with_options(
       searchable: false,
       decimals: 2,
-      prefix: "$",
+      prefix: Maawol::Config.currency_symbol,
     ),
     earnings: Field::Number.with_options(
       searchable: false,
       decimals: 2,
-      prefix: "$",
+      prefix: Maawol::Config.currency_symbol,
     ),
     profit_split_percentage: SmallNumberField.with_options(
       searchable: false,

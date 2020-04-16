@@ -15,12 +15,12 @@ class ProductPaymentDashboard < Administrate::BaseDashboard
     author_name: Field::String,
     author_fee: Field::Number.with_options(
       decimals: 2,
-      prefix: "$",
+      prefix: Maawol::Config.currency_symbol,
       searchable: false
     ),
     amount: Field::Number.with_options(
       searchable: false,
-      prefix: "$",
+      prefix: Maawol::Config.currency_symbol,
       decimals: 2
     ),
     status: Field::String,
@@ -65,7 +65,6 @@ class ProductPaymentDashboard < Administrate::BaseDashboard
     last_name
     email
     payment_system
-    admin_created_at
   ].freeze
 
   # FORM_ATTRIBUTES

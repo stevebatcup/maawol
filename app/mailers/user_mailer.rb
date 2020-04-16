@@ -13,9 +13,9 @@ class UserMailer < MaawolMailer
 	def subscription_receipt(subscription)
 		merge_vars = {
 		  "FNAME" => subscription.user.first_name,
-		  "INITIAL_PRICE" => number_to_currency(subscription.initial_price),
+		  "INITIAL_PRICE" => number_to_currency(subscription.initial_price, unit: Maawol::Config.currency_symbol),
 		  "NEXT_PAYMENT_DUE" => subscription.next_payment_due_at.strftime("%A %B %d, %Y"),
-		  "NEXT_PAYMENT_AMOUNT" => number_to_currency(subscription.initial_price),
+		  "NEXT_PAYMENT_AMOUNT" => number_to_currency(subscription.initial_price, unit: Maawol::Config.currency_symbol),
 		  "LOGIN_LINK" => sign_in_url
 		}
 		subject = "Thanks for subscribing to #{site_setting('Site name')}"
@@ -46,7 +46,7 @@ class UserMailer < MaawolMailer
 	  subject = "Renewal of your #{site_setting("Site easy name")} subscription"
 	  merge_vars = {
 	    "FNAME" => user.display_name,
-	    "AMOUNT" => number_to_currency(amount)
+	    "AMOUNT" => number_to_currency(amount, unit: Maawol::Config.currency_symbol)
 	  }
 	  body = template('subscription-payment-received', merge_vars)
 	  send_mail(user.email, subject, body, user.first_name, user.id)

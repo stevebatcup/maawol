@@ -76,6 +76,12 @@ module Maawol
 		mattr_accessor :vimeo_project_id
 		@@vimeo_project_id = nil
 
+		mattr_accessor :currency_code
+		@@currency_code = "USD"
+
+		mattr_accessor :currency_symbol
+		@@currency_symbol = "$"
+
 		mattr_accessor :paypal_client_id
 		@@paypal_client_id = nil
 

@@ -81,25 +81,29 @@ module PaymentService
 		  })
 		end
 
+		def self.plan_id_from_sub_option(sub_option)
+			"#{sub_option.payment_system_plan}_#{Maawol::Config.currency_code.downcase}"
+		end
+
 		def self.subscribe(options)
 			if options[:future_start].nil?
 				self.first_subscribe(options[:user],
 															options[:card],
-															options[:subscription_option].payment_system_plan,
+															plan_id_from_sub_option(options[:subscription_option]),
 															options[:discount_code])
 			else
 				if options[:user].current_ending_subscription.present?
 					self.resubscribe(
 						options[:user],
 						options[:card],
-						options[:subscription_option].payment_system_plan,
+						plan_id_from_sub_option(options[:subscription_option]),
 						options[:future_start],
 						options[:discount_code]
 					)
 				else
 					self.custom_subscribe(options[:user],
 						options[:card],
-						options[:subscription_option].payment_system_plan,
+						plan_id_from_sub_option(options[:subscription_option]),
 						options[:future_start]
 					)
 				end
@@ -111,7 +115,8 @@ module PaymentService
 				plan_id: plan_id,
 				status: :active,
 				customer: { email: user.email, first_name: user.first_name, last_name: user.last_name },
-				card: self.chargebee_card_data(card)
+				card: self.chargebee_card_data(card),
+				currency_code: Maawol::Config.currency_code
 			}
 			data[:coupon_ids] = [discount_code] if discount_code.present?
 			if result = ChargeBee::Subscription.create(data)
@@ -126,7 +131,8 @@ module PaymentService
 				status: :active,
 				customer: { email: user.email, first_name: user.first_name, last_name: user.last_name },
 				card: self.chargebee_card_data(card),
-				start_date: future_start.to_time.to_i
+				start_date: future_start.to_time.to_i,
+				currency_code: Maawol::Config.currency_code
 			}
 			if result = ChargeBee::Subscription.create(data)
 				log(user, :custom_subscribe, self.mask_data(data), result)
@@ -143,7 +149,8 @@ module PaymentService
 				plan_id: plan_id,
 				status: :future,
 				card: self.chargebee_card_data(card),
-				start_date: future_start.to_time.to_i
+				start_date: future_start.to_time.to_i,
+				currency_code: Maawol::Config.currency_code
 			}
 			data[:coupon_ids] = [discount_code] if discount_code.present?
 			customer_id = user.current_ending_subscription.remote_customer_id
@@ -162,10 +169,6 @@ module PaymentService
 				expiry_year: card[:expiry][:year],
 				cvv:  card[:cv2]
 			}
-		end
-
-		def self.build_plan_id(level=3)
-			"subscription-#{level}"
 		end
 
 		def self.cancel(subscription)

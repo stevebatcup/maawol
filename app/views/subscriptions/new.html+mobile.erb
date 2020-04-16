@@ -16,11 +16,11 @@
       data-discount-code="<%= session[:discount_code].present? ? session[:discount_code] : '' %>"
       data-discount-applying-text="<%= t('views.subscription.form.labels.discount_code.applying') %>"
       data-discount-applied-text="<%= t('views.subscription.form.labels.discount_code.applied') %>"
-      data-daily-calculation-text="<%= t('views.subscription.summary.daily_calculation') %>">
+      data-daily-calculation-text="<%= t('views.subscription.summary.daily_calculation', currency_symbol: Maawol::Config.currency_symbol) %>">
 
       <flash-message></flash-message>
 
-      <section id="choose_option" class="col-12" ng-hide="slide != 'options'">
+      <section id="choose_option" class="" ng-hide="slide != 'options'">
         <h2 class="section-title">Subscribe to <%= site_setting("Site easy name") %></h2>
         <h3 class="step_denoter" style="display: none"><b><%= t('views.defaults.step') %> 1.</b> <%= t('views.subscription.steps.one') %></h3>
 
@@ -71,7 +71,7 @@
 
       </section>
 
-      <section class="col-12" ng-hide="slide != 'payment'">
+      <section class="" ng-hide="slide != 'payment'">
         <h2 class="section-title"><%= t('views.subscription.summary.title') %></h2>
         <section id="discount_and_summary" class="">
 
@@ -79,15 +79,15 @@
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td class="last_row">{{ subscription.name }}</td>
-                <td class="right last_row">${{ subscription.fullPrice }}</td>
+                <td class="right last_row"><%= Maawol::Config.currency_symbol %>{{ subscription.fullPrice }}</td>
               </tr>
               <tr ng-if="discount.applied && subscription.discounted.percentage > 0">
                 <td class="last_row">Discount (-{{ subscription.discounted.percentage }}%)</td>
-                <td class="right last_row">-${{ subscription.discounted.price }}</td>
+                <td class="right last_row">-<%= Maawol::Config.currency_symbol %>{{ subscription.discounted.price }}</td>
               </tr>
               <tr>
                 <td class="total total_label"><%= t('views.subscription.summary.total') %></td>
-                <td class="total right">${{ total }}</td>
+                <td class="total right"><%= Maawol::Config.currency_symbol %>{{ total }}</td>
               </tr>
               <tr>
                 <td colspan="2" id="summary_daily_calculation" class="right">
@@ -97,7 +97,7 @@
             </table>
           </div>
 
-          <p id="terms">* <%= t('views.subscription.small_print_terms_html') %></p>
+          <p id="terms">* <%= t('views.subscription.small_print_terms_html', currency_symbol: Maawol::Config.currency_symbol) %></p>
         </section>
 
         <section id="payment">
@@ -108,7 +108,7 @@
               <span class="item_label" style="width: 30%;"><%= t('views.subscription.form.labels.selected') %>: </span>
               <span class="selected_months">{{subscription.name}} @</span>
               <span id="selected_total">
-               ${{subscription.price}}
+               <%= Maawol::Config.currency_symbol %>{{subscription.price}}
              </span>
             </p>
 
@@ -119,22 +119,22 @@
               <%= t('views.subscription.form.labels.card_type') %>
             </label>
 
-            <ul id="choose_payment_type">
+            <ul id="choose_payment_type" class="w-100 d-flex justify-content-between">
               <li>
-               <label class="payment_chooser">
-                <input type="radio" name="payment_type" value="visa" ng-model="payment.type" />
+               <label class="payment_chooser d-flex justify-content-between">
+                <input type="radio" name="payment_type" value="visa" ng-model="payment.type" class="mr-2" />
                 <%= image_tag 'subscribe/visa.png', alt: 'Visa' %>
               </label>
             </li>
             <li>
-              <label class="payment_chooser">
-                <input type="radio" name="payment_type" value="mastercard" ng-model="payment.type" />
+              <label class="payment_chooser d-flex justify-content-between">
+                <input type="radio" name="payment_type" value="mastercard" ng-model="payment.type" class="mr-2" />
                 <%= image_tag 'subscribe/mastercard.png', alt: 'Mastercard' %>
               </label>
             </li>
             <li>
-              <label class="payment_chooser">
-                <input type="radio" name="payment_type" value="paypal" ng-model="payment.type" />
+              <label class="payment_chooser d-flex justify-content-between">
+                <input type="radio" name="payment_type" value="paypal" ng-model="payment.type" class="mr-2" />
                 <%= image_tag 'subscribe/paypal.png', alt: 'Paypal' %>
               </label>
             </li>

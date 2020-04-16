@@ -29,7 +29,7 @@ class BasketController < MaawolController
 private
 
 	def total_price(basket)
-		number_to_currency('%.2f' % (basket.total.cents.to_i/100.0))
+		number_to_currency('%.2f' % (basket.total.cents.to_i/100.0), unit: Maawol::Config.currency_symbol)
 	end
 	helper_method	:total_price
 

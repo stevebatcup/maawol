@@ -7,7 +7,7 @@ if @basket.shopping_cart_items.any?
 				json.id item.item.id
 				json.name item.item.productable.name
 				json.nameWithType item.item.productable.name_with_type
-				json.price number_to_currency(item.item.price)
+				json.price number_to_currency(item.item.price, unit: Maawol::Config.currency_symbol)
 			end
 			json.quantity item.quantity
 		end

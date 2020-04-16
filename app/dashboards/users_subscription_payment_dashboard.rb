@@ -11,7 +11,7 @@ class UsersSubscriptionPaymentDashboard < Administrate::BaseDashboard
     user: Field::String,
     amount: Field::Number.with_options(
       decimals: 2,
-      prefix: "$",
+      prefix: Maawol::Config.currency_symbol,
       searchable: false
     ),
     status: Field::String,
@@ -19,7 +19,7 @@ class UsersSubscriptionPaymentDashboard < Administrate::BaseDashboard
     first_payment: Field::Boolean,
     author_fee: Field::Number.with_options(
       decimals: 2,
-      prefix: "$",
+      prefix: Maawol::Config.currency_symbol,
       searchable: false
     ),
     author_name: Field::String

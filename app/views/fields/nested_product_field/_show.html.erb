@@ -2,7 +2,7 @@
 	<ul>
 		<% field.data.each do |f| %>
 			<li>
-				<%= f.sort %>. <%= f.productable.name_for_admin_selector %> - <%= number_to_currency(f.price) %>
+				<%= f.sort %>. <%= f.productable.name_for_admin_selector %> - <%= number_to_currency(f.price, unit: Maawol::Config.currency_symbol) %>
 				<% if f.author_fee_split > 0 %>
 					(<em>Author gets <%= f.author_fee_split %>% of each sale</span>)
 				<% end %>

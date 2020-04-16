@@ -21,7 +21,7 @@ class CheckoutController < MaawolController
 					payment: payment_params,
 					basket: basket,
 					description: payment_description,
-					currency: site_setting("Currency code") || "USD",
+					currency: Maawol::Config.currency_code,
 					domain: Maawol::Config.site_host
 				}
 				if payment_params[:type] == 'paypal'

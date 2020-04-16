@@ -29,6 +29,9 @@ Maawol.configure do |config|
 	config.vimeo_api_key = Rails.application.credentials.vimeo[:api_key]
 	config.vimeo_project_id = Rails.application.credentials.vimeo[:project_id]
 
+	config.currency_code = "USD"
+	config.currency_symbol = "$"
+
 	config.chargebee_site = Rails.application.credentials.chargebee[:site]
 	config.chargebee_api_key = Rails.application.credentials.chargebee[:api_key]
 	config.chargebee_gateway = Rails.application.credentials.chargebee[:gateway]

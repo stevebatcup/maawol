@@ -52,8 +52,8 @@ en:
       summary:
         title: Your order
         total: Pay today
-        daily_calculation: "works out at $%{dailyPrice} a day"
-      small_print_terms_html: "Your subscription will be automatically extended at the standard rate of ${{ subscription.fullPrice }} for successive renewal periods. You can cancel the automatic renewal by following the instructions given on your 'Account settings' page. Please allow 24 hours after the purchase of a subscription to cancel your automatic renewal. Notification of your wish to cancel must be given at least 24 hours prior to the renewal date."
+        daily_calculation: "works out at %{currency_symbol}@{dailyPrice} a day"
+      small_print_terms_html: "Your subscription will be automatically extended at the standard rate of %{currency_symbol}{{ subscription.fullPrice }} for successive renewal periods. You can cancel the automatic renewal by following the instructions given on your 'Account settings' page. Please allow 24 hours after the purchase of a subscription to cancel your automatic renewal. Notification of your wish to cancel must be given at least 24 hours prior to the renewal date."
       success: Thanks for subscribing
       recurring_cancelled: Your recurring billing has now been cancelled and your subscription will terminate on
       errors:

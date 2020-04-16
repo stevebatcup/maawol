@@ -870,3 +870,6 @@ Migrating to LessonsUsers (20200415163458)
   [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4823148821017586115)[0m
   [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUsersSubscription Load (2.6ms)[0m  [1m[34mSELECT "users_subscriptions".* FROM "users_subscriptions" ORDER BY "users_subscriptions"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+UserMailer#subscription_receipt: processed outbound mail in 0.9ms
+  [1m[36mUsersSubscription Load (0.3ms)[0m  [1m[34mSELECT "users_subscriptions".* FROM "users_subscriptions" ORDER BY "users_subscriptions"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]

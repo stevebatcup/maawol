@@ -3,10 +3,7 @@
     <%= render(partial: 'subscribe_callout') unless current_user.has_full_account? %>
 
     <% if params[:paid] %>
-      <div class="well" id="paid">
-        <h2>Thanks!</h2>
-        <p>You are now a subscriber and can view the lessons below.</p>
-      </div>
+        <h3 id="paid" class="mb-5 mt-2">Great, thanks, You are now a subscriber and can view all lessons and courses</h3>
     <% end %>
 
     <div class="section">

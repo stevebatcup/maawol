@@ -264,26 +264,41 @@ end
 
 puts "> Seeding Subscription options...."
 sub_options = [
-	{ days: 30,
+	{
+		days: 30,
 		level:	1,
 		status: 'active',
 		price: 25.00,
 		display_sort: 1,
-		description: 'Standard monthly',
-		name: 'Regular',
+		description: '1 month',
+		name: 'Regular 1 month',
 		custom: false,
+		tag: nil,
 		payment_system_plan: 'monthly'
 	},
-	{ days: 365,
+	{
+		days: 90,
 		level:	2,
 		status: 'active',
-		price: 100.00,
-		display_sort: 2,
-		description: 'Christmas season special',
-		tag: 'most-popular',
-		name: '1 Year promotional',
+		price: 50.00,
+		display_sort: 1,
+		description: '3 months -save 33%',
+		name: '3 months',
 		custom: false,
-		payment_system_plan: 'yearly-promotional'
+		tag: 'most-popular',
+		payment_system_plan: '3_monthly'
+	},
+	{
+		days: 180,
+		level:	3,
+		status: 'active',
+		price: 75.00,
+		display_sort: 1,
+		description: '6 months - save 50%',
+		name: '6 months',
+		custom: false,
+		tag: nil,
+		payment_system_plan: '6_monthly'
 	}
 ]
 sub_options.each do |sub_option|
