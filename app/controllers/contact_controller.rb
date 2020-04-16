@@ -1,10 +1,10 @@
 class ContactController < MaawolController
 	def new
 		@contact = Contact.new
-		if user_signed_in?
-			@contact.email = current_user.email
-			@contact.name = current_user.full_name
-		end
+
+		@lesson_request = params[:lesson_request].present?
+		@selected_subject = @lesson_request ? "Request a lesson" : "Other enquiry"
+		require_subscription if @lesson_request
 
 		if @stuck = params[:stuck].present?
 			@contact.subject = "Help! I don't know what to work on!"

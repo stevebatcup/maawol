@@ -61,6 +61,18 @@ blocks = [
 	  title: "",
 	  content: "<p>Feel like digging a little deeper into something? That&rsquo;s what this section is for. Each course is a multi-lesson exploration into some subjects that can&rsquo;t be summed up in a lesson or two.</p>\r\n<p>Take a course from start to finish, or just pop in and work on any of the lessons individually.</p>",
 	  is_editable: 1
+	},
+	{
+	  name: "lesson_request_introduction",
+	  title: "",
+	  content: "<p>As part of your subscription you can request a lesson from us.</p>",
+	  is_editable: 1
+	},
+	{
+	  name: "contact_introduction",
+	  title: "",
+	  content: "<p>Have a question for us? Fill in the form below.</p>",
+	  is_editable: 1
 	}
 ]
 blocks.each { |block| ContentManagement::ContentBlock.find_or_create_by(block) }
@@ -72,7 +84,7 @@ puts "> Creating Privacy Policy page...."
 privacy_block_data = {
   name: "Privacy Policy",
   title: "Privacy Policy",
-  content: "<p>Privacy Policy stuff here</p><p>#{lorem}</p>",
+  content: "<p>Privacy Policy stuff here</p><p>#{lorem}</p><p>#{lorem}</p><p>#{lorem}</p>",
   is_editable: 1
 }
 privacy_block = ContentManagement::ContentBlock.find_or_create_by(privacy_block_data)
@@ -87,7 +99,7 @@ puts "> Creating Terms and Conditions page...."
 terms_and_conditions_data = {
   name: "Terms and Conditions",
   title: "Terms and Conditions",
-  content: "<p>Terms and Conditions stuff here</p><p>#{lorem}</p>",
+  content: "<p>Terms and Conditions stuff here</p><p>#{lorem}</p><p>#{lorem}</p><p>#{lorem}</p>",
   is_editable: 1
 }
 terms_and_conditions_block = ContentManagement::ContentBlock.find_or_create_by(terms_and_conditions_data)

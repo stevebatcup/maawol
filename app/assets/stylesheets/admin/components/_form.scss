@@ -9,8 +9,6 @@
 	}
 
 	&.color_picker {
-		// width: 2000px;
-
 		input[type=color] {
 			width: 5em;
 			height: 2em;
@@ -111,7 +109,8 @@
 				a {
 					color: red;
 					outline: none;
-					font-size: 1em;
+					font-size: 1.6em;
+					text-shadow: 1px 1px #efefef;
 					display: block;
 					width: 100%;
 				}
@@ -119,6 +118,10 @@
 		}
 
 		&.navbar {
+			margin-bottom: 1em;
+			padding-bottom: 0.5em;
+			border-bottom: 1px dashed #ededed;
+
 			.field {
 				padding: 0;
 				margin: 0.5em 1em;
@@ -129,7 +132,7 @@
 
 				&.desktop,
 				&.mobile {
-					padding-top: 1.6em;
+					// padding-top: 1.6em;
 
 					input[type=checkbox] {
 						width: 1.3em;
@@ -147,7 +150,7 @@
 
 				.remove_fields {
 					position: relative;
-					top: 1.8em;
+					top: -2em;
 				}
 			}
 		}

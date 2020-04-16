@@ -63,6 +63,20 @@ as defined by the routes in the `admin/` namespace
     </li>
   </ul>
 
+  <h3>Listening labs</h3>
+  <ul>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/listening_labs') %>"
+            href="/admin/listening_labs">Labs
+      </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/albums') %>"
+            href="/admin/albums">Albums
+      </a>
+    </li>
+  </ul>
+
   <h3>E-commerce</h3>
   <ul>
     <li>
@@ -108,16 +122,16 @@ as defined by the routes in the `admin/` namespace
     </li>
   </ul>
 
-  <h3>Static Pages</h3>
+  <h3>CMS</h3>
   <ul>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/pages') %>"
+            href="/admin/content_management/pages">Pages</a>
+    </li>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/content_blocks') %>"
             href="/admin/content_management/content_blocks">Content blocks
       </a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/pages') %>"
-            href="/admin/content_management/pages">Pages</a>
     </li>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/images') %>"
@@ -125,19 +139,7 @@ as defined by the routes in the `admin/` namespace
     </li>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/stuck') %>"
-            href="/admin/stuck_questions">'Not sure what to work on' page</a>
-    </li>
-  </ul>
-
-  <h3>Navbars</h3>
-    <ul>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/edit_signed_out_nav') %>"
-            href="/admin/content_management/edit_nav/signed_out">Signed out navbar</a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/edit_signed_in_nav') %>"
-            href="/admin/content_management/edit_nav/signed_in">Signed in navbar</a>
+            href="/admin/stuck_questions">Questions for the I'm stuck page</a>
     </li>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/edit_footer_nav') %>"
@@ -145,11 +147,11 @@ as defined by the routes in the `admin/` namespace
     </li>
   </ul>
 
-  <h3>Application</h3>
+  <h3>Settings</h3>
   <ul>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/site_settings') %>"
-            href="/admin/site_settings">Settings
+            href="/admin/site_settings">General settings
       </a>
     </li>
     <li>
@@ -160,20 +162,6 @@ as defined by the routes in the `admin/` namespace
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/site_colors') %>"
             href="/admin/site_colors">Colors
-      </a>
-    </li>
-  </ul>
-
-  <h3>Listening labs</h3>
-  <ul>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/listening_labs') %>"
-            href="/admin/listening_labs">Labs
-      </a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/albums') %>"
-            href="/admin/albums">Albums
       </a>
     </li>
   </ul>

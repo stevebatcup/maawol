@@ -35,27 +35,36 @@
           <%= f.submit 'Get suggestions', { class: 'btn btn-success btn-large' } %>
         </div>
       <% else %>
-        <h2 class="section-title">Get in touch</h2>
+        <h2 class="section-title">
+          <%= @lesson_request ? 'Request a lesson' : 'Get in touch' %>
+        </h2>
+
+        <% if @lesson_request %>
+          <%= render_content_block_by_name("lesson_request_introduction") %>
+        <% else %>
+          <%= render_content_block_by_name("contact_introduction") %>
+        <% end %>
 
         <%= f.hidden_field(:from_home, value: 1) if params[:controller].to_sym == :home %>
+        <%= f.hidden_field :subject, value: @selected_subject %>
 
         <% if signed_in? %>
-          <%= f.hidden_field :name %>
-          <%= f.hidden_field :email %>
+          <%= f.hidden_field :name, value: current_user.full_name %>
+          <%= f.hidden_field :email, value: current_user.email %>
         <% else %>
           <%= f.text_field :name, { placeholder: "Name (required)", :required => true, class: 'contact-form-control' } %>
           <%= f.email_field :email, { placeholder: "Email (required)", :required => true, class: 'contact-form-control' } %>
         <% end %>
 
-        <%= f.text_field :subject, { placeholder: "Subject", class: 'contact-form-control' } %>
-        <%= f.text_area :message, { placeholder: "Message (required)", :required => true, class: 'contact-form-control' } %>
+        <% msg_placeholder = @lesson_request ? 'Send as many details as you can of what you would like to see in your lesson...' : 'What would you like to ask?' %>
+        <%= f.text_area :message, { placeholder: msg_placeholder, :required => true, class: 'contact-form-control' } %>
 
         <% unless signed_in? %>
           <div class="mb-4" style="clear: both;">
             <%= recaptcha_tags(site_key: recaptcha_site_key) %>
           </div>
         <% end %>
-        <%= f.submit 'Send Message', { class: 'btn btn-success btn-large' } %>
+        <%= f.submit @lesson_request ? 'Request a lesson' : 'Send enquiry', { class: 'btn btn-success btn-large' } %>
 
       <% end %>
 
@@ -65,27 +74,25 @@
 
   </div>
 
-  <% unless @stuck %>
-    <div class="col-md-4 pt-md-5">
-      <aside class="sidebar">
-        <div class="widget widget_address">
-          <div class="item media">
-            <div class="item-icon media-left item-photo">
-            <% unless site_image("contact").nil? %>
-              <img src="<%= site_image("contact") %>" alt="<%= site_setting("Site name") %>" />
-            <% end %>
+  <div class="col-md-4 pt-md-5">
+    <aside class="sidebar">
+      <div class="widget widget_address">
+        <div class="item media">
+          <div class="item-icon media-left item-photo">
+          <% unless site_image("contact").nil? %>
+            <img src="<%= site_image("contact") %>" alt="<%= site_setting("Site name") %>" />
+          <% end %>
 
-            </div>
-            <div class="item-details media-body">
-              <h3 class="item-title">Or email me at...</h3>
-              <span>
-                <a href="mailto:<%= site_setting('Contact email address') %>"><%= site_setting('Contact email address') %></a>
-              </span>
-            </div>
+          </div>
+          <div class="item-details media-body">
+            <h3 class="item-title">Or you can send us an email at:</h3>
+            <span>
+              <a href="mailto:<%= site_setting('Contact email address') %>"><%= site_setting('Contact email address') %></a>
+            </span>
           </div>
         </div>
-      </aside>
-    </div>
-  <% end %>
+      </div>
+    </aside>
+  </div>
 
 </div>

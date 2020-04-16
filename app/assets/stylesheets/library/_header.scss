@@ -172,6 +172,8 @@ header {
         position: relative;
         list-style: none;
         display: block;
+        margin-right: 1em;
+        margin-left: 1em;
 
         &.menu-item-has-children {
           a {
@@ -189,6 +191,8 @@ header {
         }
 
         &.active a {
+          font-weight: 700;
+
           &:hover,
           &:focus {
             border: none;
@@ -199,12 +203,20 @@ header {
 
         a {
           font-size: 14px;
-          font-weight: 500;
-          padding: 1em 3em;
+          font-weight: 600;
+          padding: 0 2em;
+          display: block;
           position: relative;
           text-transform: uppercase;
-          font-size: 1em;
-          line-height: 2.9em;
+          font-size: 0.9em;
+          line-height: 3.4em;
+
+          &.btn {
+            line-height: 1.8em;
+            position: relative;
+            top: 0.75em;
+            background-color: darken(#5ac664, 7%) !important;
+          }
         }
 
         ul.sub-menu,

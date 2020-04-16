@@ -1,4 +1,10 @@
 <section class="container list lessons video-contents <%= column_browser_class %>" ng-controller="LessonsController">
+    <% if notice %>
+      <p class="container alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="container alert alert-danger"><%= alert %></p>
+    <% end %>
 
     <%= render(partial: 'subscribe_callout') unless current_user.has_full_account? %>
 

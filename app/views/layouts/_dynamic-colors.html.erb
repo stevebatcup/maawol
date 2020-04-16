@@ -45,8 +45,13 @@
   header .header-bottom .navbar-default,
   header .header-bottom .navbar-default .navbar-nav li a {
     color: <%= dynamic_site_colors[:desktop_navbar_text] %>;
+  }
+
+  header .header-bottom,
+  header .header-bottom .navbar-default {
     background-color: <%= dynamic_site_colors[:desktop_navbar] %>;
   }
+
   header .header-bottom .navbar-default .navbar-nav li.menu-item a:hover,
   header .header-bottom .navbar-default .navbar-nav li.menu-item a:focus {
     color: <%= dynamic_site_colors[:desktop_navbar_text] %>;
@@ -58,7 +63,7 @@
 
   .tag-link:hover,
   .follow-btn,
-  header .header-bottom .navbar-default .navbar-nav li.active a,
+  header .header-bottom .navbar-default .navbar-nav li.active,
   .section-title:after,
   section.cms_section h2:after,
   .widget-title:after {

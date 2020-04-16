@@ -67,10 +67,16 @@
                 <ul class="nav navbar-nav">
                   <% navbar.sorted_navbar_items_for_device_type(:desktop).each do |item| %>
                     <% if item.can_be_seen_by_user(current_user) %>
-                    <li class="menu-item <%= 'active' if request.url.include?(item.url) %>">
-                      <a href="<%= item.url %>" data-turbolinks="false"><%= item.name %></a>
-                    </li>
+                      <li class="menu-item <%= 'active' if request.url.include?(item.url) %>">
+                        <a href="<%= item.url %>" data-turbolinks="false" class="d-block"><%= item.name %></a>
+                      </li>
                     <% end %>
+                  <% end %>
+
+                  <% unless current_user.is_subscriber? %>
+                    <li class="">
+                      <a href="/subscribe" class="btn btn-block btn-success" data-turbolinks="false">Subscribe</a>
+                    </li>
                   <% end %>
                 </ul>
               </div><!-- /.navbar-collapse -->
@@ -83,12 +89,6 @@
   </header><!-- /.header -->
 
   <div id='yield_wrapper'>
-    <% if notice %>
-      <p class="container alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="container alert alert-danger"><%= alert %></p>
-    <% end %>
     <%= yield %>
   </div>
 
