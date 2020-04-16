@@ -1,4 +1,65 @@
+body.auth {
+	background-color: #f1f1f1;
+	min-height: 100vh;
+}
+
 #login_box,
-#registration_box {
-	margin-top: 25px;
+#registration_box,
+#passwords_box,
+section#payment {
+	margin-top: 1.2em;
+	padding-bottom: 4em;
+
+	.panel {
+		background-color: #fff;
+		border: 1px solid #cfd8dc;
+		padding: 30px;
+	  width: 460px;
+	  margin: 0 auto 1em;
+
+		p {
+		  width: 100%;
+		}
+
+		input[type="submit"] {
+		  margin: 0 !important;
+		  max-width: inherit !important;
+		  width: 100% !important;
+		}
+
+		.submit-input {
+		  margin-top: 0;
+		}
+
+		.alt-methods {
+		  padding-left: 0;
+		  text-align: center;
+		  width: 100%;
+		}
+
+		.alt-methods span {
+		  display: block;
+		  padding: 15px 0 26px;
+		}
+
+		.bottom-text {
+		  color: #455a64;
+		  display: inline-block;
+		  font-size: 16px;
+		  font-weight: 700;
+		  padding-top: 45px;
+		  width: 100%;
+		}
+
+		.register-form .submit-input {
+		  margin-top: 15px;
+		}
+	}
+
+	&#payment {
+		.panel {
+			width: 520px;
+		  text-align: left;
+		}
+	}
 }

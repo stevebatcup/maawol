@@ -67,7 +67,6 @@
 .form-elements .alt-methods {
   color: #455a64;
   display: inline-block;
-  font-family: 'Poppins';
   font-size: 16px;
   font-weight: 700;
   padding: 17px 0 0 35px;
@@ -101,41 +100,4 @@
 .form-elements .right-panel {
   border: 1px solid #cfd8dc;
   padding: 30px;
-}
-.form-elements.style-2 {
-  max-width: 460px;
-  margin: 0 auto 60px;
-  text-align: center;
-}
-.form-elements.style-2 p {
-  width: 100%;
-}
-.form-elements.style-2 input[type="submit"] {
-  margin: 0 !important;
-  max-width: inherit !important;
-  width: 100% !important;
-}
-.form-elements.style-2 .submit-input {
-  margin-top: 0;
-}
-.form-elements.style-2 .alt-methods {
-  padding-left: 0;
-  text-align: center;
-  width: 100%;
-}
-.form-elements.style-2 .alt-methods span {
-  display: block;
-  padding: 15px 0 26px;
-}
-.form-elements.style-2 .bottom-text {
-  color: #455a64;
-  display: inline-block;
-  font-family: 'Poppins';
-  font-size: 16px;
-  font-weight: 700;
-  padding-top: 45px;
-  width: 100%;
-}
-.form-elements.style-2 .register-form .submit-input {
-  margin-top: 15px;
 }

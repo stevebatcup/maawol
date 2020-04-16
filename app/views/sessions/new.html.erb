@@ -1,25 +1,27 @@
-<section class="form-elements style-2" id="clearance">
+<section class="" id="clearance">
   <div id="login_box">
 
-    <p class="mb-2">
+    <p class="mb-2 text-center">
       Don't have an account yet? <%= link_to "Register here", sign_up_path %>
     </p>
 
-    <div class="right-panel">
-      <%= render 'layouts/auth-logo' %>
+    <div class="panel">
+      <div class="text-center">
+        <%= render 'layouts/auth-logo' %>
 
-      <% if notice || alert %>
-        <h4>Sign in</h4>
-      <% else %>
-        <h4>Already have a <%= site_setting("Site easy name") %> account? Sign in below</h4>
-      <% end %>
+        <% if notice || alert %>
+          <h4>Sign in</h4>
+        <% else %>
+          <h4>Already have a <%= site_setting("Site easy name") %> account? Sign in below</h4>
+        <% end %>
 
-      <% if notice %>
-        <p class="alert alert-success mt-3"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger mt-3"><%= alert %></p>
-      <% end %>
+        <% if notice %>
+          <p class="alert alert-success mt-3"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger mt-3"><%= alert %></p>
+        <% end %>
+      </div>
 
       <%= render partial: 'sessions/form' %>
     </div>

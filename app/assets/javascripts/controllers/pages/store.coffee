@@ -40,7 +40,7 @@ class Maawol.Store extends Maawol.Page
 
 	clearBasket: (e) =>
 		e.preventDefault()
-		@http.delete("clear_basket").then (response) =>
+		@http.delete("/clear_basket").then (response) =>
 			if response.data.status is 'success'
 				@scope.basket.items = []
 				@scope.basket.total = response.data.total

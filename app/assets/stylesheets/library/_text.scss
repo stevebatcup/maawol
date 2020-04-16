@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:wght@300;500;700');
+
+html, body, button, .btn {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+}
+
+button, .btn {
+  font-weight: 700;
+}
+
 h1,
 h2,
 h3,
@@ -5,7 +16,6 @@ h4,
 h5,
 h6 {
   color: #4d4d4d;
-  font-family: 'Poppins';
   font-weight: 700;
 }
 
@@ -44,7 +54,6 @@ p,
 }
 .widget-title {
   color: #455a64;
-  font-family: 'Poppins';
   font-size: 16px;
   line-height: 32px;
   margin: -10px 0 30px;

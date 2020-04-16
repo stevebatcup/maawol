@@ -1,5 +1,5 @@
 /* VideoStories HTML5 Template by Jewel Theme
-* ---------------------------------------------------------------------- 
+* ----------------------------------------------------------------------
 * Theme Name: VideoStories HTML5 Template
 * Theme URI: https://jeweltheme.com/
 * Author: Jewel Theme
@@ -11,16 +11,12 @@
 * Tags: html, template, videostories, video, jeweltheme
 * ----------------------------------------------------------------------*/
 
-/* Import Google Font
-------------------------------------------------------------------------*/
-@import url('https://fonts.googleapis.com/css?family=Arizonia|Poppins:400,500,600,700|Roboto: 400,500,700|Lato:400,700,900');
 
 /* Default Style / Reset
 ------------------------------------------------------------------------*/
 html,
 body {
   background: #fff;
-  font-family: 'Poppins', 'Roboto', 'Lato', 'Arizonia', 'cursive', sans-serif;
   font-size: 16px;
   line-height: 1;
   margin: 0 !important;

@@ -10,17 +10,14 @@ section.contact-details {
 		.contact-form-control {
 			background: #eceff1;
 			border: 1px solid #cfd8dc;
-			border-radius: 0;
+			border-radius: 3px;
 			box-shadow: none;
 			color: #455a64;
 			display: inline-block;
-			font-family: 'Roboto';
-			font-size: 14px;
-			height: inherit;
-			line-height: 23px;
-			margin-bottom: 20px;
+			font-size: 0.9em;
+			padding: 0.8em;
+			margin-bottom: 1.5em;
 			max-height: inherit;
-			padding: 17px;
 			text-align: left;
 		}
 
@@ -38,8 +35,8 @@ section.contact-details {
 		}
 
 		textarea {
-		  height: 180px;
-		  margin-bottom: 30px;
+		  height: 8em;
+		  margin-bottom: 2em;
 		  width: 100%;
 		}
 

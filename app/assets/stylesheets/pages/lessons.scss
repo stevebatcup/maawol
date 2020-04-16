@@ -137,6 +137,10 @@ article.lesson {
 		margin-bottom: 20px !important;
 		border-top: 1px solid #ccc;
 
+		a {
+			font-weight: 700;
+		}
+
 		#comments_top {
 			padding-top: 0.6em;
 			padding-bottom: 0.4em;
@@ -234,7 +238,6 @@ article.lesson {
 				background: none;
 				border: none !important;
 				padding: 0;
-				font-weight: normal;
 				outline: none;
 
 				&:focus,

@@ -20,7 +20,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body class="mobile" data-turbolinks='false'>
+  <body class="mobile <%= 'auth' if is_auth_page? %>" data-turbolinks='false'>
 
     <% unless is_auth_page?  %>
       <header class="header fixed" ng-controller="NavController" data-signed-in="0">

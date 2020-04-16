@@ -1,17 +1,19 @@
-<section class="form-elements style-2" id="clearance">
-  <div id="login_box">
-    <div class="right-panel">
-      <%= render 'layouts/auth-logo' %>
-      <h4 class="mb-3"><%= t(".title") %></h4>
+<section class="" id="clearance">
+  <div id="passwords_box">
+    <div class="panel">
+      <div class="text-center">
+        <%= render 'layouts/auth-logo' %>
+        <h4 class="mb-3"><%= t(".title") %></h4>
 
-      <p class="form-input"><%= t(".description") %></p>
+        <p class="form-input"><%= t(".description") %></p>
 
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+      </div>
 
       <%= form_for :password, url: passwords_path do |form| %>
         <p class="form-input name">

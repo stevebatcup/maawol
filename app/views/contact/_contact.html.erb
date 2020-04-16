@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12 col-md-8">
-    <% unless user_signed_in? %>
+    <% unless signed_in? %>
       <% if notice %>
         <p class="alert alert-success w-100"><%= notice %></p>
       <% end %>
@@ -36,13 +36,21 @@
         </div>
       <% else %>
         <h2 class="section-title">Get in touch</h2>
-        <%= f.text_field :name, { placeholder: "Name (required)", :required => true, class: 'contact-form-control' } %>
-        <%= f.email_field :email, { placeholder: "Email (required)", :required => true, class: 'contact-form-control' } %>
-        <%= f.text_field :subject, { placeholder: "Subject", class: 'contact-form-control' } %>
-        <%= f.text_area :message, { placeholder: "Message (required)", :required => true, class: 'contact-form-control' } %>
+
         <%= f.hidden_field(:from_home, value: 1) if params[:controller].to_sym == :home %>
 
-        <% unless user_signed_in? %>
+        <% if signed_in? %>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :email %>
+        <% else %>
+          <%= f.text_field :name, { placeholder: "Name (required)", :required => true, class: 'contact-form-control' } %>
+          <%= f.email_field :email, { placeholder: "Email (required)", :required => true, class: 'contact-form-control' } %>
+        <% end %>
+
+        <%= f.text_field :subject, { placeholder: "Subject", class: 'contact-form-control' } %>
+        <%= f.text_area :message, { placeholder: "Message (required)", :required => true, class: 'contact-form-control' } %>
+
+        <% unless signed_in? %>
           <div class="mb-4" style="clear: both;">
             <%= recaptcha_tags(site_key: recaptcha_site_key) %>
           </div>

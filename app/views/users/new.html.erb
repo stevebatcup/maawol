@@ -1,21 +1,23 @@
-<section class="form-elements style-2" id="clearance">
+<section class="" id="clearance">
   <div id="registration_box">
-    <p class="mb-2">
+    <p class="mb-2 text-center">
       Already have an account? <%= link_to "Sign in here", sign_in_path %>
     </p>
 
-    <div class="right-panel">
+    <div class="panel">
 
-      <%= render 'layouts/auth-logo' %>
+      <div class="text-center">
+        <%= render 'layouts/auth-logo' %>
 
-      <h4>Create Your Account</h4>
+        <h4>Create Your Account</h4>
 
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+      </div>
 
       <%= form_for @user do |form| %>
         <%= render partial: 'users/form', object: form %>
