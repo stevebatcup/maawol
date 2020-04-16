@@ -2,9 +2,11 @@ class SettingsController < MaawolController
 	before_action :require_login
 
 	def index
+		@mode = 'account'
 	end
 
 	def update
+		@mode = 'account'
 		old_email = current_user.email
 		old_digest_setting = current_user.receives_weekly_digest
 		if current_user.update_attributes(user_params)
@@ -21,6 +23,7 @@ class SettingsController < MaawolController
 	end
 
 	def update_password
+		@mode = 'password'
 		if (user_params[:existing_password].length == 0) || (user_params[:password].length == 0) || (user_params[:password_confirm].length == 0)
 				flash.alert = "To change your password please fill out all 3 fields"
 				render :index

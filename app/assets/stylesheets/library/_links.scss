@@ -70,3 +70,7 @@ input:focus,
 button:focus {
   outline: 0;
 }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+}

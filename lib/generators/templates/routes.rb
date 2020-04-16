@@ -60,6 +60,7 @@ Rails.application.routes.draw do
 
 	get 'home' => 'dashboard#index'
 	get 'dashboard' => 'dashboard#index', as: :dashboard
+	get 'get-in-touch' => 'contact#new', stuck: true
 	get 'stuck' => 'contact#new', stuck: true
 	get 'contact' => 'contact#new', as: :new_contact
 	post 'contact' => 'contact#create', as: :contacts

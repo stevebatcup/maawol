@@ -142,6 +142,10 @@ module Maawol
 					end
 				end
 
+				def is_paying_by_card?
+					self.has_recurring_subscription? && !self.current_subscription.is_paypal?
+				end
+
 			end
 		end
 	end

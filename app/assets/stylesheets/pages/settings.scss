@@ -1,3 +1,18 @@
+#settings {
+	.tab-content {
+		label {
+			margin-bottom: 0;
+			font-size: 0.9em;
+		}
+
+		input[type=text],
+		input[type=email],
+		input[type=password] {
+			width: 27em;
+		}
+	}
+}
+
 .btn-mgn-btm {
 	margin-bottom: 12px;
 }
@@ -28,7 +43,7 @@ form.edit_user {
 			outline: none;
 			box-shadow: none;
 			position: relative;
-			top: -2px;
+			top: 0.8em;
 
 			&:active, &:focus {
 				outline: none;
@@ -39,9 +54,6 @@ form.edit_user {
 }
 
 form#update_card_form {
-	width: 70%;
-	padding-top: 20px;
-
 	ul#choose_payment_type {
 		li {
 			list-style: none;

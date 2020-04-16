@@ -177,7 +177,7 @@ puts "> Seeding Default colors...."
 colors_data = [
 	{ name: "Main background", slug: "body_background", value: "#ffffff", default_value: "#ffffff" },
 	{ name: "Main text color", slug: "main_text", value: "#3e464a", default_value: "#3e464a" },
-	{ name: "Main link color", slug: "main_link", value: "#1679c5", default_value: "#1679c5" },
+	{ name: "Main link color", slug: "main_link", value: "#2ea6cc", default_value: "#2ea6cc" },
 	{ name: "Headings color", slug: "headings", value: "#3e464a", default_value: "#3e464a" },
 	{ name: "Meta info text color", slug: "meta_text", value: "#5b727d", default_value: "#5b727d" },
 	{ name: "Desktop > Top bar", slug: "desktop_top_bar", value: "#f5f5f5", default_value: "#f5f5f5" },
