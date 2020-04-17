@@ -30,7 +30,7 @@ settings_data = [
 	{ name: "Receives failed-payment admin email", value: "yes", is_editable: false },
 ]
 settings_data.each do |setting_data|
-	SiteSetting.find_or_create_by(name: setting_data[:name]) do
+	SiteSetting.find_or_create_by(name: setting_data[:name]) do |setting|
 		setting.value = setting_data[:value]
 		setting.is_editable = setting_data[:is_editable]
 		setting.save
@@ -123,7 +123,7 @@ navbars_data = [
 		{ name: "Home", url: "/lessons", desktop: true, mobile: true },
 		{ name: "Courses", url: "/courses", desktop: true, mobile: true },
 		{ name: "My lessons", url: "/home", desktop: true, mobile: true },
-		{ name: "My account", url: "/settings", desktop: false, mobile: true }
+		{ name: "My account", url: "/settings", desktop: false, mobile: true },
 		{ name: "Not sure what to work on?", url: "/stuck", desktop: true, mobile: true },
 		{ name: "Contact", url: "/contact", desktop: true, mobile: true },
 	]},
@@ -331,7 +331,7 @@ tags = [
 ]
 tags.each { |tag| Tag.find_or_create_by(name: tag, show_in_cloud: true) }
 
-puts "# Seeding Downloadable file sample...."
+puts "> Seeding Downloadable file sample...."
 sample_downloadable_name = "Sample downloadable PDF"
 unless downloadable_file = Downloadable.find_by(name: sample_downloadable_name)
 	downloadable_file = Downloadable.create({
@@ -344,28 +344,32 @@ end
 
 puts "> Seeding Videos...."
 videos_data = [
-	{ name: 'Homepage sample video',
+	{
+		name: 'Homepage sample video',
 		url: 'https://vimeo.com/407902224',
 		is_for_homepage: true,
 		vimeo_data: {"type":"video","version":"1.0","provider_name":"Vimeo","provider_url":"https:\/\/vimeo.com\/","title":"Homepage","author_name":"Steve Batcup","author_url":"https:\/\/vimeo.com\/user65939366","is_plus":"1","account_type":"plus","html":"<iframe src=\"https:\/\/player.vimeo.com\/video\/407902224?app_id=122963\" width=\"426\" height=\"240\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen title=\"Homepage\"><\/iframe>","width":426,"height":240,"duration":20,"description":"","thumbnail_url":"https:\/\/i.vimeocdn.com\/video\/878651551_295x166.webp","thumbnail_width":295,"thumbnail_height":166,"thumbnail_url_with_play_button":"https:\/\/i.vimeocdn.com\/filter\/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F878651551_295x166.webp&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png","upload_date":"2020-04-15 04:19:28","video_id":407902224,"uri":"\/videos\/407902224"},
 		vimeo_id:  '407902224',
 		remote_thumbnail_url: 'https://maawol.s3.amazonaws.com/seeds/thumbnail-sample-video-homepage.png'
 	},
-	{ name: 'Sample video 1',
+	{
+		name: 'Sample video 1',
 		url: 'https://vimeo.com/407902352',
 		is_for_homepage: false,
 		vimeo_data: {"type":"video","version":"1.0","provider_name":"Vimeo","provider_url":"https:\/\/vimeo.com\/","title":"Sample Video 1","author_name":"Steve Batcup","author_url":"https:\/\/vimeo.com\/user65939366","is_plus":"1","account_type":"plus","html":"<iframe src=\"https:\/\/player.vimeo.com\/video\/407902352?app_id=122963\" width=\"426\" height=\"240\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen title=\"Sample Video 1\"><\/iframe>","width":426,"height":240,"duration":20,"description":"","thumbnail_url":"https:\/\/i.vimeocdn.com\/video\/878651864_295x166.webp","thumbnail_width":295,"thumbnail_height":166,"thumbnail_url_with_play_button":"https:\/\/i.vimeocdn.com\/filter\/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F878651864_295x166.webp&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png","upload_date":"2020-04-15 04:20:06","video_id":407902352,"uri":"\/videos\/407902352"},
 		vimeo_id:  '407902352',
 		remote_thumbnail_url: 'https://maawol.s3.amazonaws.com/seeds/thumbnail-sample-video-1.png'
 	},
-	{ name: 'Sample video 2',
+	{
+		name: 'Sample video 2',
 		url: 'https://vimeo.com/407902261',
 		is_for_homepage: false,
 		vimeo_data: {"type":"video","version":"1.0","provider_name":"Vimeo","provider_url":"https:\/\/vimeo.com\/","title":"Sample Video 2","author_name":"Steve Batcup","author_url":"https:\/\/vimeo.com\/user65939366","is_plus":"1","account_type":"plus","html":"<iframe src=\"https:\/\/player.vimeo.com\/video\/407902261?app_id=122963\" width=\"426\" height=\"240\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen title=\"Sample Video 2\"><\/iframe>","width":426,"height":240,"duration":20,"description":"","thumbnail_url":"https:\/\/i.vimeocdn.com\/video\/878651558_295x166.webp","thumbnail_width":295,"thumbnail_height":166,"thumbnail_url_with_play_button":"https:\/\/i.vimeocdn.com\/filter\/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F878651558_295x166.webp&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png","upload_date":"2020-04-15 04:19:40","video_id":407902261,"uri":"\/videos\/407902261"},
 		vimeo_id:  '407902261',
 		remote_thumbnail_url: 'https://maawol.s3.amazonaws.com/seeds/thumbnail-sample-video-2.png'
 	},
-	{ name: 'Sample video 3',
+	{
+		name: 'Sample video 3',
 		url: 'https://vimeo.com/407902320',
 		is_for_homepage: false,
 		vimeo_data: {"type":"video","version":"1.0","provider_name":"Vimeo","provider_url":"https:\/\/vimeo.com\/","title":"Sample Video 3","author_name":"Steve Batcup","author_url":"https:\/\/vimeo.com\/user65939366","is_plus":"1","account_type":"plus","html":"<iframe src=\"https:\/\/player.vimeo.com\/video\/407902320?app_id=122963\" width=\"426\" height=\"240\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen title=\"Sample Video 3\"><\/iframe>","width":426,"height":240,"duration":20,"description":"","thumbnail_url":"https:\/\/i.vimeocdn.com\/video\/878651697_295x166.webp","thumbnail_width":295,"thumbnail_height":166,"thumbnail_url_with_play_button":"https:\/\/i.vimeocdn.com\/filter\/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F878651697_295x166.webp&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png","upload_date":"2020-04-15 04:19:57","video_id":407902320,"uri":"\/videos\/407902320"},
@@ -419,7 +423,7 @@ lessons_data = [
 		is_free: true,
 		comments_count: 0,
 		author_id: author.id,
-		video_ids: video_ids.sample(1),
+		video_ids: video_ids[0],
 		downloadable_ids: [],
 		tag_ids: tag_ids.sample(2),
 		category_ids: category_ids.sample(1),
@@ -433,7 +437,7 @@ lessons_data = [
 		is_free: true,
 		comments_count: 0,
 		author_id: author.id,
-		video_ids: video_ids.sample(1),
+		video_ids: video_ids[1],
 		downloadable_ids: downloadable_file.id,
 		tag_ids: tag_ids.sample(1),
 		category_ids: category_ids.sample(2),
@@ -447,7 +451,7 @@ lessons_data = [
 		is_free: true,
 		comments_count: 0,
 		author_id: author.id,
-		video_ids: video_ids.sample(1),
+		video_ids: video_ids[2],
 		downloadable_ids: [],
 		tag_ids: tag_ids.sample(2),
 		category_ids: category_ids.sample(1),
