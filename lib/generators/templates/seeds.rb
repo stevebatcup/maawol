@@ -122,10 +122,9 @@ navbars_data = [
 	{ slug: :signed_in, items: [
 		{ name: "Home", url: "/lessons", desktop: true, mobile: true },
 		{ name: "Courses", url: "/courses", desktop: true, mobile: true },
-		{ name: "My lessons", url: "/home", desktop: true, mobile: true },
-		{ name: "My account", url: "/settings", desktop: false, mobile: true },
-		{ name: "Not sure what to work on?", url: "/stuck", desktop: true, mobile: true },
-		{ name: "Contact", url: "/contact", desktop: true, mobile: true },
+		{ name: "My lessons", url: "/dashboard", desktop: true, mobile: true },
+		{ name: "Request a lesson", url: "/lesson-request", desktop: true, mobile: true },
+		{ name: "I'm Stuck", url: "/stuck", desktop: true, mobile: true }
 	]},
 	{ slug: :footer, items: [
 		{ name: "Privacy policy", url: "/privacy-policy", desktop: true, mobile: true },
