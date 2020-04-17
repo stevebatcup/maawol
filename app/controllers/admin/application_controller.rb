@@ -6,7 +6,7 @@ class Admin::ApplicationController < Administrate::ApplicationController
   before_action :authenticate_admin
 
   rescue_from SecurityError do |exception|
-    sign_out current_user if current_user
+    sign_out if signed_in?
     redirect_to sign_in_path, alert: "You must be signed in as a site administrator to access that page."
   end
 
