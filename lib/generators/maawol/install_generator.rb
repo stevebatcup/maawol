@@ -9,31 +9,31 @@ module Maawol
 			source_root File.expand_path("../../templates", __FILE__)
 
 		  def initializers
-		    template "maawol-initializer.rb", "config/initializers/maawol.rb"
-		    template "mustache-initializer.rb", "config/initializers/mustache.rb"
+		    template "config/initializers/maawol.rb", "config/initializers/maawol.rb"
+		    template "config/initializers/mustache.rb", "config/initializers/mustache.rb"
 		  end
 
 		  def credentials_templates
-		    template "credentials-development.yml", "config/_credentials-development.yml"
-		    template "credentials-production.yml", "config/_credentials-production.yml"
+		    template "config/credentials.development.yml.sample", "config/_credentials.development.yml.sample"
+		    template "config/credentials.production.yml.sample", "config/_credentials.production.yml.sample"
 		  end
 
 		  def paypal_settings
-		    template "paypal.yml", "config/paypal.yml"
+		    template "config/paypal.yml", "config/paypal.yml"
 		  end
 
 		  def git_ignore_template
-		    template "gitignore_tpl", ".gitignore"
+		    template ".gitignore.sample", ".gitignore"
 		  end
 
 		  def locales
-				copy_file "../../../config/locales/en.yml", "config/locales/maawol.en.yml"
-				copy_file "../../../config/locales/admin.en.yml", "config/locales/admin.en.yml"
-				copy_file "../../../config/locales/clearance.en.yml", "config/locales/clearance.en.yml"
+				copy_file "config/locales/en.yml", "config/locales/maawol.en.yml"
+				copy_file "config/locales/admin.en.yml", "config/locales/admin.en.yml"
+				copy_file "config/locales/clearance.en.yml", "config/locales/clearance.en.yml"
 		  end
 
 		  def routes
-		    template "routes.rb", "config/routes.rb"
+		    template "config/routes.rb", "config/routes.rb"
 		  end
 		end
 	end

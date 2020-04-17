@@ -9,7 +9,7 @@ module Maawol
 			source_root File.expand_path("../../templates", __FILE__)
 
 			def database_config
-			  template "database.yml", "config/database.yml"
+			  template "config/database.yml", "config/database.yml"
 			end
 
 			def setup
@@ -24,7 +24,7 @@ module Maawol
 		  end
 
 		  def seed
-		  	copy_file "../../../db/seeds.rb", "db/seeds/maawol.rb"
+		  	copy_file "seeds.rb", "db/seeds/maawol.rb"
 		  	inject_into_file "db/seeds.rb" do <<-'RUBY'
 		  		Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each { |seed| load seed }
 		  	RUBY

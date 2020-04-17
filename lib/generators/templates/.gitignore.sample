@@ -32,8 +32,5 @@ Capfile
 config/deploy
 config/deploy.rb
 
-config/_credentials-tpl-development.yml
-config/_credentials-tpl-production.yml
-/config/credentials/development.key
-
-/config/credentials/production.key
+config/_credentials.development.yml.sample
+config/_credentials.production.yml.sample
