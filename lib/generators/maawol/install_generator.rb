@@ -17,10 +17,6 @@ module Maawol
 		    template "config/paypal.yml", "config/paypal.yml"
 		  end
 
-		  def dockerfile
-		    template "Dockerfile", "Dockerfile"
-		  end
-
 		  def git_ignore_template
 		    template ".gitignore.sample", ".gitignore"
 		  end
