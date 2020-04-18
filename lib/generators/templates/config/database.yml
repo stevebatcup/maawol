@@ -7,8 +7,8 @@ default: &default
 development:
   <<: *default
   database: <%= Maawol::Config.site_slug %>_development
-  username: <%= Rails.application.credentials.database[:username] %>
-  password:
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
 
 test:
   <<: *default
