@@ -9,7 +9,6 @@ WORKDIR /usr/src/app
 COPY Gemfile* ./
 RUN bundle install
 COPY . .
-RUN rails g maawol:install
 
 EXPOSE 4000
 CMD rails server -b 0.0.0.0 -p 4000
