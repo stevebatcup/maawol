@@ -32,5 +32,5 @@ Capfile
 config/deploy
 config/deploy.rb
 
-config/_credentials.development.yml.sample
-config/_credentials.production.yml.sample
+config/_credentials.development.sample.yml
+config/_credentials.production.sample.yml
