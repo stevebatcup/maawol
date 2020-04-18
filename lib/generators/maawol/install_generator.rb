@@ -14,12 +14,16 @@ module Maawol
 		  end
 
 		  def credentials_templates
-		    template "config/credentials.development.yml.sample", "config/_credentials.development.yml.sample"
-		    template "config/credentials.production.yml.sample", "config/_credentials.production.yml.sample"
+		    template "config/credentials.development.sample.yml", "config/_credentials.development.sample.yml"
+		    template "config/credentials.production.sample.yml", "config/_credentials.production.sample.yml"
 		  end
 
 		  def paypal_settings
 		    template "config/paypal.yml", "config/paypal.yml"
+		  end
+
+		  def dockerfile
+		    template "Dockerfile", "Dockerfile"
 		  end
 
 		  def git_ignore_template
@@ -27,9 +31,9 @@ module Maawol
 		  end
 
 		  def locales
-				copy_file "config/locales/en.yml", "config/locales/maawol.en.yml"
-				copy_file "config/locales/admin.en.yml", "config/locales/admin.en.yml"
-				copy_file "config/locales/clearance.en.yml", "config/locales/clearance.en.yml"
+				template "config/locales/en.yml", "config/locales/maawol.en.yml"
+				template "config/locales/admin.en.yml", "config/locales/admin.en.yml"
+				template "config/locales/clearance.en.yml", "config/locales/clearance.en.yml"
 		  end
 
 		  def routes
