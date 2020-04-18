@@ -13,11 +13,6 @@ module Maawol
 		    template "config/initializers/mustache.rb", "config/initializers/mustache.rb"
 		  end
 
-		  def credentials_templates
-		    template "config/credentials.development.sample.yml", "config/_credentials.development.sample.yml"
-		    template "config/credentials.production.sample.yml", "config/_credentials.production.sample.yml"
-		  end
-
 		  def paypal_settings
 		    template "config/paypal.yml", "config/paypal.yml"
 		  end
