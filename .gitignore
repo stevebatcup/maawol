@@ -24,7 +24,8 @@ node_modules/
 
 *.sublime-*
 
-jdr-secrets.yml
 setup-procedure.markdown
+setup-procedure-docker.markdown
 
 spec/dummy/config/database.yml
+lib/generators/templates/config/credentials*.yml.sample
