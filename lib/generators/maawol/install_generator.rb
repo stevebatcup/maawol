@@ -17,6 +17,14 @@ module Maawol
 		    template "config/paypal.yml", "config/paypal.yml"
 		  end
 
+		  def database_config
+		    template "config/database.yml", "config/database.yml"
+		  end
+
+		  def dockerfile
+		    template "Dockerfile", "Dockerfile"
+		  end
+
 		  def git_ignore_template
 		    template ".gitignore.sample", ".gitignore"
 		  end
@@ -29,6 +37,14 @@ module Maawol
 
 		  def routes
 		    template "config/routes.rb", "config/routes.rb"
+		  end
+
+		  def db_seeds
+	  		copy_file "seeds.rb", "db/seeds/maawol.rb"
+	  		inject_into_file "db/seeds.rb" do <<-'RUBY'
+	  			Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each { |seed| load seed }
+	  		RUBY
+	  		end
 		  end
 		end
 	end

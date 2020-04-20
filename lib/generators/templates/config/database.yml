@@ -13,9 +13,11 @@ development:
 test:
   <<: *default
   database: <%= Maawol::Config.site_slug %>_test
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
 
 production:
   <<: *default
   database: <%= Maawol::Config.site_slug %>_production
-  username: <%= Maawol::Config.site_slug %>
-  password: "<%= Rails.application.credentials.database[:password] %>"
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
