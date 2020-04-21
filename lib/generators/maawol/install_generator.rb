@@ -25,6 +25,10 @@ module Maawol
 		    template ".gitignore.sample", ".gitignore"
 		  end
 
+		  def nginx_conf
+		    template "config/nginx.conf", "config/nginx.conf"
+		  end
+
 		  def locales
 				template "config/locales/en.yml", "config/locales/maawol.en.yml"
 				template "config/locales/admin.en.yml", "config/locales/admin.en.yml"
