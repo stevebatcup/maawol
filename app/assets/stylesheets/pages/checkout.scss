@@ -46,7 +46,7 @@ section#payment {
 		}
 
 		button {
-			@extend .btn.btn-success !optional;
+			@extend .btn, .btn-success !optional;
 			width: 100%;
 			box-shadow: 1px 1px 3px #ccc;
 			margin: 15px 0;

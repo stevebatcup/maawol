@@ -439,7 +439,7 @@ $highlighted_option: desaturate(lighten(#24313f, 10%), 5%);
 			}
 
 			#green_subscribe {
-				@extend .btn.btn-success !optional;
+				@extend .btn, .btn-success !optional;
 				float: right;
 				width: 38%;
 				display: block;
