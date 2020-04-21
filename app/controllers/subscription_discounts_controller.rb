@@ -1,6 +1,5 @@
 class SubscriptionDiscountsController < MaawolController
 	before_action :require_login
-	respond_to :json
 
 	def create
 		if params[:apply_discount_code]

@@ -27,10 +27,3 @@ config/credentials/*.key
 config/paypal.yml
 
 *.sublime-*
-
-Capfile
-config/deploy
-config/deploy.rb
-
-config/_credentials.development.sample.yml
-config/_credentials.production.sample.yml

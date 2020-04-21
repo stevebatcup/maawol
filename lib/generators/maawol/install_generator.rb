@@ -21,10 +21,6 @@ module Maawol
 		    template "config/database.yml", "config/database.yml"
 		  end
 
-		  def dockerfile
-		    template "Dockerfile", "Dockerfile"
-		  end
-
 		  def git_ignore_template
 		    template ".gitignore.sample", ".gitignore"
 		  end

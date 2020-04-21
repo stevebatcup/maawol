@@ -1,5 +1,4 @@
 class ChargebeeWebhooksController < MaawolController
-	respond_to	:json
 
 	def payment_messages
 		@payment_messages ||= {
