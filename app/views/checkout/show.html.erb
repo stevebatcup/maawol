@@ -1,15 +1,21 @@
-<section id="checkout_complete" class="solo_checkout well mx-auto my-3 my-md-5 centre-well">
-	<% if @purchased_permissions.any? %>
-		<h3 class="mb-4">All done</h3>
-		<p>Thanks, here are the links to your purchased files.</p>
-		<ul class="mb-4">
-			<% @purchased_permissions.each do |permission| %>
-				<li><%= link_to permission.product.productable.name, permission.full_url, target: :blank, class: "text-success" %></li>
+<section id="checkout_complete_box" class="">
+	<div class="panel">
+    <div class="text-center">
+      <%= render 'layouts/auth-logo' %>
+
+			<% if @purchased_permissions.any? %>
+				<h3 class="mb-4">All done</h3>
+				<p>Thanks, here are the links to your purchased files.</p>
+				<ul class="mb-4">
+					<% @purchased_permissions.each do |permission| %>
+						<li><%= link_to permission.product.productable.name, permission.full_url, target: :blank, class: "text-success" %></li>
+					<% end %>
+				</ul>
+			<% else %>
+				<h3 class="mb-4">Whoops</h3>
+				<p>You may have landed on this page in error.</p>
+				<p><a href="/" class="text-success">Try the homepage instead</a>.</p>
 			<% end %>
-		</ul>
-	<% else %>
-		<h3 class="mb-4">Whoops</h3>
-		<p>You may have landed on this page in error.</p>
-		<p><a href="/" class="text-success">Try the homepage instead</a>.</p>
-	<% end %>
+		</div>
+	</div>
 </section>
