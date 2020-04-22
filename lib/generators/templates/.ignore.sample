@@ -1,6 +1,5 @@
 /.bundle
 /vendor/bundle
-/bin
 
 /log/*
 !/log/.keep
@@ -24,6 +23,5 @@ storage/*
 config/database.yml
 config/master.key
 config/credentials/*.key
-config/paypal.yml
 
 *.sublime-*

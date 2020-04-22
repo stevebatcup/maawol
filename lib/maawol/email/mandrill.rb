@@ -8,7 +8,7 @@ module Maawol
           email_address = Maawol::Config.mail_interceptor_to
           subject = "#{subject} [for #{email_address}]"
         else
-          email_address = email_override.nil? ? to : email_override
+          email_address = email_override.nil? ? email_address : email_override
         end
         data = mail_data(email_address, subject, body, recipient_name)
         response = api.messages.send(data)

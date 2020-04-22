@@ -22,7 +22,8 @@ module Maawol
 		  end
 
 		  def git_ignore_template
-		    template ".gitignore.sample", ".gitignore"
+		    template ".ignore.sample", ".gitignore"
+		    template ".ignore.sample", ".dockerignore"
 		  end
 
 		  def nginx_conf

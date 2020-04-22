@@ -12,7 +12,6 @@ module ContentManagement
     	title: Field::String,
     	url: LinkField,
     	slug: Field::String,
-    	url: Field::String,
     	sections: NestedContentField,
     	created_at: Field::DateTime,
     	updated_at: Field::DateTime,
