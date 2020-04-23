@@ -6,7 +6,7 @@ class ContactMailer < MaawolMailer
 		  "MESSAGE" => submission.message
 		}
 		if submission.subject.present?
-		  vars["SUBJECT"] = submission.subject
+		  merge_vars["SUBJECT"] = submission.subject
 		end
 		subject = "New 'contact us' form submission"
 		body = template('contact-us', merge_vars)
