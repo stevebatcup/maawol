@@ -1,10 +1,12 @@
 require "maawol/config"
 require "maawol/vendor_libs"
 require "maawol/engine"
+require "exception_notifier/mandrill_notifier"
 
 module Maawol
   include Maawol::Config
   include Maawol::VendorLibs
+  # include ExceptionNotifier::MandrillNotifier
 
   module Controllers
     autoload :Helpers,           'maawol/controllers/helpers'
