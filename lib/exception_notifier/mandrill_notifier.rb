@@ -1,6 +1,6 @@
 module ExceptionNotifier
   class MandrillNotifier
-	  include Maawol::Email::Mandrill
+	  include ::Maawol::Email::Mandrill
 
     def initialize(options)
       @subject = options[:subject]

@@ -1,7 +1,7 @@
 module Maawol
   module Email
     module Mandrill
-      extend ActiveSupport::Concern
+      # extend ActiveSupport::Concern
 
       def send_mail(email_address, subject, body, recipient_name=nil, recipient_id=nil, email_override=nil)
         if requires_interception?
