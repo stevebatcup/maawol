@@ -5,10 +5,10 @@ module ExceptionNotifier
   class MandrillNotifier
 	  include ::Maawol::Email::Mandrill
 
-    # def initialize(options)
-    #   @subject = options[:subject]
-    #   @recipient_address = options[:recipient_address]
-    # end
+    def initialize(options)
+      # @subject = options[:subject]
+      # @recipient_address = options[:recipient_address]
+    end
 
     def call(exception, options={})
     	merge_vars = {
