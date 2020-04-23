@@ -5,9 +5,12 @@ module ExceptionNotifier
   class MandrillNotifier
 	  include ::Maawol::Email::Mandrill
 
+    attr_accessor :subject
+    attr_accessor :recipient_address
+
     def initialize(options)
-      # @subject = options[:subject]
-      # @recipient_address = options[:recipient_address]
+      @subject = options[:subject]
+      @recipient_address = options[:recipient_address]
     end
 
     def call(exception, options={})
@@ -16,7 +19,7 @@ module ExceptionNotifier
     		EXCEPTION_BACKTRACE: exception.backtrace.inspect
     	}
 			body = template('exception', merge_vars)
-  	  data = mail_data(options[:recipient_address], options[:subject], body)
+  	  data = mail_data(@recipient_address, @subject, body)
 		  response = api.messages.send(data)
     end
   end
