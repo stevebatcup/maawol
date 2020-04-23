@@ -1,3 +1,6 @@
+require 'mandrill'
+require_relative '../maawol/email/mandrill'
+
 module ExceptionNotifier
   class MandrillNotifier
 	  include ::Maawol::Email::Mandrill
