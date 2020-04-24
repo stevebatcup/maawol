@@ -50,4 +50,8 @@ class Video < ApplicationRecord
       "Please <a href='#{path}'>add a video</a> file to this item.".html_safe
     end
   end
+
+  def has_thumbnail?
+    self.thumbnail.url.present?
+  end
 end

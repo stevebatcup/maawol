@@ -10,7 +10,14 @@ gemspec
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
-gem 'vimeo_me2', :git => "https://github.com/robotixcorporation/vimeo_me2.git"
-
-# To use a debugger
-# gem 'byebug', group: [:development, :test]
+gem "vimeo_me2", git: "https://github.com/robotixcorporation/vimeo_me2.git"
+gem 'mini_racer', platforms: :ruby
+gem 'sprockets', '3.7.2'
+gem 'puma', '~> 4.1'
+gem 'sass-rails', '>= 6'
+gem 'turbolinks', '~> 5'
+gem 'jbuilder', '~> 2.7'
+gem 'bootsnap', '>= 1.4.2', require: false
+gem 'byebug'
+gem 'web-console', '>= 3.3.0'
+gem 'listen'

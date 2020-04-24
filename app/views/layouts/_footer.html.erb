@@ -56,18 +56,19 @@
           <h3 class="widget-title">Recent lessons</h3>
 
           <div class="widget-details">
-
-            <% recent_lessons(4).each do |rl| %>
+            <% recent_lessons(4).each do |recent_lesson| %>
               <article class="post type-post media">
-                <% unless rl.main_video.thumbnail.nil? %>
-                <div class="entry-thumbnail media-left">
-                  <%= link_to image_tag(rl.main_video.thumbnail.url(:small), alt: rl.name), lesson_path(id: rl.slug) unless rl.main_video.nil? || rl.main_video.thumbnail.url.nil? %>
-                </div>
+                <% if recent_lesson.has_video_thumbnail?  %>
+                  <div class="entry-thumbnail media-left">
+                    <%= link_to image_tag(recent_lesson.main_video.thumbnail.url(:small), alt: recent_lesson.name),
+                                lesson_path(id: recent_lesson.slug)
+                     %>
+                  </div>
                 <% end %>
 
                 <div class="entry-content media-body">
                   <h3 class="entry-title">
-                    <%= link_to rl.name, lesson_path(id: rl.slug) %>
+                    <%= link_to recent_lesson.name, lesson_path(id: recent_lesson.slug) %>
                   </h3>
                 </div>
               </article>

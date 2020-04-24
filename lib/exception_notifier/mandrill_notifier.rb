@@ -14,8 +14,21 @@ module ExceptionNotifier
     end
 
     def call(exception, options={})
+      env_vars = []
+      unless options[:env].nil?
+        env = options[:env]
+        env_vars = [
+          "Method: #{env['REQUEST_METHOD']}",
+          "Path: #{env['REQUEST_PATH']}",
+          "Uri:  #{env['REQUEST_URI']}",
+          "Query: #{env['QUERY_STRING']}",
+          "Host: #{env['HTTP_HOST']}",
+          "Browser: #{env['HTTP_USER_AGENT']}",
+        ]
+      end
     	merge_vars = {
     		EXCEPTION_MSG: exception.message,
+        EXCEPTION_ENV_VARS: env_vars.join("<br />"),
     		EXCEPTION_BACKTRACE: exception.backtrace.inspect
     	}
 			body = template('exception', merge_vars)

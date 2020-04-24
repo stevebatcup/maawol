@@ -87,7 +87,7 @@ module Maawol
 			  	params[:controller].include?('sessions') ||
 			  		params[:controller].include?('passwords') ||
 			  			params[:controller].include?('users') ||
-			  				params[:controller].include?('checkout')
+			  				(params[:controller].include?('checkout') && params[:action] == 'new')
 			end
 
 			def is_settings_page?

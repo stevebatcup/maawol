@@ -72,7 +72,7 @@ private
 
 	helper_method	:full_access
 	def full_access
-		user_signed_in? && current_user.has_full_account?
+		user_signed_in? && (current_user.has_full_account? || current_user.is_admin?)
 	end
 
 	def access_without_account?(lesson, course)

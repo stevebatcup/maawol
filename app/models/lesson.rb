@@ -97,6 +97,14 @@ class Lesson < ApplicationRecord
     self.access_level.to_sym == :global ? "All users" : "#{self.users.size} user#{self.users.size > 1 ? 's' : ''}"
   end
 
+  def has_video?
+    self.main_video.present?
+  end
+
+  def has_video_thumbnail?
+    self.has_video? && self.main_video.has_thumbnail?
+  end
+
 private
 
   def set_slug
