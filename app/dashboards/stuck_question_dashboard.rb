@@ -61,6 +61,6 @@ class StuckQuestionDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    [ stuck_answers_attributes: [:id, :stuck_question_id, :sort, :answer, :_destroy ] ]
+    [ :id, :sort, :question, stuck_answers_attributes: [:id, :stuck_question_id, :sort, :answer, :_destroy ] ]
   end
 end
