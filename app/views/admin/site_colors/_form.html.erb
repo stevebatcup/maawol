@@ -3,7 +3,7 @@
   <% colors.each do |color| -%>
     <div class="field-unit field-unit--color">
       <div class="field-unit__label color_picker">
-        <label for="listening_lab_name"><%= color.name %></label>
+        <label for="<%= color.slug %>"><%= color.name %></label>
       </div>
       <div class="field-unit__field color_picker d-flex">
         <input type="color" id="<%= color.slug %>" name="colors[<%= color.slug %>]" value="<%= color.value %>" />

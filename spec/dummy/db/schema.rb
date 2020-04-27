@@ -10,26 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_163458) do
+ActiveRecord::Schema.define(version: 2020_04_27_133520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "albums", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.string "artist"
-    t.string "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "cover"
-  end
-
-  create_table "albums_listening_labs", id: false, force: :cascade do |t|
-    t.integer "album_id"
-    t.integer "listening_lab_id"
-    t.index ["album_id"], name: "index_albums_listening_labs_on_album_id"
-    t.index ["listening_lab_id"], name: "index_albums_listening_labs_on_listening_lab_id"
-  end
 
   create_table "api_logs", id: :serial, force: :cascade do |t|
     t.integer "user_id"
@@ -273,11 +257,11 @@ ActiveRecord::Schema.define(version: 2020_04_15_163458) do
     t.index ["slug"], name: "index_lessons_on_slug"
   end
 
-  create_table "lessons_listening_labs", id: false, force: :cascade do |t|
+  create_table "lessons_playlists", id: false, force: :cascade do |t|
     t.integer "lesson_id"
-    t.integer "listening_lab_id"
-    t.index ["lesson_id"], name: "index_lessons_listening_labs_on_lesson_id"
-    t.index ["listening_lab_id"], name: "index_lessons_listening_labs_on_listening_lab_id"
+    t.integer "playlist_id"
+    t.index ["lesson_id"], name: "index_lessons_playlists_on_lesson_id"
+    t.index ["playlist_id"], name: "index_lessons_playlists_on_playlist_id"
   end
 
   create_table "lessons_tags", id: false, force: :cascade do |t|
@@ -301,11 +285,13 @@ ActiveRecord::Schema.define(version: 2020_04_15_163458) do
     t.index ["video_id"], name: "index_lessons_videos_on_video_id"
   end
 
-  create_table "listening_labs", id: :serial, force: :cascade do |t|
+  create_table "playlists", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "spotify_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "apple_music_url"
+    t.string "amazon_music_url"
   end
 
   create_table "product_payments", force: :cascade do |t|

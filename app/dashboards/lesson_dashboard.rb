@@ -18,7 +18,7 @@ class LessonDashboard < Administrate::BaseDashboard
     content: TinyMceField,
     course_only: Field::Boolean,
     is_free: Field::Boolean,
-    listening_labs: HasLotsField,
+    playlists: HasLotsField,
     users: HasLotsField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -64,7 +64,7 @@ class LessonDashboard < Administrate::BaseDashboard
     :is_free,
     :tags,
     :categories,
-    :listening_labs,
+    :playlists,
     :users,
     :publish_date
   ].freeze

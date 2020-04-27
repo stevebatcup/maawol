@@ -19,7 +19,7 @@ as defined by the routes in the `admin/` namespace
     </a>
   </h1>
 
-  <h3>Lessons</h3>
+  <h3>Lesson library</h3>
   <ul>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/lessons') %>"
@@ -30,6 +30,10 @@ as defined by the routes in the `admin/` namespace
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/courses') %>"
             href="/admin/courses">Courses
       </a>
+    </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/authors') %>"
+            href="/admin/authors">Authors</a>
     </li>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/root_categories') %>"
@@ -53,7 +57,7 @@ as defined by the routes in the `admin/` namespace
     </li>
   </ul>
 
-  <h3>Files</h3>
+  <h3>Lesson resources</h3>
   <ul>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/videos') %>"
@@ -67,26 +71,12 @@ as defined by the routes in the `admin/` namespace
     </li>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/downloadables') %>"
-            href="/admin/downloadables">Scores
+            href="/admin/downloadables">Scores &amp; Excercises
       </a>
     </li>
     <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/downloadables') %>"
-            href="/admin/downloadables">Exercises
-      </a>
-    </li>
-  </ul>
-
-  <h3>Listening labs</h3>
-  <ul>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/listening_labs') %>"
-            href="/admin/listening_labs">Labs
-      </a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/albums') %>"
-            href="/admin/albums">Albums
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/playlists') %>"
+            href="/admin/playlists">Playlists
       </a>
     </li>
   </ul>
@@ -120,7 +110,7 @@ as defined by the routes in the `admin/` namespace
     </li>
   </ul>
 
-  <h3>People</h3>
+  <h3>Members</h3>
   <ul>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.fullpath == '/admin/users' %>"
@@ -129,10 +119,6 @@ as defined by the routes in the `admin/` namespace
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.fullpath == '/admin/subscribers' %>"
             href="/admin/subscribers">Subscribers</a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/authors') %>"
-            href="/admin/authors">Authors</a>
     </li>
   </ul>
 
@@ -154,10 +140,6 @@ as defined by the routes in the `admin/` namespace
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/stuck') %>"
             href="/admin/stuck_questions">Questions for the I'm stuck page</a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/edit_nav/footer') %>"
-            href="/admin/content_management/edit_nav/footer">Footer navbar</a>
     </li>
   </ul>
 

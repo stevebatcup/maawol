@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 	  resources :categories
 	  resources :tags
 	  resources :skill_levels
-	  resources :listening_labs
+	  resources :playlists
 	  resources :albums
 	  resources :stuck_questions
 	  resources :income_reports, only: [:index, :show]

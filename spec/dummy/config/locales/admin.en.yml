@@ -8,6 +8,9 @@ en:
       root_category:
         create: Create Primary category
         update: Update Primary category
+      listening_lab:
+        create: Create Playlist
+        update: Update Playlist
     label:
       course:
         name: Name of course
@@ -28,6 +31,9 @@ en:
         lesson_ids: Lessons in this category
       listening_lab:
         spotify_url: Spotify playlist URL
+        resource_name_overrides:
+          multiple: Playlists
+          singular: Playlist
       subscriber:
         subscription_created: Subscription purchased at
         subscription_referring_author_name: Referred by

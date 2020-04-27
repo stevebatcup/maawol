@@ -1,5 +1,4 @@
-class ListeningLab < ApplicationRecord
-	has_and_belongs_to_many	:albums
+class Playlist < ApplicationRecord
 	has_and_belongs_to_many	:lessons
 
 	validates_presence_of :name
@@ -13,5 +12,15 @@ class ListeningLab < ApplicationRecord
 		else
 			nil
 		end
+	end
+
+	def amazon_music_embed_url
+		return nil if self.amazon_music_url.nil?
+		self.amazon_music_url
+	end
+
+	def apple_music_embed_url
+		return nil if self.apple_music_url.nil?
+		self.apple_music_url
 	end
 end
