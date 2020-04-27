@@ -31,3 +31,4 @@ spec/dummy/config/database.yml
 lib/generators/templates/config/credentials.*.sample.yml
 
 spec/dummy/.env
+spec/dummy/log/*
