@@ -19857,3 +19857,488 @@ DEPRECATION WARNING: `Module#parent_name` has been renamed to `module_parent_nam
 Completed 200 OK in 325ms (Views: 312.5ms | ActiveRecord: 4.0ms | Allocations: 48151)
 
 
+Started GET "/admin/lessons" for 192.168.160.1 at 2020-04-27 10:30:44 +0000
+Cannot render console from 192.168.160.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Admin::LessonsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "4c09f5106c5a11d8cfa0fa97221565f69f094c6f"], ["LIMIT", 1]]
+  Rendering /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application
+  Rendered /usr/src/app/app/views/admin/application/_search.html.erb (Duration: 0.1ms | Allocations: 6)
+  [1m[36mLesson Load (1.2ms)[0m  [1m[34mSELECT "lessons".* FROM "lessons" ORDER BY lessons.publish_date desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1[0m  [["id", 1]]
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 22.7ms | Allocations: 945)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.4ms | Allocations: 130)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 2.3ms | Allocations: 97)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.7ms | Allocations: 193)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 0.9ms | Allocations: 311)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 0.7ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 0.9ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.3ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 0.7ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /usr/src/app/app/views/admin/lessons/_collection.html.erb (Duration: 151.8ms | Allocations: 31700)
+  Rendered /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application (Duration: 179.9ms | Allocations: 43698)
+DEPRECATION WARNING: `Module#parent_name` has been renamed to `module_parent_name`. `parent_name` is deprecated and will be removed in Rails 6.1. (called from __usr_src_app_app_views_layouts_admin_application_html_erb__2875975948069385189_47296491248860 at /usr/src/app/app/views/layouts/admin/application.html.erb:22)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_stylesheet.html.erb (Duration: 32.1ms | Allocations: 4294)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_icons.html.erb (Duration: 0.1ms | Allocations: 5)
+  [1m[36mSiteImage Load (0.8ms)[0m  [1m[34mSELECT "site_images".* FROM "site_images"[0m
+  [1m[36mSiteSetting Load (0.6ms)[0m  [1m[34mSELECT "site_settings".* FROM "site_settings"[0m
+  Rendered /usr/src/app/app/views/admin/application/_navigation.html.erb (Duration: 51.8ms | Allocations: 12961)
+  Rendered /usr/src/app/app/views/admin/application/_flashes.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered /usr/src/app/app/views/admin/application/_javascript.html.erb (Duration: 227.6ms | Allocations: 21837)
+Completed 200 OK in 713ms (Views: 602.3ms | ActiveRecord: 24.0ms | Allocations: 115692)
+
+
+Started GET "/admin/lessons/5" for 192.168.160.1 at 2020-04-27 10:31:16 +0000
+Cannot render console from 192.168.160.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Admin::LessonsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "4c09f5106c5a11d8cfa0fa97221565f69f094c6f"], ["LIMIT", 1]]
+  [1m[36mLesson Load (1.1ms)[0m  [1m[34mSELECT "lessons".* FROM "lessons" WHERE "lessons"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering /usr/src/app/app/views/admin/lessons/show.html.erb within layouts/admin/application
+  [1m[36mAuthor Load (0.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_show.html.erb (Duration: 0.8ms | Allocations: 126)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_show.html.erb (Duration: 4.9ms | Allocations: 520)
+  Rendered /usr/src/app/app/views/fields/tiny_mce_field/_show.html.erb (Duration: 3.5ms | Allocations: 102)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_show.html.erb (Duration: 1.1ms | Allocations: 130)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_show.html.erb (Duration: 4.9ms | Allocations: 97)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_show.html.erb (Duration: 0.7ms | Allocations: 182)
+  Rendered /usr/src/app/app/views/admin/lessons/show.html.erb within layouts/admin/application (Duration: 75.2ms | Allocations: 10105)
+DEPRECATION WARNING: `Module#parent_name` has been renamed to `module_parent_name`. `parent_name` is deprecated and will be removed in Rails 6.1. (called from __usr_src_app_app_views_layouts_admin_application_html_erb__2875975948069385189_47296491248860 at /usr/src/app/app/views/layouts/admin/application.html.erb:22)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_stylesheet.html.erb (Duration: 46.2ms | Allocations: 4293)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_icons.html.erb (Duration: 0.1ms | Allocations: 5)
+  [1m[36mSiteImage Load (0.7ms)[0m  [1m[34mSELECT "site_images".* FROM "site_images"[0m
+  [1m[36mSiteSetting Load (0.9ms)[0m  [1m[34mSELECT "site_settings".* FROM "site_settings"[0m
+  Rendered /usr/src/app/app/views/admin/application/_navigation.html.erb (Duration: 10.5ms | Allocations: 4640)
+  Rendered /usr/src/app/app/views/admin/application/_flashes.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered /usr/src/app/app/views/admin/application/_javascript.html.erb (Duration: 270.8ms | Allocations: 21838)
+Completed 200 OK in 543ms (Views: 529.0ms | ActiveRecord: 4.3ms | Allocations: 48261)
+
+
+Started GET "/admin/lessons" for 192.168.160.1 at 2020-04-27 10:31:18 +0000
+Cannot render console from 192.168.160.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Admin::LessonsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "4c09f5106c5a11d8cfa0fa97221565f69f094c6f"], ["LIMIT", 1]]
+  Rendering /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application
+  Rendered /usr/src/app/app/views/admin/application/_search.html.erb (Duration: 0.1ms | Allocations: 6)
+  [1m[36mLesson Load (1.1ms)[0m  [1m[34mSELECT "lessons".* FROM "lessons" ORDER BY lessons.publish_date desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mAuthor Load (0.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1[0m  [["id", 1]]
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 27.8ms | Allocations: 945)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.6ms | Allocations: 130)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 3.4ms | Allocations: 97)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.8ms | Allocations: 193)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.1ms | Allocations: 311)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.4ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.0ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.2ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.3ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.5ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /usr/src/app/app/views/admin/lessons/_collection.html.erb (Duration: 180.4ms | Allocations: 28915)
+  Rendered /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application (Duration: 214.8ms | Allocations: 40912)
+DEPRECATION WARNING: `Module#parent_name` has been renamed to `module_parent_name`. `parent_name` is deprecated and will be removed in Rails 6.1. (called from __usr_src_app_app_views_layouts_admin_application_html_erb__2875975948069385189_70248356469380 at /usr/src/app/app/views/layouts/admin/application.html.erb:22)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_stylesheet.html.erb (Duration: 36.2ms | Allocations: 4293)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_icons.html.erb (Duration: 0.1ms | Allocations: 5)
+  [1m[36mSiteImage Load (0.9ms)[0m  [1m[34mSELECT "site_images".* FROM "site_images"[0m
+  [1m[36mSiteSetting Load (1.0ms)[0m  [1m[34mSELECT "site_settings".* FROM "site_settings"[0m
+  Rendered /usr/src/app/app/views/admin/application/_navigation.html.erb (Duration: 10.6ms | Allocations: 4640)
+  Rendered /usr/src/app/app/views/admin/application/_flashes.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered /usr/src/app/app/views/admin/application/_javascript.html.erb (Duration: 186.1ms | Allocations: 21835)
+Completed 200 OK in 669ms (Views: 569.6ms | ActiveRecord: 15.9ms | Allocations: 94663)
+
+
+Started GET "/admin/lessons" for 192.168.160.1 at 2020-04-27 10:32:52 +0000
+Cannot render console from 192.168.160.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Admin::LessonsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "4c09f5106c5a11d8cfa0fa97221565f69f094c6f"], ["LIMIT", 1]]
+  Rendering /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application
+  Rendered /usr/src/app/app/views/admin/application/_search.html.erb (Duration: 0.1ms | Allocations: 6)
+  [1m[36mLesson Load (1.0ms)[0m  [1m[34mSELECT "lessons".* FROM "lessons" ORDER BY lessons.publish_date desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mAuthor Load (0.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1[0m  [["id", 1]]
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.2ms | Allocations: 312)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.2ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.3ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.1ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.3ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.0ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.1ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.3ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 0.9ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /usr/src/app/app/views/admin/lessons/_collection.html.erb (Duration: 75.9ms | Allocations: 17665)
+  Rendered /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application (Duration: 84.2ms | Allocations: 22272)
+DEPRECATION WARNING: `Module#parent_name` has been renamed to `module_parent_name`. `parent_name` is deprecated and will be removed in Rails 6.1. (called from __usr_src_app_app_views_layouts_admin_application_html_erb__2875975948069385189_70248356469380 at /usr/src/app/app/views/layouts/admin/application.html.erb:22)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_stylesheet.html.erb (Duration: 35.9ms | Allocations: 4292)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_icons.html.erb (Duration: 0.1ms | Allocations: 5)
+  [1m[36mSiteImage Load (0.7ms)[0m  [1m[34mSELECT "site_images".* FROM "site_images"[0m
+  [1m[36mSiteSetting Load (0.8ms)[0m  [1m[34mSELECT "site_settings".* FROM "site_settings"[0m
+  Rendered /usr/src/app/app/views/admin/application/_navigation.html.erb (Duration: 10.5ms | Allocations: 4640)
+  Rendered /usr/src/app/app/views/admin/application/_flashes.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered /usr/src/app/app/views/admin/application/_javascript.html.erb (Duration: 385.3ms | Allocations: 21837)
+Completed 200 OK in 663ms (Views: 630.7ms | ActiveRecord: 3.9ms | Allocations: 59244)
+
+
+Started GET "/admin/lessons" for 192.168.160.1 at 2020-04-27 10:33:02 +0000
+Cannot render console from 192.168.160.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Admin::LessonsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "4c09f5106c5a11d8cfa0fa97221565f69f094c6f"], ["LIMIT", 1]]
+  Rendering /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application
+  Rendered /usr/src/app/app/views/admin/application/_search.html.erb (Duration: 0.1ms | Allocations: 6)
+  [1m[36mLesson Load (1.3ms)[0m  [1m[34mSELECT "lessons".* FROM "lessons" ORDER BY lessons.publish_date desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mAuthor Load (0.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1[0m  [["id", 1]]
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.2ms | Allocations: 312)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 0.9ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.3ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.2ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 0.9ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /usr/src/app/app/views/admin/lessons/_collection.html.erb (Duration: 63.0ms | Allocations: 17660)
+  Rendered /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application (Duration: 68.9ms | Allocations: 22258)
+DEPRECATION WARNING: `Module#parent_name` has been renamed to `module_parent_name`. `parent_name` is deprecated and will be removed in Rails 6.1. (called from __usr_src_app_app_views_layouts_admin_application_html_erb__2875975948069385189_70248356469380 at /usr/src/app/app/views/layouts/admin/application.html.erb:22)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_stylesheet.html.erb (Duration: 28.0ms | Allocations: 4292)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_icons.html.erb (Duration: 0.1ms | Allocations: 5)
+  [1m[36mSiteImage Load (0.6ms)[0m  [1m[34mSELECT "site_images".* FROM "site_images"[0m
+  [1m[36mSiteSetting Load (0.6ms)[0m  [1m[34mSELECT "site_settings".* FROM "site_settings"[0m
+  Rendered /usr/src/app/app/views/admin/application/_navigation.html.erb (Duration: 9.2ms | Allocations: 4638)
+  Rendered /usr/src/app/app/views/admin/application/_flashes.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered /usr/src/app/app/views/admin/application/_javascript.html.erb (Duration: 228.4ms | Allocations: 21837)
+Completed 200 OK in 447ms (Views: 415.6ms | ActiveRecord: 3.7ms | Allocations: 59229)
+
+
+Started GET "/admin/lessons" for 192.168.160.1 at 2020-04-27 10:34:12 +0000
+Cannot render console from 192.168.160.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Admin::LessonsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "4c09f5106c5a11d8cfa0fa97221565f69f094c6f"], ["LIMIT", 1]]
+  Rendering /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application
+  Rendered /usr/src/app/app/views/admin/application/_search.html.erb (Duration: 0.1ms | Allocations: 6)
+  [1m[36mLesson Load (0.9ms)[0m  [1m[34mSELECT "lessons".* FROM "lessons" ORDER BY lessons.publish_date desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mAuthor Load (0.8ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1[0m  [["id", 1]]
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.7ms | Allocations: 313)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.4ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.2ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.1ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.4ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.5ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.3ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 0.9ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.3ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 0.9ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /usr/src/app/app/views/admin/lessons/_collection.html.erb (Duration: 83.3ms | Allocations: 17665)
+  Rendered /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application (Duration: 89.9ms | Allocations: 22281)
+DEPRECATION WARNING: `Module#parent_name` has been renamed to `module_parent_name`. `parent_name` is deprecated and will be removed in Rails 6.1. (called from __usr_src_app_app_views_layouts_admin_application_html_erb__2875975948069385189_47296491248860 at /usr/src/app/app/views/layouts/admin/application.html.erb:22)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_stylesheet.html.erb (Duration: 43.1ms | Allocations: 4292)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_icons.html.erb (Duration: 0.1ms | Allocations: 5)
+  [1m[36mSiteImage Load (0.5ms)[0m  [1m[34mSELECT "site_images".* FROM "site_images"[0m
+  [1m[36mSiteSetting Load (0.6ms)[0m  [1m[34mSELECT "site_settings".* FROM "site_settings"[0m
+  Rendered /usr/src/app/app/views/admin/application/_navigation.html.erb (Duration: 8.8ms | Allocations: 4640)
+  Rendered /usr/src/app/app/views/admin/application/_flashes.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered /usr/src/app/app/views/admin/application/_javascript.html.erb (Duration: 239.8ms | Allocations: 21834)
+Completed 200 OK in 533ms (Views: 498.5ms | ActiveRecord: 3.4ms | Allocations: 59266)
+
+
+Started GET "/admin/lessons" for 192.168.160.1 at 2020-04-27 10:34:35 +0000
+Cannot render console from 192.168.160.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Admin::LessonsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "4c09f5106c5a11d8cfa0fa97221565f69f094c6f"], ["LIMIT", 1]]
+  Rendering /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application
+  Rendered /usr/src/app/app/views/admin/application/_search.html.erb (Duration: 0.1ms | Allocations: 6)
+  [1m[36mLesson Load (1.3ms)[0m  [1m[34mSELECT "lessons".* FROM "lessons" ORDER BY lessons.publish_date desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mAuthor Load (0.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1[0m  [["id", 1]]
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.0ms | Allocations: 312)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.5ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.1ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.0ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.0ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.2ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.4ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 0.8ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /usr/src/app/app/views/admin/lessons/_collection.html.erb (Duration: 62.5ms | Allocations: 17691)
+  Rendered /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application (Duration: 69.3ms | Allocations: 22289)
+DEPRECATION WARNING: `Module#parent_name` has been renamed to `module_parent_name`. `parent_name` is deprecated and will be removed in Rails 6.1. (called from __usr_src_app_app_views_layouts_admin_application_html_erb__2875975948069385189_47296491248860 at /usr/src/app/app/views/layouts/admin/application.html.erb:22)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_stylesheet.html.erb (Duration: 38.6ms | Allocations: 4292)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_icons.html.erb (Duration: 0.1ms | Allocations: 5)
+  [1m[36mSiteImage Load (0.8ms)[0m  [1m[34mSELECT "site_images".* FROM "site_images"[0m
+  [1m[36mSiteSetting Load (0.8ms)[0m  [1m[34mSELECT "site_settings".* FROM "site_settings"[0m
+  Rendered /usr/src/app/app/views/admin/application/_navigation.html.erb (Duration: 9.5ms | Allocations: 4638)
+  Rendered /usr/src/app/app/views/admin/application/_flashes.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered /usr/src/app/app/views/admin/application/_javascript.html.erb (Duration: 310.8ms | Allocations: 21838)
+Completed 200 OK in 572ms (Views: 534.4ms | ActiveRecord: 5.2ms | Allocations: 59383)
+
+
+Started GET "/admin/lessons" for 192.168.160.1 at 2020-04-27 10:39:37 +0000
+Cannot render console from 192.168.160.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Admin::LessonsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "4c09f5106c5a11d8cfa0fa97221565f69f094c6f"], ["LIMIT", 1]]
+  Rendering /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application
+  Rendered /usr/src/app/app/views/admin/application/_search.html.erb (Duration: 4.6ms | Allocations: 77)
+  [1m[36mLesson Load (1.4ms)[0m  [1m[34mSELECT "lessons".* FROM "lessons" ORDER BY lessons.publish_date desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mAuthor Load (0.9ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1[0m  [["id", 1]]
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.4ms | Allocations: 127)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 9.8ms | Allocations: 517)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.5ms | Allocations: 128)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 6.1ms | Allocations: 95)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 1.3ms | Allocations: 180)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.0ms | Allocations: 311)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.4ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 2.0ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.4ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.1ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.3ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 0.9ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /usr/src/app/app/views/admin/lessons/_collection.html.erb (Duration: 157.6ms | Allocations: 20467)
+  Rendered /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application (Duration: 225.2ms | Allocations: 27032)
+DEPRECATION WARNING: `Module#parent_name` has been renamed to `module_parent_name`. `parent_name` is deprecated and will be removed in Rails 6.1. (called from __usr_src_app_app_views_layouts_admin_application_html_erb__2875975948069385189_47296488489560 at /usr/src/app/app/views/layouts/admin/application.html.erb:22)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_stylesheet.html.erb (Duration: 35.5ms | Allocations: 4451)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_icons.html.erb (Duration: 0.4ms | Allocations: 90)
+  [1m[36mSiteImage Load (1.0ms)[0m  [1m[34mSELECT "site_images".* FROM "site_images"[0m
+  [1m[36mSiteSetting Load (0.7ms)[0m  [1m[34mSELECT "site_settings".* FROM "site_settings"[0m
+  Rendered /usr/src/app/app/views/admin/application/_navigation.html.erb (Duration: 14.5ms | Allocations: 5481)
+  Rendered /usr/src/app/app/views/admin/application/_flashes.html.erb (Duration: 3.0ms | Allocations: 213)
+Completed 200 OK in 516ms (Views: 470.5ms | ActiveRecord: 4.5ms | Allocations: 49567)
+
+
+Started GET "/admin/lessons" for 192.168.160.1 at 2020-04-27 10:39:49 +0000
+Cannot render console from 192.168.160.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Admin::LessonsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "4c09f5106c5a11d8cfa0fa97221565f69f094c6f"], ["LIMIT", 1]]
+  Rendering /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application
+  Rendered /usr/src/app/app/views/admin/application/_search.html.erb (Duration: 3.0ms | Allocations: 77)
+  [1m[36mLesson Load (0.7ms)[0m  [1m[34mSELECT "lessons".* FROM "lessons" ORDER BY lessons.publish_date desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mAuthor Load (0.8ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1[0m  [["id", 1]]
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.4ms | Allocations: 127)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 3.8ms | Allocations: 517)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.5ms | Allocations: 128)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 4.0ms | Allocations: 95)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.7ms | Allocations: 180)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.2ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.2ms | Allocations: 311)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.4ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 0.9ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.2ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.3ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.2ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.3ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.1ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.2ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.6ms | Allocations: 39)
+  Rendered /usr/src/app/app/views/admin/lessons/_collection.html.erb (Duration: 111.7ms | Allocations: 20454)
+  Rendered /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application (Duration: 160.8ms | Allocations: 27003)
+DEPRECATION WARNING: `Module#parent_name` has been renamed to `module_parent_name`. `parent_name` is deprecated and will be removed in Rails 6.1. (called from __usr_src_app_app_views_layouts_admin_application_html_erb__2875975948069385189_70248403885440 at /usr/src/app/app/views/layouts/admin/application.html.erb:22)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_stylesheet.html.erb (Duration: 51.7ms | Allocations: 4452)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_icons.html.erb (Duration: 1.1ms | Allocations: 90)
+  [1m[36mSiteImage Load (2.4ms)[0m  [1m[34mSELECT "site_images".* FROM "site_images"[0m
+  [1m[36mSiteSetting Load (1.8ms)[0m  [1m[34mSELECT "site_settings".* FROM "site_settings"[0m
+  Rendered /usr/src/app/app/views/admin/application/_navigation.html.erb (Duration: 32.7ms | Allocations: 5479)
+  Rendered /usr/src/app/app/views/admin/application/_flashes.html.erb (Duration: 5.4ms | Allocations: 213)
+  Rendered /usr/src/app/app/views/admin/application/_javascript.html.erb (Duration: 423.8ms | Allocations: 22030)
+Completed 200 OK in 1062ms (Views: 1024.2ms | ActiveRecord: 6.4ms | Allocations: 72129)
+
+
+Started GET "/admin/lessons" for 192.168.160.1 at 2020-04-27 10:49:59 +0000
+Cannot render console from 192.168.160.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Admin::LessonsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "4c09f5106c5a11d8cfa0fa97221565f69f094c6f"], ["LIMIT", 1]]
+  Rendering /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application
+  Rendered /usr/src/app/app/views/admin/application/_search.html.erb (Duration: 0.3ms | Allocations: 6)
+  [1m[36mLesson Load (1.8ms)[0m  [1m[34mSELECT "lessons".* FROM "lessons" ORDER BY lessons.publish_date desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mAuthor Load (0.8ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1[0m  [["id", 1]]
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.2ms | Allocations: 313)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.9ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.0ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.2ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.4ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.8ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.4ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.3ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /usr/src/app/app/views/admin/lessons/_collection.html.erb (Duration: 97.3ms | Allocations: 17699)
+  Rendered /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application (Duration: 105.7ms | Allocations: 22314)
+DEPRECATION WARNING: `Module#parent_name` has been renamed to `module_parent_name`. `parent_name` is deprecated and will be removed in Rails 6.1. (called from __usr_src_app_app_views_layouts_admin_application_html_erb__2875975948069385189_70248403885440 at /usr/src/app/app/views/layouts/admin/application.html.erb:22)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_stylesheet.html.erb (Duration: 45.1ms | Allocations: 4293)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_icons.html.erb (Duration: 0.1ms | Allocations: 5)
+  [1m[36mSiteImage Load (0.8ms)[0m  [1m[34mSELECT "site_images".* FROM "site_images"[0m
+  [1m[36mSiteSetting Load (1.1ms)[0m  [1m[34mSELECT "site_settings".* FROM "site_settings"[0m
+  Rendered /usr/src/app/app/views/admin/application/_navigation.html.erb (Duration: 11.0ms | Allocations: 4640)
+  Rendered /usr/src/app/app/views/admin/application/_flashes.html.erb (Duration: 0.2ms | Allocations: 19)
+  Rendered /usr/src/app/app/views/admin/application/_javascript.html.erb (Duration: 321.1ms | Allocations: 21837)
+Completed 200 OK in 655ms (Views: 610.2ms | ActiveRecord: 6.2ms | Allocations: 59412)
+
+
+Started GET "/admin/lessons" for 192.168.160.1 at 2020-04-27 10:50:17 +0000
+Cannot render console from 192.168.160.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Admin::LessonsController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "4c09f5106c5a11d8cfa0fa97221565f69f094c6f"], ["LIMIT", 1]]
+  Rendering /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application
+  Rendered /usr/src/app/app/views/admin/application/_search.html.erb (Duration: 6.4ms | Allocations: 77)
+  [1m[36mLesson Load (3.0ms)[0m  [1m[34mSELECT "lessons".* FROM "lessons" ORDER BY lessons.publish_date desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mAuthor Load (2.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1[0m  [["id", 1]]
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.8ms | Allocations: 127)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 3.7ms | Allocations: 517)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.5ms | Allocations: 128)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 3.8ms | Allocations: 95)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 1.4ms | Allocations: 180)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.2ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 2.0ms | Allocations: 311)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.2ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.7ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.8ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.2ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.4ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.5ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.2ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/string/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/belongs_to/_index.html.erb (Duration: 1.0ms | Allocations: 310)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/boolean/_index.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered /usr/src/app/app/views/fields/non_editable_string_field/_index.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /gems/gems/administrate-0.13.0/app/views/fields/date_time/_index.html.erb (Duration: 0.3ms | Allocations: 39)
+  Rendered /usr/src/app/app/views/admin/lessons/_collection.html.erb (Duration: 179.5ms | Allocations: 20501)
+  Rendered /usr/src/app/app/views/admin/application/index.html.erb within layouts/admin/application (Duration: 262.6ms | Allocations: 27067)
+DEPRECATION WARNING: `Module#parent_name` has been renamed to `module_parent_name`. `parent_name` is deprecated and will be removed in Rails 6.1. (called from __usr_src_app_app_views_layouts_admin_application_html_erb__2875975948069385189_47296493080960 at /usr/src/app/app/views/layouts/admin/application.html.erb:22)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_stylesheet.html.erb (Duration: 49.7ms | Allocations: 4451)
+  Rendered /gems/gems/administrate-0.13.0/app/views/administrate/application/_icons.html.erb (Duration: 0.4ms | Allocations: 90)
+  [1m[36mSiteImage Load (0.9ms)[0m  [1m[34mSELECT "site_images".* FROM "site_images"[0m
+  [1m[36mSiteSetting Load (1.1ms)[0m  [1m[34mSELECT "site_settings".* FROM "site_settings"[0m
+  Rendered /usr/src/app/app/views/admin/application/_navigation.html.erb (Duration: 15.2ms | Allocations: 5481)
+  Rendered /usr/src/app/app/views/admin/application/_flashes.html.erb (Duration: 3.0ms | Allocations: 213)
+  Rendered /usr/src/app/app/views/admin/application/_javascript.html.erb (Duration: 217.6ms | Allocations: 21962)
+Completed 200 OK in 2033ms (Views: 1971.7ms | ActiveRecord: 10.6ms | Allocations: 88440)
+
+
