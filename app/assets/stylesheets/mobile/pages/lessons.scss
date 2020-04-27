@@ -100,7 +100,7 @@ body.mobile {
 		border-top: 1px solid #ccc;
 		margin-bottom: 20px !important;
 
-		ol.comment-list {
+		ul.comment-list {
 			padding-top: 20px;
 
 			&.has_children {
@@ -108,6 +108,7 @@ body.mobile {
 			}
 
 			li.comment {
+				list-style: none;
 
 				.children {
 					padding-left: 4%;

@@ -146,10 +146,12 @@ article.lesson {
 			padding-bottom: 0.4em;
 		}
 
-		ol.comment-list {
+		ul.comment-list {
 			padding-top: 20px;
 
 			li.comment {
+				list-style: none;
+
 				.comment-item {
 					margin-bottom: 15px;
 
@@ -158,8 +160,7 @@ article.lesson {
 						display: inline-block;
 
 						img {
-							width: 60px;
-							border-radius: 50px;
+							width: 4em;
 						}
 					}
 

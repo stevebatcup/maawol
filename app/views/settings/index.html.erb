@@ -27,28 +27,33 @@
               <%= f.label :first_name %>
               <%= f.text_field :first_name, { class: 'form-control' } %>
             </p>
+
             <p class="form-input">
               <%= f.label :last_name %>
               <%= f.text_field :last_name, { class: 'form-control' } %>
             </p>
+
             <p class="form-input">
               <%= f.label :email %>
               <%= f.email_field :email, { class: 'form-control' } %>
             </p>
+
+            <p class="form-input">
+              <%= f.label :avatar %>
+              <% if current_user.avatar %>
+                <img src="<%= current_user.avatar.url(:thumbnail) %>" alt="<%= current_user.username %>" width="80px" class="rounded-circle" />
+                <div class="clearfix"></div>
+              <% end %>
+              <%= f.file_field :avatar %>
+            </p>
+
             <p class="form-input">
               <%= f.label :receives_weekly_digest do %>
                 <span class="checkbox_label">Opt me into the <%= site_setting("Site easy name") %> weekly digest email?</span>
                 <%= f.check_box :receives_weekly_digest, { class: 'form-control' } %>
               <% end %>
             </p>
-            <p class="form-input">
-            <% if current_user.avatar %>
-              <img src="<%= current_user.avatar.url(:thumbnail) %>" alt="<%= current_user.username %>" width="80px" />
-              <div class="clearfix"></div>
-            <% end %>
-              <%= f.label :avatar %>
-              <%= f.file_field :avatar %>
-            </p>
+
             <p class="actions d-flex justify-content-start">
               <%= f.submit "Update my details", { class: 'btn btn-block btn-success btn-large px-5' } %>
             </p>

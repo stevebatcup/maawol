@@ -171,22 +171,22 @@
       </div>
     </div>
 
-    <ol class="comment-list px-3 <%= 'has_children' if @lesson.root_comments.any? %>">
+    <ul class="comment-list px-3 <%= 'has_children' if @lesson.root_comments.any? %>">
       <% @lesson.root_comments.each do |root_comment| %>
         <li class="comment parent py-2">
           <%= render 'comments/comment', mustache: comment_for_mustache(root_comment, true) %>
           <% if root_comment.has_children? %>
-            <ol class="children">
+            <ul class="children">
               <% root_comment.children.each do |child_comment| %>
               <li class="comment py-1">
                 <%= render 'comments/comment', mustache: comment_for_mustache(child_comment, false) %>
               </li>
               <% end %>
-            </ol>
+            </ul>
           <% end %>
         </li>
       <% end %>
-    </ol>
+    </ul>
   </div>
 
 </article>

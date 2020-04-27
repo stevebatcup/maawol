@@ -49,6 +49,10 @@
         margin-top: 0;
       }
 
+      img.avatar {
+        width: 3.75em;
+      }
+
       .item-icon {
         background: #eceff1;
         border-radius: 50%;
@@ -61,13 +65,6 @@
         margin-right: 15px;
         padding: 0;
         text-align: center;
-
-        &.item-photo {
-          overflow: hidden;
-          height: 65px !important;
-          width: 65px !important;
-          line-height: 78px !important;
-        }
       }
 
       .item-title {

@@ -9,7 +9,7 @@ class AvatarUploader < BaseUploader
   end
 
   version :thumbnail do
-    process resize_to_fit: [90, 105]
+    process resize_to_fill: [120, 120]
 
     def store_dir
       "#{Rails.env}/#{site_basket_dir}/avatars/#{model.id}"
@@ -17,7 +17,7 @@ class AvatarUploader < BaseUploader
   end
 
   version :small do
-    process resize_to_fit: [80, 90]
+    process resize_to_fill: [80, 80]
 
     def store_dir
       "#{Rails.env}/#{site_basket_dir}/avatars/#{model.id}"

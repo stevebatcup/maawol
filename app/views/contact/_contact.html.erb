@@ -75,15 +75,12 @@
   </div>
 
   <div class="col-md-4 pt-md-5">
-    <aside class="sidebar">
+    <aside class="sidebar pl-3 pl-md-2">
       <div class="widget widget_address">
-        <div class="item media">
-          <div class="item-icon media-left item-photo">
+        <div class="item media d-flex">
           <% unless site_image("contact").nil? %>
-            <img src="<%= site_image("contact") %>" alt="<%= site_setting("Site name") %>" />
+            <img src="<%= site_image("contact") %>" alt="<%= site_setting("Site name") %>" class="rounded-circle avatar mr-3" />
           <% end %>
-
-          </div>
           <div class="item-details media-body">
             <h3 class="item-title">Or you can send us an email at:</h3>
             <span>
