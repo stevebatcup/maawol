@@ -1,21 +1,20 @@
 <div class="row">
   <div class="col-12 col-md-8">
-    <% unless signed_in? %>
-      <% if notice %>
-        <p class="alert alert-success w-100"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger w-100"><%= alert %></p>
-      <% end %>
+    <% if notice %>
+      <p class="alert alert-success w-100"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger w-100"><%= alert %></p>
     <% end %>
 
     <%= form_for(@contact, html: { class: 'contact-form' }) do |f| %>
       <% if @stuck %>
         <div class="col-12">
           <h2 class="section-title">Help! I don't know what to work on!</h2>
-          <%= f.hidden_field :name %>
-          <%= f.hidden_field :email %>
+          <%= f.hidden_field :name, value: current_user.full_name %>
+          <%= f.hidden_field :email, value: current_user.email %>
           <%= f.hidden_field :subject %>
+          <%= f.hidden_field :stuck, value: 1 %>
 
           <% @questions.each do |q| %>
             <div class="question">
@@ -46,7 +45,7 @@
         <% end %>
 
         <%= f.hidden_field(:from_home, value: 1) if params[:controller].to_sym == :home %>
-        <%= f.hidden_field :subject, value: @selected_subject %>
+        <%= f.hidden_field :subject %>
 
         <% if signed_in? %>
           <%= f.hidden_field :name, value: current_user.full_name %>

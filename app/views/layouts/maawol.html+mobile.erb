@@ -67,12 +67,6 @@
   <%= render 'settings/menu' if is_settings_page? %>
 
   <div id='yield_wrapper' class="has-fixed-header">
-    <% if notice %>
-      <p class="container alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="container alert alert-danger"><%= alert %></p>
-    <% end %>
   	<%= yield %>
   </div>
 
