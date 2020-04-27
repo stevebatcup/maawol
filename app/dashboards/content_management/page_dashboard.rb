@@ -9,12 +9,12 @@ module ContentManagement
     # which determines how the attribute is displayed
     # on pages throughout the dashboard.
     ATTRIBUTE_TYPES = {
-    	title: Field::String,
-    	url: LinkField,
-    	slug: Field::String,
-    	sections: NestedContentField,
-    	created_at: Field::DateTime,
-    	updated_at: Field::DateTime,
+      title: Field::String,
+      url: LinkField,
+      slug: Field::String,
+      sections: NestedContentField,
+      created_at: Field::DateTime,
+      updated_at: Field::DateTime,
     }.freeze
      # hint: "This will be the URL to your page. Leave blank to auto-generate."
 

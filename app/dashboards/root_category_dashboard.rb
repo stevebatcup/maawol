@@ -8,7 +8,7 @@ class RootCategoryDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    categories: Field::HasMany,
+    categories: HasLotsField,
     id: Field::Number,
     name: Field::String,
   }.freeze
@@ -19,7 +19,7 @@ class RootCategoryDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :name,
+    :name
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -41,6 +41,6 @@ class RootCategoryDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(root_category)
-    root_category.name
+    "'#{root_category.name}'"
   end
 end

@@ -36,10 +36,6 @@ module Maawol
 				template "config/locales/clearance.en.yml", "config/locales/clearance.en.yml"
 		  end
 
-		  def routes
-		    template "config/routes.rb", "config/routes.rb"
-		  end
-
 		  def db_seeds
 	  		copy_file "seeds.rb", "db/seeds/maawol.rb"
 	  		inject_into_file "db/seeds.rb" do <<-'RUBY'

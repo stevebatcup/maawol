@@ -3,7 +3,8 @@
     <%= f.number_field :sort, placeholder: 'Order', autofocus: true %>
   </div>
   <div class='field choose'>
-    <%= f.collection_select :content_block_id, ContentManagement::ContentBlock.order(:title), :id, :title, { prompt: 'choose content block...'} %>
+  	<% options = ContentManagement::ContentBlock.where.not(title: [nil, ""]).order(:title) %>
+    <%= f.collection_select :content_block_id, options, :id, :title, { prompt: 'choose content block...'} %>
   </div>
   <div class='field remove'>
 	  <%= link_to_remove_association '<i class="fa fa-times"></i>'.html_safe, f %>

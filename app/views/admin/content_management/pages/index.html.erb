@@ -44,7 +44,7 @@ It renders the `_table` partial to display details about the resources.
     <%= link_to(
       t(
         "administrate.actions.new_resource",
-        name: page.resource_name.titleize.downcase
+        name: remove_prefixes_from_displayed_name(page.resource_name.titleize.downcase)
       ),
       [:new, namespace, page.resource_path],
       class: "button",
