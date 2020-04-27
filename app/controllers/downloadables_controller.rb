@@ -1,7 +1,7 @@
 class DownloadablesController < MaawolController
 	def show
 		@downloadable = nil
-		@downloadable = Downloadable.find_by(token: params[:token]) if user_signed_in?
+		@downloadable = Downloadable.find_by(token: params[:token])
 		if @downloadable.nil?
 			if permission = ProductPermission.find_by(token: params[:token])
 				if permission.expires_at > Time.now

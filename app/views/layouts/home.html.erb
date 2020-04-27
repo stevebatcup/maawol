@@ -5,11 +5,12 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="zxx"> <!--<![endif]-->
   <head>
     <meta charset="utf-8" />
-    <title><%= html_title %></title>
+    <title><%= yield_html_title %></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <% unless site_setting('Meta description').nil? %>
-      <meta name="description" content="<%= site_setting('Meta description') %>" />
-    <% end %>
+
+    <% default_meta_description = site_setting('Meta description').present? ? site_setting('Meta description') : site_setting('Site name') %>
+    <meta name="description" content="<%= yield_meta_tag(:description, default_meta_description) %>" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <% unless site_image("favicon").nil? %>

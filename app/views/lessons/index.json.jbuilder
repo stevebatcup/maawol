@@ -17,9 +17,9 @@ else
 					json.path course_path(course)
 					json.name course.name
 				end
-				json.available user_signed_in? ? lesson.available_for_user?(current_user) : can_access_full_course_without_account(course)
+				json.available signed_in? ? lesson.available_for_user?(current_user) : can_access_full_course_without_account(course)
 			else
-				json.available lesson.available_for_user?(current_user)
+				json.available signed_in? ? lesson.available_for_user?(current_user) : false
 			end
 		end
 	end

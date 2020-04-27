@@ -2,10 +2,11 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8" />
-    <title><%= html_title %></title>
-    <% unless site_setting('Meta description').nil? %>
-      <meta name="description" content="<%= site_setting('Meta description') %>" />
-    <% end %>
+    <title><%= yield_html_title %></title>
+
+    <% default_meta_description = site_setting('Meta description').present? ? site_setting('Meta description') : site_setting('Site name') %>
+    <meta name="description" content="<%= yield_meta_tag(:description, default_meta_description) %>" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <% unless site_image("favicon").nil? %>

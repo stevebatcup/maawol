@@ -1,5 +1,27 @@
 module Maawol
 	module ApplicationHelper
+		def yield_html_title
+			 title = content_for?(:html_title) ? "#{content_for(:html_title)} | #{site_setting("Site name")}" : default_html_title
+		end
+
+		def html_title(title)
+			content_for	:html_title, title
+		end
+
+		def default_html_title
+			title = ""
+			title << "#{site_setting("Site byline")}" if site_setting("Site byline").present?
+			title << " | #{site_setting("Site name")}"
+		end
+
+	  def meta_tag(tag, text)
+	    content_for :"meta_#{tag}", text
+	  end
+
+	  def yield_meta_tag(tag, default_text='')
+	    content_for?(:"meta_#{tag}") ? content_for(:"meta_#{tag}") : default_text
+	  end
+
 		def linked_skills_list(items)
 			linked_items = []
 			items.each do |item|
@@ -32,13 +54,6 @@ module Maawol
 
 		def render_content_block(block)
 			render partial: "content_management/block", locals: { block: block }
-		end
-
-		def html_title
-			@html_title ||= begin
-				title = "#{site_setting("Site name")}"
-				title << " | #{site_setting("Site byline")}" if site_setting("Site byline").present?
-			end
 		end
 
 		def nav_item_is_current_request(nav_item)

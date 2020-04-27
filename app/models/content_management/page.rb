@@ -29,5 +29,9 @@ module ContentManagement
 		def self.table_name
 			'cms_pages'
 		end
+
+		def meta_description
+			self.content_blocks.first.content
+		end
 	end
 end

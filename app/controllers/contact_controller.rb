@@ -1,6 +1,7 @@
 class ContactController < MaawolController
 	def new
 		@contact = Contact.new
+		@contact.subject = "Get in touch"
 
 		if signed_in?
 			if params[:lesson_request].present?
@@ -9,8 +10,6 @@ class ContactController < MaawolController
 				@lesson_request = true
 			elsif params[:stuck].present?
 				setup_stuck_form
-			else
-				@contact.subject = "Other enquiry"
 			end
 		end
 	end
