@@ -189,10 +189,31 @@
          <!-- Downloadables -->
          <% if @lesson.downloadables.any? %>
            <div id="downloadables" class="mb-4 pt-4 border-top">
-             <h5>PDFs</h5>
-             <p>Click on the <%= "link".pluralize(@lesson.downloadables.size) %> to download.</p>
+             <h5>Scores</h5>
+             <p class="mb-0">Click on the <%= "link".pluralize(@lesson.downloadables.size) %> to download.</p>
              <% @lesson.downloadables.each do |file| %>
-               <p class="pl-1"><i class="mr-2 fa fa-file"></i><a href="<%= file.full_url %>" target="_blank"><%= file.name %></a></p>
+               <p class="pl-1">
+                <a href="<%= file.full_url %>" target="_blank">
+                  <i class="mr-2 fa fa-file"></i>
+                  <%= file.name %>
+                </a>
+              </p>
+             <% end %>
+           </div>
+         <% end %>
+
+         <!-- Audio files -->
+         <% if @lesson.audio_files.any? %>
+           <div id="audio_files" class="mb-4 pt-4 border-top">
+             <h5>Audio</h5>
+             <% @lesson.audio_files.each do |audio_file| %>
+              <div class="my-4">
+                <p class="mb-1"><%= audio_file.name.html_safe %>:</p>
+                <audio controls="controls" preload="auto" class="w-100">
+                  Your browser does not support the audio element.
+                  <source src="<%= audio_file.file.url %>">
+                </audio>
+              </div>
              <% end %>
            </div>
          <% end %>

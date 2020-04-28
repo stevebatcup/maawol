@@ -90,10 +90,11 @@ body.mobile {
 		}
 	}
 
-	#downloadables {
+	#downloadables,
+	#audio_files {
 		padding-top: 0.6em;
-		border-top: 1px solid #ccc;
-		padding-bottom: 0.4em;
+		border-top: 1px solid #ededed;
+		padding-bottom: 0.8em;
 	}
 
 	.comments {

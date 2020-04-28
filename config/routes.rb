@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 	  resources :authors
 	  resources :lessons
 	  resources :videos
+	  resources :audio_files
 	  resources :downloadables
 	  resources :stores
 	  resources :product_payments

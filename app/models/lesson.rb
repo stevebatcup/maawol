@@ -2,6 +2,7 @@ class Lesson < ApplicationRecord
   acts_as_commentable
 
   has_and_belongs_to_many :videos
+  has_and_belongs_to_many :audio_files
   has_and_belongs_to_many :downloadables
   has_and_belongs_to_many :tags
   has_and_belongs_to_many :categories

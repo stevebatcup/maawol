@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_133520) do
+ActiveRecord::Schema.define(version: 2020_04_28_110428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,21 @@ ActiveRecord::Schema.define(version: 2020_04_27_133520) do
     t.datetime "updated_at", null: false
     t.index ["service"], name: "index_api_logs_on_service"
     t.index ["user_id"], name: "index_api_logs_on_user_id"
+  end
+
+  create_table "audio_files", force: :cascade do |t|
+    t.string "name"
+    t.string "file"
+    t.integer "author_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "audio_files_lessons", id: false, force: :cascade do |t|
+    t.bigint "audio_file_id"
+    t.bigint "lesson_id"
+    t.index ["audio_file_id"], name: "index_audio_files_lessons_on_audio_file_id"
+    t.index ["lesson_id"], name: "index_audio_files_lessons_on_lesson_id"
   end
 
   create_table "authors", force: :cascade do |t|

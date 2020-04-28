@@ -8,9 +8,12 @@ en:
       root_category:
         create: Create Primary category
         update: Update Primary category
-      listening_lab:
-        create: Create Playlist
-        update: Update Playlist
+      author:
+        create: Create Tutor
+        update: Update Tutor
+      downloadable:
+        create: Create Score
+        update: Update Score
     label:
       course:
         name: Name of course
@@ -52,6 +55,9 @@ en:
         image: Thumbnail
         full_url: Download URL (only for subscribers)
         basket_url: Bakset URL (for YouTube etc)
+        resource_name_overrides:
+          multiple: Scores
+          singular: Score
       downloadable_store:
         products: Files
       lesson:
@@ -73,6 +79,8 @@ en:
         tmp_video_file: Video
         human_status: Status
         when_associated: Videos
+      audio_file:
+        when_associated: Audio files
       income_report:
         month_and_year: Month
         earnings: You earned
@@ -80,6 +88,11 @@ en:
         subscription_payments_count: Subscription payments
         profit_split_percentage: Your income percentage (Maawol gets the reaminder)
         total_income: Total income for website
+      author:
+        resource_name_overrides:
+          multiple: Tutors
+          singular: Tutor
+
   administrate:
     actions:
       confirm: Are you sure?

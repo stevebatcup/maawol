@@ -118,10 +118,31 @@
   <!-- Downloadables -->
   <% if @lesson.downloadables.any? %>
     <div id="downloadables" class="container">
-      <h5>PDFs</h5>
+      <h5 class="mt-2">Scores</h5>
       <p>Click on the <%= "link".pluralize(@lesson.downloadables.size) %> to download.</p>
       <% @lesson.downloadables.each do |file| %>
-        <p class="pl-1"><i class="mr-2 fa fa-file"></i><a href="<%= file.full_url %>" target="_blank"><%= file.name %></a></p>
+        <p class="pl-1">
+          <a href="<%= file.full_url %>" target="_blank">
+            <i class="mr-2 fa fa-file"></i>
+            <%= file.name %>
+          </a>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <!-- Audio files -->
+  <% if @lesson.audio_files.any? %>
+    <div id="audio_files" class="container">
+      <h5 class="mt-2">Audio</h5>
+      <% @lesson.audio_files.each do |audio_file| %>
+       <div class="my-2">
+         <p class="mb-1"><%= audio_file.name.html_safe %>:</p>
+         <audio controls="controls" preload="auto" class="w-100">
+           Your browser does not support the audio element.
+           <source src="<%= audio_file.file.url %>">
+         </audio>
+       </div>
       <% end %>
     </div>
   <% end %>
@@ -129,7 +150,7 @@
   <!-- Playlist -->
   <% if @lesson.playlists.any? %>
     <div id="playlists" class="container">
-      <h5>Further listening</h5>
+      <h5 class="mt-2">Further listening</h5>
       <% @lesson.playlists.each do |playlist| %>
         <div class="widget playlist my-4">
           <% if playlist.spotify_embed_url.present? %>

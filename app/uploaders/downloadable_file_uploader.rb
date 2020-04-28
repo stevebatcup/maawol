@@ -1,6 +1,10 @@
 class DownloadableFileUploader < BaseUploader
   storage :fog
 
+  def extension_whitelist
+    %w(pdf doc docx)
+  end
+
   def store_dir
     "#{Rails.env}/#{site_basket_dir}/downloadables/#{model.id}"
   end

@@ -49,6 +49,6 @@ class TagDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(tag)
-    "Tag '#{tag.name}'"
+    tag.name
   end
 end

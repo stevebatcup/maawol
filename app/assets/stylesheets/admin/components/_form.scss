@@ -8,6 +8,12 @@
 		}
 	}
 
+	p.hint {
+		color: #989898;
+		font-size: 0.8em;
+		margin-top: 4px;
+	}
+
 	&.color_picker {
 		input[type=color] {
 			width: 5em;
@@ -199,4 +205,27 @@ dd.attribute-data--image-field {
 		font-size: 1.1em;
 		padding: 4px 0 0 6px;
 	}
+}
+
+[type="color"],
+[type="date"],
+[type="datetime-local"],
+[type="email"],
+[type="month"],
+[type="number"],
+[type="password"],
+[type="search"],
+[type="tel"],
+[type="text"],
+[type="time"],
+[type="url"],
+[type="week"],
+input:not([type]),
+textarea,
+.selectize-input {
+	max-width: 400px;
+}
+
+select {
+	max-width: 380px;
 }

@@ -4,6 +4,10 @@ class SiteImageUploader < BaseUploader
 
   storage :fog
 
+  def extension_whitelist
+    image_extension_whitelist
+  end
+
   version :large_square do
     process resize_to_fit: [500, 500]
 

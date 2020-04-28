@@ -4,6 +4,10 @@ class VideoThumbnailUploader < BaseUploader
 
   storage :fog
 
+  def extension_whitelist
+    image_extension_whitelist
+  end
+
   version :large do
     process resize_to_fit: [600, 400]
 

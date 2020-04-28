@@ -1,0 +1,8 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+<div class="field-unit__field audio">
+	<%= audio_tag(field.file.url) unless field.file.nil? %>
+  <%= f.file_field field.attribute %>
+  <p class='hint'>Acceptable file types are <b>.mp3</b> <b>.wav</b> and <b>.ogg</b></p>
+</div>

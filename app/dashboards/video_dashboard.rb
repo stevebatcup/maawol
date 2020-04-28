@@ -49,6 +49,6 @@ class VideoDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(video)
-    "Video '#{video.name}'"
+    video.name
   end
 end

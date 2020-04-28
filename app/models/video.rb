@@ -5,7 +5,9 @@ class Video < ApplicationRecord
   mount_uploader :tmp_video_file, VideoUploader
   mount_uploader :thumbnail, VideoThumbnailUploader
 
+  validates_presence_of  :name
   validate  :tmp_video_file_type, on: [:create, :update], if: -> { tmp_video_file.file.present? }
+
 
   before_save :set_status
   after_save :perform_upload_to_vimeo_job, if: -> { tmp_video_file.file.present? }

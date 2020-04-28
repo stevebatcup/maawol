@@ -4,6 +4,10 @@ class AuthorAvatarUploader < BaseUploader
 
   storage :fog
 
+  def extension_whitelist
+    image_extension_whitelist
+  end
+
   def default_url(*args)
     ActionController::Base.helpers.asset_path "no-avatar.png"
   end

@@ -12,7 +12,7 @@ class AttachableField < Administrate::Field::HasMany
 
   	options.each do |key, value|
       shortcode = key.parameterize.underscore
-  		out << ["#{key} --> [*#{type}:#{shortcode}*]", value]
+  		out << [key, value]
   	end
   	out
   end

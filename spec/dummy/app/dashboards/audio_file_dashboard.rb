@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class CategoryDashboard < Administrate::BaseDashboard
+class AudioFileDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,13 +8,9 @@ class CategoryDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    lessons: HasLotsField,
-    id: Field::Number,
     name: Field::String,
-    description: Field::Text,
-    root_category: Field::BelongsTo,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    author: Field::BelongsTo,
+    file: AudioFileField,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -22,34 +18,44 @@ class CategoryDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = [
-    :name,
-    :description,
-    :lessons,
+  COLLECTION_ATTRIBUTES = %i[
+    name
+    author
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = [
-    :name,
-    :description,
-    :lessons,
+  SHOW_PAGE_ATTRIBUTES = %i[
+    name
+    author
+    file
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = [
-    :root_category,
-    :name,
-    :description,
-    :lessons
+  FORM_ATTRIBUTES = %i[
+    name
+    author
+    file
   ].freeze
 
-  # Overwrite this method to customize how categories are displayed
+  # COLLECTION_FILTERS
+  # a hash that defines filters that can be used while searching via the search
+  # field of the dashboard.
+  #
+  # For example to add an option to search for open resources by typing "open:"
+  # in the search field:
+  #
+  #   COLLECTION_FILTERS = {
+  #     open: ->(resources) { resources.where(open: true) }
+  #   }.freeze
+  COLLECTION_FILTERS = {}.freeze
+
+  # Overwrite this method to customize how audio files are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(category)
-    category.name
+  def display_resource(audio_file)
+    audio_file.name
   end
 end
