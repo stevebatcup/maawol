@@ -5,4 +5,8 @@
   <%= f.select(field.attribute_key, nil, {}, multiple: true) do %>
     <%= options_for_select(field.associated_resource_options, field.selected_options) %>
   <% end %>
+
+  <% if field.hint.present? %>
+  	<p class='hint ml-2 mt-1'><%= field.hint %></p>
+  <% end %>
 </div>

@@ -1,10 +1,8 @@
 <article style="min-height: 230px;">
   <div class="entry-thumbnail">
-  	<% if lesson.main_video && lesson.main_video.thumbnail? %>
     <a href="<%= lesson_path(id: lesson.slug) %>">
-      <img src="<%= lesson.main_video.thumbnail.url(:small) %>" alt="<%= lesson.name %>" />
+      <img src="<%= lesson.listing_thumbnail_path %>" alt="<%= lesson.name %>" />
     </a>
-    <% end %>
   </div>
 
   <div class="entry-content">

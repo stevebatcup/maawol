@@ -1,10 +1,8 @@
 <article class="post type-post well">
   <div class="entry-thumbnail">
-  	<% if lesson.main_video && lesson.main_video.thumbnail? %>
     <a href="/sign_up?redirected=1">
-      <img src="<%= lesson.main_video.thumbnail.url(:small) %>" alt="<%= lesson.name %>" />
+      <img src="<%= lesson.listing_thumbnail_path %>" alt="<%= lesson.name %>" />
     </a>
-    <% end %>
   </div>
 
   <div class="entry-content">

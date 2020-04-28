@@ -62,7 +62,9 @@ en:
         tag_ids: Tagged with
         category_ids: In categories
         is_free: Available for free?
+        human_access_level: Access level
       user:
+        when_associated: Peronalised for students
         encrypted_password: Password
         status: Membership status
         is_admin: Administrator?

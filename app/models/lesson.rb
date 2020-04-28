@@ -18,8 +18,14 @@ class Lesson < ApplicationRecord
 
   enum  access_level: [:global, :users]
 
+  mount_uploader :thumbnail, LessonThumbnailUploader
+
   def self.table_name
     'lessons'
+  end
+
+  def self.default_thumbnail_asset_path
+    ActionController::Base.helpers.asset_path "lessons/no-thumbnail.png"
   end
 
   def self.search(query)
@@ -95,7 +101,7 @@ class Lesson < ApplicationRecord
   end
 
   def human_access_level
-    self.access_level.to_sym == :global ? "All users" : "#{self.users.size} user#{self.users.size > 1 ? 's' : ''}"
+    self.access_level.to_sym == :global ? "All students" : "#{self.users.size} student#{self.users.size > 1 ? 's' : ''}"
   end
 
   def has_video?
@@ -104,6 +110,16 @@ class Lesson < ApplicationRecord
 
   def has_video_thumbnail?
     self.has_video? && self.main_video.has_thumbnail?
+  end
+
+  def listing_thumbnail_path(size=:small)
+    if thumbnail.present?
+      thumbnail.url(size)
+    elsif has_video_thumbnail?
+      main_video.thumbnail.url(size)
+    else
+      self.class.default_thumbnail_asset_path
+    end
   end
 
 private

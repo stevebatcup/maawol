@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_110428) do
+ActiveRecord::Schema.define(version: 2020_04_28_123845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -268,6 +268,7 @@ ActiveRecord::Schema.define(version: 2020_04_28_110428) do
     t.integer "comments_count", default: 0
     t.integer "author_id", default: 1
     t.integer "access_level", default: 0
+    t.string "thumbnail"
     t.index ["publish_date"], name: "index_lessons_on_publish_date"
     t.index ["slug"], name: "index_lessons_on_slug"
   end

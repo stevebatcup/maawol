@@ -5,6 +5,10 @@ class AttachableField < Administrate::Field::HasMany
     data
   end
 
+  def hint
+    (@options[:hint] || "").html_safe
+  end
+
   def associated_resource_options
   	options = super
   	out = []

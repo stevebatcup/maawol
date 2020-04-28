@@ -5,6 +5,10 @@ class ImageField < Administrate::Field::Base
     data
   end
 
+  def hint
+  	(@options[:hint] || "").html_safe
+  end
+
   def small
   	data.small unless data.nil? || data.length == 0
   end

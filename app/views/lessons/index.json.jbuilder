@@ -6,7 +6,7 @@ else
 		json.array! @lessons do |lesson|
 			json.id lesson.id
 			json.path lesson_path(id: lesson.slug)
-			json.image lesson.main_video.thumbnail.url(:small) if lesson.has_video_thumbnail?
+			json.image lesson.listing_thumbnail_path
 			json.name lesson.name
 			json.category lesson.categories.first.name if lesson.categories.any?
 			json.published time_ago_in_words(lesson.publish_date)

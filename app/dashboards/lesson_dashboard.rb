@@ -13,6 +13,10 @@ class LessonDashboard < Administrate::BaseDashboard
     videos: AttachableField,
     audio_files: AttachableField,
     downloadables: AttachableField,
+    thumbnail: ImageField.with_options(
+      hint: "If you have added any videos to this lesson the thumbnail will be taken from the first video.<br />
+              You only need to manually add a thumbnail if this lesson has no videos or you wish to overwrite the video thumnail."
+    ),
     tags: HasLotsField,
     author: Field::BelongsTo.with_options(scope: -> { Author.order(id: :asc) }),
     categories: HasLotsField,
@@ -20,7 +24,9 @@ class LessonDashboard < Administrate::BaseDashboard
     course_only: Field::Boolean,
     is_free: Field::Boolean,
     playlists: HasLotsField,
-    users: HasLotsField,
+    users: AttachableField.with_options(
+      hint: "Add one or more students into this box make this a personalised lesson that they can access from their MY LESSONS page.<br />These lessons will then show in not show in the lesson library listings.",
+    ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     publish_date: Field::DateTime.with_options(
@@ -59,16 +65,17 @@ class LessonDashboard < Administrate::BaseDashboard
     :name,
     :author,
     :videos,
+    :thumbnail,
     :audio_files,
     :downloadables,
-    :content,
-    :course_only,
-    :is_free,
     :tags,
     :categories,
     :playlists,
     :users,
-    :publish_date
+    :publish_date,
+    :content,
+    :course_only,
+    :is_free,
   ].freeze
 
   # Overwrite this method to customize how lessons are displayed
