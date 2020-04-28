@@ -91,6 +91,9 @@ en:
           singular: Tutor
 
   administrate:
+    hints:
+      copyright: Before uploading, please make sure that you have the correct copyright permissions.
+      file_types_prefix: Acceptable file types are
     actions:
       confirm: Are you sure?
       destroy: Destroy

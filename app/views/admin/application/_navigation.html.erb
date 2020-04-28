@@ -10,7 +10,10 @@
     </a>
   </h1>
 
-  <h3>Lesson library</h3>
+  <h3>
+    <i class="fa fa-book mr-1"></i>
+    Lesson library
+  </h3>
   <ul>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/lessons') %>"
@@ -48,7 +51,10 @@
     </li>
   </ul>
 
-  <h3>Lesson resources</h3>
+  <h3>
+    <i class="fa fa-photo mr-1"></i>
+    Lesson resources
+  </h3>
   <ul>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/videos') %>"
@@ -72,13 +78,11 @@
     </li>
   </ul>
 
-  <h3>E-commerce</h3>
+  <h3>
+    <i class="fa fa-credit-card mr-1"></i>
+    E-commerce
+  </h3>
   <ul>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/income_reports') %>"
-            href="/admin/income_reports">Monthly income
-      </a>
-    </li>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/stores') %>"
             href="/admin/stores">Stores
@@ -90,18 +94,21 @@
       </a>
     </li>
     <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/subscription_options') %>"
-            href="/admin/subscription_options">Subscription levels
-      </a>
-    </li>
-    <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/users_subscription_payments') %>"
             href="/admin/users_subscription_payments">Subscription payments
       </a>
     </li>
+    <li>
+      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/income_reports') %>"
+            href="/admin/income_reports">Monthly income reports
+      </a>
+    </li>
   </ul>
 
-  <h3>Students</h3>
+  <h3>
+    <i class="fa fa-graduation-cap mr-1"></i>
+    Students
+  </h3>
   <ul>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.fullpath == '/admin/users' %>"
@@ -113,7 +120,10 @@
     </li>
   </ul>
 
-  <h3>CMS</h3>
+  <h3>
+    <i class="fa fa-file mr-1"></i>
+    CMS
+  </h3>
   <ul>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/pages') %>"
@@ -134,22 +144,18 @@
     </li>
   </ul>
 
-  <h3>Settings</h3>
-  <ul>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/site_settings') %>"
-            href="/admin/site_settings">General settings
-      </a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/site_images') %>"
-            href="/admin/site_images">Images
-      </a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/site_colors') %>"
-            href="/admin/site_colors">Colors
-      </a>
-    </li>
-  </ul>
+  <h3>
+    <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/site_settings') %>"
+            href="/admin/site_settings">
+              <i class="fa fa-sliders mr-1"></i>
+              School settings
+    </a>
+  </h3>
+
+  <h3>
+    <a class="navigation__link" href="<%= sign_out_path %>" data-method="delete">
+      <i class="fa fa-sign-out mr-1"></i>
+      Sign out
+    </a>
+  </h3>
 </nav>

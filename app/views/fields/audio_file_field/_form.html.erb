@@ -3,6 +3,11 @@
 </div>
 <div class="field-unit__field audio">
 	<%= audio_tag(field.file.url) unless field.file.nil? %>
+
   <%= f.file_field field.attribute %>
-  <p class='hint'>Acceptable file types are <b>.mp3</b> <b>.wav</b> and <b>.ogg</b></p>
+
+  <p class='hint'>
+  	- <%= t('administrate.hints.copyright') %><br />
+  	- <%= t('administrate.hints.file_types_prefix') %> <b>.mp3</b> <b>.wav</b> and <b>.ogg</b>
+  </p>
 </div>

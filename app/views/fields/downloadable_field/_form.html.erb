@@ -6,5 +6,10 @@
 		<p><small style="margin-bottom: 10px;"><%= link_to("Show uploaded file", field.file.url, target: '_blank') %></small></p>
 	<% end %>
   <%= f.file_field field.attribute %>
-  <p class='hint'>Acceptable file types are <b>.pdf</b>, <b>.doc</b> and <b>.docx</b></p>
+
+  <p class='hint'>
+  	- <%= t('administrate.hints.copyright') %><br />
+  	- <%= t('administrate.hints.file_types_prefix') %> <b>.pdf</b>, <b>.doc</b> and <b>.docx</b>
+  </p>
+
 </div>

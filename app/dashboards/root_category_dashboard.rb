@@ -41,6 +41,6 @@ class RootCategoryDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(root_category)
-    "'#{root_category.name}'"
+    root_category.name
   end
 end
