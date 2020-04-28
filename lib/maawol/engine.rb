@@ -21,6 +21,7 @@ module Maawol
       	subscribe/paypal-checkout.png
       	subscribe/comodo.png
         no-avatar.png
+        lessons/no-thumbnail.png
       )
     end
   end
