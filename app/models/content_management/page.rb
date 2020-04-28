@@ -10,6 +10,14 @@ module ContentManagement
 		before_create	:default_is_editable
 		validates_presence_of	:title
 
+		def self.table_name
+			'cms_pages'
+		end
+
+		def self.footer_navbar_items
+			self.where.not(slug: [nil, ""])
+		end
+
 		def default_is_editable
 			self.is_editable = true if is_editable.nil?
 		end
@@ -24,10 +32,6 @@ module ContentManagement
 
 		def url
 			"/#{slug}"
-		end
-
-		def self.table_name
-			'cms_pages'
 		end
 
 		def meta_description

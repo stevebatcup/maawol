@@ -40,15 +40,13 @@
       <% end %>
     </div>
 
-    <% if footer_navbar && footer_navbar.navbar_items.any? %>
-      <ul class="other_pages mt-3 text-center p-0">
-      <% footer_navbar.navbar_items.each do |item| %>
-        <li class="d-inline-block mr-3 menu-item <%= 'active' if request.url.include?(item.url) %>">
-          <a href="<%= item.url %>" data-turbolinks="false"><%= item.name %></a>
-        </li>
-      <% end %>
-      </ul>
+    <ul class="other_pages mt-3 text-center p-0">
+    <% footer_navbar_items.each do |page| %>
+      <li class="d-inline-block mr-3 menu-item <%= 'active' if request.url.include?(page.url) %>">
+        <a href="<%= page.url %>" data-turbolinks="false"><%= page.title %></a>
+      </li>
     <% end %>
+    </ul>
 
   </div>
 

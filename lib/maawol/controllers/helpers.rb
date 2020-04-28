@@ -4,7 +4,7 @@ module Maawol
 			extend ActiveSupport::Concern
 
 			included do
-				helper_method :navbar, :footer_navbar, :current_section, :site_setting, :site_image, :legible_form_errors,
+				helper_method :navbar, :footer_navbar_items, :current_section, :site_setting, :site_image, :legible_form_errors,
 											:cached_course_list, :column_browser_class, :recent_lessons, :results_per_row,
 											:is_auth_page?, :results_per_page, :cached_tags, :dynamic_site_colors, :recaptcha_site_key,
 											:homepage_video,	:user_signed_in?, :is_settings_page?
@@ -21,13 +21,8 @@ module Maawol
 				end
 			end
 
-			def footer_navbar
-				Rails.cache.fetch("footer_navbar") do
-					ContentManagement::Navbar.includes(:navbar_items)
-																	.references(:navbar_items)
-																	.where(slug: "footer")
-																	.first
-				end
+			def footer_navbar_items
+				ContentManagement::Page.footer_navbar_items
 			end
 
 			def host
