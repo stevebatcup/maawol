@@ -59,7 +59,6 @@ article.lesson {
 
 					&:hover {
 						text-decoration: none;
-						color: #999;
 					}
 				}
 			}
@@ -78,11 +77,8 @@ article.lesson {
 		min-height: 373px;
 	}
 
-	#playlist {
-		background-color: #f1f4f4;
-
+	#video_playlist {
 		ul {
-			padding-bottom: 1em;
 			margin-top: 0;
 			border-bottom: 0;
 
@@ -105,15 +101,9 @@ article.lesson {
 
 				a {
 					font-size: 14px;
-					background: transparent;
 					text-transform: none;
-					color: #666;
 					padding: 4px 6px 8px;
 					display: block;
-
-					&.active {
-						background: #fff;
-					}
 
 					span.text {
 						margin-left: 12px;
@@ -307,20 +297,21 @@ article.lesson {
 		    padding: 1px 6px 0;
 		    font-size: 10px;
 		    text-transform: uppercase;
-		    color: #797f7f;
 		    margin: 3px 1px;
 		    font-weight: 600;
 		    text-decoration: none;
         border-radius: 3px;
 
         &.tag {
+			    color: #4c4c4c;
     			background-color: #f1f4f4;
-    	    border: #dadfe1 1px solid;
+    	    // border: #dadfe1 1px solid;
         }
 
         &.category {
-    			background-color: #cadddd;
-    	    border: darken(#cadddd, 10%) 1px solid;
+        	color: #ffffff;
+    			background-color: #5d5d5d;
+    	    // border: darken(#cadddd, 10%) 1px solid;
         }
 			}
 		}

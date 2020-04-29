@@ -35,16 +35,15 @@ section#payment  {
 				padding-left: 6px;
 				padding-right: 2px;
 			}
+		}
 
-			ul#choose_payment_type {
-				li {
-					margin-right: 8px;
-					label {
-						img {
-							height: 15px;
-							position: relative;
-							top: -3px;
-						}
+		ul#choose_payment_type {
+			li {
+				margin-right: 0.8em;
+
+				label {
+					i {
+						top: 0 !important;
 					}
 				}
 			}

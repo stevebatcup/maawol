@@ -8,10 +8,12 @@ section#payment {
 	form#payment_form {
 		border: 1px solid #c8c8c8;
 		padding: 15px 3.5% 0;
-		margin-top: 15px;
-		color: #929292;
 		width: 100%;
 		height: 100%;
+
+		p.hint {
+			line-height: 1em;
+		}
 
 		button#checkout_with_paypal {
 			margin: 25px auto 20px;
@@ -48,7 +50,6 @@ section#payment {
 		button {
 			@extend .btn, .btn-success !optional;
 			width: 100%;
-			box-shadow: 1px 1px 3px #ccc;
 			margin: 15px 0;
 
 			.ladda-spinner {
@@ -112,27 +113,32 @@ section#payment {
 				overflow: hidden;
 				padding: 0 0 0 2px;
 		    position: relative;
-		    top: 8px;
-				margin: 0 0 1em;
+		    top: -20px;
+				margin: 0 0 0;
 				display: inline-block;
+
+				&.subscribe {
+					top: 0;
+				}
 
 				li {
 					list-style: none;
 					float: left;
-					margin-right: 17px;
+					margin-right: 20px;
 					font-weight: normal;
 
 					label {
 						width: inherit;
 
-						img {
-							max-width: 110px;
-							min-width: 48px;
-							min-height: 25px;
-						}
-
 						input {
 							display: inline-block;
+						}
+
+						i {
+							font-size: 3.6em;
+					    top: 0.3em;
+					    position: relative;
+					    left: 0.1em;
 						}
 					}
 				}

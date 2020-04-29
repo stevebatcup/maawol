@@ -112,7 +112,7 @@
         <section id="payment">
          <h3 class="step_denoter" style="display: none"><b><%= t('views.defaults.step') %> 2.</b> <%= t('views.subscription.steps.two') %></h3>
 
-         <form id="payment_form" name="payment_form" class="" novalidate method="post" action="<%= subscriptions_path %>">
+         <form id="payment_form" name="payment_form" class="well" novalidate method="post" action="<%= subscriptions_path %>">
             <p id="selected_option">
               <span class="item_label" style="width: 30%;"><%= t('views.subscription.form.labels.selected') %>: </span>
               <span class="selected_months">{{subscription.name}} @</span>
@@ -126,23 +126,23 @@
               <%= t('views.subscription.form.labels.card_type') %>
             </label>
 
-            <ul id="choose_payment_type">
+            <ul id="choose_payment_type" class="subscribe">
               <li>
                <label class="payment_chooser">
                 <input type="radio" name="payment_type" value="visa" ng-model="payment.type" />
-                <%= image_tag 'subscribe/visa.png', alt: 'Visa' %>
+                <i class="fab fa-cc-visa"></i>
               </label>
             </li>
             <li>
               <label class="payment_chooser">
                 <input type="radio" name="payment_type" value="mastercard" ng-model="payment.type" />
-                <%= image_tag 'subscribe/mastercard.png', alt: 'Mastercard' %>
+                <i class="fab fa-cc-mastercard"></i>
               </label>
             </li>
             <li>
               <label class="payment_chooser">
                 <input type="radio" name="payment_type" value="paypal" ng-model="payment.type" />
-                <%= image_tag 'subscribe/paypal.png', alt: 'Paypal' %>
+                <i class="fab fa-cc-paypal"></i>
               </label>
             </li>
           </ul>

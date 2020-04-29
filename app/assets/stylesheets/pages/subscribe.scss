@@ -1,8 +1,5 @@
-$selected_option: #28a745;
-$highlighted_option: desaturate(lighten(#24313f, 10%), 5%);
 .content_wrapper#subscribe {
 	margin-top: 10px;
-	background: #fff;
 	overflow: hidden;
 
 	h3.step_denoter {
@@ -17,7 +14,7 @@ $highlighted_option: desaturate(lighten(#24313f, 10%), 5%);
 
 	section#reasons_to_subscribe {
 		padding: 0 0 4px;
-		border-bottom: 1px solid #c8c8c8;
+		border-bottom: 1px solid;
 		margin-bottom: 15px;
 
 		ol {
@@ -29,7 +26,6 @@ $highlighted_option: desaturate(lighten(#24313f, 10%), 5%);
 				padding-top: 12px;
 				list-style: none;
 				text-align: center;
-				color: darken(#c8c8c8, 10%);
 
 				span.text {
 					padding-top: 5px;
@@ -101,16 +97,11 @@ $highlighted_option: desaturate(lighten(#24313f, 10%), 5%);
 				text-transform: uppercase;
 				font-weight: bold;
 				margin: 0 0 0.5em;
-				color: $highlighted_option;
-
-				&.selected {
-					color: $highlighted_option;
-				}
 			}
 
 			label.option {
 				display: block;
-				border: 1px solid #c8c8c8;
+				border: 1px solid;
 				text-align: center;
 				cursor: pointer;
 				position: relative;
@@ -132,15 +123,6 @@ $highlighted_option: desaturate(lighten(#24313f, 10%), 5%);
 				}
 
 				&.selected {
-					// border: 2px solid $selected_option;
-					background: #f6f6f6;
-					// padding-top: 20px;
-
-					h5:after {
-						border-left-color: #f6f6f6 !important;
-						border-right-color: #f6f6f6 !important;
-					}
-
 					button {
 						opacity: 0.6;
 					}
@@ -184,23 +166,12 @@ $highlighted_option: desaturate(lighten(#24313f, 10%), 5%);
 						  font-size: 0.9em;
 						}
 					}
-
-					&.selected {
-						h5.saving .corner-text {
-						  background-color: $selected_option !important;
-						}
-					}
 				}
 
 				&.most_popular {
-					border-top: 6px solid $highlighted_option;
-					border-right: 12px solid $highlighted_option;
-					border-left: 12px solid $highlighted_option;
-					border-bottom: 12px solid $highlighted_option;
 					box-shadow: 1px 1px 3px #ccc;
 
 					h5.saving {
-						background: $highlighted_option;
 						margin: 0 0 7px;
 						padding: 0px;
 						position: relative;
@@ -211,25 +182,11 @@ $highlighted_option: desaturate(lighten(#24313f, 10%), 5%);
 						&:after {
 							border-left: 95px solid #fff;
 							border-right: 95px solid #fff;
-							border-top: 15px solid $highlighted_option;
 							display: block;
 							width: 100%;
 							content: '';
 						}
 					}
-
-					&.selected {
-						border-color: $highlighted_option;
-
-						h5 {
-							background-color: $highlighted_option;
-
-							// &:after {
-							// 	border-top-color: rgb(52, 64, 77);
-							// }
-						}
-					}
-
 				}
 
 				h3.option_length {
@@ -277,7 +234,6 @@ $highlighted_option: desaturate(lighten(#24313f, 10%), 5%);
 	    padding: 2px 11px !important;
 	    height: 2.1em !important;
 	    border-radius: 1px;
-	    border: 1px solid #ccc;
 	    border-right: 0;
 	    width: 82%;
 	    outline: none;
@@ -285,18 +241,15 @@ $highlighted_option: desaturate(lighten(#24313f, 10%), 5%);
 
 		button {
 			width: 18%;
-			background: #ebebeb;
-	    border: 1px solid #CCC;
+	    border: 1px solid;
 	    padding: 6px 12px 5px;
 	    position: relative;
-      // left: -4px;
       font-size: 13px;
 		}
 	}
 
 	section#discount_and_summary {
 		margin-bottom: 10px;
-		color: #929292;
 
 		#summary {
 			padding-left: 3px;
@@ -319,7 +272,7 @@ $highlighted_option: desaturate(lighten(#24313f, 10%), 5%);
 
 						&.total {
 							padding-top: 10px;
-							border-top: 1px solid #929292;
+							border-top: 1px solid;
 							font-weight: bold;
 						}
 
@@ -340,7 +293,6 @@ $highlighted_option: desaturate(lighten(#24313f, 10%), 5%);
 			font-size: 0.7em;
 			line-height: 1.35em;
 			margin-top: 27px;
-			color: lighten(#929292, 15%);
 		}
 	}
 }

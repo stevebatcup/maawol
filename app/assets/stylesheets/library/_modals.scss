@@ -49,6 +49,8 @@
 	}
 
 	.modal-body {
+		color: #333;
+
 		textarea {
 			width: 90%;
 			border-radius: 2px;
@@ -57,13 +59,17 @@
 			height: 120px;
 		}
 
-		p.error {
-			margin: 0 10px;
-			max-width: 80%;
-		}
+		p {
+			color: #333;
 
-		p.center {
-			text-align: center;
+			&.center {
+				text-align: center;
+			}
+
+			&.error {
+				margin: 0 10px;
+				max-width: 80%;
+			}
 		}
 
 		.btn-danger {

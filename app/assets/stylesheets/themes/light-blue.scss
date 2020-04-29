@@ -1,0 +1,48 @@
+$maawol_body_bg: #ffffff;
+$maawol_auth_page_bg: #f1f1f1;
+$maawol_auth_panel_bg: #ffffff;
+
+/* Text */
+$maawol_text_color: #3e464a;
+$maawol_text_meta: #5b727d;
+$maawol_account_links: #5C696f;
+$maawol_navbar_color: #ffffff;
+$maawol_section_title: #455a64;
+$maawol_footer_color: #b0bec5;
+$maawol_copyright_color: #ffffff;
+$maawol_video_playlist_color: #2b2b2b;
+
+/* Backgrounds / Highlights */
+$maawol_header_bg: #f5f5f5;
+$maawol_text_highlight: #2ea6cc;
+$maawol_navbar_bg: #2a3a4a;
+$maawol_navbar_selected: #2ea6cc;
+$maawol_navbar_hovered: #0d5b73;
+$maawol_footer_bg: #2a3a4a;
+$maawol_copyright_bg: #18222b;
+$maawol_well_bg: #f5f5f5;
+$maawol_well_border: #e3e3e3;
+$maawol_video_playlist_bg: #f5f5f5;
+
+/* Buttons */
+$maawol_button_viewed: #3aaec1;
+$maawol_button_watch_later: #28bf4f;
+$maawol_button_favourite: #9f74ba;
+
+/* Forms */
+$maawol_form_text_color: #3e464a;
+$maawol_form_box_border: #c5c5c5;
+
+/* Subscribe / Checkout */
+$maawol_checkout_highlighted_option: #f6f6f6;
+$maawol_checkout_selected_option: #f6f6f6;
+$maawol_payment_options_color: #888888;
+$maawol_discount_button_color: #ffffff;
+$maawol_discount_button_bg: #2ea6cc;
+$maawol_checkout_input_border_color: #c8c8c8;
+
+/* Mobile only */
+$maawol_mobile_navbar_toggle: #ffffff;
+$maawol_mobile_scrolling_nav_bg: #0d5b73;
+
+@import "../library/_theme_implement";

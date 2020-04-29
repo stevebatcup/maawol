@@ -1,0 +1,311 @@
+body {
+  background-color: $maawol_body_bg;
+  color: $maawol_text_color;
+
+  &.auth {
+    background-color: $maawol_auth_page_bg;
+  }
+}
+
+p,
+.description {
+	color: $maawol_text_color;
+}
+
+a,
+article.lesson .comments .respond input.btn {
+	color: $maawol_text_highlight;
+}
+
+a:hover {
+  color: darken($maawol_text_highlight, 6%);
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $maawol_text_color;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+select {
+  color: $maawol_form_text_color;
+}
+
+.entry-meta {
+	color: $maawol_text_meta;
+}
+
+header .header-top {
+  background-color: $maawol_header_bg;
+
+  &.mobile {
+  	background-color: $maawol_navbar_bg;
+  }
+}
+
+header .header-top .account_links span {
+  a {
+    color: $maawol_account_links;
+
+    &:hover {
+      color: darken($maawol_account_links, 5%);
+    }
+  }
+
+  &:last-child:before {
+    background: $maawol_account_links;
+  }
+}
+
+header .header-bottom,
+header .header-bottom .navbar-default,
+header .header-bottom .navbar-default .navbar-nav li a {
+  color: $maawol_navbar_color;
+}
+
+header .header-bottom,
+header .header-bottom .navbar-default {
+  background-color: $maawol_navbar_bg;
+}
+
+header .header-bottom .navbar-default .navbar-nav li.menu-item a:hover,
+header .header-bottom .navbar-default .navbar-nav li.menu-item a:focus {
+  color: $maawol_navbar_color;
+  background-color: $maawol_navbar_hovered;
+}
+header .header-bottom .navbar-default .navbar-nav li.active a {
+  color: $maawol_navbar_color;
+  background-color: $maawol_navbar_selected;
+}
+
+.widget-title {
+  color: $maawol_section_title;
+}
+
+.widget.widget_address .item {
+  .item-title {
+    color: $maawol_text_color;
+  }
+
+  span {
+    a {
+      color: $maawol_text_color;
+    }
+  }
+}
+
+#course article.post:hover {
+  background: darken($maawol_body_bg, 3%);
+}
+
+.tag-link:hover,
+.follow-btn,
+header .header-bottom .navbar-default .navbar-nav li.active,
+.section-title:after,
+section.cms_section h2:after,
+.widget-title:after {
+  background-color: $maawol_text_highlight;
+}
+
+.section-title,
+section.cms_section h2 {
+  color: $maawol_section_title;
+}
+
+.section-title .first-word,
+section.cms_section h2 .first-word,
+#dashboard h2.section-title i,
+#dashboard section.cms_section h2 i,
+.widget-title .first-word  {
+  color: $maawol_text_highlight;
+}
+
+footer.site-footer {
+  background-color: $maawol_footer_bg;
+}
+
+footer .copyright {
+  background-color: $maawol_copyright_bg;
+  color: $maawol_copyright_color;
+}
+
+footer.site-footer p,
+footer.site-footer .widget_popular_posts .entry-title a,
+footer.site-footer .footer-social a,
+footer.site-footer h3.widget-title,
+footer.site-footer ul.other_pages li a {
+	color: $maawol_footer_color;
+}
+
+.well {
+  background-color: $maawol_well_bg;
+  border-color: $maawol_well_border;
+
+  &.no-border {
+    border: none;
+  }
+}
+
+article.lesson #actions button#viewed {
+  background-color: $maawol_button_viewed;
+  border-color: $maawol_button_viewed;
+}
+
+article.lesson #actions button#watchlater {
+  background-color: $maawol_button_watch_later;
+  border-color:$maawol_button_watch_later;
+}
+
+article.lesson #actions button#favourite {
+  background-color: $maawol_button_favourite;
+  border-color: $maawol_button_favourite;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color: $maawol_text_highlight;
+}
+
+section.contact-details .contact-form .contact-form-control {
+  border-color: $maawol_form_box_border;
+}
+
+section#payment form#payment_form .form_item ul#choose_payment_type li label i {
+  color: $maawol_payment_options_color;
+}
+
+/* Mobile only */
+header .header-top .navbar-toggle {
+  color: $maawol_mobile_navbar_toggle;
+}
+header.scrolling-top-nav {
+  background: $maawol_mobile_scrolling_nav_bg;
+}
+
+#video_playlist {
+  background-color: $maawol_video_playlist_bg;
+
+  ul li a {
+    color: $maawol_video_playlist_color;
+
+    &.active {
+      background-color: darken($maawol_video_playlist_bg, 5%);
+    }
+  }
+
+  &.mobile {
+    background-color: transparent;
+
+    ul li a {
+      color: $maawol_text_color;
+
+      &.active {
+        background-color: darken($maawol_body_bg, 5%);
+      }
+    }
+  }
+}
+
+#login_box .panel,
+#registration_box .panel,
+#passwords_box .panel,
+#checkout_complete_box .panel,
+section#payment .panel {
+  background-color: $maawol_auth_panel_bg;
+}
+
+
+/* Subscribe checkout */
+.content_wrapper#subscribe {
+  form#payment_form  {
+    color: $maawol_text_color;
+  }
+
+  section#reasons_to_subscribe {
+    border-bottom: 1px solid $maawol_checkout_input_border_color;
+
+    ol {
+      li {
+        color: darken($maawol_checkout_input_border_color, 10%);
+      }
+    }
+  }
+
+  form#discount_form {
+    input, button {
+      border: 1px solid $maawol_checkout_input_border_color;
+    }
+
+    button {
+      color: $maawol_discount_button_color;
+      background-color: $maawol_discount_button_bg;
+    }
+  }
+
+  section#choose_option {
+    div.subscription_option {
+      p#most_popular {
+        color: $maawol_checkout_highlighted_option;
+
+        &.selected {
+          color: $maawol_checkout_highlighted_option;
+        }
+      }
+
+      label.option {
+        border-color: $maawol_checkout_input_border_color;
+
+        &.selected {
+          background: $maawol_checkout_selected_option;
+
+          h5:after {
+            border-left-color: $maawol_checkout_selected_option !important;
+            border-right-color: $maawol_checkout_selected_option !important;
+          }
+        }
+
+        &.normal {
+          &.selected {
+            h5.saving .corner-text {
+              background-color: $maawol_checkout_selected_option !important;
+            }
+          }
+        }
+
+        &.most_popular {
+          border-top: 6px solid $maawol_checkout_highlighted_option;
+          border-right: 12px solid $maawol_checkout_highlighted_option;
+          border-left: 12px solid $maawol_checkout_highlighted_option;
+          border-bottom: 12px solid $maawol_checkout_highlighted_option;
+
+          h5.saving {
+            background: $maawol_checkout_highlighted_option;
+
+            &:after {
+              border-top: 15px solid $maawol_checkout_highlighted_option;
+            }
+          }
+
+          &.selected {
+            border-color: $maawol_checkout_highlighted_option;
+
+            h5 {
+              background-color: $maawol_checkout_highlighted_option;
+            }
+          }
+        }
+      }
+    }
+  }
+}

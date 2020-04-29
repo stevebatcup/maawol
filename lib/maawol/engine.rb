@@ -15,6 +15,12 @@ module Maawol
       	admin/overrides.css
         mobile/overrides.css
         tablet/overrides.css
+        themes/light-blue.css
+        themes/light-red.css
+        themes/light-green.css
+        themes/dark-blue.css
+        themes/dark-red.css
+        themes/dark-green.css
       	subscribe/visa.png
       	subscribe/mastercard.png
       	subscribe/paypal.png

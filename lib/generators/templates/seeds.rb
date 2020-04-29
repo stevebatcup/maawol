@@ -16,6 +16,7 @@ settings_data = [
 	{ name: "Site easy name", value: "#{Maawol::Config.site_name}", is_editable: true },
 	{ name: "Site blurb", value: "#{Maawol::Config.site_name} - lorem	ipsum doo dah day", is_editable: true },
 	{ name: "Site byline", value: "#{Maawol::Config.site_name} - lorem ipsum doo dah day", is_editable: true },
+	{ name: "Theme", value: "light-blue", is_editable: true },
 	{ name: "Meta description", value: "Please enter your meta description, this will help your site's SEO ranking", is_editable: true },
 	{ name: "Contact email address", value: Maawol::Config.site_owner_email, is_editable: true },
 	{ name: "Facebook page URL", value: "https://www.facebook.com/#{Maawol::Config.site_slug}", is_editable: true },
@@ -182,42 +183,6 @@ unless author = Author.find_by(name: author_name)
 		name: author_name,
 		remote_avatar_url: avatar_url
 	})
-end
-
-puts "> Seeding Default colors...."
-colors_data = [
-	{ name: "Main background", slug: "body_background", value: "#ffffff", default_value: "#ffffff" },
-	{ name: "Main text color", slug: "main_text", value: "#3e464a", default_value: "#3e464a" },
-	{ name: "Main link color", slug: "main_link", value: "#2ea6cc", default_value: "#2ea6cc" },
-	{ name: "Headings color", slug: "headings", value: "#3e464a", default_value: "#3e464a" },
-	{ name: "Meta info text color", slug: "meta_text", value: "#5b727d", default_value: "#5b727d" },
-	{ name: "Desktop > Top bar", slug: "desktop_top_bar", value: "#f5f5f5", default_value: "#f5f5f5" },
-	{ name: "Desktop > Navbar > Background", slug: "desktop_navbar", value: "#2a3a4a", default_value: "#2a3a4a" },
-	{ name: "Desktop > Navbar > Text", slug: "desktop_navbar_text", value: "#ffffff", default_value: "#ffffff" },
-	{ name: "Desktop > Navbar > Selected item", slug: "desktop_nav_selected_item", value: "#2ea6cc", default_value: "#2ea6cc" },
-	{ name: "Desktop > Navbar > Item hover", slug: "desktop_nav_hover_item", value: "#0d5b73", default_value: "#0d5b73" },
-	{ name: "Desktop > Footer > Background", slug: "desktop_footer_background", value: "#2a3a4a", default_value: "#2a3a4a" },
-	{ name: "Desktop > Footer text", slug: "desktop_footer_text", value: "#b0bec5", default_value: "#b0bec5" },
-	{ name: "Desktop > Account links (top right of page)", slug: "desktop_account_links", value: "#5c696f", default_value: "#5c696f" },
-	{ name: "Mobile > Header & Navbar background", slug: "mobile_navbar", value: "#2a3a4a", default_value: "#2a3a4a" },
-	{ name: "Mobile > Navbar > Selected item", slug: "mobile_nav_selected_item", value: "#2ea6cc", default_value: "#2ea6cc" },
-	{ name: "Mobile > Navbar > Text", slug: "mobile_navbar_text", value: "#ffffff", default_value: "#ffffff" },
-	{ name: "Mobile > Footer > Background", slug: "mobile_footer_background", value: "#2a3a4a", default_value: "#2a3a4a" },
-	{ name: "Mobile > Footer > Text", slug: "mobile_footer_text", value: "#b0bec5", default_value: "#b0bec5" },
-	{ name: "Footer > Copyright > Background", slug: "copyright_background", value: "#18222b", default_value: "#18222b" },
-	{ name: "Footer > Copyright > Text", slug: "copyright_text", value: "#ffffff", default_value: "#ffffff" },
-	{ name: "Section title", slug: "section_title", value: "#455a64", default_value: "#455a64" },
-	{ name: "Section title highlight", slug: "section_title_highlight", value: "#2ea6cc", default_value: "#2ea6cc" },
-	{ name: "Lesson listing box background", slug: "listing_box_background", value: "#f5f5f5", default_value: "#f5f5f5" },
-	{ name: "Lesson listing box border", slug: "listing_box_border", value: "#e3e3e3", default_value: "#e3e3e3" },
-	{ name: "Buttons > Viewed", slug: "buttons_viewed", value: "#3aaec1", default_value: "#3aaec1" },
-	{ name: "Buttons > Watch later", slug: "buttons_watch_later", value: "#28bf4f", default_value: "#28bf4f" },
-	{ name: "Buttons > Favourite", slug: "buttons_favourite", value: "#9f74ba", default_value: "#9f74ba" }
-]
-colors_data.each do |color_data|
-	unless SiteColor.find_by(name: color_data[:name])
-		SiteColor.create(color_data)
-	end
 end
 
 puts "> Seeding Site Images...."

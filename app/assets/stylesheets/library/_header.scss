@@ -105,10 +105,9 @@ header {
 
           &:before {
             content: '';
-            background: #cfd8dc;
-            height: 14px;
+            height: 18px;
             width: 1px;
-            top: 0;
+            top: 0px;
             left: -13px;
             position: absolute;
           }
@@ -123,10 +122,6 @@ header {
           i {
             font-size: 1em;
             margin-top: 2px;
-          }
-
-          &:hover {
-            color: #455a64;
           }
         }
       }

@@ -9,7 +9,7 @@
 @import "vendor/video-stories-theme";
 @import "vendor/animate.min";
 @import "vendor/responsive";
-@import "vendor/font-awesome-custom.min";
+@import "vendor/font-awesome-base";
 @import "ladda";
 
 // Local styles
@@ -25,6 +25,7 @@
 @import "library/_content_management";
 @import "library/_widgets";
 @import "library/_sidebar";
+
 
 // Page styles
 @import "pages/home";

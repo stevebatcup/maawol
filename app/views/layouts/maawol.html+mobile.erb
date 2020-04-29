@@ -19,13 +19,13 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'mobile/overrides', media: 'all', 'data-turbolinks-track' => true %>
-  <%= render 'layouts/dynamic-colors' %>
+  <%= stylesheet_link_tag    "themes/#{site_theme}", media: 'all', 'data-turbolinks-track' => true %>
 </head>
 
-<body class="mobile" data-turbolinks='false' onunload="" ng-app="Maawol_NG">
+<body class="mobile" data-turbolinks='false' onunload="" ng-app="Maawol_NG" data-theme="<%= site_theme %>">
 
   <header class="header fixed" ng-controller="NavController" data-signed-in="1">
-    <div class="header-top container">
+    <div class="header-top container mobile">
       <div class="row">
         <div class="col-12">
           <div class="d-flex justify-content-start align-items-center">

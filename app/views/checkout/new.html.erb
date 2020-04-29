@@ -1,4 +1,4 @@
-<% page_title "Checkout" %>
+<% html_title "Checkout" %>
 
 <section id="payment" class="solo_checkout mx-auto my-1 my-md-3 my-md-4"
 					ng-controller="CheckoutPageController"
@@ -20,7 +20,6 @@
 		<h5 class="loading text-center text-dark" ng-show="!basket.loaded">Loading checkout...</h5>
 
 		<div ng-show="basket.loaded">
-			<h3 class="text-center">Checkout</h3>
 			<p class="empty_basket mt-3 text-center" ng-show="basket.items.length == 0">
 				<% if @singlecheckout %>
 					Sorry, cannot find that file!
@@ -50,28 +49,28 @@
 		      <p class="container alert alert-danger"><%= alert %></p>
 		    <% end %>
 
-			  <div class="form_item d-flex mb-3">
+			  <div class="form_item d-flex mt-4 mb-0">
 			    <label class="pt-2" for="choose_payment_type">
 			      <%= t('views.subscription.form.labels.card_type') %>
 			    </label>
 
-			    <ul id="choose_payment_type" style="top: 0px;">
+			    <ul id="choose_payment_type">
 			      <li>
 			       <label class="payment_chooser">
 			        <input type="radio" name="payment_type" value="visa" ng-model="payment.type" />
-			        <%= image_tag 'subscribe/visa.png', alt: 'Visa' %>
+			        <i class="fab fa-cc-visa"></i>
 			      </label>
 				    </li>
 				    <li>
 				      <label class="payment_chooser">
 				        <input type="radio" name="payment_type" value="mastercard" ng-model="payment.type" />
-				        <%= image_tag 'subscribe/mastercard.png', alt: 'Mastercard' %>
+				        <i class="fab fa-cc-mastercard"></i>
 				      </label>
 				    </li>
 				    <li>
 				      <label class="payment_chooser">
 				        <input type="radio" name="payment_type" value="paypal" ng-model="payment.type" />
-				        <%= image_tag 'subscribe/paypal.png', alt: 'Paypal' %>
+				        <i class="fab fa-cc-paypal"></i>
 				      </label>
 				    </li>
 			  	</ul>
@@ -105,7 +104,7 @@
 
 			    	<div class="">
 				   		<input type="text" id="email" ng-model="payment.email" />
-				   		<p class='hint m-0 text-secondary text-small'>
+				   		<p class='hint m-0 text-small'>
 				   			<small class="">Why? So we can email you a link to your file<span ng-show="basket.items.length > 1">s</span></small>
 				   		</p>
 				   	</div>
@@ -142,7 +141,7 @@
 				    </span>
 				  </button>
 				  <p class="text-center mt-1 pt-0">
-				  	<small>or <a ng-href='{{basket.store.url}}' class="text-success">
+				  	<small>or <a ng-href='{{basket.store.url}}'>
 				  		<% if @singlecheckout %>
 								see all files in {{basket.store.name}}
 							<% else %>

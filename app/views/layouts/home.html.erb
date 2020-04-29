@@ -19,14 +19,14 @@
     <%= render 'layouts/analytics-tag' %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= render 'layouts/dynamic-colors' %>
+    <%= stylesheet_link_tag    "themes/#{site_theme}", media: 'all', 'data-turbolinks-track' => true %>
 
     <%= csrf_meta_tags %>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
   </head>
 
-  <body class="<%= 'auth' if is_auth_page? %>">
+  <body class="<%= 'auth' if is_auth_page? %>" data-theme="<%= site_theme %>">
     <% unless is_auth_page?  %>
       <header class="header" ng-controller="NavController" data-signed-in="0">
         <div class="header-top">

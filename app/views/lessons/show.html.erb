@@ -141,12 +141,12 @@
     <div class="col-4 pl-2">
       <div class="container entry-content">
 
-        <!-- Playlist -->
+        <!-- Video Playlist -->
         <% if @lesson.videos.length > 1 %>
           <div class="mb-4">
             <h5><%= pluralize(@lesson.videos.count, "video") %> in this lesson</h5>
-            <div id="playlist">
-              <ul class="nav nav-tabs" role="tablist">
+            <div id="video_playlist">
+              <ul class="nav nav-tabs pb-2" role="tablist">
                 <% @lesson.videos.each_with_index do |video, index| %>
                   <li role="presentation">
                     <a href="#<%= video.name.parameterize %>" aria-controls="casts"

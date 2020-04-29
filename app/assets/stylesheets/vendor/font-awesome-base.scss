@@ -1,0 +1,14 @@
+$fa-font-size-base:    16px;
+$fa-font-display:      block;
+$fa-css-prefix:        fa;
+$fa-version:           "5.13.0";
+$fa-border-color:      #eee;
+$fa-inverse:           #fff;
+$fa-li-width:          2em;
+$fa-fw-width:          (20em / 16);
+$fa-primary-opacity:   1;
+$fa-secondary-opacity: .4;
+@import "./font-awesome/fontawesome";
+@import "./font-awesome/regular";
+@import "./font-awesome/solid";
+@import "./font-awesome/brands";

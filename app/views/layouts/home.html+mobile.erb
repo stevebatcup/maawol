@@ -16,16 +16,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= stylesheet_link_tag    'mobile/overrides', media: 'all', 'data-turbolinks-track' => true %>
-    <%= render 'layouts/dynamic-colors' %>
+    <%= stylesheet_link_tag    "themes/#{site_theme}", media: 'all', 'data-turbolinks-track' => true %>
 
     <%= csrf_meta_tags %>
   </head>
 
-  <body class="mobile <%= 'auth' if is_auth_page? %>" data-turbolinks='false'>
+  <body class="mobile <%= 'auth' if is_auth_page? %>" data-turbolinks='false' data-theme="<%= site_theme %>">
 
     <% unless is_auth_page?  %>
       <header class="header fixed" ng-controller="NavController" data-signed-in="0">
-        <div class="header-top container">
+        <div class="header-top container mobile">
           <div class="row">
             <div class="col-8">
               <div class="d-flex justify-content-start align-items-center">
@@ -59,7 +59,7 @@
                 <% end %>
 
                 <li class="menu-item <%= 'active' if (params[:action].to_sym == :new && params[:controller].to_sym == :sessions) %>">
-                  <a href="/users/login" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)">Sign in</a>
+                  <a href="<%= sign_in_path %>" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)">Sign in</a>
                 </li>
               </ul>
             </nav>

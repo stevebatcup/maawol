@@ -19,7 +19,7 @@
   <%= render 'layouts/analytics-tag' %>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= render 'layouts/dynamic-colors' %>
+  <%= stylesheet_link_tag    "themes/#{site_theme}", media: 'all', 'data-turbolinks-track' => true %>
 
   <% if browser.device.tablet? %>
     <%= stylesheet_link_tag 'tablet/overrides', media: 'all', 'data-turbolinks-track' => true %>
@@ -28,7 +28,7 @@
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 </head>
 
-<body onunload="" ng-app="Maawol_NG">
+<body onunload="" ng-app="Maawol_NG" data-theme="<%= site_theme %>">
   <header class="header" ng-controller="NavController" data-signed-in="1">
     <div class="header-top">
       <div class="container">

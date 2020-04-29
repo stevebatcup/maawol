@@ -18,7 +18,7 @@
 
       <div class="my-5"><%= simple_format(@course.description) %></div>
 
-      <h3 class="mt-5 section-title">Lessons in this course</h3>
+      <h3 class="mt-5 mb-0 section-title">Lessons in this course</h3>
       <% @course.teachings.each do |teaching| %>
         <%
           lesson = teaching.lesson
