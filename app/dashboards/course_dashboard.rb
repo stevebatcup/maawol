@@ -29,10 +29,8 @@ class CourseDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
-    :author,
-    :description,
-    :created_at,
     :teachings,
+    :author,
     :publish_date
   ].freeze
 
