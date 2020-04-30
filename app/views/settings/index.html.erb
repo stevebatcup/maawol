@@ -21,6 +21,12 @@
       <% end %>
 
       <div class="tab-content col-12 col-md-8 pb-5">
+        <% if notice %>
+          <p class="container alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="container alert alert-danger"><%= alert %></p>
+        <% end %>
 
         <div class="well no-border p-3 p-md-4 tab-pane fade <%= 'show active' unless @mode == 'password' %>" id="account_details" role="tabpanel">
           <h6 class="section_intro">Update the details for your account</h6>
