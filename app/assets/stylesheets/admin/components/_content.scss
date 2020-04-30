@@ -1,8 +1,20 @@
 .main-content {
 	border-radius: 0;
 	box-shadow: none;
-	background-color: #e8ecef;
 	position: relative;
+
+  body.dark-green &,
+  body.dark-blue &,
+  body.dark-red & {
+		background-color: #4c5052;
+		color: #fff;
+  }
+
+  body.light-green &,
+  body.light-blue &,
+  body.light-red & {
+		background-color: #dfe2e4;
+  }
 
 	header#user_info {
 		color: #fff;
@@ -59,8 +71,27 @@
 	}
 
 	.main-content__body {
-		background: #fff;
 		padding: 1rem 1.5rem;
+
+	  body.dark-green &,
+	  body.dark-blue &,
+	  body.dark-red & {
+			background-color: #3a3a3a;
+
+			.attribute-label {
+				color: #dbe5ff;
+			}
+	  }
+
+	  body.light-green &,
+	  body.light-blue &,
+	  body.light-red & {
+			background-color: #ffffff;
+
+			// .attribute-label {
+			// 	color: #dbe5ff;
+			// }
+	  }
 
 		table {
 			td {

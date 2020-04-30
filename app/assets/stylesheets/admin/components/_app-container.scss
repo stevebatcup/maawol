@@ -1,9 +1,20 @@
 .app-container {
 	padding: 0;
-	background-color: #3a3a3a;
 	margin-left: 0;
   margin-right: 0;
   max-width: none;
+
+  body.dark-green &,
+  body.dark-blue &,
+  body.dark-red & {
+		background-color: #3a3a3a;
+  }
+
+  body.light-green &,
+  body.light-blue &,
+  body.light-red & {
+		background-color: #e8ecef;
+  }
 
 	a, select, input {
 		outline: none;

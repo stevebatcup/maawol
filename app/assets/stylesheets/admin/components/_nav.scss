@@ -25,7 +25,6 @@
 	}
 
 	.navigation__link {
-		color: #fff;
 		padding: 0.5em 0.5em 0.5em 1em;
 
 		&:hover {
@@ -52,6 +51,7 @@
 	}
 
 	h3 {
+		color: #ffffff;
 		font-size: 1em;
 		background-color: #232323;
 		padding: 0.4em 0 0.4em 0.8em;
@@ -59,10 +59,10 @@
 		a {
 			&:hover {
 				background: none;
-				color:  darken(#fff, 15%) !important;
 			}
 		}
 	}
+
 
 
 	ul {
@@ -126,4 +126,32 @@
 			}
 		}
 	}
+
+  body.dark-green &,
+  body.dark-blue &,
+  body.dark-red & {
+  	.navigation__link {
+			color: #fff;
+		}
+
+		h3 {
+			a {
+				color:  #ffffff !important;
+			}
+		}
+  }
+
+  body.light-green &,
+  body.light-blue &,
+  body.light-red & {
+  	.navigation__link {
+			color: #333;
+		}
+
+		h3 {
+			a {
+				color:  #ffffff !important;
+			}
+		}
+  }
 }

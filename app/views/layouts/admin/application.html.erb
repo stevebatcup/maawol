@@ -18,15 +18,21 @@ By default, it renders:
     <meta charset="utf-8">
     <meta name="ROBOTS" content="NOODP">
     <meta name="viewport" content="initial-scale=1">
+
     <title>
       <%= content_for(:title) %> - <%= Rails.application.class.parent_name.titlecase %>
     </title>
+
+    <% unless site_image("favicon").nil? %>
+      <link rel="icon" type="image/x-icon" href="<%= site_image("favicon").url(:tiny) %>" />
+    <% end %>
+
     <%= render "stylesheet" %>
     <%= stylesheet_link_tag 'admin/overrides', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body onunload="" ng-app="Maawol_NG">
+  <body onunload="" ng-app="Maawol_NG" class="<%= site_theme %>">
     <%= render "icons" %>
 
     <div class="app-container">

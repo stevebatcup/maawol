@@ -102,16 +102,23 @@ header {
 
         &:last-child {
           padding-right: 0;
+        }
 
+        &:before {
+          content: '';
+          height: 18px;
+          width: 1px;
+          top: 0px;
+          left: -13px;
+          position: absolute;
+        }
+
+        &:first-child {
           &:before {
-            content: '';
-            height: 18px;
-            width: 1px;
-            top: 0px;
-            left: -13px;
-            position: absolute;
+            display: none;
           }
         }
+
 
         a {
           margin-left: 0;
