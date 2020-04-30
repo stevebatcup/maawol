@@ -12,7 +12,7 @@ class CourseDashboard < Administrate::BaseDashboard
     name: Field::String,
     author: Field::BelongsTo.with_options(scope: -> { Author.order(id: :asc) }),
     image: ImageField,
-    description: Field::Text,
+    description: TinyMceField,
     teachings: NestedLessonField,
     lessons: Field::HasMany,
     skill_levels: HasLotsField,
@@ -54,11 +54,11 @@ class CourseDashboard < Administrate::BaseDashboard
     :name,
     :author,
     :image,
-    :description,
     :skill_levels,
     :tags,
     :teachings,
     :publish_date,
+    :description,
   ].freeze
 
   # Overwrite this method to customize how courses are displayed

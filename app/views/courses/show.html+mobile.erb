@@ -18,7 +18,7 @@
     <div class="my-3"><%= simple_format(@course.description) %></div>
 
     <h3 class="mt-4 mb-1 section-title">Lessons in this course</h3>
-    <% @course.teachings.each do |teaching| %>
+    <% @course.teachings.order(sort: :asc).each do |teaching| %>
       <%
         lesson = teaching.lesson
         lesson_available = user_signed_in? ? lesson.available_for_user?(current_user) : can_access_full_course_without_account(@course)

@@ -132,6 +132,11 @@
   body.dark-red & {
   	.navigation__link {
 			color: #fff;
+
+			&:hover {
+				background-color: #5d5d5d;
+			}
+
 		}
 
 		h3 {
