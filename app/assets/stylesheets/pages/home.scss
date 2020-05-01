@@ -7,13 +7,21 @@
 		margin-bottom: 38px;
 
 		&#register {
-			ul {
-				height: 150px;
+
+			.col {
+				min-height: 20em;
+				position: relative;
+
+				ul {
+				}
+
+				.btn {
+					width: 80% !important;
+					position: absolute;
+					bottom: 0;
+				}
 			}
 
-			.btn {
-				width: 80% !important;
-			}
 		}
 	}
 }

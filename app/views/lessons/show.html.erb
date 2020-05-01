@@ -7,9 +7,9 @@
         data-video-url="<%= @lesson.main_video.present? ? @lesson.main_video.url : '' %>"
         data-video-host="vimeo">
 
-  <div class="d-flex">
+  <div class="d-flex row">
     <!-- Start Main col -->
-    <div class="col-8 pr-2">
+    <div class="col-12 col-lg-8">
       <div class="post type-post format-standard">
 
         <!-- Video player -->
@@ -20,6 +20,13 @@
             </div>
           <% end %>
         </div>
+
+        <% if @lesson.videos.length > 1 %>
+          <div class="d-md-block d-lg-none">
+            <!-- Video Playlist (for small tablets onlt) -->
+              <%= render partial: 'lessons/video-playlist', locals: { videos: @lesson.videos } %>
+          </div>
+        <% end %>
       </div>
 
       <div class="px-4">
@@ -28,18 +35,18 @@
           <%= @lesson.name %>
         </h2>
 
-        <div class="d-flex justify-content-between mb-4">
-          <div class="w-50"  id="lesson_meta">
+        <div class="d-flex justify-content-between mb-4 row">
+          <div class="col-6 col-lg-5 col-xl-6 pr-0"  id="lesson_meta">
             <div class="entry-meta">
               <!-- Published at -->
               <% if @lesson.is_published %>
-                <span><i class="fa fa-clock-o"></i> <time datetime="PT5M">Published <%= time_ago_in_words(@lesson.publish_date) %> ago</time></span>
+                <span class="mb-1"><i class="fa fa-clock ml-1"></i> <time datetime="PT5M">Published <%= time_ago_in_words(@lesson.publish_date) %> ago</time></span>
               <% end %>
 
               <!-- Course info -->
               <% unless @course.nil? %>
-                <span id="part_of_course">
-                  Lesson <%= @course.lesson_index(@lesson) %> of the <a href='/courses/<%= @course.id %>?token=<%= params[:token] %>'>
+                <span class="mb-1" id="part_of_course">
+                  <i class="far fa-copy mr-2 ml-1"></i>Lesson <%= @course.lesson_index(@lesson) %> of the <a href='/courses/<%= @course.id %>?token=<%= params[:token] %>'>
                     <%= @course.name %>
                   </a> course
                 </span>
@@ -49,7 +56,7 @@
 
           <!-- Interactive Buttons -->
           <% if full_access %>
-           <div id='actions' data-lesson-id="<%= @lesson.id %>" class="w-50 justify-content-end d-flex align-items-start">
+           <div id='actions' data-lesson-id="<%= @lesson.id %>" class="col-6 col-lg-7 col-xl-6 justify-content-end d-flex align-items-start">
              <button id="viewed" class="<%= 'disabled' if current_user.in_views(@lesson) %>">
                <i class="fa fa-check-square" aria-hidden="true"></i>
                <span class="text">Viewed</span>
@@ -138,120 +145,110 @@
 
 
     <!-- Start Side col -->
-    <div class="col-4 pl-2">
+    <div class="col-12 col-lg-4">
       <div class="container entry-content">
 
-        <!-- Video Playlist -->
-        <% if @lesson.videos.length > 1 %>
-          <div class="mb-4">
-            <h5><%= pluralize(@lesson.videos.count, "video") %> in this lesson</h5>
-            <div id="video_playlist">
-              <ul class="nav nav-tabs pb-2" role="tablist">
-                <% @lesson.videos.each_with_index do |video, index| %>
-                  <li role="presentation">
-                    <a href="#<%= video.name.parameterize %>" aria-controls="casts"
-                          role="tab"
-                          data-toggle="tab"
-                          class="<%= 'active' if video == @lesson.videos.first %>">
-                      <% if video == @lesson.videos.first %>
-                        <i class="fa fa-play"></i>
-                      <% else %>
-                        <i class="fa fa-play"></i>
-                      <% end %>
-                      <span class="text"><%= index+1 %>. <%= video.name %></span>
-                    </a>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        <% end %>
+        <div class="row">
+          <div class="col-6 col-lg-12">
 
-        <!-- Tags / Categories -->
-        <% if @lesson.has_taxonomies? %>
-          <div class="mb-4 pt-4 border-top" id="taxonomies">
-            <h5>Filed under</h5>
-            <% taxonomies = (@lesson.tags.to_a + @lesson.categories.to_a).shuffle %>
-            <ul>
-              <% taxonomies.each do |taxonomy| %>
-                <li class="mx-1">
-                  <% if taxonomy.is_a?(Tag) %>
-                    <%= link_to taxonomy.name, lessons_path(tag: taxonomy.slug), class: 'tag' %>
-                  <% elsif taxonomy.is_a?(Category) %>
-                    <%= link_to taxonomy.name, lessons_path(root_category: taxonomy.root_category_id, category: taxonomy.id), class: 'category' %>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-
-         <!-- Downloadables -->
-         <% if @lesson.downloadables.any? %>
-           <div id="downloadables" class="mb-4 pt-4 border-top">
-             <h5>Scores</h5>
-             <p class="mb-0">Click on the <%= "link".pluralize(@lesson.downloadables.size) %> to download.</p>
-             <% @lesson.downloadables.each do |file| %>
-               <p class="pl-1">
-                <a href="<%= file.full_url %>" target="_blank">
-                  <i class="mr-2 fa fa-file"></i>
-                  <%= file.name %>
-                </a>
-              </p>
-             <% end %>
-           </div>
-         <% end %>
-
-         <!-- Audio files -->
-         <% if @lesson.audio_files.any? %>
-           <div id="audio_files" class="mb-4 pt-4 border-top">
-             <h5>Audio</h5>
-             <% @lesson.audio_files.each do |audio_file| %>
-              <div class="my-4">
-                <p class="mb-1"><%= audio_file.name.html_safe %>:</p>
-                <audio controls="controls" preload="auto" class="w-100">
-                  Your browser does not support the audio element.
-                  <source src="<%= audio_file.file.url %>">
-                </audio>
+            <% if @lesson.videos.length > 1 %>
+              <div class="d-none d-lg-block">
+                <!-- Video Playlist -->
+                  <%= render partial: 'lessons/video-playlist', locals: { videos: @lesson.videos } %>
               </div>
-             <% end %>
-           </div>
-         <% end %>
+            <% end %>
 
-         <!-- Playlists -->
-         <% if @lesson.playlists.any? %>
-           <div id="playlists" class="mb-4 pt-4 border-top">
-             <h5>Further listening</h5>
-             <% @lesson.playlists.each do |playlist| %>
-               <div class="widget playlist my-4">
-                 <% if playlist.spotify_embed_url.present? %>
-                   <iframe src="<%= playlist.spotify_embed_url %>"
-                           frameborder="0"
-                           allowtransparency="true"
-                           allow="encrypted-media"
-                           class="mb-3"></iframe>
-                 <% end %>
-                 <% if playlist.amazon_music_embed_url.present? %>
-                   <iframe id="AmazonMusicEmbedB07WWHZ4J2"
-                            src="<%= playlist.amazon_music_embed_url %>"
-                            width="100%"
-                            height="550px"
-                            style="border:1px solid rgba(0, 0, 0, 0.12);max-width:"
-                            class="mb-3"></iframe>
-                 <% end %>
-                 <% if playlist.apple_music_embed_url.present? %>
-                   <iframe allow="autoplay *; encrypted-media *;"
-                            frameborder="0"
-                            height="450"
-                            style="width:100%;max-width:660px;overflow:hidden;background:transparent;"
-                            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-                            src="<%= playlist.apple_music_embed_url %>"
-                            class="mb-3"></iframe>
+            <!-- Tags / Categories -->
+            <% if @lesson.has_taxonomies? %>
+              <div class="mb-4 pt-4 border-top" id="taxonomies">
+                <h5>Filed under</h5>
+                <% taxonomies = (@lesson.tags.to_a + @lesson.categories.to_a).shuffle %>
+                <ul>
+                  <% taxonomies.each do |taxonomy| %>
+                    <li class="mx-1">
+                      <% if taxonomy.is_a?(Tag) %>
+                        <%= link_to taxonomy.name, lessons_path(tag: taxonomy.slug), class: 'tag' %>
+                      <% elsif taxonomy.is_a?(Category) %>
+                        <%= link_to taxonomy.name, lessons_path(root_category: taxonomy.root_category_id, category: taxonomy.id), class: 'category' %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <!-- Downloadables -->
+            <% if @lesson.downloadables.any? %>
+              <div id="downloadables" class="mb-4 pt-4 border-top">
+                 <h5>Scores</h5>
+                 <p class="mb-0">Click on the <%= "link".pluralize(@lesson.downloadables.size) %> to download.</p>
+                 <% @lesson.downloadables.each do |file| %>
+                   <p class="pl-1">
+                    <a href="<%= file.full_url %>" target="_blank">
+                      <i class="mr-2 fa fa-file"></i>
+                      <%= file.name %>
+                    </a>
+                  </p>
                  <% end %>
                </div>
              <% end %>
-           </div>
-         <% end %>
+
+          </div>
+
+          <div class="col-6 col-lg-12">
+
+             <!-- Audio files -->
+             <% if @lesson.audio_files.any? %>
+               <div id="audio_files" class="mb-4 pt-4 border-top">
+                 <h5>Audio</h5>
+                 <% @lesson.audio_files.each do |audio_file| %>
+                  <div class="my-4">
+                    <p class="mb-1"><%= audio_file.name.html_safe %>:</p>
+                    <audio controls="controls" preload="auto" class="w-100">
+                      Your browser does not support the audio element.
+                      <source src="<%= audio_file.file.url %>">
+                    </audio>
+                  </div>
+                 <% end %>
+               </div>
+             <% end %>
+
+             <!-- Playlists -->
+             <% if @lesson.playlists.any? %>
+               <div id="playlists" class="mb-4 pt-4 border-top">
+                 <h5>Further listening</h5>
+                 <% @lesson.playlists.each do |playlist| %>
+                   <div class="widget playlist my-4">
+                     <% if playlist.spotify_embed_url.present? %>
+                       <iframe src="<%= playlist.spotify_embed_url %>"
+                               frameborder="0"
+                               allowtransparency="true"
+                               allow="encrypted-media"
+                               class="mb-3"></iframe>
+                     <% end %>
+                     <% if playlist.amazon_music_embed_url.present? %>
+                       <iframe id="AmazonMusicEmbedB07WWHZ4J2"
+                                src="<%= playlist.amazon_music_embed_url %>"
+                                width="100%"
+                                height="550px"
+                                style="border:1px solid rgba(0, 0, 0, 0.12);max-width:"
+                                class="mb-3"></iframe>
+                     <% end %>
+                     <% if playlist.apple_music_embed_url.present? %>
+                       <iframe allow="autoplay *; encrypted-media *;"
+                                frameborder="0"
+                                height="450"
+                                style="width:100%;max-width:660px;overflow:hidden;background:transparent;"
+                                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                                src="<%= playlist.apple_music_embed_url %>"
+                                class="mb-3"></iframe>
+                     <% end %>
+                   </div>
+                 <% end %>
+               </div>
+             <% end %>
+            </div>
+          </div>
 
       </div>
     </div>

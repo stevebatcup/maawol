@@ -1,15 +1,35 @@
-.container {
-	width: 100vw;
+article.lesson {
+	iframe {
+		min-height: 350px;
+	}
 }
 
 @media screen and (orientation: portrait) {
-	header .header-top form.search-form input[type=text] {
-		width: 230px;
+	header .header-top form.search-form {
+		width: 90%;
+
+		input[type=text] {
+			width: 100%;
+		}
+	}
+
+	header .header-top .account_links_col {
+		padding-left: 0;
+		padding-right: 0;
+
+		span {
+			a {
+				font-size: 0.8rem;
+			}
+		}
+	}
+
+	#home_slides .cms_section#register .col {
+		min-height: 24em;
 	}
 
 	.list .lesson_result article.post {
 		.entry-thumbnail {
-			max-height: 65px;
 			a {
 				height: initial;
 			}
@@ -29,6 +49,11 @@
 			width: 80% !important;
 			margin-bottom: 10px;
 		}
+
+		iframe {
+			min-height: 400px;
+		}
+
 	}
 }
 

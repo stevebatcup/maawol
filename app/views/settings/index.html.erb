@@ -63,7 +63,7 @@
             </p>
 
             <p class="actions d-flex justify-content-start">
-              <%= f.submit "Update my details", { class: 'btn btn-block btn-success btn-large px-5' } %>
+              <%= f.submit "Update my details", { class: 'btn btn-block btn-success btn-large w-75 mx-auto mt-2 px-5' } %>
             </p>
           <% end %>
         </div>
@@ -84,7 +84,7 @@
               <%= f.password_field :password_confirm, { class: 'form-control' } %>
             </p>
             <p class="actions">
-              <%= f.submit "Change my password", { class: 'btn btn-block btn-success btn-large' } %>
+              <%= f.submit "Change my password", { class: 'btn btn-block btn-success btn-large w-75 mx-auto mt-2' } %>
             </p>
           <% end %>
         </div>
@@ -96,7 +96,7 @@
             <strong><%= current_user.membership_status %></strong>
           </p>
           <% if current_user.status.to_sym == :free %>
-            <a href="/subscribe" class="btn btn-success btn-large">Subscribe now</a>
+            <a href="/subscribe" class="btn btn-success btn-large btn-block w-75 mx-auto mt-2">Subscribe now</a>
           <% elsif [:paying, :expiring].include?(current_user.status.to_sym) && current_user.is_subscriber? %>
             <%
                 user_sub = current_user.current_subscription
@@ -117,13 +117,13 @@
                 <strong><%= user_sub.is_paypal? ? "Paypal" : "Card" %></strong>
               </p>
               <%= render partial: "subscriptions/cancel_recurring", locals: { current_user: current_user } %>
-              <a href="#" id="cancel_recurring" class="btn btn-block btn-danger btn-mgn-btm">Cancel my subscription</a>
+              <a href="#" id="cancel_recurring" class="btn btn-block btn-danger btn-mgn-btm w-75 mx-auto mt-2">Cancel my subscription</a>
             <% else %>
               <p>
                 <label>Subscription ends </label><br />
                 <%= user_sub.ends_at.strftime("%B, %d, %Y") %>
               </p>
-              <a href="/subscribe" class="btn btn-block btn-success btn-large" style="white-space: normal;">Resubscribe now to continue enjoying the site</a>
+              <a href="/subscribe" class="btn btn-block btn-success btn-large w-75 mx-auto mt-2" style="white-space: normal;">Resubscribe now to continue enjoying the site</a>
             <% end %>
           <% end %>
         </div>
@@ -179,7 +179,7 @@
                 <input type="text" id="cv2" class="small form-control" name="card[cv2]" ng-model="card.cv2" />
               </p>
 
-              <button type="submit" id="update_card_btn" class="btn btn-block btn-success btn-large">Update card details</button>
+              <button type="submit" id="update_card_btn" class="btn btn-block btn-success btn-large w-75 mx-auto mt-2">Update card details</button>
             <% end %>
 
             <%= render partial: "checkout/payment_error", locals: { current_user: current_user } %>

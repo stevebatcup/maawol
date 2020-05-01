@@ -4,16 +4,24 @@
   margin-right: 0;
   max-width: none;
 
-  body.dark-green &,
-  body.dark-blue &,
+  body.dark-green & {
+  	background-color: #394a38;
+  }
+  body.dark-blue & {
+  	background-color: #313940;
+  }
   body.dark-red & {
-		background-color: #3a3a3a;
+		background-color: #544747;
   }
 
-  body.light-green &,
-  body.light-blue &,
+  body.light-green & {
+  	background-color: #e4ece3;
+  }
+  body.light-blue & {
+  	background-color: #dfe7ec;
+  }
   body.light-red & {
-		background-color: #e8ecef;
+		background-color: #eae3e3;
   }
 
 	a, select, input {

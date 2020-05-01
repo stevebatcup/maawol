@@ -33,22 +33,22 @@
     <div class="header-top">
       <div class="container">
         <div class="row">
-          <div class="col-4">
+          <div class="col-3 col-xl-4">
             <% unless site_image("landscape_logo").nil? %>
               <a href="/" id="logo_top">
                 <img src="<%= site_image("landscape_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="site-logo" />
               </a>
             <% end %>
           </div>
-          <div class="col-4 text-center d-flex align-items-end justify-content-center">
+          <div class="col-6 col-xl-4 text-center d-flex align-items-end justify-content-center">
             <form class="search-form" method="get" action="/lessons">
               <input name="search" type="text" class="search-input" size="20" maxlength="20" placeholder="Search for lessons..." required="" />
               <input type="submit" name="submit" class="search-submit" />
             </form>
           </div>
-          <div class="col-4 d-flex align-items-end justify-content-end">
+          <div class="col-3 col-xl-4 d-flex align-items-end justify-content-end account_links_col">
             <div class="account_links">
-              <% if signed_in? && current_user.is_admin? %>
+              <% if signed_in? && current_user.is_admin? && !browser.device.tablet? %>
                 <span><a href="/admin" target="_blank" data-turbolinks="false"><i class="fas fa-laptop-code mr-2"></i>Admin</a></span>
               <% end %>
               <span><a href="/settings"><i class="fa fa-user mr-1"></i> My account</a></span>
@@ -59,37 +59,8 @@
       </div>
     </div>
 
-    <div class="header-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 px-0">
-            <nav class="navbar navbar-default navbar-expand-md d-flex justify-content-center">
-
-              <div id="menu" class="main-menu pull-left">
-
-                <ul class="nav navbar-nav">
-                  <% navbar.sorted_navbar_items_for_device_type(:desktop).each do |item| %>
-                    <% if item.can_be_seen_by_user(current_user) %>
-                      <li class="menu-item <%= 'active' if request.url.include?(item.url) %>">
-                        <a href="<%= item.url %>" data-turbolinks="false" class="d-block"><%= item.name %></a>
-                      </li>
-                    <% end %>
-                  <% end %>
-
-                  <% unless current_user.is_subscriber? %>
-                    <li class="">
-                      <a href="/subscribe" class="btn btn-block btn-success" data-turbolinks="false">Subscribe</a>
-                    </li>
-                  <% end %>
-                </ul>
-              </div><!-- /.navbar-collapse -->
-            </nav><!-- /.navbar -->
-          </div>
-
-        </div>
-      </div><!-- /.container -->
-    </div><!-- /.header-bottom -->
-  </header><!-- /.header -->
+    <%= render 'layouts/main-nav' %>
+  </header>
 
   <div id='yield_wrapper'>
     <%= yield %>

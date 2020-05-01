@@ -2,11 +2,11 @@
 	border-radius: 0;
 	box-shadow: none;
 	position: relative;
+	background-color: transparent;
 
   body.dark-green &,
   body.dark-blue &,
   body.dark-red & {
-		background-color: #3a3a3a;
 		color: #fff;
 		border-left: 1px solid #fff;
   }
@@ -14,14 +14,15 @@
   body.light-green &,
   body.light-blue &,
   body.light-red & {
-		background-color: #dfe2e4;
-  }
+		// background-color: #dfe2e4;
+		border-left: 1px solid #777;
+	}
 
 	header#user_info {
 		color: #fff;
 		padding: 8px 15px 8px;
 		width: 100%;
-		background-color: #283e54;
+		// background-color: #283e54;
 
 		#navigation__toggle {
 			display: inline-block;

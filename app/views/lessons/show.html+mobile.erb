@@ -29,7 +29,7 @@
           <div class="entry-meta text-center">
             <!-- Published at -->
             <% if @lesson.is_published %>
-              <span><i class="fa fa-clock-o"></i> <time datetime="PT5M">Published <%= time_ago_in_words(@lesson.publish_date) %> ago</time></span>
+              <span><i class="fa fa-clock"></i> <time datetime="PT5M">Published <%= time_ago_in_words(@lesson.publish_date) %> ago</time></span>
             <% end %>
 
             <!-- Course info -->

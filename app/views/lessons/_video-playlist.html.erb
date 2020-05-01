@@ -1,0 +1,22 @@
+<div class="mb-4">
+  <h5><%= pluralize(videos.count, "video") %> in this lesson</h5>
+  <div id="video_playlist">
+    <ul class="nav nav-tabs pb-2" role="tablist">
+      <% videos.each_with_index do |video, index| %>
+        <li role="presentation">
+          <a href="#<%= video.name.parameterize %>" aria-controls="casts"
+                role="tab"
+                data-toggle="tab"
+                class="<%= 'active' if video == videos.first %>">
+            <% if video == videos.first %>
+              <i class="fa fa-play"></i>
+            <% else %>
+              <i class="fa fa-play"></i>
+            <% end %>
+            <span class="text"><%= index+1 %>. <%= video.name %></span>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

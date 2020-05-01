@@ -204,11 +204,6 @@
   .widget_popular_posts .entry-thumbnail {
     margin-right: 15px;
   }
-  .respond form input[type="submit"],
-  .contact-form input[type="submit"],
-  .form-elements input[type="submit"] {
-    padding: 0 30px;
-  }
   .blog-posts .col-sm-8 article .entry-content .entry-title {
     font-size: 20px;
     line-height: 30px;

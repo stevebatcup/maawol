@@ -21,6 +21,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= stylesheet_link_tag    "themes/#{site_theme}", media: 'all', 'data-turbolinks-track' => true %>
 
+    <% if browser.device.tablet? %>
+      <%= stylesheet_link_tag 'tablet/overrides', media: 'all', 'data-turbolinks-track' => true %>
+    <% end %>
+
     <%= csrf_meta_tags %>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
@@ -49,33 +53,7 @@
           </div>
         </div>
 
-        <div class="header-bottom">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12">
-                <nav class="navbar navbar-default navbar-expand-md">
-
-                  <div id="menu" class="main-menu pull-left">
-
-                    <ul class="nav navbar-nav">
-
-                      <% navbar.sorted_navbar_items_for_device_type(:desktop).each do |item| %>
-                        <% if item.can_be_seen_by_user(current_user) %>
-                          <li class="menu-item <%= 'active' if nav_item_is_current_request(item) %>">
-                            <a href="<%= item.url %>" data-turbolinks="false" ng-click="navigateUri($event, '<%= item.url %>')"><%= item.name %></a>
-                          </li>
-                        <% end %>
-                      <% end %>
-
-                    </ul>
-                  </div>
-                </nav>
-              </div>
-
-
-            </div>
-          </div>
-        </div>
+        <%= render 'layouts/main-nav' %>
       </header>
     <% end %>
 

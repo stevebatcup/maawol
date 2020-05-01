@@ -2,6 +2,12 @@ footer {
   font-size: 14px;
   font-weight: 400;
 
+  .footer-branding {
+    img {
+      max-width: 20vw;
+    }
+  }
+
   p {
     font-size: 1em;
     line-height: 2em;

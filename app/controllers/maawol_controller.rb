@@ -31,7 +31,7 @@ class MaawolController < Maawol::Config.application_controller_class
 	end
 
 	def set_device_type
-		request.variant = browser.device.mobile? ? :mobile : :desktop
+		request.variant = browser.device.mobile? ? :mobile : (browser.device.tablet? ? :tablet : :desktop)
 	end
 
 	def json_request?

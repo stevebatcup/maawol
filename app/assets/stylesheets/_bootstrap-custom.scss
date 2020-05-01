@@ -15,10 +15,10 @@ $grid-breakpoints: (
 );
 
 $container-max-widths: (
-  sm: 594px,
-  md: 792px,
-  lg: 1056px,
-  xl: 1120px
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
 );
 
 @import "bootstrap/functions";

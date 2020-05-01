@@ -25,7 +25,7 @@
       <section class="cms_section mb-4 mb-md-5" id="register">
         <h2 class="section-title" style="">Register or Subscribe</h2>
         <div class="row">
-          <div class="col-12 col-md-6 px-md-4 pb-4 pb-md-3 pt-md-3">
+          <div class="col col-12 col-md-6 px-md-4 pb-4 pb-md-3 pt-md-3">
             <h5>Subscribed Members:</h5>
             <ul>
               <li>Access to FULL Lesson Library and Courses</li>
@@ -38,7 +38,7 @@
             </ul>
             <a class="mt-3 mb-md-5 btn btn-success btn-large" style="bottom: 0;" href="/sign_up?remember=/subscribe">Subscribe now</a></div>
 
-            <div class="col-12 col-md-6 align-items-end px-md-4 pb-md-3 pt-md-3">
+            <div class="col col-12 col-md-6 align-items-end px-md-4 pb-md-3 pt-md-3">
               <h5>Registered Members:</h5>
               <ul>
                 <li>FREE</li>
@@ -59,7 +59,7 @@
           <div class="video-contents list">
               <div class="row">
                   <% @latest_lessons.each do |lesson| %>
-                    <div class="lesson_result search_result col-12 col-md-5ths col-lg-3 mb-3 mb-md-1">
+                    <div class="lesson_result search_result col-12 col-md-6 col-lg-3 mb-3 mb-md-1">
                       <%= render partial: 'recent_lesson', locals: { lesson: lesson } %>
                     </div>
                   <% end %>
@@ -67,10 +67,6 @@
           </div>
         </div>
       <% end %>
-
-      <!-- <section class="contact-details pt-md-4 pb-0 pb-md-5" id="contact"> -->
-        <%#= render 'contact/contact' %>
-      <!-- </section> -->
 
     </div>
   </div>

@@ -1,7 +1,7 @@
 <footer class="site-footer pt-4">
   <div class="container">
     <div class="row">
-      <div class="col-md-3 px-4">
+      <div class="col-12 col-lg-3 px-4 text-center footer-branding mb-md-4 mb-lg-0">
         <div class="widget widget_about">
           <div class="widget-details">
             <% if site_image("square_logo").present? %>
@@ -51,7 +51,7 @@
         </div><!-- /.widget -->
       </div>
 
-      <div class="col-md-3 px-4">
+      <div class="col-4 col-lg-3 px-4">
         <div class="widget widget_popular_posts">
           <h3 class="widget-title">Recent lessons</h3>
 
@@ -79,7 +79,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 px-4">
+      <div class="col-4 col-lg-3 px-4">
         <div class="widget widget_tags">
           <h3 class="widget-title">Tags</h3>
           <div class="widget-details">
@@ -90,7 +90,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 px-4">
+      <div class="col-4 col-lg-3 px-4">
         <h3 class="widget-title">Info</h3>
         <ul class="other_pages p-0">
           <% footer_navbar_items.each do |page| %>
@@ -100,7 +100,7 @@
           <% end %>
           <% if signed_in? && current_user.is_admin? %>
             <li class="menu-item">
-              <a href="/admin" target="_blank" data-turbolinks="false">Admin</a>
+              <a href="/admin" target="_blank" data-turbolinks="false"><i class="fas fa-laptop-code mr-2"></i>Admin dashboard</a>
             </li>
           <% end %>
         </ul>

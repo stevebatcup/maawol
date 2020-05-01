@@ -4,7 +4,7 @@
           ng-controller="CoursesController"
           data-lesson-locked-msg="<%= t('views.lesson.must_register') %>">
   <div class="row">
-    <div class="col-9 mb-5">
+    <div class="col-8 col-lg-9">
       <h2 class="w-100"><%= @course.name %> course</h2>
       <h6>by <%= @course.author.name %></h6>
 
@@ -16,46 +16,10 @@
         <% end %>
       </div>
 
-      <div class="my-5"><%= simple_format(@course.description) %></div>
-
-      <h3 class="mt-5 mb-0 section-title">Lessons in this course</h3>
-      <% @course.teachings.order(sort: :asc).each do |teaching| %>
-        <%
-          lesson = teaching.lesson
-          lesson_available = user_signed_in? ? lesson.available_for_user?(current_user) : can_access_full_course_without_account(@course)
-        %>
-        <article ng-click="openLesson($event, '<%= lesson.slug %>', '<%= @course.id %>', '<%= teaching.sort %>', <%= lesson_available ? 1 : 0 %>, '<%= params[:token] %>')"
-                  class="px-2 py-2 d-flex post type-post media <%= 'blocked' unless lesson_available %>">
-          <div class="image w-15 mr-3">
-            <a class='d-block w-100' href="<%= lesson_path(id: lesson.slug, from_course: @course.id, lesson_index: teaching.sort) %>">
-              <img src="<%= lesson.listing_thumbnail_path %>" alt="<%= lesson.name %>" class='w-100' style="height: 75px;" />
-            </a>
-          </div>
-
-          <div class="d-flex w-85">
-            <h4 class="w-80 mt-4 pt-1">
-              <a class="d-block" href="<%= lesson_path(id: lesson.slug, from_course: @course.id, lesson_index: teaching.sort) %>">
-                <%= teaching.sort %>. <%= lesson.name %>
-              </a>
-            </h4>
-            <% if user_signed_in? %>
-              <div class="w-20 pr-2 justify-content-end d-flex">
-                <% if current_user.in_views(lesson) %>
-                  <span class="viewed_badge d-flex mt-4 mr-2 pt-2"><i class="fa fa-check-square mr-2"></i> Viewed</span>
-                <% end %>
-                <% unless lesson.available_for_user?(current_user) %>
-                  <a class="mt-3 d-block mr-2" href="<%= lesson_path(id: lesson.slug, from_course: @course.id, lesson_index: teaching.sort) %>">
-                    <i class="fa fa-lock pt-2"></i>
-                  </a>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        </article>
-      <% end %>
+      <div class="mt-3 mb-4"><%= simple_format(@course.description) %></div>
     </div>
 
-    <aside class="sidebar col-3">
+    <aside class="sidebar col-4 col-lg-3">
       <div class="widget widget_latest_post">
 
         <% if @course.author && @course.author.avatar? %>
@@ -79,6 +43,48 @@
 
       </div>
     </aside>
+  </div>
 
+  <div class="row mb-4">
+    <div class="col-12">
+      <h3 class="mb-0 section-title">Lessons in this course</h3>
+      <% @course.teachings.order(sort: :asc).each do |teaching| %>
+        <%
+          lesson = teaching.lesson
+          lesson_available = user_signed_in? ? lesson.available_for_user?(current_user) : can_access_full_course_without_account(@course)
+        %>
+        <article ng-click="openLesson($event, '<%= lesson.slug %>', '<%= @course.id %>', '<%= teaching.sort %>', <%= lesson_available ? 1 : 0 %>, '<%= params[:token] %>')"
+                  class="px-2 py-2 d-flex post type-post media <%= 'blocked' unless lesson_available %>">
+          <div class="image w-15 mr-3">
+            <a class='d-block w-100' href="<%= lesson_path(id: lesson.slug, from_course: @course.id, lesson_index: teaching.sort) %>">
+              <img src="<%= lesson.listing_thumbnail_path %>" alt="<%= lesson.name %>" class='w-100' />
+            </a>
+          </div>
+
+          <div class="d-flex w-85">
+            <div class="w-80 mt-lg-3 pt-1">
+              <h4 class="">
+                <a class="d-block" href="<%= lesson_path(id: lesson.slug, from_course: @course.id, lesson_index: teaching.sort) %>">
+                  <%= teaching.sort %>. <%= lesson.name %>
+                </a>
+              </h4>
+              <p style='line-height: 1.4em;' class="mt-1 mb-0"><small><%= lesson.content_excerpt.truncate(100) %></small></p>
+            </div>
+            <% if user_signed_in? %>
+              <div class="w-20 pr-2 justify-content-end d-flex">
+                <% if current_user.in_views(lesson) %>
+                  <span class="viewed_badge d-flex mt-4 mr-2 pt-2"><i class="fa fa-check-square mr-2"></i> Viewed</span>
+                <% end %>
+                <% unless lesson.available_for_user?(current_user) %>
+                  <a class="mt-3 d-block mr-2" href="<%= lesson_path(id: lesson.slug, from_course: @course.id, lesson_index: teaching.sort) %>">
+                    <i class="fa fa-lock pt-2"></i>
+                  </a>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </article>
+      <% end %>
+    </div>
   </div>
 </section>
