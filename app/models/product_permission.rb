@@ -22,6 +22,8 @@ class ProductPermission < ApplicationRecord
 	def full_url
 		if self.product.productable.is_a?(Downloadable)
 			Rails.application.routes.url_helpers.download_file_url(token: self.token)
+		elsif self.product.productable.is_a?(AudioFile)
+			Rails.application.routes.url_helpers.download_audio_file_url(token: self.token)
 		elsif self.product.productable.is_a?(Course)
 			Rails.application.routes.url_helpers.course_url(self.product.productable, token: self.token)
 		end

@@ -9,8 +9,9 @@ module Maawol
   # include ExceptionNotifier::MandrillNotifier
 
   module Controllers
-    autoload :Helpers,           'maawol/controllers/helpers'
-    autoload :CourseAccess,      'maawol/controllers/course_access'
+    autoload :Helpers,            'maawol/controllers/helpers'
+    autoload :CourseAccess,       'maawol/controllers/course_access'
+    autoload :DownloadController, 'maawol/controllers/download_controller'
   end
 
   module Models

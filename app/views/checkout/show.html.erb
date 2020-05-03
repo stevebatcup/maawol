@@ -1,14 +1,14 @@
 <section id="checkout_complete_box" class="">
 	<div class="panel">
     <div class="text-center">
-      <%= render 'layouts/auth-logo' %>
-
 			<% if @purchased_permissions.any? %>
 				<h3 class="mb-4">All done</h3>
 				<p>Thanks, here are the links to your purchased files.</p>
 				<ul class="mb-4">
 					<% @purchased_permissions.each do |permission| %>
-						<li><%= link_to permission.product.productable.name, permission.full_url, target: :blank, class: "text-success" %></li>
+						<li>
+							<%= link_to download_iconise(permission.product.productable), permission.full_url, target: :blank %>
+						</li>
 					<% end %>
 				</ul>
 			<% else %>

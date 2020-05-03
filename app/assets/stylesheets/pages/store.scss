@@ -1,16 +1,26 @@
 #store_listing {
-	.downloadable_item {
+	.product {
+		position: relative;
 		border: 1px solid #434343;
 		border-radius: 3px;
 		cursor: pointer;
+		padding: 10px 10px;
 
 		h3 {
 			font-size: 1.1em;
-			height: 2.4em;
+			height: 3.2em;
+		}
+
+		.audio_file_icon {
+			font-size: 4.7em;
+			border-radius: 2px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			padding: 0.6em 10px;
 		}
 
 		img {
-			height: 140px;
 			border-radius: 2px;
 		}
 	}

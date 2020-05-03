@@ -87,6 +87,7 @@ Rails.application.routes.draw do
 	patch "remove_product_from_basket", to: "basket#update", method: :remove
 	delete "clear_basket", to: "basket#destroy"
 	get "file/:token", to: "downloadables#show", as: :download_file
+	get "audio_file/:token", to: "audio_files#show", as: :download_audio_file
 	get "checkout", to: "checkout#new", as: :checkout
 	get "checkout/paypal/cancel", to: "checkout#new", paypal_cancelled: true
 	get "single-checkout/:token", to: "checkout#new", as: :file_basket

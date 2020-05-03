@@ -1,12 +1,19 @@
-<div class="well downloadable_item px-2 py-2" data-id="{{item.id}}">
+<div class="well product" data-id="{{item.id}}" style="">
 	<img ng-src="{{item.image}}" ng-if="item.image.length > 0" alt="{{item.name}}" class="mr-md-2 w-100" />
+	<div class="audio_file_icon d-block w-100 justify-content-center d-flex align-items-center" ng-if="item.isAudioFile">
+		<i class="fas fa-file-audio"></i>
+	</div>
 	<div class="w-100 ng-cloak">
 		<h3 class="mt-3">{{item.nameWithType}}</h3>
 		<% if user_signed_in? && current_user.can_download_files_without_purchase? %>
-			<a class="btn btn-success btn-sm w-100 text-center mt-2"
+			<a class="btn btn-success btn-sm w-100 text-center mt-4"
 					ng-href='{{item.accessLink}}'
 					ng-if="item.accessLink"
 					ng-click="downloadItem(item)">{{item.accessLabel}}</a>
+
+			<audio ng-if="item.isAudioFile" controls="controls" preload="auto" id="audio_player" class="w-100">
+				<source src="{{item.audioUrl}}">
+			</audio>
 		<% else %>
 			<h5 ng-show="item.price.length > 0"
 						class="btn btn-success btn-sm w-100 text-center mt-2"

@@ -2,9 +2,9 @@ class CheckoutMailer < MaawolMailer
 	def products_purchased(email, first_name, product_permissions)
 		merge_vars = {
 			"FNAME" => first_name,
-			"FILE_LINKS" => build_file_links(product_permissions)
+			"PRODUCT_LINKS" => build_file_links(product_permissions)
 		}
-		subject = "Here are the custom links for your purchases"
+		subject = "Thanks for your purchases"
 		body = template('store-receipt', merge_vars)
 		send_mail(email, subject, body, first_name)
 	end

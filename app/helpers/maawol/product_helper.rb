@@ -25,5 +25,16 @@ module Maawol
 				"View course"
 			end
 		end
+
+		def download_iconise(item)
+			if item.is_a?(Downloadable)
+				icon_class = 'fas fa-music'
+			elsif item.is_a?(Course)
+				icon_class = 'fa fa-file'
+			elsif item.is_a?(AudioFile)
+				icon_class = 'fas fa-file-audio'
+			end
+			"<i class='#{icon_class} mr-2'></i> #{item.name}".html_safe
+		end
 	end
 end

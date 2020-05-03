@@ -1,4 +1,4 @@
-class DownloadablesController < MaawolController
+class AudioFilesController < MaawolController
 	include Maawol::Controllers::DownloadController
 
 	before_action	:set_resource, only: [:show]
@@ -10,11 +10,11 @@ class DownloadablesController < MaawolController
 	private
 
 	def filename_for_download
-		"#{@resource.name.downcase.parameterize}.pdf"
+		"#{@resource.name.downcase.parameterize}.mp3"
 	end
 
 	def set_resource
 		@resource = nil
-		@resource = Downloadable.find_by(token: params[:token])
+		@resource = AudioFile.find_by(token: params[:token])
 	end
 end

@@ -28,6 +28,8 @@ module Maawol
       	subscribe/comodo.png
         no-avatar.png
         lessons/no-thumbnail.png
+        transparent-pixel.png
+        transparent-100x67.png
       )
     end
   end

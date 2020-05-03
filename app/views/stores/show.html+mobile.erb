@@ -7,13 +7,11 @@
 
   <div class="container mb-5">
   	<div class="w-100 mb-3 pt-3">
-	  	<h2><%= @store.name %></h2>
+    	<h3 class="widget-title mb-2"><%= @store.name %></h3>
 	  	<%= @store.description.html_safe unless @store.description.nil? %>
-	  	<%#= image_tag(@store.image.url(:large), alt: @store.name, class: 'w-100') unless @store.image.nil? %>
 	  </div>
 
     <div class="w-100">
-    	<h3 class="widget-title mb-2"><%= @store.name %> files</h3>
       <div class="mb-3"
       			ng-repeat="item in products.items"
       			ng-if="products.items.length > 0 && products.loaded">

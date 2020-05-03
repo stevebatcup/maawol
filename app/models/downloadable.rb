@@ -7,15 +7,6 @@ class Downloadable < ApplicationRecord
 
   before_save :set_token
 
-  def set_token
-    if self.token.nil? || self.token.size == 0
-      begin
-        random_token = SecureRandom.urlsafe_base64
-      end while self.class.find_by(token: random_token)
-      self.token = random_token
-    end
-  end
-
   def full_path
   	self.token.present? ? Rails.application.routes.url_helpers.download_file_path(token: self.token) : self.file.url
   end

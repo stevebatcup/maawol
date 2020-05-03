@@ -8,6 +8,7 @@ class AudioFile < ApplicationRecord
 
 	mount_uploader	:file, AudioFileUploader
 
+  before_save :set_token
 
   def id_for_admin_selector
     "audio_file_#{self.id}"
