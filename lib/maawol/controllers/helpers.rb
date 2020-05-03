@@ -7,7 +7,7 @@ module Maawol
 				helper_method :navbar, :footer_navbar_items, :current_section, :site_setting, :site_image, :legible_form_errors,
 											:cached_course_list, :column_browser_class, :recent_lessons, :results_per_row,
 											:is_auth_page?, :results_per_page, :cached_tags, :dynamic_site_colors, :recaptcha_site_key,
-											:homepage_video,	:user_signed_in?, :is_settings_page?, :site_theme
+											:homepage_video,	:user_signed_in?, :is_settings_page?, :site_theme, :use_recaptcha?
 			end
 
 			def navbar
@@ -91,6 +91,14 @@ module Maawol
 
 			def site_theme
 				site_setting("Theme")
+			end
+
+			def use_recaptcha?
+				if signed_in?
+					false
+				else
+					Rails.env.production?
+				end
 			end
 
 			def results_per_row

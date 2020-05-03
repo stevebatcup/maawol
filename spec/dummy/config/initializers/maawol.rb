@@ -11,7 +11,7 @@ Maawol.configure do |config|
 	config.application_mailer_class = 'ApplicationMailer'
 
 	config.recaptcha_site_key =  ENV['RECAPTCHA_SITE_KEY']
-	config.recaptcha_secret_key =  ENV['RECAPTCHA_SECRET_KEY'],
+	config.recaptcha_secret_key =  ENV['RECAPTCHA_SECRET_KEY']
 
 	config.mandrill_api_key = ENV['MAIL_MANDRILL_API_KEY']
 	config.mailchimp_api_key = ENV['MAIL_MAILCHIMP_API_KEY']

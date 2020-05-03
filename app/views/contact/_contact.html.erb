@@ -58,7 +58,7 @@
         <% msg_placeholder = @lesson_request ? 'Send as many details as you can of what you would like to see in your lesson...' : 'What would you like to ask?' %>
         <%= f.text_area :message, { placeholder: msg_placeholder, :required => true, class: 'contact-form-control' } %>
 
-        <% unless signed_in? %>
+        <% if use_recaptcha? %>
           <div class="mb-4" style="clear: both;">
             <%= recaptcha_tags(site_key: recaptcha_site_key) %>
           </div>

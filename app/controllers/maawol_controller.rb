@@ -47,4 +47,12 @@ class MaawolController < Maawol::Config.application_controller_class
 			session[:referral_author_id] = author.id
 		end
 	end
+
+	def recaptcha_verified(resource)
+	  recaptcha_verified = true
+	  if use_recaptcha?
+	    recaptcha_verified = verify_recaptcha(model: resource, secret_key: recaptcha_secret_key)
+	  end
+	  recaptcha_verified
+	end
 end

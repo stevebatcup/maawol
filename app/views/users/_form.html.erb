@@ -22,6 +22,8 @@
   <%= form.password_field :password, class: "form-control" %>
 </p>
 
+<% if use_recaptcha? %>
 <div class="mb-4" style="clear: both;">
   <%= recaptcha_tags(site_key: recaptcha_site_key) %>
 </div>
+<% end %>

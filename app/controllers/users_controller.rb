@@ -5,14 +5,16 @@ class UsersController < Clearance::UsersController
 	end
 
   def create
-  	@user = User.new(user_params)
+     @user = User.new(user_params)
 
-    if recaptcha_ok(@user) && @user.save
-      sign_in @user
-      redirect_back_or url_after_create
-    else
-      render template: "users/new"
-    end
+     if recaptcha_verified(@user) && @user.save
+       sign_in @user
+       flash.discard
+       redirect_back_or url_after_create
+     else
+       flash[:alert] = legible_form_errors(@user.errors)
+       render template: "users/new"
+     end
   end
 
   private
@@ -25,10 +27,4 @@ class UsersController < Clearance::UsersController
     params[:user].permit(:first_name, :last_name, :email, :password)
   end
 
-  def recaptcha_ok(user)
-    recaptcha_ok = true
-    if !Rails.env.production?
-      recaptcha_ok = verify_recaptcha(model: user, secret_key: Rails.application.credentials.recaptcha_secret_key)
-    end
-  end
 end

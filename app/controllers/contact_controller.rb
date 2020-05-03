@@ -26,26 +26,22 @@ class ContactController < MaawolController
 		else
 			@contact[:message] = contact_params[:message]
 		end
-		if !signed_in? && Rails.env.production? && !verify_recaptcha(model: @contact, secret_key: Rails.application.credentials.recaptcha[:secret_key])
-			flash[:alert] = @contact.errors.full_messages[0]
-			render :new
-		else
-			if @contact.save
-				if contact_params[:message].present?
-					notice = "Thanks We'll be back in touch ASAP"
-					if contact_params[:from_home].present?
-						redirect_to root_path, notice: notice
-					else
-						redirect_to new_contact_path, notice: notice
-					end
+
+		if recaptcha_verified(@contact) && @contact.save
+			if contact_params[:message].present?
+				notice = "Thanks We'll be back in touch ASAP"
+				if contact_params[:from_home].present?
+					redirect_to root_path, notice: notice
 				else
-					redirect_to lessons_path(stuck: true), notice: "Thanks! We'll get back to you ASAP with some suggestions of things to work on."
+					redirect_to new_contact_path, notice: notice
 				end
 			else
-				flash[:alert] = "Sorry there was an error sending your message: #{legible_form_errors(@contact.errors)}"
-				setup_stuck_form if is_stuck_submission?
-				render :new
+				redirect_to lessons_path(stuck: true), notice: "Thanks! We'll get back to you ASAP with some suggestions of things to work on."
 			end
+		else
+			flash[:alert] = "Sorry there was an error sending your message: #{legible_form_errors(@contact.errors)}"
+			setup_stuck_form if is_stuck_submission?
+			render :new
 		end
 	end
 
