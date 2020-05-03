@@ -33,10 +33,14 @@ class Downloadable < ApplicationRecord
   end
 
   def name_for_admin_selector
-    "Downloadable - #{self.name}"
+    "Score: #{self.name}"
   end
 
   def name_with_type
-    "#{self.name} downloadable file"
+    "#{self.name} score"
+  end
+
+  def has_image?
+    self.image.present?
   end
 end

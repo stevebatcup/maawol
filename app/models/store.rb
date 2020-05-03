@@ -2,6 +2,7 @@ class Store < ApplicationRecord
   has_many :products, :dependent => :destroy
   has_many :downloadables, through: :products, source: :productable, source_type: 'Downloadable'
   has_many :courses, through: :products, source: :productable, source_type: 'Course'
+  has_many :audio_files, through: :products, source: :productable, source_type: 'AudioFile'
 
   accepts_nested_attributes_for :products, :allow_destroy => true
   accepts_nested_attributes_for :downloadables

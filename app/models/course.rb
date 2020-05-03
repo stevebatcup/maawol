@@ -38,10 +38,14 @@ class Course < ApplicationRecord
   end
 
   def name_for_admin_selector
-    "Course - #{self.name}"
+    "Course: #{self.name}"
   end
 
   def name_with_type
     "#{self.name} course"
+  end
+
+  def has_image?
+    self.image.present?
   end
 end

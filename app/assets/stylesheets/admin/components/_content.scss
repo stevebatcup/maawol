@@ -56,10 +56,10 @@
 						padding-right: 5px;
 						text-overflow: ellipsis;
 						word-break: break-word;
+						overflow-x: hidden;
 						white-space: nowrap;
 						max-width: 150px;
 						display: inline-block;
-						overflow-x: hidden;
 					}
 
 					img {
@@ -98,7 +98,10 @@
 		table {
 			td {
 				max-width: 200px;
-				overflow-x: scroll;
+				text-overflow: ellipsis;
+				word-break: break-word;
+				overflow-x: hidden;
+				white-space: nowrap;
 			}
 		}
 

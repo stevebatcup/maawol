@@ -5,25 +5,15 @@ class Product < ApplicationRecord
 	has_many	:product_permissions
 	has_many	:payments
 
-	before_save	:get_attributes_from_full_id
-
-	def productable_full_id=(productable_full_id)
-		@productable_full_id = productable_full_id
+	def productable_gid
+		productable&.to_global_id
 	end
 
-	def productable_full_id
-		@productable_full_id ||= (self.productable ? "#{self.productable_type.downcase}_#{self.productable_id}" : nil)
-	end
-
-	def get_attributes_from_full_id
-		unless @productable_full_id.nil?
-			n, i = @productable_full_id.split("_")
-			self.productable_type = n.capitalize.constantize
-			self.productable_id = i
-		end
+	def productable_gid=(gid)
+		self.productable = GlobalID::Locator.locate gid
 	end
 
 	def self.get_options
-		Downloadable.order(id: :desc).to_a + Course.order(id: :desc).to_a
+		Downloadable.order(id: :desc).to_a + Course.order(id: :desc).to_a + AudioFile.order(id: :desc).to_a
 	end
 end

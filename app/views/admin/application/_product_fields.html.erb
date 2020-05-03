@@ -3,7 +3,7 @@
     <%= f.number_field :sort, placeholder: 'Order', autofocus: true %>
   </div>
   <div class='field choose'>
-    <%= f.collection_select :productable_full_id, Product.get_options, :id_for_admin_selector, :name_for_admin_selector, { prompt: 'choose option...' } %>
+    <%= f.collection_select :productable_gid, Product.get_options, :to_global_id, :name_for_admin_selector, { prompt: 'choose option...' } %>
   </div>
   <div class='field price' style="display: flex;">
     <span style="padding-right: 3px;">$</span> <%= f.text_field :price, placeholder: 'price' %>
