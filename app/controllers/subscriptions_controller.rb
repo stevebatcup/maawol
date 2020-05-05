@@ -5,6 +5,8 @@ class SubscriptionsController < MaawolController
 		if current_user.has_recurring_subscription?
 			flash[:error] = I18n.t('views.subscription.errors.already_recurring')
 			redirect_to settings_path(preclick: :cancel_recurring)
+		else
+			flash[:notice] = "Subscribe below for full access to lessons" if params[:from] && params[:from] == "locked_lesson"
 		end
 	end
 

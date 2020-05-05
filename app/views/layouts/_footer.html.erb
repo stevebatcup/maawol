@@ -60,8 +60,12 @@
               <article class="post type-post media">
                 <% if recent_lesson.listing_thumbnail_path  %>
                   <div class="entry-thumbnail media-left">
+                    <%
+                      available = signed_in? ? recent_lesson.available_for_user?(current_user) : false
+                      path_for_lesson = available ? lesson_path(id: recent_lesson.slug) : locked_lesson_redirect_path
+                    %>
                     <%= link_to image_tag(recent_lesson.listing_thumbnail_path, alt: recent_lesson.name),
-                                lesson_path(id: recent_lesson.slug)
+                                path_for_lesson
                      %>
                   </div>
                 <% end %>

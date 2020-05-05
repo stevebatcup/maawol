@@ -2,7 +2,9 @@
 
 <%= render(partial: 'lessons/subscribe_callout') if show_subscription_interstitial? %>
 
-<section class="container list lessons video-contents <%= column_browser_class %>" ng-controller="LessonsController">
+<section class="container list lessons video-contents <%= column_browser_class %>"
+          ng-controller="LessonsController"
+          data-redirect-locked-lessons="<%= locked_lesson_redirect_path %>">
     <% if notice %>
       <p class="container alert alert-success"><%= notice %></p>
     <% end %>

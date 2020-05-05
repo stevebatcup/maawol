@@ -4,7 +4,8 @@
 
 <section id="course" class="container"
           ng-controller="CoursesController"
-          data-lesson-locked-msg="<%= t('views.lesson.must_register') %>">
+          data-lesson-locked-msg="<%= t('views.lesson.must_register') %>"
+          data-redirect-locked-lessons="<%= locked_lesson_redirect_path %>">
   <div class="mb-3">
     <h2 class="w-100"><%= @course.name %> course</h2>
     <h6>by <%= @course.author.name %></h6>

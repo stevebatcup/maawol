@@ -24,6 +24,14 @@
 
       <section id="choose_option" class="" ng-hide="slide != 'options'">
         <h2 class="section-title">Subscribe to <%= site_setting("Site easy name") %></h2>
+
+        <% if notice %>
+          <p class="container alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="container alert alert-danger"><%= alert %></p>
+        <% end %>
+
         <h3 class="step_denoter" style="display: none"><b><%= t('views.defaults.step') %> 1.</b> <%= t('views.subscription.steps.one') %></h3>
 
         <h4>Subscribe now to receive:</h4>

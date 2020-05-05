@@ -43,6 +43,10 @@ class Maawol.Page extends Maawol.NGController
 				callback.call(@)
 			, 200
 
+	lockedLessonClick: ($event) =>
+		$event.preventDefault()
+		@redirectTo @element.data("redirect-locked-lessons")
+
 	postJSON: (url, data, successCallback=null, errorCallback=null) =>
 		$.ajax
 			url: url,

@@ -18,6 +18,6 @@
   </div>
 </article>
 
-<a href="{{lesson.path}}" class="img_wrap">
-  <i class="fa fa-lock" ng-if="!lesson.available"></i>
+<a href="#" ng-click="lockedLessonClick($event)" class="img_wrap" ng-if="!lesson.available">
+  <i class="fa fa-lock"></i>
 </a>

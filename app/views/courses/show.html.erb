@@ -4,7 +4,8 @@
 
 <section id="course" class="container"
           ng-controller="CoursesController"
-          data-lesson-locked-msg="<%= t('views.lesson.must_register') %>">
+          data-lesson-locked-msg="<%= t('views.lesson.must_register') %>"
+          data-redirect-locked-lessons="<%= locked_lesson_redirect_path %>">
   <div class="row">
     <div class="col-8 col-lg-9">
       <h2 class="w-100"><%= @course.name %> course</h2>
@@ -78,7 +79,7 @@
                   <span class="viewed_badge d-flex mt-4 mr-2 pt-2"><i class="fa fa-check-square mr-2"></i> Viewed</span>
                 <% end %>
                 <% unless lesson.available_for_user?(current_user) %>
-                  <a class="mt-3 d-block mr-2" href="<%= lesson_path(id: lesson.slug, from_course: @course.id, lesson_index: teaching.sort) %>">
+                  <a class="mt-4 d-block mr-2" href="<%= lesson_path(id: lesson.slug, from_course: @course.id, lesson_index: teaching.sort) %>">
                     <i class="fa fa-lock pt-2"></i>
                   </a>
                 <% end %>

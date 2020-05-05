@@ -14,5 +14,13 @@ module Admin
 		def angular_controller(resource_name)
 			"Admin#{resource_name.gsub('/', '_').pluralize.camelcase}Controller"
 		end
+
+		def locked_lesson_redirect_path
+			if signed_in?
+				"/subscribe?from=locked_lesson"
+			else
+				"/sign_up?from=locked_lesson"
+			end
+		end
 	end
 end

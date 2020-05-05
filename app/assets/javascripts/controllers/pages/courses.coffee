@@ -25,6 +25,6 @@ class Maawol.Courses extends Maawol.Page
 		if available
 			window.location.href = "/lessons/#{lessonSlug}?from_course=#{courseId}&lesson_index=#{sort}&token=#{token}"
 		else
-			@alert @element.data('lesson-locked-msg'), "Sorry..."
+			@redirectTo @element.data('redirect-locked-lessons')
 
 Maawol.ControllerModule.controller('CoursesController', Maawol.Courses)
