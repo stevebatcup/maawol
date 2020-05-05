@@ -115,15 +115,9 @@ class Lesson < ApplicationRecord
     self.main_video.present?
   end
 
-  def has_video_thumbnail?
-    self.has_video? && self.main_video.has_thumbnail?
-  end
-
   def listing_thumbnail_path(size=:small)
     if thumbnail.present?
       thumbnail.url(size)
-    elsif has_video_thumbnail?
-      main_video.thumbnail.url(size)
     else
       self.class.default_thumbnail_asset_path
     end

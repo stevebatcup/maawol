@@ -58,7 +58,7 @@
           <div class="widget-details">
             <% recent_lessons(4).each do |recent_lesson| %>
               <article class="post type-post media">
-                <% if recent_lesson.has_video_thumbnail?  %>
+                <% if recent_lesson.listing_thumbnail_path  %>
                   <div class="entry-thumbnail media-left">
                     <%= link_to image_tag(recent_lesson.listing_thumbnail_path, alt: recent_lesson.name),
                                 lesson_path(id: recent_lesson.slug)

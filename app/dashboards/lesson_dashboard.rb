@@ -13,10 +13,7 @@ class LessonDashboard < Administrate::BaseDashboard
     videos: AttachableField,
     audio_files: AttachableField,
     downloadables: AttachableField,
-    thumbnail: ImageField.with_options(
-      hint: "If you have added any videos to this lesson the thumbnail will be taken from the first video.<br />
-              You only need to manually add a thumbnail if this lesson has no videos or you wish to overwrite the video thumnail."
-    ),
+    thumbnail: ImageField,
     tags: HasLotsField,
     author: Field::BelongsTo.with_options(scope: -> { Author.order(id: :asc) }),
     categories: HasLotsField,
