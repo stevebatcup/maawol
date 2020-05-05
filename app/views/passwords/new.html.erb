@@ -1,6 +1,6 @@
 <% html_title "Reset your password" %>
 
-<section class="" id="clearance">
+<section class="" id="clearance" ng-controller="PasswordsController">
   <div id="passwords_box">
     <div class="panel">
       <div class="text-center">
@@ -20,7 +20,7 @@
       <%= form_for :password, url: passwords_path do |form| %>
         <p class="form-input name">
           <%= form.label :email %>
-          <%= form.email_field :email, autofocus: true, autocomplete: "email", id: 'user_login', class: 'input form-control' %>
+          <%= form.email_field :email, autofocus: true, autocomplete: "email", id: 'user_login', class: 'input form-control', required: true %>
         </p>
 
         <p class="submit-input">

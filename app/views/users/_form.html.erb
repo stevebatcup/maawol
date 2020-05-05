@@ -4,22 +4,22 @@
 
 <p class="form-input">
   <%= form.label :first_name %><br />
-  <%= form.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name" %>
+  <%= form.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name", required: true %>
 </p>
 
 <p class="form-input">
   <%= form.label :last_name %><br />
-  <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+  <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name", required: true %>
 </p>
 
 <p class="form-input">
   <%= form.label :email %>
-  <%= form.text_field :email, class: "form-control", type: 'email' %>
+  <%= form.text_field :email, class: "form-control", type: 'email', required: true %>
 </p>
 
 <p class="form-input">
   <%= form.label :password %>
-  <%= form.password_field :password, class: "form-control" %>
+  <%= form.password_field :password, class: "form-control", required: true %>
 </p>
 
 <% if use_recaptcha? %>

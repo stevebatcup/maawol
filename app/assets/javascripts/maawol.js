@@ -31,5 +31,4 @@
 //= require_tree ./directives
 //= require_tree ./filters
 //= require_tree ./controllers/pages
-//= require_tree ./controllers/pages
 //= require_tree ./controllers/mobile_pages

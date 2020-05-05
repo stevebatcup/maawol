@@ -6,7 +6,7 @@ class Maawol.Page extends Maawol.NGController
 		$('body').hasClass('mobile') and $(window).width() < 900
 
 	bindEvents: =>
-		@fixHeaderOnScroll() unless @isMobile()
+		@fixHeaderOnScroll() if @canFixScrollingHeader()
 
 		if @isMobile()
 			$('.menu-item-has-children > a').on 'click', (e) =>
@@ -16,6 +16,9 @@ class Maawol.Page extends Maawol.NGController
 				$clicked = $(e.currentTarget)
 				$clicked.parent().siblings().removeClass('open')
 				$clicked.parent().toggleClass('open')
+
+	canFixScrollingHeader: =>
+		!@isMobile() && $('header .header-bottom').length
 
 	fixHeaderOnScroll: =>
 		headerStartPosition = $('header .header-bottom').position().top + 30

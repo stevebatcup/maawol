@@ -1,12 +1,12 @@
 <%= form_for :session, url: session_path do |form| %>
   <p class="form-input text-field">
     <%= form.label :email %>
-    <%= form.text_field :email, type: 'email', class: 'input form-control' %>
+    <%= form.text_field :email, type: 'email', class: 'input form-control', required: true %>
   </p>
 
   <p class="form-input password-field mb-0">
     <%= form.label :password %>
-    <%= form.password_field :password, class: 'input form-control' %>
+    <%= form.password_field :password, class: 'input form-control', required: true %>
   </p>
 
   <p class="checkbox">
