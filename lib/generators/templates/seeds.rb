@@ -414,7 +414,7 @@ lessons_data = [
 		course_only: false,
 		content: long_lorem,
 		publish_date: 3.weeks.ago,
-		is_free: true,
+		is_free: false,
 		comments_count: 0,
 		author_id: author.id,
 		video_ids: video_ids[2],
