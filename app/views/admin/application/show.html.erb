@@ -32,7 +32,7 @@ as well as a link to its edit page.
   </div>
 </header>
 
-<section class="main-content__body" ng-controller="AdminController">
+<section class="main-content__body" ng-controller="<%= angular_controller(page.resource_name) %>">
   <dl>
     <% page.attributes.each do |attribute| %>
       <dt class="attribute-label" id="<%= attribute.name %>">
@@ -45,5 +45,16 @@ as well as a link to its edit page.
       <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
           ><%= render_field attribute, page: page %></dd>
     <% end %>
+
+    <dt class="pt-4 attribute-label"></dt>
+    <dd class="pt-4">
+      <%= link_to(
+          "View all #{display_resource_name(page.resource_name)}",
+          [namespace, resource_index_route_key(page.resource_name)],
+          class: "button"
+        )  %>
+    </dd>
   </dl>
+
+
 </section>

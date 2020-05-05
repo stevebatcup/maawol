@@ -32,6 +32,6 @@ It displays a header, and renders the `_form` partial to do the heavy lifting.
   </div>
 </header>
 
-<section class="main-content__body" ng-controller="AdminController">
+<section class="main-content__body" ng-controller="<%= angular_controller(page.resource_name) %>">
   <%= render "form", page: page %>
 </section>

@@ -56,8 +56,12 @@ Gem::Specification.new do |spec|
   spec.add_dependency "administrate", "~> 0.13"
   spec.add_dependency 'cocoon', '~> 1.2'
   spec.add_dependency 'rinku', '~> 2.0'
+  spec.add_dependency 'dropzonejs-rails'
 
   spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'factory_bot_rails'
   spec.add_development_dependency 'dotenv-rails'
+  spec.add_development_dependency 'byebug'
+  spec.add_development_dependency 'web-console', '>= 3.3.0'
+  spec.add_development_dependency 'listen'
 end

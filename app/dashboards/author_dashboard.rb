@@ -45,4 +45,8 @@ class AuthorDashboard < Administrate::BaseDashboard
   def display_resource(author)
     author.name
   end
+
+  def permitted_attributes
+    [ :id, :name, :tmp_media_id, :subscription_fee_split ]
+  end
 end

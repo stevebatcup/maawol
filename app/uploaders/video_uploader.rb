@@ -7,6 +7,6 @@ class VideoUploader < BaseUploader
   end
 
   def store_dir
-    Rails.root.join 'tmp/uploads/videos'
+    "uploads/tmp/videos/#{model.id}"
   end
 end

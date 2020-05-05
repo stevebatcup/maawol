@@ -9,8 +9,38 @@
 	}
 
 	&.video_field {
-		iframe {
-			max-width: 52vw;
+		iframe,
+		video#player {
+			max-width: 25vw;
+		}
+	}
+
+	&.with_uploader {
+		max-width: unset;
+
+		p.file_error_msg {
+			max-width: 40%;
+			margin: 10px 0;
+		}
+
+		.file_uploads {
+			.file-row {
+				display: table-row;
+
+				& > div {
+					display: table-cell;
+					vertical-align: top;
+					padding: 8px;
+				}
+
+				div#filename {
+					width: 380px;
+				}
+
+				div#progress_cell {
+					width: 200px;
+				}
+			}
 		}
 	}
 
@@ -242,4 +272,8 @@ textarea,
 
 select {
 	max-width: 380px;
+}
+
+.ml2e {
+	margin-left: 2em;
 }

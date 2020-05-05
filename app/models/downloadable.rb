@@ -1,11 +1,16 @@
 class Downloadable < ApplicationRecord
   include Maawol::Models::Concerns::Productable
+  include Maawol::Models::Concerns::TmpUploadable
 
   mount_uploader :file, DownloadableFileUploader
-  mount_uploader :image, DownloadableImageUploader
   belongs_to  :author
 
   before_save :set_token
+  after_save  :migrate_file_from_tmp_upload, if: -> { self.tmp_media_id.present? }
+
+  def field_for_upload
+    :file
+  end
 
   def full_path
   	self.token.present? ? Rails.application.routes.url_helpers.download_file_path(token: self.token) : self.file.url

@@ -58,4 +58,8 @@ class AudioFileDashboard < Administrate::BaseDashboard
   def display_resource(audio_file)
     audio_file.name
   end
+
+  def permitted_attributes
+    [ :id, :name, :tmp_media_id, :author_id ]
+  end
 end

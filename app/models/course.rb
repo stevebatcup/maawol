@@ -1,5 +1,6 @@
 class Course < ApplicationRecord
   include Maawol::Models::Concerns::Productable
+  include Maawol::Models::Concerns::TmpUploadable
 
 	has_and_belongs_to_many :skill_levels
   has_and_belongs_to_many :tags
@@ -12,6 +13,12 @@ class Course < ApplicationRecord
 	accepts_nested_attributes_for :lessons
 
   mount_uploader :image, CourseImageUploader
+
+  after_save  :migrate_file_from_tmp_upload, if: -> { self.tmp_media_id.present? }
+
+  def field_for_upload
+    :image
+  end
 
   def snippet(count=250)
   	self.description.truncate(count)

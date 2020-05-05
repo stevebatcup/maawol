@@ -11,7 +11,6 @@ class VideoDashboard < Administrate::BaseDashboard
     name: Field::String,
     human_status: Field::String,
     tmp_video_file: VideoField,
-    thumbnail: ImageField,
     url: LinkField
   }.freeze
 
@@ -32,7 +31,6 @@ class VideoDashboard < Administrate::BaseDashboard
     :name,
     :url,
     :tmp_video_file,
-    :thumbnail,
     :human_status
   ].freeze
 
@@ -42,7 +40,6 @@ class VideoDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :tmp_video_file,
-    :thumbnail,
   ].freeze
 
   # Overwrite this method to customize how videos are displayed
@@ -50,5 +47,9 @@ class VideoDashboard < Administrate::BaseDashboard
   #
   def display_resource(video)
     video.name
+  end
+
+  def permitted_attributes
+    [ :id, :name, :tmp_media_id ]
   end
 end

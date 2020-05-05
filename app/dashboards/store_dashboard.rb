@@ -65,6 +65,6 @@ class StoreDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    [ :id, :name, :description, products_attributes: [:id, :productable_gid, :sort, :author_fee_split, :price, :_destroy ] ]
+    [ :id, :tmp_media_id, :name, :description, products_attributes: [:id, :productable_gid, :sort, :author_fee_split, :price, :_destroy ] ]
   end
 end

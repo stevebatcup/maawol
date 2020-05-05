@@ -1,4 +1,6 @@
 class Author < ApplicationRecord
+	include Maawol::Models::Concerns::TmpUploadable
+
 	has_many	:lessons
 	has_many	:courses
 	has_many	:downloadables
@@ -7,6 +9,11 @@ class Author < ApplicationRecord
 	mount_uploader :avatar, AuthorAvatarUploader
 
 	before_save	:set_referral_token
+  after_save	:migrate_file_from_tmp_upload, if: -> { self.tmp_media_id.present? }
+
+	def field_for_upload
+		:avatar
+	end
 
 	def set_referral_token
 		if self.referral_token.nil? || self.referral_token.size == 0

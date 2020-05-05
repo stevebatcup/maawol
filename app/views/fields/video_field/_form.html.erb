@@ -1,13 +1,29 @@
 <div class="field-unit__label">
   <%= f.label field.attribute %>
 </div>
-<div class="field-unit__field video_field">
-	<% if field.vimeo_data.present? %>
-		<%= field.vimeo_data["html"].html_safe %>
-	<% end %>
-  <%= f.file_field field.attribute %>
+<div class="field-unit__field with_uploader video_field">
+  <%= f.hidden_field "tmp_media_id" %>
+	<div class="ml2e">
+		<% if field.vimeo_data.present? %>
+			<%= field.vimeo_data["html"].html_safe %>
+		<% end %>
+	</div>
 
-  <div class='hint'>
+	<%= video_tag('',
+						id: 'player',
+						controls: true,
+	          class: 'ml2e',
+						style: "display: none"
+	    )
+	%>
+
+  <br />
+  <%= render partial: 'upload_template', locals: {
+  						btn_label_action: field.vimeo_data.nil? ? 'Upload' : 'Replace',
+  						btn_label_resource_type: 'video'
+  					} %>
+
+  <div class='hint ml-4 pl-0'>
   	<ul>
 	  	<li><%= t('administrate.hints.copyright') %></li>
 	  	<li><%= t('administrate.hints.file_types_prefix') %> <b>.mp4</b>, <b>.mov</b>, <b>.wmv</b>, <b>.avi</b> and <b>.flv</b></li>

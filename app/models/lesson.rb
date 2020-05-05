@@ -1,4 +1,6 @@
 class Lesson < ApplicationRecord
+  include Maawol::Models::Concerns::TmpUploadable
+
   acts_as_commentable
 
   has_and_belongs_to_many :videos
@@ -15,10 +17,15 @@ class Lesson < ApplicationRecord
   validates_presence_of :name
   before_save :set_slug
   before_save :set_access_level
+  after_save  :migrate_file_from_tmp_upload, if: -> { self.tmp_media_id.present? }
 
   enum  access_level: [:global, :users]
 
   mount_uploader :thumbnail, LessonThumbnailUploader
+
+  def field_for_upload
+    :thumbnail
+  end
 
   def self.table_name
     'lessons'

@@ -1,12 +1,24 @@
 <div class="field-unit__label">
   <%= f.label field.attribute %>
 </div>
-<div class="field-unit__field audio">
-	<%= audio_tag(field.file.url) unless field.file.nil? %>
+<div class="field-unit__field audio with_uploader">
+  <%= f.hidden_field "tmp_media_id" %>
+  <%= audio_tag(field.file&.url || '',
+  					id: 'player',
+  					controls: true,
+            class: 'ml2e',
+  					style: "#{field.file.nil? ? 'display: none' : ''}"
+      )
+  %>
 
-  <%= f.file_field field.attribute %>
+  <br />
 
-  <div class='hint'>
+  <%= render partial: 'upload_template', locals: {
+              btn_label_action: field.file.nil? ? 'Upload' : 'Replace',
+              btn_label_resource_type: 'file'
+      } %>
+
+  <div class='hint ml-4 pl-0'>
   	<ul>
   		<li><%= t('administrate.hints.copyright') %></li>
   		<li><%= t('administrate.hints.file_types_prefix') %> <b>.mp3</b> <b>.wav</b> and <b>.ogg</b></li>

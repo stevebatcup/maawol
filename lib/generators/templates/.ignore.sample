@@ -8,6 +8,7 @@
 
 .sass-cache/
 public/assets/*
+public/uploads
 
 .yarn-integrity
 node_modules/

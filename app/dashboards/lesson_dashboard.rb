@@ -52,10 +52,11 @@ class LessonDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :name,
     :author,
-    :content,
+    :publish_date,
     :course_only,
     :human_access_level,
-    :publish_date,
+    :thumbnail,
+    :content,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -64,15 +65,15 @@ class LessonDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :author,
+    :publish_date,
     :videos,
-    :thumbnail,
     :audio_files,
     :downloadables,
     :tags,
     :categories,
     :playlists,
     :users,
-    :publish_date,
+    :thumbnail,
     :content,
     :course_only,
     :is_free,
@@ -84,4 +85,12 @@ class LessonDashboard < Administrate::BaseDashboard
   def display_resource(lesson)
     "#{lesson.name}"
   end
+
+  def permitted_attributes
+    [ :id, :name, :tmp_media_id, :author_id, :publish_date, :content,
+          :course_only, :is_free, :video_ids,
+          :audio_file_ids, :downloadable_ids, :tag_ids,
+          :category_ids, :playlist_ids, :user_ids ]
+  end
+
 end

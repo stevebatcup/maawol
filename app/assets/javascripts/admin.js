@@ -13,7 +13,11 @@
 
 //= require angular_bootstrap
 
+//= require dropzone
+
 //= require controllers/includes/angular_base
-//= require controllers/includes/page
 //= require controllers/helpers/form_helpers
-//= require controllers/admin
+//= require controllers/includes/page
+//= require controllers/includes/admin_page
+
+//= require_tree ./controllers/admin

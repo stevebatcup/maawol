@@ -32,7 +32,7 @@ as well as a link to its edit page.
   </div>
 </header>
 
-<section class="main-content__body" ng-controller="AdminController">
+<section class="main-content__body" ng-controller="<%= angular_controller(page.resource_name) %>">
   <dl>
     <dt class="attribute-label">Preview</dt>
     <dd class="attribute-data">

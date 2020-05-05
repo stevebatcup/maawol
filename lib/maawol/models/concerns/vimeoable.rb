@@ -2,6 +2,11 @@ module Maawol
   module Models
     module Concerns
       module Vimeoable
+      	def perform_upload_to_vimeo_job
+      	  migrate_file_from_tmp_upload
+      	  UploadVideoToVimeoJob.set(wait: 1.minute).perform_later(self)
+      	end
+
     	  def upload_to_vimeo
     	  	video_file = File.open(tmp_video_file.file.file)
 			    remote_video_data = vimeo_client.upload_video(video_file, **{name: self.name})

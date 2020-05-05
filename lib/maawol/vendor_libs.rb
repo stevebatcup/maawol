@@ -36,6 +36,7 @@ require 'tinymce-rails'
 require 'administrate'
 require 'cocoon'
 require 'rinku'
+require 'dropzonejs-rails'
 
 module Maawol
 	module VendorLibs

@@ -54,7 +54,6 @@ class UserDashboard < Administrate::BaseDashboard
     :email,
     :status,
     :subscription_status,
-    :avatar,
     :is_admin,
     :author
   ].freeze

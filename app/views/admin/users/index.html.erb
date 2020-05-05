@@ -52,7 +52,7 @@ It renders the `_table` partial to display details about the resources.
   </div>
 </header>
 
-<section class="main-content__body main-content__body--flush" ng-controller="AdminController">
+<section class="main-content__body main-content__body--flush" ng-controller="<%= angular_controller(page.resource_name) %>">
   <%= render(
     "collection",
     collection_presenter: page,

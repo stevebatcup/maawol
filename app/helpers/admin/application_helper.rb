@@ -10,5 +10,9 @@ module Admin
 			resource_name = super(resource_name)
 			remove_prefixes_from_displayed_name(resource_name)
 		end
+
+		def angular_controller(resource_name)
+			"Admin#{resource_name.gsub('/', '_').pluralize.camelcase}Controller"
+		end
 	end
 end

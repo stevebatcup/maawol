@@ -1,14 +1,20 @@
 class AudioFile < ApplicationRecord
   include Maawol::Models::Concerns::Productable
+  include Maawol::Models::Concerns::TmpUploadable
 
 	belongs_to	:author
 	has_and_belongs_to_many :lessons
 
-	validates_presence_of :file
-
 	mount_uploader	:file, AudioFileUploader
 
+	validates_presence_of :name, :author_id
+
   before_save :set_token
+  after_save	:migrate_file_from_tmp_upload, if: -> { self.tmp_media_id.present? }
+
+	def field_for_upload
+		:file
+	end
 
   def id_for_admin_selector
     "audio_file_#{self.id}"
@@ -23,7 +29,6 @@ class AudioFile < ApplicationRecord
 	end
 
 	def has_image?
-		# ActionController::Base.helpers.asset_path "no-avatar.png"
 		false
 	end
 end

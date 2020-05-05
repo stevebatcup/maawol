@@ -31,7 +31,6 @@ class SubscriberDashboard < UserDashboard
     :email,
     :status,
     :subscription_status,
-    :avatar,
     :is_admin,
     :from_old_site,
   ].freeze

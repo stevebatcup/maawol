@@ -44,11 +44,12 @@ Rails.application.routes.draw do
 	  end
 	  resources :site_settings
 	  resources :site_images
-	  get "site_colors", to: "site_colors#edit", as: :site_colors
-	  patch "site_colors", to: "site_colors#update", as: :update_site_colors
 	  patch "set_homepage_video", to: "videos#set_for_homepage"
 	  root to: "lessons#index"
 	end
+
+	post 'tmp-media', to: 'tmp_media#create'
+	delete 'tmp-media/:id', to: 'tmp_media#destroy'
 
 	resources :lessons
 	resources :courses

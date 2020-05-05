@@ -18,6 +18,3 @@ gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'byebug'
-gem 'web-console', '>= 3.3.0'
-gem 'listen'

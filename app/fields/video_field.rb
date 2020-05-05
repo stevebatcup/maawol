@@ -8,4 +8,8 @@ class VideoField < Administrate::Field::Base
   def vimeo_data
   	resource.vimeo_data unless resource.vimeo_data.nil?
   end
+
+  def url
+  	resource.url unless resource.url.nil?
+  end
 end

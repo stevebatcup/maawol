@@ -1,0 +1,31 @@
+<a class="button add_file text-white ml2e">
+	<i class="fas fa-upload"></i>
+	<span class='action'><%= btn_label_action %></span>&nbsp<span><%= btn_label_resource_type %>
+</a>
+
+<div class="file_uploads mt-3 ml2e" id="previews">
+  <div id="template" class="file-row">
+    <div id="filename">
+        <p class="name" data-dz-name></p>
+        <strong class="error text-danger" data-dz-errormessage></strong>
+    </div>
+    <div id="progress_cell">
+        <p class="size mb-0" data-dz-size></p>
+        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+        </div>
+    </div>
+    <div>
+      <button data-dz-remove class="btn btn-warning cancel text-white">
+        <i class="fas fa-times mr-2"></i>
+        <span>Cancel</span>
+      </button>
+      <button data-dz-remove class="btn btn-danger delete text-white">
+        <i class="far fa-trash-alt mr-2"></i>
+        <span>Start again</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<p class="ml2e error text-danger" ng-hide="!fileUpload.deleteErrorMsg" ng-cloak>{{fileUpload.deleteErrorMsg}}</p>

@@ -1,13 +1,27 @@
 <div class="field-unit__label">
   <%= f.label field.attribute %>
 </div>
-<div class="field-unit__field">
-	<% unless field.file.nil? %>
-		<p><small style="margin-bottom: 10px;"><%= link_to("Show uploaded file", field.file.url, target: '_blank') %></small></p>
-	<% end %>
-  <%= f.file_field field.attribute %>
+<div class="field-unit__field with_uploader document">
+  <%= f.hidden_field "tmp_media_id" %>
+	<p class="mb-2 pl-2">
+    <small>
+      <%= link_to("<i class='fas fa-file mr-2'></i> View uploaded file".html_safe, field.file.url,
+                                      target: '_blank',
+                                      id: 'file_link',
+                                      class: 'ml2e',
+                                      style: "#{field.file.nil? ? 'display: none' : ''}"
+                ) %>
+    </small>
+  </p>
 
-  <div class='hint'>
+  <br />
+
+  <%= render partial: 'upload_template', locals: {
+              btn_label_action: field.file.nil? ? 'Upload' : 'Replace',
+              btn_label_resource_type: 'file'
+      } %>
+
+  <div class='hint ml-4 pl-0'>
   	<ul>
   		<li><%= t('administrate.hints.copyright') %></li>
   		<li><%= t('administrate.hints.file_types_prefix') %> <b>.pdf</b>, <b>.doc</b> and <b>.docx</b></li>

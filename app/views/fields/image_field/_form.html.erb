@@ -1,11 +1,21 @@
 <div class="field-unit__label">
   <%= f.label field.attribute %>
 </div>
-<div class="field-unit__field">
-	<%= image_tag(field.small.url) unless field.small.nil? %>
-  <%= f.file_field field.attribute %>
+<div class="field-unit__field with_uploader image">
+  <%= f.hidden_field "tmp_media_id" %>
+	<%= image_tag((field.small&.url || ''),
+								class: 'ml2e mb-2',
+								style: "width: 200px; #{field.small.nil? ? 'display: none' : ''}",
+								id: 'image_preview'
+			) %>
 
-  <div class='hint'>
+  <br />
+  <%= render partial: 'upload_template', locals: {
+  						btn_label_action: field.small.nil? ? 'Upload' : 'Replace',
+  						btn_label_resource_type: 'image'
+  					} %>
+
+  <div class='hint ml-4 pl-0'>
   	<ul>
 	  	<%= "<li>#{field.hint}</li>".html_safe if field.hint.present? %>
 	  	<li><%= t('administrate.hints.copyright') %></li>

@@ -57,4 +57,8 @@ class SiteImageDashboard < Administrate::BaseDashboard
   def display_resource(site_image)
     "Application image"
   end
+
+  def permitted_attributes
+    [ :id, :name, :tmp_media_id ]
+  end
 end

@@ -15,13 +15,17 @@ require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
 require "maawol"
-
 require 'dotenv-rails'
+require "web_console"
 
 module Dummy
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+
+    # Run outside of the development mode so our test suite runs.
+    config.web_console.development_only = false
+    config.web_console.permissions = '192.168.0.0/16'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

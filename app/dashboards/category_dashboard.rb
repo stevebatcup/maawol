@@ -11,7 +11,7 @@ class CategoryDashboard < Administrate::BaseDashboard
     lessons: HasLotsField,
     id: Field::Number,
     name: Field::String,
-    description: Field::Text,
+    description: TinyMceField,
     root_category: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -40,10 +40,10 @@ class CategoryDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :root_category,
     :name,
+    :root_category,
+    :lessons,
     :description,
-    :lessons
   ].freeze
 
   # Overwrite this method to customize how categories are displayed

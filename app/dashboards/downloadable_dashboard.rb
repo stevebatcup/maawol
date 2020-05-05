@@ -12,7 +12,6 @@ class DownloadableDashboard < Administrate::BaseDashboard
     name: Field::String,
     file: DownloadableField,
     author: Field::BelongsTo.with_options(scope: -> { Author.order(id: :asc) }),
-    image: ImageField,
     full_url: Field::String,
     basket_url: Field::String,
     created_at: Field::DateTime,
@@ -34,7 +33,6 @@ class DownloadableDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :name,
     :file,
-    :image,
     :author,
     :full_url,
     :basket_url
@@ -47,7 +45,6 @@ class DownloadableDashboard < Administrate::BaseDashboard
     :name,
     :file,
     :author,
-    :image,
   ].freeze
 
   # Overwrite this method to customize how downloadables are displayed
@@ -55,5 +52,9 @@ class DownloadableDashboard < Administrate::BaseDashboard
   #
   def display_resource(downloadable)
     downloadable.name
+  end
+
+  def permitted_attributes
+    [ :id, :name, :tmp_media_id, :author_id ]
   end
 end
