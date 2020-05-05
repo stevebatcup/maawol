@@ -4,10 +4,4 @@ tr {
 
 tbody tr:hover {
 	cursor: unset;
-
-	body.dark-green &,
-	body.dark-blue &,
-	body.dark-red & {
-		background-color: #4e4e4e;
-	}
 }

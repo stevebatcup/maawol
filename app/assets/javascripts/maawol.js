@@ -18,6 +18,7 @@
 //= require angular-animate
 //= require angularjs/rails/resource
 //= require angularjs/rails/resource/extensions/snapshots
+//= require ng-cookies
 
 //= require angular_bootstrap
 

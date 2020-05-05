@@ -13,6 +13,7 @@ gemspec
 gem "vimeo_me2", git: "https://github.com/robotixcorporation/vimeo_me2.git"
 gem 'mini_racer', platforms: :ruby
 gem 'sprockets', '3.7.2'
+gem 'rails-assets-ng-cookies', source: 'https://rails-assets.org'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'

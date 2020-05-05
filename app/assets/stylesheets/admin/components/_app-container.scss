@@ -3,26 +3,7 @@
 	margin-left: 0;
   margin-right: 0;
   max-width: none;
-
-  body.dark-green & {
-  	background-color: #394a38;
-  }
-  body.dark-blue & {
-  	background-color: #313940;
-  }
-  body.dark-red & {
-		background-color: #544747;
-  }
-
-  body.light-green & {
-  	background-color: #e4ece3;
-  }
-  body.light-blue & {
-  	background-color: #dfe7ec;
-  }
-  body.light-red & {
-		background-color: #eae3e3;
-  }
+  background-color: #343434;
 
 	a, select, input {
 		outline: none;

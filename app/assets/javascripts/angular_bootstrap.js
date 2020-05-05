@@ -7,6 +7,7 @@ Maawol.DirectiveModule = angular.module('Maawol.directives', []);
 var moduleName = "Maawol_NG"
 window.App = angular.module(moduleName, ['rails',
   'ngAnimate',
+  'ngCookie',
   'Maawol.directives',
   'Maawol.factories',
   'Maawol.filters',
