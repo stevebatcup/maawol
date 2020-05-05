@@ -57,4 +57,11 @@ class Video < ApplicationRecord
     false
     # self.thumbnail.url.present?
   end
+
+  def human_duration
+    if self.duration_in_seconds.to_i > 0
+      time_format = self.duration_in_seconds < 3600 ? '%M:%S' : '%H:%M:%S'
+      Time.at(self.duration_in_seconds).utc.strftime(time_format)
+    end
+  end
 end

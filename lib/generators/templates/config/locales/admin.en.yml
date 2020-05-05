@@ -77,6 +77,7 @@ en:
       video:
         tmp_video_file: Video
         human_status: Status
+        human_duration: Length
         when_associated: Videos
       audio_file:
         when_associated: Audio files

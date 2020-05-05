@@ -88,9 +88,9 @@ class LessonDashboard < Administrate::BaseDashboard
 
   def permitted_attributes
     [ :id, :name, :tmp_media_id, :author_id, :publish_date, :content,
-          :course_only, :is_free, :video_ids,
-          :audio_file_ids, :downloadable_ids, :tag_ids,
-          :category_ids, :playlist_ids, :user_ids ]
+          :course_only, :is_free, video_ids: [],
+          audio_file_ids: [], downloadable_ids: [], tag_ids: [],
+          category_ids: [], playlist_ids: [], user_ids: [] ]
   end
 
 end

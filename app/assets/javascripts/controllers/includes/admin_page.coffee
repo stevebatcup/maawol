@@ -74,6 +74,10 @@ class Maawol.AdminPage extends Maawol.Page
 				$("input##{resource_class}_tmp_media_id").val(@scope.fileUpload.tmpId)
 				if file_type is 'document'
 					$displayElement.attr('href', response.media.url).fadeIn('fast')
+				else if file_type is 'video'
+					$displayElement.attr('src', response.media.url).fadeIn 'fast', =>
+						videoDuration = Math.round(document.getElementById(displayElementId).duration)
+						$("input#video_duration_in_seconds").val videoDuration
 				else
 					$displayElement.attr('src', response.media.url).fadeIn('fast')
 			else

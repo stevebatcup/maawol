@@ -2,6 +2,7 @@
   <%= f.label field.attribute %>
 </div>
 <div class="field-unit__field with_uploader video_field">
+  <%= f.hidden_field "duration_in_seconds" %>
   <%= f.hidden_field "tmp_media_id" %>
 	<div class="ml2e">
 		<% if field.vimeo_data.present? %>

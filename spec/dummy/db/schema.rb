@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_195808) do
+ActiveRecord::Schema.define(version: 2020_05_05_093429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -504,6 +504,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_195808) do
     t.integer "status"
     t.string "tmp_video_file"
     t.integer "tmp_media_id"
+    t.integer "duration_in_seconds"
   end
 
   create_table "views", id: :serial, force: :cascade do |t|

@@ -10,6 +10,7 @@ class VideoDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     name: Field::String,
     human_status: Field::String,
+    human_duration: Field::String,
     tmp_video_file: VideoField,
     url: LinkField
   }.freeze
@@ -22,6 +23,7 @@ class VideoDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :human_status,
+    :human_duration,
     :url
   ].freeze
 
@@ -31,7 +33,8 @@ class VideoDashboard < Administrate::BaseDashboard
     :name,
     :url,
     :tmp_video_file,
-    :human_status
+    :human_status,
+    :human_duration,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -50,6 +53,6 @@ class VideoDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    [ :id, :name, :tmp_media_id ]
+    [ :id, :name, :tmp_media_id, :duration_in_seconds ]
   end
 end

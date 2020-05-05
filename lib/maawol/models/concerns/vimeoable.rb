@@ -3,6 +3,7 @@ module Maawol
     module Concerns
       module Vimeoable
       	def perform_upload_to_vimeo_job
+      		self.vimeo_data = nil
       	  migrate_file_from_tmp_upload
       	  UploadVideoToVimeoJob.set(wait: 1.minute).perform_later(self)
       	end
@@ -10,6 +11,7 @@ module Maawol
     	  def upload_to_vimeo
     	  	video_file = File.open(tmp_video_file.file.file)
 			    remote_video_data = vimeo_client.upload_video(video_file, **{name: self.name})
+			    puts remote_video_data.inspect
 
 			    remote_id = remote_id_from_uri(remote_video_data['uri'])
 			    add_remote_video_to_folder(remote_id, Maawol::Config.vimeo_project_id)

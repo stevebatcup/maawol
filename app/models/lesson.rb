@@ -129,6 +129,10 @@ class Lesson < ApplicationRecord
     end
   end
 
+  def active_videos
+    self.videos.where(status: :uploaded)
+  end
+
 private
 
   def set_slug

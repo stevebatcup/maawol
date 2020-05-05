@@ -12,8 +12,8 @@
 
       <!-- Video player -->
       <div class="tab-content">
-      	<% @lesson.videos.each do |video| %>
-      		<div class="w-100 tab-pane <%= 'active' if video == @lesson.videos.first %>" role="tabpanel" id="<%= video.name.parameterize %>">
+      	<% @lesson.active_videos.each do |video| %>
+      		<div class="w-100 tab-pane <%= 'active' if video == @lesson.active_videos.first %>" role="tabpanel" id="<%= video.name.parameterize %>">
             <%= video_iframe(video) %>
           </div>
         <% end %>
@@ -26,15 +26,27 @@
         </h2>
 
         <div id="lesson_meta">
-          <div class="entry-meta text-center">
+          <div class="entry-meta text-left my-2">
             <!-- Published at -->
             <% if @lesson.is_published %>
-              <span><i class="fa fa-clock"></i> <time datetime="PT5M">Published <%= time_ago_in_words(@lesson.publish_date) %> ago</time></span>
+              <span class="mb-1">
+                <i class="fas fa-globe-americas ml-1"></i>
+                <time datetime="PT5M">Published <%= time_ago_in_words(@lesson.publish_date) %> ago</time>
+              </span>
+            <% end %>
+
+            <!-- Video length -->
+            <% if @lesson.active_videos.length == 1 %>
+              <span class="mb-1">
+                <i class="fa fa-clock ml-1"></i>
+                Video length: <%= @lesson.active_videos.first.human_duration %>
+              </span>
             <% end %>
 
             <!-- Course info -->
             <% unless @course.nil? %>
               <span id="part_of_course">
+                <i class="far fa-copy mr-2 ml-1"></i>
                 Lesson <%= @course.lesson_index(@lesson) %> of the <a href='/courses/<%= @course.id %>?token=<%= params[:token] %>'>
                   <%= @course.name %>
                 </a> course
@@ -62,24 +74,24 @@
         <% end %>
 
        <!-- Video Playlist -->
-        <% if @lesson.videos.length > 1 %>
+        <% if @lesson.active_videos.length > 1 %>
           <div id="video_playlist" class="mt-3 mobile">
             <ul class="nav nav-tabs" role="tablist">
               <li id="summary">
-                <%= pluralize(@lesson.videos.count, "video") %> in this lesson
+                <%= pluralize(@lesson.active_videos.count, "video") %> in this lesson
               </li>
-              <% @lesson.videos.each_with_index do |video, index| %>
+              <% @lesson.active_videos.each_with_index do |video, index| %>
                 <li role="presentation">
                   <a href="#<%= video.name.parameterize %>" aria-controls="casts"
                         role="tab"
                         data-toggle="tab"
-                        class="<%= 'active' if video == @lesson.videos.first %>">
-                    <% if video == @lesson.videos.first %>
+                        class="<%= 'active' if video == @lesson.active_videos.first %>">
+                    <% if video == @lesson.active_videos.first %>
                       <i class="fa fa-play"></i>
                     <% else %>
                       <i class="fa fa-play"></i>
                     <% end %>
-                    <span class="text"><%= index+1 %>. <%= video.name %></span>
+                    <span class="text"><%= index+1 %>. <%= video.name %> - <em><%= video.human_duration %></em></span>
                   </a>
                 </li>
               <% end %>
@@ -147,7 +159,7 @@
     </div>
   <% end %>
 
-  <!-- Playlist -->
+  <!-- Playlists -->
   <% if @lesson.playlists.any? %>
     <div id="playlists" class="container">
       <h5 class="mt-2">Further listening</h5>

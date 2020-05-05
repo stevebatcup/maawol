@@ -14,17 +14,17 @@
 
         <!-- Video player -->
         <div class="tab-content p-0">
-        	<% @lesson.videos.each do |video| %>
-        		<div class="w-100 tab-pane <%= 'active' if video == @lesson.videos.first %>" role="tabpanel" id="<%= video.name.parameterize %>">
+        	<% @lesson.active_videos.each do |video| %>
+        		<div class="w-100 tab-pane <%= 'active' if video == @lesson.active_videos.first %>" role="tabpanel" id="<%= video.name.parameterize %>">
               <%= video_iframe(video) %>
             </div>
           <% end %>
         </div>
 
-        <% if @lesson.videos.length > 1 %>
+        <% if @lesson.active_videos.length > 1 %>
           <div class="d-md-block d-lg-none">
             <!-- Video Playlist (for small tablets onlt) -->
-              <%= render partial: 'lessons/video-playlist', locals: { videos: @lesson.videos } %>
+              <%= render partial: 'lessons/video-playlist', locals: { videos: @lesson.active_videos } %>
           </div>
         <% end %>
       </div>
@@ -40,13 +40,25 @@
             <div class="entry-meta">
               <!-- Published at -->
               <% if @lesson.is_published %>
-                <span class="mb-1"><i class="fa fa-clock ml-1"></i> <time datetime="PT5M">Published <%= time_ago_in_words(@lesson.publish_date) %> ago</time></span>
+                <span class="mb-1">
+                  <i class="fas fa-globe-americas ml-1"></i>
+                  <time datetime="PT5M">Published <%= time_ago_in_words(@lesson.publish_date) %> ago</time>
+                </span>
+              <% end %>
+
+              <!-- Video length -->
+              <% if @lesson.active_videos.length == 1 %>
+                <span class="mb-1">
+                  <i class="fa fa-clock ml-1"></i>
+                  Video length: <%= @lesson.active_videos.first.human_duration %>
+                </span>
               <% end %>
 
               <!-- Course info -->
               <% unless @course.nil? %>
                 <span class="mb-1" id="part_of_course">
-                  <i class="far fa-copy mr-2 ml-1"></i>Lesson <%= @course.lesson_index(@lesson) %> of the <a href='/courses/<%= @course.id %>?token=<%= params[:token] %>'>
+                  <i class="far fa-copy mr-2 ml-1"></i>
+                  Lesson <%= @course.lesson_index(@lesson) %> of the <a href='/courses/<%= @course.id %>?token=<%= params[:token] %>'>
                     <%= @course.name %>
                   </a> course
                 </span>
@@ -151,10 +163,10 @@
         <div class="row">
           <div class="col-6 col-lg-12">
 
-            <% if @lesson.videos.length > 1 %>
+            <% if @lesson.active_videos.length > 1 %>
               <div class="d-none d-lg-block">
                 <!-- Video Playlist -->
-                  <%= render partial: 'lessons/video-playlist', locals: { videos: @lesson.videos } %>
+                  <%= render partial: 'lessons/video-playlist', locals: { videos: @lesson.active_videos } %>
               </div>
             <% end %>
 
