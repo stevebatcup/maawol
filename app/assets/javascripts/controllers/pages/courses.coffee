@@ -16,6 +16,10 @@ class Maawol.Courses extends Maawol.Page
 		@setCsrfTokenHeaders()
 		@bindEvents()
 
+	bindEvents: =>
+		super
+		@bindSubscribeCalloutClick()
+
 	openLesson: ($event, lessonSlug, courseId, sort, available=true, token='') =>
 		$event.preventDefault()
 		if available

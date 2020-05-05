@@ -30,6 +30,8 @@ class Maawol.Settings extends Maawol.Page
 
 
 	bindEvents: =>
+		@bindSubscribeCalloutClick()
+
 		$(document).on 'click', 'a#cancel_recurring', (e) =>
 			e.preventDefault()
 			@cancelRecurringDialog()

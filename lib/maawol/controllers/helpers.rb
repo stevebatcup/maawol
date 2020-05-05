@@ -7,7 +7,7 @@ module Maawol
 				helper_method :navbar, :footer_navbar_items, :current_section, :site_setting, :site_image, :legible_form_errors,
 											:cached_course_list, :column_browser_class, :recent_lessons, :results_per_row,
 											:is_auth_page?, :results_per_page, :cached_tags, :dynamic_site_colors, :recaptcha_site_key,
-											:homepage_video,	:user_signed_in?, :is_settings_page?, :site_theme, :use_recaptcha?
+											:homepage_video,	:user_signed_in?, :is_settings_page?, :site_theme, :use_recaptcha?, :show_subscription_interstitial?
 			end
 
 			def navbar
@@ -99,6 +99,10 @@ module Maawol
 				else
 					Rails.env.production?
 				end
+			end
+
+			def show_subscription_interstitial?
+				signed_in? && !current_user.has_full_account? && !current_user.is_admin?
 			end
 
 			def results_per_row

@@ -1,14 +1,25 @@
-<div class="well w-100 mx-auto mb-3 pb-0" id="subscribe_instructions">
-  <h2 class="px-2 py-2">Subscribe now for:</h2>
+<div class="p-2 w-100 mx-auto mb-3 pb-0" id="subscribe_instructions">
+  <p class="m-0"><strong>Subscribe now to unlock the good stuff.....</strong></p>
   <ul>
-    <li>Access to FULL Lesson Library and Courses </li>
-    <li>Lesson Requests</li>
-    <li>1-on-1 help from <%= Maawol::Config.site_owner_fname %></li>
-    <li>Cancel Anytime</li>
+    <li>
+      <i class="fas fa-clipboard-check mr-1"></i>
+      Access to FULL Lesson Library and Courses
+    </li>
+    <li>
+      <i class="fas fa-clipboard-check mr-1"></i>
+      Request 1-on-1 lessons with <%= Maawol::Config.site_owner_fname %>
+    </li>
     <% if site_setting("Facebook page URL").present? %>
-      <li>Access to Exclusive <%= Maawol::Config.site_name %> Facebook page</li>
+      <li><i class="fas fa-clipboard-check mr-1"></i>
+        Access to Exclusive Facebook page
+      </li>
+    <% else %>
+      <li><i class="fas fa-clipboard-check mr-1"></i>
+        Much more
+      </li>
     <% end %>
-    <li>Only <%= monthly_fee %> per month</li>
+    <li><i class="fas fa-clipboard-check mr-1"></i>
+      Only <%= monthly_fee %> per month
+    </li>
   </ul>
-  <a href="/subscribe" class="btn btn-block btn-success btn-large mt-3 px-5 mb-4">Subscribe now</a>
 </div>

@@ -20,6 +20,10 @@ class Maawol.Page extends Maawol.NGController
 	canFixScrollingHeader: =>
 		!@isMobile() && $('header .header-bottom').length
 
+	bindSubscribeCalloutClick: =>
+		$(document).on 'click', '#subscribe_instructions', =>
+			@redirectTo '/subscribe'
+
 	fixHeaderOnScroll: =>
 		headerStartPosition = $('header .header-bottom').position().top + 30
 		$(window).on 'scroll', (e) =>
@@ -96,3 +100,6 @@ class Maawol.Page extends Maawol.NGController
 
 	refreshPage: =>
 		window.location.reload()
+
+	redirectTo: (url) =>
+		window.location.href = url

@@ -1,3 +1,27 @@
+#subscribe_instructions {
+	margin-top: -2em;
+	background: #efab0c;
+	cursor: pointer;
+
+	p, ul {
+		color: #ffffff;
+	}
+
+	p {
+		font-size: 1.1em;
+	}
+
+	ul {
+		margin: 0px 0 8px;
+
+		li {
+			font-size: 1em;
+			line-height: 1.5em;
+			list-style: none;
+			font-weight: bold;
+		}
+	}
+}
 .content_wrapper#subscribe {
 	margin-top: 10px;
 	overflow: hidden;

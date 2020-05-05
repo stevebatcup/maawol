@@ -1,5 +1,7 @@
 <% html_title @course.name %>
 
+<%= render(partial: 'lessons/subscribe_callout') if show_subscription_interstitial? %>
+
 <section id="course" class="container"
           ng-controller="CoursesController"
           data-lesson-locked-msg="<%= t('views.lesson.must_register') %>">

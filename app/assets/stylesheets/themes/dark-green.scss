@@ -1,5 +1,5 @@
-$maawol_body_bg: #343534;
-$maawol_auth_page_bg: #343534;
+$maawol_body_bg: #353535;
+$maawol_auth_page_bg: #353535;
 $maawol_auth_panel_bg: #292929;
 
 /* Text */
@@ -13,9 +13,9 @@ $maawol_copyright_color: #ffffff;
 $maawol_video_playlist_color: #2b2b2b;
 
 /* Backgrounds / Highlights */
-$maawol_header_bg: #343534;
+$maawol_header_bg: #353535;
 $maawol_text_highlight: #3f9247;
-$maawol_navbar_bg: #4a4c4b;
+$maawol_navbar_bg: #1e291d;
 $maawol_navbar_selected: #3f9247;
 $maawol_navbar_hovered: #5f6f61;
 $maawol_footer_bg: #2e352d;
@@ -53,8 +53,10 @@ header .header-bottom .navbar-default .navbar-nav li a.btn,
 header .header-bottom .navbar-default .navbar-nav li .modal.interstitial#subscriptionInterstitialModal .modal-body .inner a#green_subscribe,
 .modal.interstitial#subscriptionInterstitialModal .modal-body .inner header .header-bottom .navbar-default .navbar-nav li a#green_subscribe,
 .btn-success {
-	background-color: #50afa2 !important;
-	border-color: #3d988a !important;
+	color: #88ab8b !important;
+	border-color: #88ab8b !important;
+	font-weight: 800;
+	background-color: #ffffff !important;
 }
 
 @import "../library/_theme_implement";

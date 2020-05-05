@@ -1,11 +1,14 @@
 <% html_title @lesson.name %>
 <% meta_tag :description, @lesson.content_excerpt.truncate(160) %>
 
+<%= render(partial: 'lessons/subscribe_callout') if show_subscription_interstitial? %>
+
 <article class="single-post lesson"
         ng-controller="LessonsController"
         data-lesson-id="<%= @lesson.id %>"
         data-video-url="<%= @lesson.main_video.present? ? @lesson.main_video.url : '' %>"
         data-video-host="vimeo">
+
 
   <div class="content-tabs">
     <div class="post type-post format-standard">

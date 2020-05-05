@@ -1,7 +1,9 @@
 <% html_title @page.title %>
 <% meta_tag :description, strip_tags(@page.meta_description.truncate(160)) %>
 
-<div class="container pt-3 pt-md-1" id="cms_page">
+<%= render(partial: 'lessons/subscribe_callout') if show_subscription_interstitial? %>
+
+<div class="container pt-3 pt-md-1" id="cms_page" ng-controller="ContentPageController">
 	<% @page.content_blocks.each do |content_block| %>
 		<%= render_content_block_by_id(content_block.id) %>
 	<% end %>

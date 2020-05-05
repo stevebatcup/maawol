@@ -30,6 +30,7 @@ class Maawol.Lessons extends Maawol.Page
 
 	bindEvents: =>
 		super
+		@bindSubscribeCalloutClick()
 		@bindScrollEvent()
 		@bindDesktopOnlyEvents() unless @isMobile()
 
