@@ -3,7 +3,10 @@ class User < ApplicationRecord
   include Maawol::Models::Concerns::Subscribable
   include Maawol::Models::Concerns::Mailable
 
-  validates_presence_of	:email, :first_name, :last_name
+  COMPLIMENTARY_ACCOUNT_LIMIT = 5
+
+  attr_accessor :existing_password
+
   has_many :watch_laters
   has_many :favourites
   has_many :views
@@ -12,13 +15,16 @@ class User < ApplicationRecord
   belongs_to  :author, optional: true
 
   mount_uploader :avatar, AvatarUploader
+
   enum	status: [:free, :paying, :complimentary, :deleted, :expiring]
+
+  validates_presence_of :email, :first_name, :last_name
+  validate :within_complimentary_account_limit, on: :update
+
   before_create :set_default_status
   after_create  :add_to_mailchimp
   after_create  :send_welcome_email
   after_create  :send_admin_registration_email
-
-  attr_accessor :existing_password
 
   def set_default_status
     self.status = :free
@@ -72,5 +78,15 @@ class User < ApplicationRecord
 
   def can_access_dashboard?
     has_full_account? || is_admin?
+  end
+
+  def within_complimentary_account_limit
+    if (self.status.to_sym == :complimentary) && (current_complimentary_account_count >= COMPLIMENTARY_ACCOUNT_LIMIT)
+      errors.add(:base, "You may only set up to #{COMPLIMENTARY_ACCOUNT_LIMIT} accounts as complimentary.")
+    end
+  end
+
+  def current_complimentary_account_count
+    self.class.where(status: :complimentary).all.size
   end
 end

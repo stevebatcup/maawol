@@ -54,6 +54,7 @@ class Video < ApplicationRecord
   end
 
   def has_thumbnail?
-    self.thumbnail.url.present?
+    false
+    # self.thumbnail.url.present?
   end
 end
