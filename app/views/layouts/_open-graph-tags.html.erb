@@ -7,15 +7,7 @@
 <meta property="og:type" content="website" />
 
 <% unless site_image("square_logo").nil? %>
-<!-- Square OG:IMAGE for WhatsApp, etc -->
 <meta property="og:image" content="<%= site_image("square_logo") %>" />
 <meta property="og:image:width" content="400" />
 <meta property="og:image:height" content="400" />
-<% end %>
-
-<% unless site_image("landscape_logo").nil? %>
-<!-- Landscape OG:IMAGE -->
-<meta property="og:image" content="<%= site_image("landscape_logo") %>" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
 <% end %>
