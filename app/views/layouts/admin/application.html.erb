@@ -40,14 +40,23 @@ By default, it renders:
 
       <main class="main-content" role="main">
         <header id="top_header" class="p-3 d-flex justify-content-between" ng-controller="AdminHeaderBarController">
-          <a id="side_menu_toggle" href="#" ng-click="toggleSideMenu($event)">
-            <i class="fas fa-bars"></i>
-          </a>
+          <div class="d-flex">
+            <a id="side_menu_toggle" href="#" ng-click="toggleSideMenu($event)" class="mr-3">
+              <i class="fas fa-bars"></i>
+            </a>
 
-          <div>
+            <h2 class="ml-1 mb-0">Maawol Admin Dashboard</h2>
+          </div>
+
+          <div class="top_links">
             <a class="mr-2" href="/admin/site_settings">
               <i class="fas fa-sliders-h mr-1"></i>
-                School settings
+                Settings
+            </a>
+            |
+            <a class="mr-2" href="/" target="_blank">
+              <i class="fas fa-school pl-2 mr-1"></i>
+                View school
             </a>
             |
             <a class="ml-2" href="<%= sign_out_path %>" data-method="delete">

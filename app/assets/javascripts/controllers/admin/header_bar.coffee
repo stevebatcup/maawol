@@ -17,13 +17,13 @@ class Maawol.AdminHeaderBarController extends Maawol.AdminPage
 
 	initSideMenu: =>
 		if parseInt(@cookies.get('sidenav_closed')) is 1
-			$('#admin_sidenav').addClass('hidden')
+			$('.app-container').addClass('nav_hidden')
 
 	toggleSideMenu: ($event) =>
 		$event.preventDefault()
-		$('#admin_sidenav').toggleClass('hidden')
+		$('.app-container').toggleClass('nav_hidden')
 		@timeout =>
-			status = if $('#admin_sidenav').hasClass('hidden') then 1 else 0
+			status = if $('.app-container').hasClass('nav_hidden') then 1 else 0
 			@cookies.set('sidenav_closed', status)
 
 

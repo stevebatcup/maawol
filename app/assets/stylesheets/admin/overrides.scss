@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:wght@300;500;600;700');
+
 @import "dropzone/dropzone";
-@import "../library/variables";
 @import "vendor/font-awesome-base";
 @import "bootstrap-custom";
+
+@import "../library/variables";
+@import "_variables";
 
 @import "components/_app-container";
 @import "components/_nav";
@@ -10,4 +14,16 @@
 @import "components/_search";
 @import "components/_text";
 @import "components/_links";
-@import "base/_tables";
+@import "components/_tables";
+
+body,
+html,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+}
