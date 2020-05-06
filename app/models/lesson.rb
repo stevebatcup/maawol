@@ -70,7 +70,7 @@ class Lesson < ApplicationRecord
   end
 
   def available_for_user?(current_user)
-    if current_user.has_full_account?
+    if current_user.has_full_account? || current_user.is_admin?
       true
     else
       self.is_free?

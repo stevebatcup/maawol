@@ -9,6 +9,10 @@ class TmpMediaUploader < BaseUploader
   end
 
   def store_dir
-		"uploads/tmp/media/#{model.id}"
+  	if Rails.env.development?
+			"uploads/tmp/media/#{model.id}"
+		else
+			"/usr/share/nginx/html/#{Maawol::Config.site_slug}/uploads"
+		end
 	end
 end
