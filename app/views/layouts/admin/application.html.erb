@@ -44,10 +44,17 @@ By default, it renders:
             <i class="fas fa-bars"></i>
           </a>
 
-          <a class="" href="<%= sign_out_path %>" data-method="delete">
-            <i class="fas fa-sign-out-alt mr-1"></i>
-            Sign out
-          </a>
+          <div>
+            <a class="mr-2" href="/admin/site_settings">
+              <i class="fas fa-sliders-h mr-1"></i>
+                School settings
+            </a>
+            |
+            <a class="ml-2" href="<%= sign_out_path %>" data-method="delete">
+              <i class="fas fa-sign-out-alt mr-1"></i>
+              Sign out
+            </a>
+          </div>
         </header>
 
         <%= content_for(:search) %>

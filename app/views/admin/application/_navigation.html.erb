@@ -1,6 +1,7 @@
 <nav id="admin_sidenav" class="navigation" role="navigation">
   <header class="p-3">
-    <h1><%= site_setting("Site name") %> <br />Admin Dashboard</h1>
+    <h1><%= site_setting("Site name") %></h1>
+    <h2>Maawol Admin Dashboard</h2>
   </header>
 
   <h3>
@@ -133,15 +134,7 @@
     </li>
     <li>
       <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/stuck') %>"
-            href="/admin/stuck_questions">Questions for the I'm stuck page</a>
+            href="/admin/stuck_questions">"I am stuck" page</a>
     </li>
   </ul>
-
-  <h3>
-    <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/site_settings') %>"
-            href="/admin/site_settings">
-              <i class="fas fa-sliders-h mr-1"></i>
-              School settings
-    </a>
-  </h3>
 </nav>

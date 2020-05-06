@@ -13,6 +13,7 @@
       <link rel="icon" type="image/x-icon" href="<%= site_image("favicon").url(:tiny) %>" />
     <% end %>
     <%= render 'layouts/analytics-tag' %>
+    <%= render 'layouts/open-graph-tags' %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= stylesheet_link_tag    'mobile/overrides', media: 'all', 'data-turbolinks-track' => true %>
