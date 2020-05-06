@@ -10,7 +10,7 @@
         <% end %>
       <% end %>
 
-      <% if signed_in? && !current_user.is_subscriber? %>
+      <% if show_subscription_nav_button? %>
        <li class="d-none d-lg-inline-block">
           <a href="/subscribe" class="btn btn-block btn-success" data-turbolinks="false">Subscribe</a>
         </li>

@@ -13,7 +13,7 @@
                 <% end %>
               <% end %>
 
-              <% if signed_in? && !current_user.is_subscriber? %>
+              <% if show_subscription_nav_button? %>
                <li class="">
                   <a href="/subscribe" class="btn btn-block btn-success" data-turbolinks="false">Subscribe</a>
                 </li>
