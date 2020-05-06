@@ -7,6 +7,10 @@ class VideoUploader < BaseUploader
   end
 
   def store_dir
-    "uploads/tmp/videos/#{model.id}"
+  	if Rails.env.development?
+			"uploads/tmp/videos/#{model.id}"
+		else
+			"/usr/share/nginx/html/#{Maawol::Config.site_slug}/uploads/tmp/videos/#{model.id}"
+		end
   end
 end

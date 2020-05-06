@@ -12,7 +12,7 @@ class TmpMediaUploader < BaseUploader
   	if Rails.env.development?
 			"uploads/tmp/media/#{model.id}"
 		else
-			"/usr/share/nginx/html/#{Maawol::Config.site_slug}/uploads"
+			"/usr/share/nginx/html/#{Maawol::Config.site_slug}/uploads/tmp/media#{model.id}"
 		end
 	end
 end

@@ -97,7 +97,7 @@ class Maawol.AdminPage extends Maawol.Page
 							$(document).find(".add_file").find('span.action').text('Upload').end().fadeIn('fast')
 						else
 							@deleteUploadedFileError(response.data.error)
-					, 350
+					, 150
 				, (error) =>
 					@deleteUploadedFileError(error.statusText)
 			else

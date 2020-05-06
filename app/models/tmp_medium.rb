@@ -13,4 +13,14 @@ class TmpMedium < ApplicationRecord
 			%w(mp4 mov wmv avi flv)
 		end
 	end
+
+	def uploads_url
+		url = self.media_file.url
+		if Rails.env.development?
+			url
+		else
+			uploads_str_pos = url.index("/uploads")
+			url[uploads_str_pos..-1]
+		end
+	end
 end

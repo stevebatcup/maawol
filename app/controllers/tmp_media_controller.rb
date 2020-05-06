@@ -9,7 +9,7 @@ class TmpMediaController < ApplicationController
 				media_file: params[:file]
 			)
 			if @media.save!
-				render json: { status: :success, media: { id: @media.id, url: @media.media_file.url } }
+				render json: { status: :success, media: { id: @media.id, url: @media.uploads_url } }
 			else
 				render json: { status: :error, error: 'Failed to process' }, status: 422
 			end
