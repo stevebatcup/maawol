@@ -48,8 +48,10 @@ as well as a link to its edit page.
 
     <dt class="pt-4 attribute-label"></dt>
     <dd class="pt-4">
+      <% default_name = display_resource_name(page.resource_name) %>
+      <% name_for_btn = t("helpers.label.#{page.resource_name.downcase}.resource_name_overrides.multiple", default: default_name) %>
       <%= link_to(
-          "View all #{display_resource_name(page.resource_name)}",
+          "View all #{name_for_btn}",
           [namespace, resource_index_route_key(page.resource_name)],
           class: "button"
         )  %>

@@ -39,14 +39,14 @@ en:
         subscription_referring_author_name: Referred by
       users_subscription_payment:
         processed_at: Paid at
-        author_fee: Author receives
-        author_name: Author
+        author_fee: Tutor receives
+        author_name: Tutor
       product_payment:
         user_name: Buyer
         processed_at: Bought at
         name: Item
-        author_fee: Author receives
-        author_name: Author
+        author_fee: Tutor receives
+        author_name: Tutor
       downloadable:
         when_associated: Downloadables
         image: Thumbnail

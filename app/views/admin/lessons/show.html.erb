@@ -52,5 +52,14 @@ as well as a link to its edit page.
           ><%= render_field attribute %></dd>
     <% end %>
 
+    <dt class="pt-4 attribute-label"></dt>
+    <dd class="pt-4">
+      <%= link_to(
+          "View all lessons",
+          [namespace, resource_index_route_key(page.resource_name)],
+          class: "button"
+        )  %>
+    </dd>
+
   </dl>
 </section>
