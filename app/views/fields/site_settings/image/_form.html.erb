@@ -1,0 +1,21 @@
+<div class="field-unit__label">
+  <%= f.label label %>
+</div>
+<div class="field-unit__field with_uploader image">
+  <%= f.hidden_field "#{field.attribute}_tmp_media_id" %>
+  <% src = field.data.send(size).url %>
+	<%= image_tag(src, class: "ml2e mb-2 #{size}", id: "#{field.attribute}_preview") %>
+  <br />
+  <%= render partial: 'upload_template', locals: {
+  						btn_label_action: 'Replace',
+  						btn_label_resource_type: field.attribute.humanize
+  					} %>
+
+  <div class='hint ml-4 pl-0'>
+  	<ul>
+	  	<%= "<li>#{hint}</li>".html_safe if defined?(hint) %>
+	  	<li><%= t('administrate.hints.copyright') %></li>
+	  	<li><%= t('administrate.hints.file_types_prefix') %> <b>.jpg</b>, <b>.jpeg</b>, <b>.gif</b> and <b>.png</b></li>
+	  </ul>
+  </div>
+</div>

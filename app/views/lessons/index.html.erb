@@ -47,10 +47,11 @@
       </h3>
 
       <p class="none_found" ng-if="loaded && !lessons.length" ng-cloak>
+        <i class="far fa-sad-cry mr-1"></i>
         <% if params[:tag] %>
-          Sorry there are no lessons found for tag '<%= params[:tag] %>
+          Sorry, there are no lessons found for tag '<%= params[:tag] %>
         <% else %>
-          No lessons found
+          Sorry, no lessons found
         <% end %>
       </p>
 

@@ -35,13 +35,14 @@ class Maawol.AdminPage extends Maawol.Page
 				"alignleft aligncenter alignright alignjustify | undo redo | formatselect"
 			]
 
-	deleteUploadedFileError: (msg) =>
+	deleteUploadedFileError: (msg, $field) =>
 		@scope.fileUpload.deleteErrorMsg = msg
-		$(document).find(".add_file").fadeIn('fast')
+		$field.find(".add_file").fadeIn('fast')
 
 	initializeUploader: (resource_class, file_type, displayElementId) =>
 		@scope.fileUpload = { tmpId: null, deleteErrorMsg: null }
 		$displayElement = $("##{displayElementId}")
+		$field = $displayElement.closest('.field-unit__field')
 		previewNode = document.querySelector("#template")
 		previewNode.id = ""
 		previewTemplate = previewNode.parentNode.innerHTML
@@ -60,7 +61,7 @@ class Maawol.AdminPage extends Maawol.Page
 		fileDropzone.on "addedfile", (file) =>
 			$('[name=commit]').attr('disabled', true)
 			$('iframe', '.video_field').hide()
-			$(".add_file").find('span.action').text('Replace').end().fadeOut('fast')
+			$(".add_file", $field).find('span.action').text('Replace').end().fadeOut('fast')
 			$(document).on 'click', ".start_upload", (e) =>
 				e.preventDefault()
 				fileDropzone.enqueueFile(file)
@@ -81,7 +82,7 @@ class Maawol.AdminPage extends Maawol.Page
 				else
 					$displayElement.attr('src', response.media.url).fadeIn('fast')
 			else
-				$('[data-dz-errormessage]').text response.error
+				$('[data-dz-errormessage]', $field).text response.error
 
 		fileDropzone.on "removedfile", (file, response) =>
 			if @scope.fileUpload.tmpId?
@@ -94,11 +95,11 @@ class Maawol.AdminPage extends Maawol.Page
 								$displayElement.attr('href', '').fadeOut('fast')
 							else
 								$displayElement.attr('src', '').fadeOut('fast')
-							$(document).find(".add_file").find('span.action').text('Upload').end().fadeIn('fast')
+							$field.find(".add_file").find('span.action').text('Upload').end().fadeIn('fast')
 						else
-							@deleteUploadedFileError(response.data.error)
+							@deleteUploadedFileError(response.data.error, $field)
 					, 150
 				, (error) =>
-					@deleteUploadedFileError(error.statusText)
+					@deleteUploadedFileError(error.statusText, $field)
 			else
-				$(document).find(".add_file").fadeIn('fast')
+				$field.find(".add_file").fadeIn('fast')

@@ -3,137 +3,94 @@
     <h1><%= site_setting("Site name") %></h1>
   </header>
 
-  <h3>
-    <i class="fa fa-book mr-1"></i>
-    Lesson library
-  </h3>
-  <ul>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/lessons') %>"
-            href="/admin/lessons">Lessons
-      </a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/courses') %>"
-            href="/admin/courses">Courses
-      </a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/authors') %>"
-            href="/admin/authors">Tutors</a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/root_categories') %>"
-            href="/admin/root_categories">Primary categories
-      </a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/categories') %>"
-            href="/admin/categories">Secondary categories
-      </a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/tags') %>"
-            href="/admin/tags">Tags
-      </a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/skill_levels') %>"
-            href="/admin/skill_levels">Skill levels
+  <ul class="pt-3">
+    <li class="<%= 'active' if request.path.include?('/admin/overview') %>">
+      <a class="navigation__link" href="#">Overview (coming soon)
       </a>
     </li>
   </ul>
 
-  <h3>
-    <i class="fas fa-photo-video mr-1"></i>
-    Lesson resources
-  </h3>
+  <h3><i class="fa fa-book mr-2"></i>Lesson library</h3>
   <ul>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/videos') %>"
-            href="/admin/videos">Videos
+    <li class="<%= 'active' if request.path.include?('/admin/lessons') %>">
+      <a class="navigation__link" href="/admin/lessons">Lessons</a>
+    </li>
+    <li class="<%= 'active' if request.path.include?('/admin/courses') %>">
+      <a class="navigation__link" href="/admin/courses">Courses</a>
+    </li>
+    <li class="<%= 'active' if request.path.include?('/admin/authors') %>">
+      <a class="navigation__link" href="/admin/authors">Tutors</a>
+    </li>
+    <li class="<%= 'active' if request.path.include?('/admin/root_categories') %>">
+      <a class="navigation__link" href="/admin/root_categories">Primary categories</a>
+    </li>
+    <li class="<%= 'active' if request.path.include?('/admin/categories') %>">
+      <a class="navigation__link" href="/admin/categories">Secondary categories
       </a>
     </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/audio_files') %>"
-            href="/admin/audio_files">Audio files
-      </a>
+    <li class="<%= 'active' if request.path.include?('/admin/tags') %>">
+      <a class="navigation__link" href="/admin/tags">Tags</a>
     </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/downloadables') %>"
-            href="/admin/downloadables">Scores
-      </a>
-    </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/playlists') %>"
-            href="/admin/playlists">Playlists
-      </a>
+    <li class="<%= 'active' if request.path.include?('/admin/skill_levels') %>">
+      <a class="navigation__link" href="/admin/skill_levels">Skill levels</a>
     </li>
   </ul>
 
-  <h3>
-    <i class="fas fa-money-bill-alt mr-1"></i>
-    E-commerce
-  </h3>
+  <h3><i class="fas fa-photo-video mr-2"></i>Lesson resources</h3>
   <ul>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/stores') %>"
-            href="/admin/stores">Stores
-      </a>
+    <li class="<%= 'active' if request.path.include?('/admin/videos') %>">
+      <a class="navigation__link" href="/admin/videos">Videos</a>
     </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/product_payments') %>"
-            href="/admin/product_payments">Store payments
-      </a>
+    <li class="<%= 'active' if request.path.include?('/admin/audio_files') %>">
+      <a class="navigation__link" href="/admin/audio_files">Audio files</a>
     </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/users_subscription_payments') %>"
-            href="/admin/users_subscription_payments">Subscription payments
-      </a>
+    <li class="<%= 'active' if request.path.include?('/admin/downloadables') %>">
+      <a class="navigation__link" href="/admin/downloadables">Scores</a>
     </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/income_reports') %>"
-            href="/admin/income_reports">Monthly income reports
-      </a>
+    <li class="<%= 'active' if request.path.include?('/admin/playlists') %>">
+      <a class="navigation__link" href="/admin/playlists">Playlists</a>
     </li>
   </ul>
 
-  <h3>
-    <i class="fas fa-user-graduate mr-1"></i>
-    Students
-  </h3>
+  <h3><i class="fas fa-money-bill-alt mr-2"></i>E-commerce</h3>
   <ul>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.fullpath == '/admin/users' %>"
-            href="/admin/users">All students</a>
+    <li class="<%= 'active' if request.path.include?('/admin/stores') %>">
+      <a class="navigation__link" href="/admin/stores">Stores</a>
     </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.fullpath == '/admin/subscribers' %>"
-            href="/admin/subscribers">Subscribers</a>
+    <li class="<%= 'active' if request.path.include?('/admin/product_payments') %>">
+      <a class="navigation__link" href="/admin/product_payments">Store payments</a>
+    </li>
+    <li class="<%= 'active' if request.path.include?('/admin/users_subscription_payments') %>">
+      <a class="navigation__link" href="/admin/users_subscription_payments">Subscription payments</a>
+    </li>
+    <li class="<%= 'active' if request.path.include?('/admin/income_reports') %>">
+      <a class="navigation__link" href="/admin/income_reports">Monthly income reports</a>
     </li>
   </ul>
 
-  <h3>
-    <i class="fas fa-file-alt mr-1"></i>
-    CMS
-  </h3>
+  <h3><i class="fas fa-user-graduate mr-2"></i>Students</h3>
   <ul>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/pages') %>"
-            href="/admin/content_management/pages">Pages</a>
+    <li class="<%= 'active' if request.fullpath == '/admin/users' %>">
+      <a class="navigation__link" href="/admin/users">All students</a>
     </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/content_blocks') %>"
-            href="/admin/content_management/content_blocks">Content blocks
-      </a>
+    <li class="<%= 'active' if request.fullpath == '/admin/subscribers' %>">
+      <a class="navigation__link" href="/admin/subscribers">Subscribers</a>
     </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/content_management/images') %>"
-            href="/admin/content_management/images">Images</a>
+  </ul>
+
+  <h3><i class="fas fa-file-alt mr-2"></i>CMS</h3>
+  <ul>
+    <li class="<%= 'active' if request.path.include?('/admin/content_management/pages') %>">
+      <a class="navigation__link" href="/admin/content_management/pages">Pages</a>
     </li>
-    <li>
-      <a class="navigation__link navigation__link--<%= 'active' if request.path.include?('/admin/stuck') %>"
-            href="/admin/stuck_questions">"I am stuck" page</a>
+    <li class="<%= 'active' if request.path.include?('/admin/content_management/content_blocks') %>">
+      <a class="navigation__link" href="/admin/content_management/content_blocks">Content blocks</a>
+    </li>
+    <li class="<%= 'active' if request.path.include?('/admin/content_management/images') %>">
+      <a class="navigation__link" href="/admin/content_management/images">Images</a>
+    </li>
+    <li class="<%= 'active' if request.path.include?('/admin/stuck') %>">
+      <a class="navigation__link" href="/admin/stuck_questions">"I am stuck" page</a>
     </li>
   </ul>
 </nav>

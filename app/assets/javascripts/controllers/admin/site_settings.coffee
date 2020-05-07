@@ -15,6 +15,8 @@ class Maawol.AdminSiteSettingsController extends Maawol.AdminPage
 		@setDefaultHttpHeaders()
 		@setCsrfTokenHeaders()
 		@bindEvents()
+		@initTinyMce()
+		@initializeUploader 'site_setting', 'image', 'square_logo_preview'
 
 	bindEvents: ->
 

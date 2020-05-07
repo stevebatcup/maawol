@@ -55,7 +55,7 @@ class LessonsController < MaawolController
 
 	def show
 		@lesson = Lesson.find_by(slug: params[:id])
-		redirect_to(root_path) if !@lesson.is_published && !params[:preview]
+		return render_404 if lesson_not_accessible?
 
 		if params[:from_course].present?
 			@course = Course.find(params[:from_course])
@@ -69,6 +69,10 @@ class LessonsController < MaawolController
 	end
 
 private
+
+	def lesson_not_accessible?
+		@lesson.nil? || (!@lesson.is_published && !params[:preview])
+	end
 
 	helper_method	:full_access
 	def full_access

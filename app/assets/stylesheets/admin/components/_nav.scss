@@ -1,15 +1,48 @@
+header#top_header {
+	color: #fff;
+	width: 100%;
+	background-color: $maawol_admin_bg;
+
+	h2 {
+		font-size: 1em;
+		line-height: 1.5em;
+	}
+
+	a {
+		color: #ffffff;
+
+		&#side_menu_toggle {
+			font-size: 1.3em;
+			line-height: 1em;
+			position: relative;
+			top: 2px;
+		}
+	}
+
+	.top_links {
+		a {
+			font-size: 0.9em;
+		}
+	}
+}
+
 #admin_sidenav {
 	flex: 1 1 auto;
 	width: 260px;
 	color: #fff;
-	padding-right: 0;
-	padding-top: 0;
+	padding: 0;
 	font-size: 0.95em;
 	transition: all 0.2s;
   position: fixed;
   left: 0;
   top: 0;
+  bottom: 0;
   z-index: 500;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+  	display: none;
+  }
 
 	.app-container.nav_hidden & {
 		left: -260px;
@@ -21,8 +54,8 @@
 			margin: 0;
 			width: 100%;
 			position: relative;
-			font-size: 1.45em;
-			line-height: 1.3em;
+			font-size: 1.4em;
+			line-height: 1.2em;
 			text-transform: uppercase;
 			font-weight: 800;
 			text-align: center;
@@ -43,33 +76,6 @@
 		}
 	}
 
-	.navigation__link {
-		color: #fff;
-		padding: 0.5em 0.5em 0.5em 1em;
-
-		&:hover {
-			color: #293f54;
-			border-top-right-radius: 0 !important;
-			border-bottom-right-radius: 0 !important;
-		}
-
-		.badge {
-			display: inline-block;
-			float: right;
-			margin-right: 3px;
-
-			&.attention {
-				background-color: $green;
-				padding: 3px 5px;
-				border-radius: 2px;
-			}
-		}
-	}
-
-	.navigation__link--active {
-		font-weight: bold;
-	}
-
 	h3 {
 		color: #ffffff;
 		font-size: 1em;
@@ -88,8 +94,12 @@
 	ul {
 		margin-bottom: 0;
 		margin-top: 0;
-		padding: 0.4em 0 1.1em 0.8em;
+		padding: 0.4em 0 1.1em 0;
 		background-color: #3c3c3c;
+
+		&:last-child {
+			padding-bottom: 3em;
+		}
 
 		&.children {
 			margin-bottom: 4px;
@@ -103,10 +113,43 @@
 		li {
 			line-height: 1.3em;
 			font-size: 0.92em;
+			list-style-type: circle;
+			list-style-position: inside;
+			padding-left: 1.1em;
+			cursor: pointer;
 
-			a {
+			&:hover {
+				background-color: lighten(#3c3c3c, 6.5%);
+			}
+
+			a.navigation__link {
+				color: #fff;
+				padding: 0.5em 0.5em;
 				font-weight: normal;
 				text-decoration: none;
+				display: inline-block;
+				background-color: transparent;
+
+				&:hover {
+					background-color: inherit;
+				}
+			}
+
+			&.active {
+				list-style-type: disc;
+				background-color: #3f788a;
+
+				&:hover {
+					background-color: inherit;
+				}
+
+				a.navigation__link {
+					font-weight: 700;
+
+					&:hover {
+						background-color: inherit;
+					}
+				}
 			}
 
 			&.user_account_tab {

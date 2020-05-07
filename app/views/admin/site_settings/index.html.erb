@@ -1,0 +1,181 @@
+<% content_for(:title) do %>
+  School settings
+<% end %>
+
+<section class="main-content__body main-content__body--flush" ng-controller="AdminSiteSettingsController">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-basic-tab" data-toggle="tab" href="#nav-basic" role="tab" aria-controls="nav-basic" aria-selected="true">
+        School settings
+      </a>
+      <a class="nav-item nav-link" id="nav-branding-tab" data-toggle="tab" href="#nav-branding" role="tab" aria-controls="nav-branding" aria-selected="false">
+        Branding
+      </a>
+      <a class="nav-item nav-link" id="nav-seo-tab" data-toggle="tab" href="#nav-seo" role="tab" aria-controls="nav-seo" aria-selected="false">
+        SEO and Social
+      </a>
+      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">
+        Contact details
+      </a>
+    </div>
+  </nav>
+
+  <div class="tab-content py-5 px-4" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-basic" role="tabpanel" aria-labelledby="nav-basic-tab">
+
+      <%= form_with class: :form do |f| %>
+        <div class="field-unit field-unit--string">
+          <%= render_setting_string_field 'site_name', page,
+                site_settings.find_by(name: "Site name"),
+                { f: f, label: 'School name',
+                  hint: "The full name of your school. This appears on the main website and in student's emails." } %>
+        </div>
+
+        <div class="field-unit field-unit--string">
+          <%= render_setting_string_field 'site_easy_name', page,
+                site_settings.find_by(name: "Site easy name"),
+                { f: f, label: 'School short name',
+                  hint: "The shorter or 'easy' name of your school (e.g. an abbreviation)" } %>
+        </div>
+
+        <div class="field-unit field-unit--string">
+          <%= render_setting_string_field 'site_byline', page,
+                site_settings.find_by(name: "Site byline"),
+                { f: f, label: 'School strapline' } %>
+        </div>
+
+        <div class="field-unit field-unit--tiny-mce-field">
+          <%= render_setting_text_field 'site_blurb', page,
+                site_settings.find_by(name: "Site blurb"),
+                true,
+                { f: f, label: 'School description',
+                  hint: "A brief description that will appear in the footer of every page" } %>
+        </div>
+
+        <div class="form-actions mt-4">
+          <%= hidden_field_tag :section, value: :basic %>
+          <input type="submit" name="commit" value="Save Basic Settings">
+        </div>
+     <% end %>
+    </div>
+
+    <div class="tab-pane fade" id="nav-branding" role="tabpanel" aria-labelledby="nav-branding-tab">
+      <%= form_with class: :form do |f| %>
+        <div class="field-unit field-unit--image-field">
+          <%= render_setting_image_field 'landscape_logo', page,
+                site_images.find_by(slug: "landscape_logo"),
+                :small_landscape,
+                { f: f, label: 'Landscape logo',
+                  hint: "Main logo to appear in the header of your school." } %>
+        </div>
+
+        <div class="field-unit field-unit--image-field">
+          <%= render_setting_image_field 'square_logo', page,
+                site_images.find_by(slug: "square_logo"),
+                :small_square,
+                { f: f, label: 'Square logo',
+                  hint: "This appears in the footer of your school." } %>
+        </div>
+
+        <div class="field-unit field-unit--image-field">
+          <%= render_setting_image_field 'favicon', page,
+                site_images.find_by(slug: "favicon"),
+                :tiny,
+                { f: f, label: 'Favicon',
+                  hint: "This appears in the tab bar of desktop and tablet browsers." } %>
+        </div>
+
+        <div class="field-unit field-unit--string">
+          <%= render_setting_select_field 'theme', page,
+                site_settings.find_by(name: "Theme"),
+                SiteSetting.theme_options,
+                { f: f, label: 'Theme',
+                  hint: "Choose the color scheme for your school" } %>
+        </div>
+
+        <div class="form-actions mt-4">
+          <%= hidden_field_tag :section, value: :branding %>
+          <input type="submit" name="commit" value="Save Branding Settings">
+        </div>
+
+      <% end %>
+    </div>
+
+    <div class="tab-pane fade" id="nav-seo" role="tabpanel" aria-labelledby="nav-seo-tab">
+      <%= form_with class: :form do |f| %>
+        <div class="field-unit field-unit--string">
+          <%= render_setting_string_field 'twitter_username', page,
+                site_settings.find_by(name: "Twitter username"),
+                { f: f, label: 'Twitter username' } %>
+        </div>
+
+        <div class="field-unit field-unit--string">
+          <%= render_setting_string_field 'facebook_page_url', page,
+                site_settings.find_by(name: "Facebook page URL"),
+                { f: f, label: 'Facebook page URL' } %>
+        </div>
+
+        <div class="field-unit field-unit--string">
+          <%= render_setting_string_field 'instagtam_username', page,
+                site_settings.find_by(name: "Instagram username"),
+                { f: f, label: 'Instagram username' } %>
+        </div>
+
+        <div class="field-unit field-unit--string">
+          <%= render_setting_string_field 'youtube_channel_id', page,
+                site_settings.find_by(name: "YouTube channel ID"),
+                { f: f, label: 'YouTube Channel ID',
+                  hint: "You can find this here......." } %>
+        </div>
+
+        <div class="field-unit field-unit--string">
+          <%= render_setting_string_field 'google_analytics_id', page,
+                site_settings.find_by(name: "Google Analytics ID"),
+                { f: f, label: 'Google analytics ID',
+                  hint: "You can find this here......." } %>
+        </div>
+
+        <div class="field-unit field-unit--textarea">
+          <%= render_setting_text_field 'meta_description', page,
+                site_settings.find_by(name: "Meta description"),
+                false,
+                { f: f, label: 'Meta description',
+                  hint: "Make sure to include some important keywords, this is an important field for how your school will appear in search engine results" } %>
+        </div>
+
+        <div class="form-actions mt-4">
+          <%= hidden_field_tag :section, value: :seo %>
+          <input type="submit" name="commit" value="Save SEO and Social Settings">
+        </div>
+      <% end %>
+    </div>
+
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+      <%= form_with class: :form do |f| %>
+        <div class="field-unit field-unit--string">
+          <%= render_setting_email_field 'contact_email', page,
+                site_settings.find_by(name: "Contact email address"),
+                { f: f, label: 'Main email address',
+                  hint: "Your email address to recieve the school form submissions." } %>
+        </div>
+
+        <div class="field-unit field-unit--image-field">
+          <%= render_setting_image_field 'contact', page,
+                site_images.find_by(slug: "contact"),
+                :small_square,
+                { f: f, label: 'Profile image',
+                  hint: "This appears on the contact form for your school." } %>
+        </div>
+
+
+        <div class="form-actions mt-4">
+          <%= hidden_field_tag :section, value: :contact %>
+          <input type="submit" name="commit" value="Save Contact Details">
+        </div>
+      <% end %>
+    </div>
+
+
+
+  </div>
+</section>

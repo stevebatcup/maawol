@@ -1,0 +1,11 @@
+<div class="field-unit__label">
+  <% if defined?(label) %>
+  	<%= f.label label %>
+  <% end %>
+</div>
+<div class="field-unit__field tinymce">
+  <%= f.text_area field.attribute, value: value, class: (use_tinymce ? "tinymce" : ""), rows: 10 %>
+  <% if defined?(hint) %>
+	  <small class="form-text text-muted"><%= hint %></small>
+  <% end %>
+</div>

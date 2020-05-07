@@ -28,4 +28,8 @@ class SiteSetting < ApplicationRecord
 	def self.get_profit_split_percentage
 		find_by(name: "Owner profit split percentage").value.to_i
 	end
+
+	def self.theme_options
+		['light-green','light-blue','light-red','dark-green','dark-blue','dark-red']
+	end
 end

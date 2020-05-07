@@ -14,9 +14,9 @@ $maawol_video_playlist_color: #2b2b2b;
 
 /* Backgrounds / Highlights */
 $maawol_header_bg: #353535;
-$maawol_text_highlight: #3f9247;
+$maawol_text_highlight: #50b159;
 $maawol_navbar_bg: #1e291d;
-$maawol_navbar_selected: #3f9247;
+$maawol_navbar_selected: #50b159;
 $maawol_navbar_hovered: #5f6f61;
 $maawol_footer_bg: #2e352d;
 $maawol_copyright_bg: #1e291d;
@@ -39,7 +39,7 @@ $maawol_checkout_selected_option: #28a745;
 $maawol_checkout_highlighted_option: #4e4e4e;
 $maawol_payment_options_color: #ffffff;
 $maawol_discount_button_color: #ffffff;
-$maawol_discount_button_bg: #3f9247;
+$maawol_discount_button_bg: #50b159;
 $maawol_checkout_input_border_color: #252525;
 
 /* Mobile only */
@@ -54,8 +54,8 @@ header .header-bottom .navbar-default .navbar-nav li a.btn,
 header .header-bottom .navbar-default .navbar-nav li .modal.interstitial#subscriptionInterstitialModal .modal-body .inner a#green_subscribe,
 .modal.interstitial#subscriptionInterstitialModal .modal-body .inner header .header-bottom .navbar-default .navbar-nav li a#green_subscribe,
 .btn-success {
-	color: #88ab8b !important;
-	border-color: #88ab8b !important;
+	color: #57985d !important;
+	border-color: #76ce7f !important;
 	font-weight: 800;
 	background-color: #ffffff !important;
 }

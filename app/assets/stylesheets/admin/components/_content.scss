@@ -9,33 +9,6 @@
 		margin-left: 0;
 	}
 
-	header#top_header {
-		color: #fff;
-		width: 100%;
-		background-color: $maawol_admin_bg;
-
-		h2 {
-			font-size: 1.2em;
-		}
-
-		a {
-			color: #ffffff;
-
-			&#side_menu_toggle {
-				font-size: 1.3em;
-				line-height: 1em;
-				position: relative;
-				top: 2px;
-			}
-		}
-
-		.top_links {
-			a {
-				font-size: 0.9em;
-			}
-		}
-	}
-
 	.main-content__body {
 		padding: 1rem 1.5rem;
 		background-color: #ffffff;
