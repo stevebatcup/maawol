@@ -14,3 +14,25 @@
 @import "mobile/pages/contact";
 @import "mobile/pages/settings";
 @import "mobile/pages/auth";
+
+@media screen and (orientation: landscape) {
+  html {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}
+
+@media screen and (min-width: 576px) {
+	.container {
+		max-width: unset;
+	}
+
+	#yield_wrapper {
+		padding-top: 2.9em;
+	}
+}

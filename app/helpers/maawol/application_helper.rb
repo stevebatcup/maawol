@@ -59,6 +59,8 @@ module Maawol
 		def nav_item_is_current_request(nav_item)
 			if nav_item.url == "/"
 				request.path == "/"
+			elsif nav_item.url == "/lessons"
+				params[:action] == 'show'
 			else
 				request.path.include?(nav_item.url)
 			end

@@ -12,8 +12,7 @@ module ContentManagement
 		end
 
 		def sorted_navbar_items_for_device_type(type=:mobile)
-			navbar_items.where("#{type}": true)
-				.order(sort: :asc)
+			navbar_items.where("#{type}": true).order(sort: :asc)
 		end
 
 		def cannot_have_too_many_items_on_desktop

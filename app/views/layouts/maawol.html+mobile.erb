@@ -8,7 +8,7 @@
   <% default_meta_description = site_setting('Meta description').present? ? site_setting('Meta description') : site_setting('Site name') %>
   <meta name="description" content="<%= yield_meta_tag(:description, default_meta_description) %>" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
   <%= csrf_meta_tags %>
 
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
