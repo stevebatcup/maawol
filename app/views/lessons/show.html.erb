@@ -1,5 +1,7 @@
 <% html_title @lesson.name %>
-<% meta_tag :description, @lesson.content_excerpt.truncate(160) %>
+<% if @lesson.content.length %>
+  <% meta_tag :description, @lesson.content_excerpt.truncate(160) %>
+<% end %>
 
 <%= render(partial: 'subscribe_callout') if show_subscription_interstitial? %>
 
@@ -90,28 +92,31 @@
 
         <div class="clearfix"></div>
 
+        <% if @lesson.content.length > 0 %>
         <!-- Text content -->
-        <div id="text_content">
-          <div class="d-flex">
-            <div id="author" class="w-15 mr-3 mt-0 mb-2">
-              <%= image_tag @lesson.author.avatar.url(:thumbnail), alt: @lesson.author.name, class: 'rounded-circle w-100' %>
+          <div id="text_content">
+            <div class="d-flex">
+              <div id="author" class="w-15 mr-3 mt-0 mb-2">
+                <%= image_tag @lesson.author.avatar.url(:thumbnail), alt: @lesson.author.name, class: 'rounded-circle w-100' %>
+              </div>
+              <div class="ml-1 w-85">
+                  <% if @lesson.content_with_omitted_excerpt.length > 0 %>
+                    <p id="excerpt"><%= @lesson.content_excerpt %></p>
+                  <% else %>
+                    <p id="excerpt" class="full"><%= @lesson.content_excerpt %></p>
+                  <% end %>
+              </div>
             </div>
-            <div class="ml-1 w-85">
-              <%#= @lesson.stripped_empty_content.html_safe %>
-              <% if @lesson.content_with_omitted_excerpt.length > 0 %>
-                <p id="excerpt"><%= @lesson.content_excerpt %></p>
-              <% else %>
-                <p id="excerpt" class="full"><%= @lesson.content_excerpt %></p>
+
+            <div class="mt-1">
+              <% if @lesson.content.length > 0 %>
+                <% if @lesson.content_with_omitted_excerpt.length > 0 %>
+                  <%= @lesson.content_with_omitted_excerpt.html_safe %>
+                <% end %>
               <% end %>
             </div>
           </div>
-
-          <div class="mt-1">
-            <% if @lesson.content_with_omitted_excerpt.length > 0 %>
-              <%= @lesson.content_with_omitted_excerpt.html_safe %>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
       </div>
 
       <div class="clearfix"></div>

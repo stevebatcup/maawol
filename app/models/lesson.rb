@@ -17,7 +17,7 @@ class Lesson < ApplicationRecord
   validates_presence_of :name
   before_save :set_slug
   before_save :set_access_level
-  after_save  :migrate_file_from_tmp_upload, if: -> { self.tmp_media_id.present? }
+  after_save  :migrate_file_from_tmp_upload, if: -> { self.thumbnail_tmp_media_id.present? }
 
   enum  access_level: [:global, :users]
 

@@ -12,8 +12,15 @@ window.App = angular.module(moduleName, ['rails',
   'Maawol.factories',
   'Maawol.filters',
   'Maawol.controllers'
-]);
-window.App.run(function ($rootScope) { $rootScope._ = _; });
+]).config(function(cookiesProvider) {
+  cookiesProvider.useDefaults({
+    path: '/admin',
+    maxAge: 24*60*60
+  });
+});
+window.App.run(function ($rootScope) {
+  $rootScope._ = _;
+});
 $(document).on('ready page:load', function() {
   $('[ng-controller]').each(function(index, root) {
     if (!$(root).hasClass('ng-scope')) {

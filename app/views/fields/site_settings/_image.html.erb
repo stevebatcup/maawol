@@ -1,15 +1,13 @@
 <div class="field-unit__label">
   <%= f.label label %>
 </div>
-<div class="field-unit__field with_uploader image">
-  <%= f.hidden_field "#{field.attribute}_tmp_media_id" %>
+<div class="field-unit__field with_uploader image" id="dropzone_<%= field.attribute %>">
+  <%= f.hidden_field "#{field.attribute}_tmp_media_id", id: "site_setting_#{field.attribute}_tmp_media_id" %>
+
   <% src = field.data.send(size).url %>
-	<%= image_tag(src, class: "ml2e mb-2 #{size}", id: "#{field.attribute}_preview") %>
-  <br />
-  <%= render partial: 'upload_template', locals: {
-  						btn_label_action: 'Replace',
-  						btn_label_resource_type: field.attribute.humanize
-  					} %>
+	<%= image_tag(src, class: "player_target ml2e mb-2 #{size}") %>
+
+  <%= render partial: 'upload_template', locals: { resource_class: field.attribute } %>
 
   <div class='hint ml-4 pl-0'>
   	<ul>

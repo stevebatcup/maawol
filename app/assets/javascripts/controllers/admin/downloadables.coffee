@@ -17,7 +17,7 @@ class Maawol.AdminDownloadablesController extends Maawol.AdminPage
 		@initSelectize()
 		@bindEvents()
 		if $('.field-unit__field.document').length > 0
-			@initializeUploader 'downloadable', 'document', 'file_link'
+			@initializeUploader 'downloadable', 'file', 'document'
 
 	bindEvents: ->
 

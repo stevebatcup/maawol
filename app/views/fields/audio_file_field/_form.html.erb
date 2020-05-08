@@ -1,22 +1,18 @@
 <div class="field-unit__label">
   <%= f.label field.attribute %>
 </div>
-<div class="field-unit__field audio with_uploader">
-  <%= f.hidden_field "tmp_media_id" %>
+<div class="field-unit__field audio with_uploader" id="dropzone_<%= field.attribute %>">
+  <%= f.hidden_field field.resource.tmp_media_attribute %>
   <%= audio_tag(field.file&.url || '',
-  					id: 'player',
   					controls: true,
-            class: 'ml2e',
+            class: 'player_target ml2e',
   					style: "#{field.file.nil? ? 'display: none' : ''}"
       )
   %>
 
   <br />
 
-  <%= render partial: 'upload_template', locals: {
-              btn_label_action: field.file.nil? ? 'Upload' : 'Replace',
-              btn_label_resource_type: 'file'
-      } %>
+  <%= render partial: 'upload_template', locals: { resource_class: field.attribute } %>
 
   <div class='hint ml-4 pl-0'>
   	<ul>

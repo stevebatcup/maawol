@@ -18,7 +18,7 @@ class Maawol.AdminCoursesController extends Maawol.AdminPage
 		@initTinyMce()
 		@bindEvents()
 		if $('.field-unit__field.image').length > 0
-			@initializeUploader 'course', 'image', 'image_preview'
+			@initializeUploader 'course', 'image', 'image'
 
 	bindEvents: ->
 

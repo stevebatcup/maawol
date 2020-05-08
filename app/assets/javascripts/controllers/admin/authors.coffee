@@ -17,7 +17,7 @@ class Maawol.AdminAuthorsController extends Maawol.AdminPage
 		@initSelectize()
 		@bindEvents()
 		if $('.field-unit__field.image').length > 0
-			@initializeUploader 'author', 'image', 'image_preview'
+			@initializeUploader 'author', 'avatar', 'image'
 
 	bindEvents: ->
 

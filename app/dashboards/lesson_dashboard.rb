@@ -9,7 +9,7 @@ class LessonDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     name: Field::String,
-    human_access_level: NonEditableStringField,
+    human_access_level: NonEditableStringField.with_options( searchable: false ),
     videos: AttachableField,
     audio_files: AttachableField,
     downloadables: AttachableField,
@@ -84,7 +84,7 @@ class LessonDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    [ :id, :name, :tmp_media_id, :author_id, :publish_date, :content,
+    [ :id, :name, :thumbnail_tmp_media_id, :author_id, :publish_date, :content,
           :course_only, :is_free, video_ids: [],
           audio_file_ids: [], downloadable_ids: [], tag_ids: [],
           category_ids: [], playlist_ids: [], user_ids: [] ]

@@ -8,9 +8,43 @@
 		}
 	}
 
+	.with_uploader.image {
+		img {
+			border: 1px solid #676767;
+			border-radius: 3px;
+			background: #fff;
+			padding: 8px;
+			box-shadow: 2px 2px 1px #ccc;
+
+			&.small_square {
+				width: 140px;
+			}
+
+			&.author.avatar {
+				width: 140px;
+			}
+
+			&.course.image {
+				width: 200px;
+			}
+
+			&.lesson.thumbnail {
+				width: 200px;
+			}
+
+			&.small_landscape {
+				width: 170px;
+			}
+
+			&.tiny {
+				width: 42px;
+			}
+		}
+	}
+
 	&.video_field {
 		iframe,
-		video#player {
+		video.player_target {
 			max-width: 25vw;
 		}
 	}

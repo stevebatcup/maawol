@@ -53,6 +53,6 @@ class VideoDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    [ :id, :name, :tmp_media_id, :duration_in_seconds ]
+    [ :id, :name, :tmp_video_file_tmp_media_id, :duration_in_seconds ]
   end
 end

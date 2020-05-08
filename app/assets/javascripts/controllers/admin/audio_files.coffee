@@ -17,7 +17,7 @@ class Maawol.AdminAudioFilesController extends Maawol.AdminPage
 		@initSelectize()
 		@bindEvents()
 		if $('.field-unit__field.audio').length > 0
-			@initializeUploader 'audio_file', 'audio_file', 'player'
+			@initializeUploader 'audio_file', 'file', 'audio_file'
 
 	bindEvents: ->
 

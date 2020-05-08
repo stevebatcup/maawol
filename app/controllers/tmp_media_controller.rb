@@ -6,6 +6,7 @@ class TmpMediaController < ApplicationController
 			@media = TmpMedium.new(
 				file_type: params[:file_type],
 				resource_class: params[:resource_class],
+				resource_attribute: params[:resource_attribute],
 				media_file: params[:file]
 			)
 			if @media.save!

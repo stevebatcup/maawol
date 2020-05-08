@@ -55,6 +55,6 @@ class DownloadableDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    [ :id, :name, :tmp_media_id, :author_id ]
+    [ :id, :name, :file_tmp_media_id, :image_tmp_media_id, :author_id ]
   end
 end

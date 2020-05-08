@@ -24,7 +24,7 @@ class Maawol.AdminHeaderBarController extends Maawol.AdminPage
 		$('.app-container').toggleClass('nav_hidden')
 		@timeout =>
 			status = if $('.app-container').hasClass('nav_hidden') then 1 else 0
-			@cookies.set('sidenav_closed', status)
+			@cookies.set('sidenav_closed', status, { path: "/admin" })
 
 
 Maawol.ControllerModule.controller('AdminHeaderBarController', Maawol.AdminHeaderBarController)

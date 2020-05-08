@@ -1,9 +1,9 @@
 <div class="field-unit__label">
   <%= f.label field.attribute %>
 </div>
-<div class="field-unit__field with_uploader video_field">
+<div class="field-unit__field with_uploader video_field" id="dropzone_<%= field.attribute %>">
   <%= f.hidden_field "duration_in_seconds" %>
-  <%= f.hidden_field "tmp_media_id" %>
+  <%= f.hidden_field field.resource.tmp_media_attribute %>
 	<div class="ml2e">
 		<% if field.vimeo_data.present? %>
 			<%= field.vimeo_data["html"].html_safe %>
@@ -11,18 +11,14 @@
 	</div>
 
 	<%= video_tag('',
-						id: 'player',
 						controls: true,
-	          class: 'ml2e',
+	          class: 'player_target ml2e',
 						style: "display: none"
 	    )
 	%>
 
   <br />
-  <%= render partial: 'upload_template', locals: {
-  						btn_label_action: field.vimeo_data.nil? ? 'Upload' : 'Replace',
-  						btn_label_resource_type: 'video'
-  					} %>
+  <%= render partial: 'upload_template', locals: { resource_class: field.attribute } %>
 
   <div class='hint ml-4 pl-0'>
   	<ul>

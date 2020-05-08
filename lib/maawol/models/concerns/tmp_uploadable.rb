@@ -5,10 +5,18 @@ module Maawol
 				extend ActiveSupport::Concern
 
 			  def migrate_file_from_tmp_upload
-			  	self.send("#{self.field_for_upload}=", File.new(uploaded_file_uri))
-			  	self.tmp_media_id = nil
+			  	self.send(file_attribute_setter, File.new(uploaded_file_uri))
+			  	self[tmp_media_attribute] = nil
 			  	self.save!
 			  	associated_tmp_medium.destroy
+			  end
+
+			  def file_attribute_setter
+			  	"#{field_for_upload}=".to_sym
+			  end
+
+			  def tmp_media_attribute
+			  	"#{field_for_upload}_tmp_media_id".to_sym
 			  end
 
 			  def uploaded_file_uri
@@ -20,7 +28,7 @@ module Maawol
 			  end
 
 			  def associated_tmp_medium
-			  	@associated_tmp_medium ||= TmpMedium.find(self.tmp_media_id)
+			  	@associated_tmp_medium ||= TmpMedium.find(self[tmp_media_attribute])
 			  end
 			end
 		end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_093429) do
+ActiveRecord::Schema.define(version: 2020_05_08_071333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_093429) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "token"
-    t.integer "tmp_media_id"
+    t.integer "file_tmp_media_id"
   end
 
   create_table "audio_files_lessons", id: false, force: :cascade do |t|
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_093429) do
     t.datetime "updated_at", null: false
     t.string "referral_token"
     t.integer "subscription_fee_split"
-    t.integer "tmp_media_id"
+    t.integer "avatar_tmp_media_id"
   end
 
   create_table "basket_items", force: :cascade do |t|
@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_093429) do
     t.datetime "publish_date"
     t.integer "include_in_menu", default: 0
     t.integer "author_id", default: 1
-    t.integer "tmp_media_id"
+    t.integer "image_tmp_media_id"
   end
 
   create_table "courses_skill_levels", id: false, force: :cascade do |t|
@@ -227,7 +227,8 @@ ActiveRecord::Schema.define(version: 2020_05_05_093429) do
     t.string "image"
     t.string "token"
     t.integer "author_id", default: 1
-    t.integer "tmp_media_id"
+    t.integer "file_tmp_media_id"
+    t.integer "image_tmp_media_id"
   end
 
   create_table "downloadables_lessons", id: false, force: :cascade do |t|
@@ -274,7 +275,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_093429) do
     t.integer "author_id", default: 1
     t.integer "access_level", default: 0
     t.string "thumbnail"
-    t.integer "tmp_media_id"
+    t.integer "thumbnail_tmp_media_id"
     t.index ["publish_date"], name: "index_lessons_on_publish_date"
     t.index ["slug"], name: "index_lessons_on_slug"
   end
@@ -439,6 +440,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_093429) do
     t.string "resource_class"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "resource_attribute"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
@@ -457,7 +459,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_093429) do
     t.string "remember_token", limit: 128
     t.string "encrypted_password"
     t.integer "author_id"
-    t.integer "tmp_media_id"
+    t.integer "avatar_tmp_media_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
@@ -503,7 +505,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_093429) do
     t.string "vimeo_id"
     t.integer "status"
     t.string "tmp_video_file"
-    t.integer "tmp_media_id"
+    t.integer "tmp_video_file_tmp_media_id"
     t.integer "duration_in_seconds"
   end
 

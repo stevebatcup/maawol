@@ -10,7 +10,7 @@ class Video < ApplicationRecord
   validate  :tmp_video_file_type, on: [:create, :update], if: -> { tmp_video_file.file.present? }
 
   before_save :set_status
-  after_save :perform_upload_to_vimeo_job, if: -> { self.tmp_media_id.present? }
+  after_save :perform_upload_to_vimeo_job, if: -> { self.tmp_video_file_tmp_media_id.present? }
   after_destroy :delete_from_vimeo
 
   enum  status: [:no_video, :pending, :uploaded]

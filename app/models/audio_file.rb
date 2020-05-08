@@ -10,7 +10,7 @@ class AudioFile < ApplicationRecord
 	validates_presence_of :name, :author_id
 
   before_save :set_token
-  after_save	:migrate_file_from_tmp_upload, if: -> { self.tmp_media_id.present? }
+  after_save	:migrate_file_from_tmp_upload, if: -> { self.file_tmp_media_id.present? }
 
 	def field_for_upload
 		:file

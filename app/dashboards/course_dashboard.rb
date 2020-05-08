@@ -67,6 +67,6 @@ class CourseDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    [ :id, :tmp_media_id, :name, :author_id, :image, :description, :publish_date, skill_level_ids: [], tag_ids: [], teachings_attributes: [:id, :lesson_id, :sort, :description, :_destroy ] ]
+    [ :id, :image_tmp_media_id, :name, :author_id, :image, :description, :publish_date, skill_level_ids: [], tag_ids: [], teachings_attributes: [:id, :lesson_id, :sort, :description, :_destroy ] ]
   end
 end

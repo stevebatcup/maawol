@@ -45,18 +45,16 @@ as well as a link to its edit page.
       <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
           ><%= render_field attribute, page: page %></dd>
     <% end %>
-
-    <dt class="pt-4 attribute-label"></dt>
-    <dd class="pt-4">
-      <% default_name = display_resource_name(page.resource_name) %>
-      <% name_for_btn = t("helpers.label.#{page.resource_name.downcase}.resource_name_overrides.multiple", default: default_name) %>
-      <%= link_to(
-          "View all #{name_for_btn}",
-          [namespace, resource_index_route_key(page.resource_name)],
-          class: "button"
-        )  %>
-    </dd>
   </dl>
 
+  <div class="form-actions mt-5">
+    <% default_name = display_resource_name(page.resource_name) %>
+    <% name_for_btn = t("helpers.label.#{page.resource_name.downcase}.resource_name_overrides.multiple", default: default_name) %>
+    <%= link_to(
+        "View all #{name_for_btn}",
+        [namespace, resource_index_route_key(page.resource_name)],
+        class: "button"
+      )  %>
+  </div>
 
 </section>

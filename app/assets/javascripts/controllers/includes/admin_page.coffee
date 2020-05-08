@@ -35,33 +35,35 @@ class Maawol.AdminPage extends Maawol.Page
 				"alignleft aligncenter alignright alignjustify | undo redo | formatselect"
 			]
 
-	deleteUploadedFileError: (msg, $field) =>
-		@scope.fileUpload.deleteErrorMsg = msg
-		$field.find(".add_file").fadeIn('fast')
+	deleteUploadedFileError: (msg, $wrapper, resourceAttribute) =>
+		@scope.fileUpload[resourceAttribute].deleteErrorMsg = msg
+		$wrapper.find(".add_file").fadeIn('fast')
 
-	initializeUploader: (resource_class, file_type, displayElementId) =>
-		@scope.fileUpload = { tmpId: null, deleteErrorMsg: null }
-		$displayElement = $("##{displayElementId}")
-		$field = $displayElement.closest('.field-unit__field')
-		previewNode = document.querySelector("#template")
+	initializeUploader: (resourceClass, resourceAttribute, fileType) =>
+		@scope.fileUpload ||= {}
+		@scope.fileUpload[resourceAttribute] = { tmpId: null, deleteErrorMsg: null }
+		boxID = "#dropzone_#{resourceAttribute}"
+		$wrapper = $(boxID)
+		$displayElement = $("#{boxID} .player_target")
+		previewNode = document.querySelector("#{boxID} .template")
 		previewNode.id = ""
 		previewTemplate = previewNode.parentNode.innerHTML
 		previewNode.parentNode.removeChild(previewNode)
 
-		fileDropzone = new Dropzone document.body,
-		  url: "/tmp-media?file_type=#{file_type}&resource_class=#{resource_class}"
+		fileDropzone = new Dropzone boxID,
+		  url: "/tmp-media?file_type=#{fileType}&resource_class=#{resourceClass}&resource_attribute=#{resourceAttribute}"
 		  thumbnailWidth: 80
 		  thumbnailHeight: 80
 		  parallelUploads: 1
 		  previewTemplate: previewTemplate
 		  autoQueue: true
-		  previewsContainer: "#previews"
-		  clickable: ".add_file"
+		  previewsContainer: "#{boxID} .previews"
+		  clickable: "#{boxID} .add_file"
 
 		fileDropzone.on "addedfile", (file) =>
 			$('[name=commit]').attr('disabled', true)
 			$('iframe', '.video_field').hide()
-			$(".add_file", $field).find('span.action').text('Replace').end().fadeOut('fast')
+			$(".add_file", $wrapper).fadeOut('fast')
 			$(document).on 'click', ".start_upload", (e) =>
 				e.preventDefault()
 				fileDropzone.enqueueFile(file)
@@ -71,35 +73,35 @@ class Maawol.AdminPage extends Maawol.Page
 
 		fileDropzone.on "success", (file, response) =>
 			if response.status is 'success'
-				@scope.fileUpload.tmpId = response.media.id
-				$("input##{resource_class}_tmp_media_id").val(@scope.fileUpload.tmpId)
-				if file_type is 'document'
+				@scope.fileUpload[resourceAttribute].tmpId = response.media.id
+				$("input##{resourceClass}_#{resourceAttribute}_tmp_media_id").val(@scope.fileUpload[resourceAttribute].tmpId)
+				if fileType is 'document'
 					$displayElement.attr('href', response.media.url).fadeIn('fast')
-				else if file_type is 'video'
+				else if fileType is 'video'
 					$displayElement.attr('src', response.media.url).fadeIn 'fast', =>
-						videoDuration = Math.round(document.getElementById(displayElementId).duration)
+						videoDuration = Math.round(document.querySelector("#{boxID} .player_target").duration)
 						$("input#video_duration_in_seconds").val videoDuration
 				else
 					$displayElement.attr('src', response.media.url).fadeIn('fast')
 			else
-				$('[data-dz-errormessage]', $field).text response.error
+				$('[data-dz-errormessage]', $wrapper).text response.error
 
 		fileDropzone.on "removedfile", (file, response) =>
-			if @scope.fileUpload.tmpId?
-				@http.delete("/tmp-media/#{@scope.fileUpload.tmpId}").then (response) =>
+			if @scope.fileUpload[resourceAttribute].tmpId?
+				@http.delete("/tmp-media/#{@scope.fileUpload[resourceAttribute].tmpId}").then (response) =>
 					@timeout =>
 						if response.data.status is 'success'
-							@scope.fileUpload.tmpId = null
-							$("input##{resource_class}_tmp_media_id").val ''
-							if file_type is 'document'
+							@scope.fileUpload[resourceAttribute].tmpId = null
+							$("input##{resourceClass}_#{resourceAttribute}_tmp_media_id").val ''
+							if fileType is 'document'
 								$displayElement.attr('href', '').fadeOut('fast')
 							else
 								$displayElement.attr('src', '').fadeOut('fast')
-							$field.find(".add_file").find('span.action').text('Upload').end().fadeIn('fast')
+							$wrapper.find(".add_file").fadeIn('fast')
 						else
-							@deleteUploadedFileError(response.data.error, $field)
+							@deleteUploadedFileError(response.data.error, $wrapper, resourceAttribute)
 					, 150
 				, (error) =>
-					@deleteUploadedFileError(error.statusText, $field)
+					@deleteUploadedFileError(error.statusText, $wrapper, resourceAttribute)
 			else
-				$field.find(".add_file").fadeIn('fast')
+				$wrapper.find(".add_file").fadeIn('fast')

@@ -51,15 +51,13 @@ as well as a link to its edit page.
       <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
           ><%= render_field attribute %></dd>
     <% end %>
-
-    <dt class="pt-4 attribute-label"></dt>
-    <dd class="pt-4">
-      <%= link_to(
-          "View all lessons",
-          [namespace, resource_index_route_key(page.resource_name)],
-          class: "button"
-        )  %>
-    </dd>
-
   </dl>
+
+  <div class="form-actions mt-5">
+    <%= link_to(
+        "View all lessons",
+        [namespace, resource_index_route_key(page.resource_name)],
+        class: "button"
+      )  %>
+  </div>
 </section>

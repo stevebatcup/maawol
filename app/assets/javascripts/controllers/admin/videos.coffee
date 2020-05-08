@@ -17,7 +17,7 @@ class Maawol.AdminVideosController extends Maawol.AdminPage
 		@initSelectize()
 		@bindEvents()
 		if $('.field-unit__field.video_field').length > 0
-			@initializeUploader 'video', 'video', 'player'
+			@initializeUploader 'video', 'tmp_video_file', 'video'
 
 	bindEvents: ->
 

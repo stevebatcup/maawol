@@ -1,10 +1,12 @@
-<a class="button add_file text-white ml2e <%= btn_label_resource_type %>">
-	<i class="fas fa-upload"></i>
-	<span class='action'><%= btn_label_action %></span>&nbsp<span><%= btn_label_resource_type %>
+<a class="button add_file text-white ml2e pt-2 px-2 btn-danger">
+	<small>
+    <i class="fas fa-upload mr-1"></i>
+  	<span class='action'>Choose file</span>
+  </small>
 </a>
 
-<div class="file_uploads mt-3 ml2e" id="previews">
-  <div id="template" class="file-row">
+<div class="file_uploads mt-3 ml2e previews">
+  <div class="template file-row">
     <div id="filename">
         <p class="name" data-dz-name></p>
         <strong class="error text-danger" data-dz-errormessage></strong>
@@ -28,4 +30,6 @@
   </div>
 </div>
 
-<p class="ml2e error text-danger" ng-hide="!fileUpload.deleteErrorMsg" ng-cloak>{{fileUpload.deleteErrorMsg}}</p>
+<p class="ml2e error text-danger" ng-hide="!fileUpload.<%= resource_class %>.deleteErrorMsg" ng-cloak>
+  {{fileUpload.<%= resource_class %>.deleteErrorMsg}}
+</p>

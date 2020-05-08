@@ -1,19 +1,17 @@
 <div class="field-unit__label">
   <%= f.label field.attribute %>
 </div>
-<div class="field-unit__field with_uploader image">
-  <%= f.hidden_field "tmp_media_id" %>
+<div class="field-unit__field with_uploader image" id="dropzone_<%= field.attribute %>">
+  <%= f.hidden_field "#{field.resource.tmp_media_attribute}" %>
+
 	<%= image_tag((field.small&.url || ''),
-								class: 'ml2e mb-2',
-								style: "width: 200px; #{field.small.nil? ? 'display: none' : ''}",
-								id: 'image_preview'
-			) %>
+								class: "player_target ml2e mb-2 #{field.attribute} #{field.resource.class.to_s.downcase}",
+								style: "#{field.small.nil? ? 'display: none' : ''}"
+        			) %>
 
   <br />
-  <%= render partial: 'upload_template', locals: {
-  						btn_label_action: field.small.nil? ? 'Upload' : 'Replace',
-  						btn_label_resource_type: 'image'
-  					} %>
+
+  <%= render partial: 'upload_template', locals: { resource_class: field.attribute } %>
 
   <div class='hint ml-4 pl-0'>
   	<ul>

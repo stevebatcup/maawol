@@ -47,6 +47,6 @@ class AuthorDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    [ :id, :name, :tmp_media_id, :subscription_fee_split ]
+    [ :id, :name, :avatar_tmp_media_id, :subscription_fee_split ]
   end
 end
