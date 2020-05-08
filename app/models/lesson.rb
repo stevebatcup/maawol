@@ -23,8 +23,8 @@ class Lesson < ApplicationRecord
 
   mount_uploader :thumbnail, LessonThumbnailUploader
 
-  def field_for_upload
-    :thumbnail
+  def fields_for_upload
+    [:thumbnail]
   end
 
   def self.table_name

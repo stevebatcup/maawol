@@ -3,7 +3,7 @@
 </div>
 <div class="field-unit__field with_uploader video_field" id="dropzone_<%= field.attribute %>">
   <%= f.hidden_field "duration_in_seconds" %>
-  <%= f.hidden_field field.resource.tmp_media_attribute %>
+  <%= f.hidden_field field.resource.tmp_media_attribute(field.attribute) %>
 	<div class="ml2e">
 		<% if field.vimeo_data.present? %>
 			<%= field.vimeo_data["html"].html_safe %>

@@ -2,7 +2,7 @@
   <%= f.label field.attribute %>
 </div>
 <div class="field-unit__field with_uploader image" id="dropzone_<%= field.attribute %>">
-  <%= f.hidden_field "#{field.resource.tmp_media_attribute}" %>
+  <%= f.hidden_field field.resource.tmp_media_attribute(field.attribute) %>
 
 	<%= image_tag((field.small&.url || ''),
 								class: "player_target ml2e mb-2 #{field.attribute} #{field.resource.class.to_s.downcase}",

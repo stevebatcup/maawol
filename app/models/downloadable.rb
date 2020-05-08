@@ -3,14 +3,14 @@ class Downloadable < ApplicationRecord
   include Maawol::Models::Concerns::TmpUploadable
 
   mount_uploader :file, DownloadableFileUploader
-  # mount_uploader :image, DownloadableImageUploader
+  mount_uploader :image, DownloadableImageUploader
   belongs_to  :author
 
   before_save :set_token
-  after_save  :migrate_file_from_tmp_upload, if: -> { self.file_tmp_media_id.present? }
+  after_save  :migrate_file_from_tmp_upload, if: -> { self.file_tmp_media_id.present? || self.image_tmp_media_id.present? }
 
-  def field_for_upload
-    :file
+  def fields_for_upload
+    [:file, :image]
   end
 
   def full_path

@@ -15,8 +15,8 @@ class Video < ApplicationRecord
 
   enum  status: [:no_video, :pending, :uploaded]
 
-  def field_for_upload
-    :tmp_video_file
+  def fields_for_upload
+    [:tmp_video_file]
   end
 
   def self.valid_extension?(filename)

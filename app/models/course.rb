@@ -16,8 +16,8 @@ class Course < ApplicationRecord
 
   after_save  :migrate_file_from_tmp_upload, if: -> { self.image_tmp_media_id.present? }
 
-  def field_for_upload
-    :image
+  def fields_for_upload
+    [:image]
   end
 
   def snippet(count=250)

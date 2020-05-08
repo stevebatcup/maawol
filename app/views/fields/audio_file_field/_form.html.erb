@@ -2,7 +2,7 @@
   <%= f.label field.attribute %>
 </div>
 <div class="field-unit__field audio with_uploader" id="dropzone_<%= field.attribute %>">
-  <%= f.hidden_field field.resource.tmp_media_attribute %>
+  <%= f.hidden_field field.resource.tmp_media_attribute(field.attribute) %>
   <%= audio_tag(field.file&.url || '',
   					controls: true,
             class: 'player_target ml2e',

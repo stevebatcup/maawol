@@ -8,7 +8,7 @@
 		}
 	}
 
-	.with_uploader.image {
+	&.with_uploader.image {
 		img {
 			border: 1px solid #676767;
 			border-radius: 3px;
@@ -17,15 +17,15 @@
 			box-shadow: 2px 2px 1px #ccc;
 
 			&.small_square {
-				width: 140px;
+				width: 170px;
 			}
 
 			&.author.avatar {
-				width: 140px;
+				width: 170px;
 			}
 
 			&.course.image {
-				width: 200px;
+				width: 250px;
 			}
 
 			&.lesson.thumbnail {
@@ -34,6 +34,10 @@
 
 			&.small_landscape {
 				width: 170px;
+			}
+
+			&.downloadable.image {
+				width: 200px;
 			}
 
 			&.tiny {

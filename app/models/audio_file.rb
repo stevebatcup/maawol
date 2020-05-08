@@ -12,8 +12,8 @@ class AudioFile < ApplicationRecord
   before_save :set_token
   after_save	:migrate_file_from_tmp_upload, if: -> { self.file_tmp_media_id.present? }
 
-	def field_for_upload
-		:file
+	def fields_for_upload
+		[:file]
 	end
 
   def id_for_admin_selector

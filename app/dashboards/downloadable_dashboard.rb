@@ -11,6 +11,7 @@ class DownloadableDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     file: DownloadableField,
+    image: ImageField,
     author: Field::BelongsTo.with_options(scope: -> { Author.order(id: :asc) }),
     full_url: Field::String,
     basket_url: Field::String,
@@ -33,6 +34,7 @@ class DownloadableDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :name,
     :file,
+    :image,
     :author,
     :full_url,
     :basket_url
@@ -44,6 +46,7 @@ class DownloadableDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :file,
+    :image,
     :author,
   ].freeze
 
@@ -55,6 +58,6 @@ class DownloadableDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    [ :id, :name, :file_tmp_media_id, :image_tmp_media_id, :author_id ]
+    [ :id, :name, :image_tmp_media_id, :file_tmp_media_id, :author_id ]
   end
 end

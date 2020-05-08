@@ -11,8 +11,8 @@ class Author < ApplicationRecord
 	before_save	:set_referral_token
   after_save	:migrate_file_from_tmp_upload, if: -> { self.avatar_tmp_media_id.present? }
 
-	def field_for_upload
-		:avatar
+	def fields_for_upload
+		[:avatar]
 	end
 
 	def set_referral_token

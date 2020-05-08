@@ -23,4 +23,12 @@ class TmpMedium < ApplicationRecord
 			url[uploads_str_pos..-1]
 		end
 	end
+
+  def uploaded_file_url
+  	if Rails.env.development?
+	  	File.join(Rails.root, '/public' + self.media_file.url)
+	  else
+	  	self.media_file.url
+	  end
+  end
 end
