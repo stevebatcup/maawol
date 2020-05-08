@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    maawol (0.2.25)
+    maawol (0.2.26)
       acts_as_commentable_with_threading
       acts_as_shopping_cart (~> 0.4.0)
       administrate (~> 0.13)
