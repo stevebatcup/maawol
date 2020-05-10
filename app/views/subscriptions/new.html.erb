@@ -22,7 +22,7 @@
     data-daily-calculation-text="<%= t('views.subscription.summary.daily_calculation', currency_symbol: Maawol::Config.currency_symbol) %>">
 
     <flash-message></flash-message>
-    <h2 class="section-title">Subscribe to <%= site_setting("Site name") %></h2>
+    <h2 class="section-title">Subscribe to <%= school_setting("site-name") %></h2>
 
     <% if notice %>
       <p class="container alert alert-success"><%= notice %></p>

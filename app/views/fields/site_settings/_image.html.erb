@@ -2,18 +2,24 @@
   <%= f.label label %>
 </div>
 <div class="field-unit__field with_uploader image" id="dropzone_<%= field.attribute %>">
-  <%= f.hidden_field "#{field.attribute}_tmp_media_id", id: "site_setting_#{field.attribute}_tmp_media_id" %>
+  <% if field.resource.image_tmp_media_id.nil? %>
+    <div id="site_setting_image_<%=field.attribute %>">
+      <%= f.hidden_field "#{field.attribute}-tmp-media-id", id: "site_setting_#{field.attribute}_tmp_media_id" %>
 
-  <% src = field.data.send(size).url %>
-	<%= image_tag(src, class: "player_target ml2e mb-2 #{size}") %>
+      <% src = field.data.send(size).url %>
+    	<%= image_tag(src, class: "player_target ml2e mb-2 #{size}") %>
 
-  <%= render partial: 'upload_template', locals: { resource_class: field.attribute } %>
+      <%= render partial: 'upload_template', locals: { resource_class: field.attribute } %>
 
-  <div class='hint ml-4 pl-0'>
-  	<ul>
-	  	<%= "<li>#{hint}</li>".html_safe if defined?(hint) %>
-	  	<li><%= t('administrate.hints.copyright') %></li>
-	  	<li><%= t('administrate.hints.file_types_prefix') %> <b>.jpg</b>, <b>.jpeg</b>, <b>.gif</b> and <b>.png</b></li>
-	  </ul>
-  </div>
+      <div class='hint ml-4 pl-0'>
+      	<ul>
+    	  	<%= "<li>#{hint}</li>".html_safe if defined?(hint) %>
+    	  	<li><%= t('administrate.hints.copyright') %></li>
+    	  	<li><%= t('administrate.hints.file_types_prefix') %> <b>.jpg</b>, <b>.jpeg</b>, <b>.gif</b> and <b>.png</b></li>
+    	  </ul>
+      </div>
+    </div>
+  <% else %>
+    <p class="ml-4">Uploaded images are still processing, please wait....</p>
+  <% end %>
 </div>

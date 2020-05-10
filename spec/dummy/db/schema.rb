@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_071333) do
+ActiveRecord::Schema.define(version: 2020_05_10_121558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -360,13 +360,14 @@ ActiveRecord::Schema.define(version: 2020_05_08_071333) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "tmp_media_id"
+    t.integer "image_tmp_media_id"
   end
 
   create_table "site_settings", force: :cascade do |t|
     t.string "name"
     t.text "value"
     t.boolean "is_editable", default: true
+    t.string "slug"
   end
 
   create_table "skill_levels", id: :serial, force: :cascade do |t|

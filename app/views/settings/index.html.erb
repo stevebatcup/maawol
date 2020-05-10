@@ -59,7 +59,7 @@
 
             <p class="form-input">
               <%= f.label :receives_weekly_digest do %>
-                <span class="checkbox_label">Opt me into the <%= site_setting("Site easy name") %> weekly digest email?</span>
+                <span class="checkbox_label">Opt me into the <%= school_setting("site-easy-name") %> weekly digest email?</span>
                 <%= f.check_box :receives_weekly_digest, { class: 'form-control' } %>
               <% end %>
             </p>

@@ -1,11 +1,11 @@
-<% if (Rails.env.to_sym == :production) && (!site_setting("Google Analytics ID").nil?) %>
+<% if (Rails.env.to_sym == :production) && (!school_setting("google-analytics-id").nil?) %>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=<%= site_setting("Google Analytics ID") %>"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=<%= school_setting("google-analytics-id") %>"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
 	  gtag('js', new Date());
-	  gtag('config', '<%= site_setting("Google Analytics ID") %>', {
+	  gtag('config', '<%= school_setting("google-analytics-id") %>', {
       'custom_map': {'dimension1': 'browserType'}
     });
 	  var ua = navigator.userAgent || navigator.vendor || window.opera;

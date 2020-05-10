@@ -187,10 +187,10 @@ end
 
 puts "> Seeding Site Images...."
 images_data = [
-	{ name: "Landscape logo", slug: 'landscape_logo', remote_image_url: landscape_logo_url },
-	{ name: "Square logo", slug: 'square_logo', remote_image_url: square_logo_url },
+	{ name: "Landscape logo", slug: 'landscape-logo', remote_image_url: landscape_logo_url },
+	{ name: "Square logo", slug: 'square-logo', remote_image_url: square_logo_url },
 	{ name: "Contact mugshot", slug: 'contact', remote_image_url: avatar_url },
-	{ name: "Email banner", slug: 'email_banner', remote_image_url: email_banner_url },
+	{ name: "Email banner", slug: 'email-banner', remote_image_url: email_banner_url },
 	{ name: "Favicon", slug: 'favicon', remote_image_url: favicon_url }
 ]
 images_data.each do |image_data|

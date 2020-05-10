@@ -2,7 +2,7 @@ class SiteSetting < ApplicationRecord
 	after_save	:bust_cache
 
 	def bust_cache
-		Rails.cache.delete("site_settings")
+		Rails.cache.delete("school_settings")
 	end
 
 	def self.site_admin_gets_new_registration_email?

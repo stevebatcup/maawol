@@ -23,8 +23,8 @@ By default, it renders:
       <%= content_for(:title) %> - <%= Rails.application.class.parent_name.titlecase %>
     </title>
 
-    <% unless site_image("favicon").nil? %>
-      <link rel="icon" type="image/x-icon" href="<%= site_image("favicon").url(:tiny) %>" />
+    <% unless school_image("favicon").nil? %>
+      <link rel="icon" type="image/x-icon" href="<%= school_image("favicon").url(:tiny) %>" />
     <% end %>
 
     <%= render "stylesheet" %>

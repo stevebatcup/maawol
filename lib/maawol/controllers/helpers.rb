@@ -4,7 +4,7 @@ module Maawol
 			extend ActiveSupport::Concern
 
 			included do
-				helper_method :navbar, :footer_navbar_items, :current_section, :site_setting, :site_image, :legible_form_errors,
+				helper_method :navbar, :footer_navbar_items, :current_section, :school_setting, :school_image, :legible_form_errors,
 											:cached_course_list, :column_browser_class, :recent_lessons, :results_per_row,
 											:is_auth_page?, :results_per_page, :cached_tags, :dynamic_site_colors, :recaptcha_site_key,
 											:homepage_video,	:user_signed_in?, :is_settings_page?, :site_theme, :use_recaptcha?,
@@ -30,24 +30,24 @@ module Maawol
 				@host ||= Maawol::Config.site_host
 			end
 
-			def site_settings
-			  @site_settings ||= Rails.cache.fetch("site_settings") do
-			    settings = {}
+			def school_settings
+			  @school_settings ||= Rails.cache.fetch("school_settings") do
+			    items = {}
 			    SiteSetting.all.each do |setting|
 			      if setting.value.present? && setting.value.length > 0
-			        settings[setting.name] = setting.value.html_safe
+			        items[setting.slug] = setting.value.html_safe
 			      end
 			    end
-			    settings
+			    items
 			  end
 			end
 
-			def site_setting(name)
-				site_settings[name] || nil
+			def school_setting(slug)
+				school_settings[slug] || nil
 			end
 
-			def site_images
-			  @site_images ||= begin
+			def school_images
+			  @school_images ||= begin
 			    images = {}
 			    SiteImage.all.each do |image|
 			      if image.image.present? && image.image.url.length > 0
@@ -58,8 +58,8 @@ module Maawol
 			  end
 			end
 
-			def site_image(slug)
-				site_images[slug] || nil
+			def school_image(slug)
+				school_images[slug] || nil
 			end
 
 			def legible_form_errors(errors)
@@ -91,7 +91,7 @@ module Maawol
 			end
 
 			def site_theme
-				site_setting("Theme")
+				school_setting("theme")
 			end
 
 			def use_recaptcha?

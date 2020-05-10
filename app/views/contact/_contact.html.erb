@@ -77,13 +77,13 @@
     <aside class="sidebar pl-3 pl-md-2">
       <div class="widget widget_address">
         <div class="item media d-flex">
-          <% unless site_image("contact").nil? %>
-            <img src="<%= site_image("contact") %>" alt="<%= site_setting("Site name") %>" class="rounded-circle avatar mr-3" />
+          <% unless school_image("contact").nil? %>
+            <img src="<%= school_image("contact") %>" alt="<%= school_setting("site-name") %>" class="rounded-circle avatar mr-3" />
           <% end %>
           <div class="item-details media-body">
             <h3 class="item-title">Or you can send us an email at:</h3>
             <span>
-              <a href="mailto:<%= site_setting('Contact email address') %>"><%= site_setting('Contact email address') %></a>
+              <a href="mailto:<%= school_setting('contact-email-address') %>"><%= school_setting('contact-email-address') %></a>
             </span>
           </div>
         </div>

@@ -4,7 +4,7 @@
   <% end %>
 </div>
 <div class="field-unit__field tinymce">
-  <%= f.text_area field.attribute, value: value, class: (use_tinymce ? "tinymce" : ""), rows: 10 %>
+  <%= f.text_area field.attribute, value: value, class: (use_tinymce ? "tinymce" : ""), rows: 10, required: (defined?(required) ? required : false) %>
   <% if defined?(hint) %>
 	  <small class="form-text text-muted"><%= hint %></small>
   <% end %>

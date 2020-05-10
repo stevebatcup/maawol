@@ -3,10 +3,14 @@ class SiteImage < ApplicationRecord
 
 	before_create	:generate_slug
 	mount_uploader :image, SiteImageUploader
-  after_save	:migrate_file_from_tmp_upload, if: -> { self.tmp_media_id.present? }
+  after_save	:perform_migrate_tmp_file_job, if: -> { self.image_tmp_media_id.present? }
 
-	def field_for_upload
-		:image
+	def fields_for_upload
+		[:image]
+	end
+
+	def perform_migrate_tmp_file_job
+		MigrateTmpMediaFileJob.set(wait: 5.seconds).perform_later(self)
 	end
 
 	def generate_slug
@@ -14,6 +18,6 @@ class SiteImage < ApplicationRecord
 	end
 
 	def self.email_banner_url
-		find_by(slug: :email_banner).image.url(:large_landscape)
+		find_by(slug: 'email-banner').image.url(:large_landscape)
 	end
 end

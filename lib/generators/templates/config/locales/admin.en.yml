@@ -114,6 +114,9 @@ en:
       update:
         success: "%{resource} has been updated."
       resources:
+        site_setting:
+          errors:
+            not_found: Could not find setting %{slug}
         content_block:
           create:
             success: Content created

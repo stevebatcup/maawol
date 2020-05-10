@@ -10,7 +10,7 @@
 
       <div class="section" id="about">
         <% unless homepage_video.nil? %>
-        <h2 class="section-title" style="">Welcome to <%= site_setting('Site name') %></h2>
+        <h2 class="section-title" style="">Welcome to <%= school_setting('site-name') %></h2>
         <div id="homepage_video_box">
           <%= video_iframe(homepage_video) %>
         </div>
@@ -31,7 +31,7 @@
               <li>Access to FULL Lesson Library and Courses</li>
               <li>Lesson Requests</li>
               <li>1-on-1 help</li>
-              <% if site_setting("Facebook page URL").present? %>
+              <% if school_setting("facebook-page-url").present? %>
                 <li>Access to Exclusive <%= Maawol::Config.site_name %> Facebook page</li>
               <% end %>
               <li>Only <%= monthly_fee %> per month</li>
@@ -44,7 +44,7 @@
                 <li>FREE</li>
                 <li>Access to Selected Video Lessons</li>
                 <li>Access to Exclusive Offers</li>
-                <% if site_setting("Facebook page URL").present? %>
+                <% if school_setting("facebook-page-url").present? %>
                   <li>Access to Exclusive <%= Maawol::Config.site_name %> Facebook page</li>
                 <% end %>
               </ul>

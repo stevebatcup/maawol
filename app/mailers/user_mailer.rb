@@ -5,7 +5,7 @@ class UserMailer < MaawolMailer
 		merge_vars = {
 		  "FNAME" => user.first_name
 		}
-		subject = "Welcome to #{site_setting('Site name')}"
+		subject = "Welcome to #{school_setting('site-name')}"
 		body = template('welcome', merge_vars)
 		send_mail(user.email, subject, body, user.first_name, user.id)
 	end
@@ -18,7 +18,7 @@ class UserMailer < MaawolMailer
 		  "NEXT_PAYMENT_AMOUNT" => number_to_currency(subscription.initial_price, unit: Maawol::Config.currency_symbol),
 		  "LOGIN_LINK" => sign_in_url
 		}
-		subject = "Thanks for subscribing to #{site_setting('Site name')}"
+		subject = "Thanks for subscribing to #{school_setting('site-name')}"
 		body = template('subscription-receipt', merge_vars)
 		send_mail(subscription.user.email, subject, body, subscription.user.first_name, subscription.user.id)
 	end
@@ -28,7 +28,7 @@ class UserMailer < MaawolMailer
 		  "FNAME" => subscription.user.first_name,
 		  "SUBSCRIPTION_ENDS" => subscription.ends_at.strftime("%A %B %d, %Y")
 		}
-		subject = "Your subscription to #{site_setting('Site name')} has been cancelled"
+		subject = "Your subscription to #{school_setting('site-name')} has been cancelled"
 		body = template('subscription-cancellation', merge_vars)
 		send_mail(subscription.user.email, subject, body, subscription.user.first_name, subscription.user.id)
 	end
@@ -43,7 +43,7 @@ class UserMailer < MaawolMailer
 	end
 
 	def payment_received(user, amount)
-	  subject = "Renewal of your #{site_setting("Site easy name")} subscription"
+	  subject = "Renewal of your #{school_setting("site-easy-name")} subscription"
 	  merge_vars = {
 	    "FNAME" => user.display_name,
 	    "AMOUNT" => number_to_currency(amount, unit: Maawol::Config.currency_symbol)

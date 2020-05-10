@@ -20,80 +20,86 @@
     </div>
   </nav>
 
-  <p class="alert alert-danger mt-3"><i class="fas fa-exclamation-triangle mr-2"></i>Message to testers: <br />
+  <!-- <p class="alert alert-danger mt-3"><i class="fas fa-exclamation-triangle mr-2"></i>Message to testers: <br />
     - This section is still under construction.<br />
     - The form can be tested but not submitted.<br />
     - Ready for full testing by May 11th
-  </p>
+  </p> -->
 
   <div class="tab-content py-5 px-4" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-basic" role="tabpanel" aria-labelledby="nav-basic-tab">
 
-      <%= form_with class: :form do |f| %>
+      <%= form_with method: :patch,  url: "/admin/site_settings/basic", class: :form do |f| %>
         <div class="field-unit field-unit--string">
-          <%= render_setting_string_field 'site_name', page,
-                site_settings.find_by(name: "Site name"),
+          <%= render_setting_string_field 'site-name', page,
+                school_settings.find_by(slug: "site-name"),
                 { f: f, label: 'School name',
-                  hint: "The full name of your school. This appears on the main website and in student's emails." } %>
+                  hint: "The full name of your school. This appears on the main website and in student's emails.",
+                  required: true } %>
         </div>
 
         <div class="field-unit field-unit--string">
-          <%= render_setting_string_field 'site_easy_name', page,
-                site_settings.find_by(name: "Site easy name"),
+          <%= render_setting_string_field 'site-easy-name', page,
+                school_settings.find_by(slug: "site-easy-name"),
                 { f: f, label: 'School short name',
-                  hint: "The shorter or 'easy' name of your school (e.g. an abbreviation)" } %>
+                  hint: "The shorter or 'easy' name of your school (e.g. an abbreviation). Can be the same as the School Name field above",
+                  required: true } %>
         </div>
 
         <div class="field-unit field-unit--string">
-          <%= render_setting_string_field 'site_byline', page,
-                site_settings.find_by(name: "Site byline"),
-                { f: f, label: 'School strapline' } %>
+          <%= render_setting_string_field 'site-byline', page,
+                school_settings.find_by(slug: "site-byline"),
+                { f: f, label: 'School strapline', required: true } %>
         </div>
 
         <div class="field-unit field-unit--tiny-mce-field">
-          <%= render_setting_text_field 'site_blurb', page,
-                site_settings.find_by(name: "Site blurb"),
+          <%= render_setting_text_field 'site-blurb', page,
+                school_settings.find_by(slug: "site-blurb"),
                 true,
                 { f: f, label: 'School description',
-                  hint: "A brief description that will appear in the footer of every page" } %>
+                  hint: "A brief description that will appear in the footer of every page",
+                  required: true } %>
         </div>
 
-        <div class="form-actions mt-4">
-          <%= hidden_field_tag :section, value: :basic %>
-          <!-- <input type="submit" name="commit" value="Save Basic Settings"> -->
+        <div class="form-actions mt-4 d-flex">
+          <input type="submit" name="commit" value="Save Basic Settings" data-disable-with="Saving..." ng-click="initSuccessMessages()" />
+          <p class="text-success mb-0 pt-2 ml-4" ng-show="successes.basic">
+            <i class="fas fa-check mr-1"></i>
+            <span>Settings saved</span>
+          </p>
         </div>
      <% end %>
     </div>
 
     <div class="tab-pane fade" id="nav-branding" role="tabpanel" aria-labelledby="nav-branding-tab">
-      <%= form_with class: :form do |f| %>
+      <%= form_with method: :patch,  url: "/admin/site_settings/branding", class: :form do |f| %>
         <div class="field-unit field-unit--string">
           <%= render_setting_select_field 'theme', page,
-                site_settings.find_by(name: "Theme"),
+                school_settings.find_by(slug: "theme"),
                 SiteSetting.theme_options,
                 { f: f, label: 'Theme',
                   hint: "Choose the color scheme for your school" } %>
         </div>
 
         <div class="field-unit field-unit--image-field">
-          <%= render_setting_image_field 'landscape_logo', page,
-                site_images.find_by(slug: "landscape_logo"),
+          <%= render_setting_image_field 'landscape-logo', page,
+                school_images.find_by(slug: "landscape-logo"),
                 :small_landscape,
                 { f: f, label: 'Landscape logo',
                   hint: "Main logo to appear in the header of your school." } %>
         </div>
 
         <div class="field-unit field-unit--image-field">
-          <%= render_setting_image_field 'square_logo', page,
-                site_images.find_by(slug: "square_logo"),
+          <%= render_setting_image_field 'square-logo', page,
+                school_images.find_by(slug: "square-logo"),
                 :small_square,
                 { f: f, label: 'Square logo',
                   hint: "This appears in the footer of your school." } %>
         </div>
 
         <div class="field-unit field-unit--image-field">
-          <%= render_setting_image_field 'email_banner', page,
-                site_images.find_by(slug: "email_banner"),
+          <%= render_setting_image_field 'email-banner', page,
+                school_images.find_by(slug: "email-banner"),
                 :small_landscape,
                 { f: f, label: 'Email banner',
                   hint: "This appears at the top of all emails sent to students." } %>
@@ -101,90 +107,101 @@
 
         <div class="field-unit field-unit--image-field">
           <%= render_setting_image_field 'favicon', page,
-                site_images.find_by(slug: "favicon"),
+                school_images.find_by(slug: "favicon"),
                 :tiny,
                 { f: f, label: 'Favicon',
                   hint: "This appears in the tab bar of desktop and tablet browsers." } %>
         </div>
 
-        <div class="form-actions mt-4">
-          <%= hidden_field_tag :section, value: :branding %>
-          <!-- <input type="submit" name="commit" value="Save Branding Settings"> -->
+        <div class="form-actions mt-4 d-flex">
+          <input type="submit" name="commit" value="Save Branding Settings" data-disable-with="Saving..." ng-click="initSuccessMessages()" />
+          <p class="text-success mb-0 pt-2 ml-4" ng-show="successes.branding">
+            <i class="fas fa-check mr-1"></i>
+            <span>Settings saved</span>
+          </p>
         </div>
 
       <% end %>
     </div>
 
     <div class="tab-pane fade" id="nav-seo" role="tabpanel" aria-labelledby="nav-seo-tab">
-      <%= form_with class: :form do |f| %>
+      <%= form_with method: :patch,  url: "/admin/site_settings/seo", class: :form do |f| %>
         <div class="field-unit field-unit--string">
-          <%= render_setting_string_field 'twitter_username', page,
-                site_settings.find_by(name: "Twitter username"),
+          <%= render_setting_string_field 'twitter-username', page,
+                school_settings.find_by(slug: "twitter-username"),
                 { f: f, label: 'Twitter username' } %>
         </div>
 
         <div class="field-unit field-unit--string">
-          <%= render_setting_string_field 'facebook_page_url', page,
-                site_settings.find_by(name: "Facebook page URL"),
+          <%= render_setting_string_field 'facebook-page-url', page,
+                school_settings.find_by(slug: "facebook-page-url"),
                 { f: f, label: 'Facebook page URL' } %>
         </div>
 
         <div class="field-unit field-unit--string">
-          <%= render_setting_string_field 'instagtam_username', page,
-                site_settings.find_by(name: "Instagram username"),
+          <%= render_setting_string_field 'instagram-username', page,
+                school_settings.find_by(slug: "instagram-username"),
                 { f: f, label: 'Instagram username' } %>
         </div>
 
         <div class="field-unit field-unit--string">
-          <%= render_setting_string_field 'youtube_channel_id', page,
-                site_settings.find_by(name: "YouTube channel ID"),
+          <%= render_setting_string_field 'youtube-channel-id', page,
+                school_settings.find_by(slug: "youtube-channel-id"),
                 { f: f, label: 'YouTube Channel ID',
                   hint: "You can find this here......." } %>
         </div>
 
         <div class="field-unit field-unit--string">
-          <%= render_setting_string_field 'google_analytics_id', page,
-                site_settings.find_by(name: "Google Analytics ID"),
+          <%= render_setting_string_field 'google-analytics-id', page,
+                school_settings.find_by(slug: "google-analytics-id"),
                 { f: f, label: 'Google analytics ID',
                   hint: "You can find this here......." } %>
         </div>
 
         <div class="field-unit field-unit--textarea">
-          <%= render_setting_text_field 'meta_description', page,
-                site_settings.find_by(name: "Meta description"),
+          <%= render_setting_text_field 'meta-description', page,
+                school_settings.find_by(slug: "meta-description"),
                 false,
                 { f: f, label: 'Meta description',
-                  hint: "Make sure to include some important keywords, this is an important field for how your school will appear in search engine results" } %>
+                  hint: "Make sure to include some important keywords, this is an important field for how your school will appear in search engine results",
+                  required: true } %>
         </div>
 
-        <div class="form-actions mt-4">
-          <%= hidden_field_tag :section, value: :seo %>
-          <!-- <input type="submit" name="commit" value="Save SEO and Social Settings"> -->
+        <div class="form-actions mt-4 d-flex">
+          <input type="submit" name="commit" value="Save SEO and Social Settings" data-disable-with="Saving..." ng-click="initSuccessMessages()" />
+          <p class="text-success mb-0 pt-2 ml-4" ng-show="successes.seo">
+            <i class="fas fa-check mr-1"></i>
+            <span>Settings saved</span>
+          </p>
         </div>
       <% end %>
     </div>
 
     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-      <%= form_with class: :form do |f| %>
+      <%= form_with method: :patch,  url: "/admin/site_settings/contact", class: :form do |f| %>
         <div class="field-unit field-unit--string">
-          <%= render_setting_email_field 'contact_email', page,
-                site_settings.find_by(name: "Contact email address"),
+          <%= render_setting_email_field 'contact-email-address', page,
+                school_settings.find_by(slug: "contact-email-address"),
                 { f: f, label: 'Main email address',
-                  hint: "Your email address to recieve the school form submissions." } %>
+                  hint: "Your email address to recieve the school form submissions.",
+                  required: true } %>
         </div>
 
         <div class="field-unit field-unit--image-field">
           <%= render_setting_image_field 'contact', page,
-                site_images.find_by(slug: "contact"),
+                school_images.find_by(slug: "contact"),
                 :small_square,
                 { f: f, label: 'Profile image',
                   hint: "This appears on the contact form for your school." } %>
         </div>
 
 
-        <div class="form-actions mt-4">
-          <%= hidden_field_tag :section, value: :contact %>
-          <!-- <input type="submit" name="commit" value="Save Contact Details"> -->
+        <div class="form-actions mt-4 d-flex">
+          <input type="submit" name="commit" value="Save Contact Details" data-disable-with="Saving..." ng-click="initSuccessMessages()" />
+          <p class="text-success mb-0 pt-2 ml-4" ng-show="successes.contact">
+            <i class="fas fa-check mr-1"></i>
+            <span>Settings saved</span>
+          </p>
         </div>
       <% end %>
     </div>

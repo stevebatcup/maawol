@@ -2,8 +2,8 @@
   <%= f.label label %>
 </div>
 <div class="field-unit__field">
-  <%= f.email_field field.attribute, value: value %>
-  <% if hint.present? %>
+  <%= f.email_field field.attribute, value: value, required: (defined?(required) ? required : false) %>
+  <% if defined?(hint) %>
 	  <small class="form-text text-muted"><%= hint %></small>
   <% end %>
 </div>

@@ -1,7 +1,7 @@
 module Maawol
 	module ApplicationHelper
 		def yield_html_title
-			 title = content_for?(:html_title) ? "#{content_for(:html_title)} | #{site_setting("Site name")}" : default_html_title
+			 title = content_for?(:html_title) ? "#{content_for(:html_title)} | #{school_setting("site-name")}" : default_html_title
 		end
 
 		def html_title(title)
@@ -10,8 +10,8 @@ module Maawol
 
 		def default_html_title
 			title = ""
-			title << "#{site_setting("Site byline")}" if site_setting("Site byline").present?
-			title << " | #{site_setting("Site name")}"
+			title << "#{school_setting("site-byline")}" if school_setting("site-byline").present?
+			title << " | #{school_setting("site-name")}"
 		end
 
 	  def meta_tag(tag, text)

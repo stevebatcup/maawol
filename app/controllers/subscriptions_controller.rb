@@ -17,7 +17,7 @@ class SubscriptionsController < MaawolController
 
 		if payment[:type] == 'paypal'	# PAYPAL PAYMENT
 			remote_subscription = PaymentService::Paypal.setup_recurring_billing({
-				site_name: site_setting("Site name"),
+				site_name: school_setting("site-name"),
 				current_user: current_user,
 				subscription_level: subscription_level,
 				session_discount_code: session_discount_code || nil,
@@ -104,7 +104,7 @@ class SubscriptionsController < MaawolController
 					@status = :error
 					@message = t('views.account.subscription.cancellation.error.auth')
 				else
-					site_name = site_setting("Site name")
+					site_name = school_setting("site-name")
 					if @subscription.cancel_recurring_billing(site_name)
 						current_user.update_attribute(:status, :expiring)
 						@status = :success

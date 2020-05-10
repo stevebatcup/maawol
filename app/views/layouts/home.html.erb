@@ -8,13 +8,13 @@
     <title><%= yield_html_title %></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <% default_meta_description = site_setting('Meta description').present? ? site_setting('Meta description') : site_setting('Site name') %>
+    <% default_meta_description = school_setting('meta-description').present? ? school_setting('meta-description') : school_setting('site-name') %>
     <meta name="description" content="<%= yield_meta_tag(:description, default_meta_description) %>" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-    <% unless site_image("favicon").nil? %>
-      <link rel="icon" type="image/x-icon" href="<%= site_image("favicon").url(:tiny) %>" />
+    <% unless school_image("favicon").nil? %>
+      <link rel="icon" type="image/x-icon" href="<%= school_image("favicon").url(:tiny) %>" />
     <% end %>
     <%= render 'layouts/analytics-tag' %>
     <%= render 'layouts/open-graph-tags' %>
@@ -38,9 +38,9 @@
           <div class="container">
             <div class="row">
               <div class="col-6">
-                <% if site_image("landscape_logo").present? %>
+                <% if school_image("landscape-logo").present? %>
                 <a href="/" id="logo_top">
-                  <img src="<%= site_image("landscape_logo").url(:large_landscape) %>" alt="<%= site_setting("Site name") %>" class="site-logo" />
+                  <img src="<%= school_image("landscape-logo").url(:large_landscape) %>" alt="<%= school_setting("site-name") %>" class="site-logo" />
                 </a>
                 <% end %>
               </div>
