@@ -102,6 +102,28 @@ en:
       file_size: The size of the file you are uploading should not exceed 25MB.
       file_types_prefix: Acceptable file types are
       resources:
+        site_setting:
+          name: The full name of your school. This appears on the main website and in student's emails.
+          easy_name: The shorter or 'easy' name of your school (e.g. an abbreviation). Can be the same as the School Name field above
+          blurb: A brief description that will appear in the footer of every page
+          theme: Choose the color scheme for your school
+          favicon: This appears in the tab bar of desktop and tablet browsers and will be cropped using a ratio of 1:1 (square).<br />
+                    Please ensure the image you upload is at least 32px wide.
+          landscape_logo: This will be the logo that shows in the top header bar of your school and will be cropped using a ratio of 3:1.<br />
+                          Please ensure the image you upload is at least 600px wide.
+          square_logo: This appears in the footer of your school and will be cropped using a ratio of 1:1 (square).<br />
+                        Please ensure the image you upload is at least 500px wide.
+          byline: A short sentence. Helpful for branding.
+          email_banner: This appears at the top of all emails sent out to students and will be cropped using a ratio of 3:2.<br />
+                          Please ensure the image you upload is at least 600px wide.
+          twitter: Link to your Twitter profile by adding you username here.
+          facebook: Full URL to your Facebook page
+          instagram: Link to your Instagram account by adding your username here.
+          youtube: Link to your YouTube channel by adding your ID here. You can find this in yuor YouTube account settings.
+          meta_description: Make sure to include some important keywords, this is an important field for how your school will appear in search engine results.
+          contact_email: Your email address to recieve the form submissions from your students.
+          contact_image: This appears on the contact form for your school and will be cropped using a ratio of 1:1 (square).<br />
+                          Please ensure the image you upload is at least 500px wide.
         lesson:
           users: "Add one or more students into this box make this a personalised lesson that they can access from their MY LESSONS page.<br />This lesson will then show in not show in the lesson library listings."
           thumbnail: Please ensure the image you upload is at least 600px wide. After processing the image you upload will be cropped using a ratio of 3:2.
@@ -148,6 +170,24 @@ en:
     form:
       error: error
       errors: "%{pluralized_errors} stopped this %{resource_name} from being saved:"
+      site_settings:
+        labels:
+          name: Site name
+          easy_name: School short name
+          blurb: School description
+          theme: Theme
+          favicon: Favicon
+          landscape_logo: Landscape logo
+          square_logo: Square logo
+          byline: School strapline
+          email_banner: Email banner
+          twitter: Twitter username
+          facebook: Facebook page URL
+          instagram: Instagram username
+          youtube: YouTube Channel ID
+          meta_description: Meta description
+          contact_email: Main email address
+          contact_image: Profile image
     search:
       clear: Clear search
       label: Search %{resource}

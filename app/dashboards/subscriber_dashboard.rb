@@ -17,7 +17,6 @@ class SubscriberDashboard < UserDashboard
     :subscription_created,
     :created_at,
     :is_admin,
-    :from_old_site,
     :sign_in_count,
     :current_sign_in_at,
     :current_sign_in_ip,
@@ -32,6 +31,5 @@ class SubscriberDashboard < UserDashboard
     :status,
     :subscription_status,
     :is_admin,
-    :from_old_site,
   ].freeze
 end

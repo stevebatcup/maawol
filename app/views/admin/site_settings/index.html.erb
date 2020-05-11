@@ -27,16 +27,16 @@
         <div class="field-unit field-unit--string">
           <%= render_setting_string_field 'site-name', page,
                 school_settings.find_by(slug: "site-name"),
-                { f: f, label: 'School name',
-                  hint: "The full name of your school. This appears on the main website and in student's emails.",
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.name'),
+                  hint: I18n.t('administrate.hints.resources.site_setting.name'),
                   required: true } %>
         </div>
 
         <div class="field-unit field-unit--string">
           <%= render_setting_string_field 'site-easy-name', page,
                 school_settings.find_by(slug: "site-easy-name"),
-                { f: f, label: 'School short name',
-                  hint: "The shorter or 'easy' name of your school (e.g. an abbreviation). Can be the same as the School Name field above",
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.easy_name'),
+                  hint: I18n.t('administrate.hints.resources.site_setting.easy_name'),
                   required: true } %>
         </div>
 
@@ -44,8 +44,8 @@
           <%= render_setting_text_field 'site-blurb', page,
                 school_settings.find_by(slug: "site-blurb"),
                 true,
-                { f: f, label: 'School description',
-                  hint: "A brief description that will appear in the footer of every page",
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.blurb'),
+                  hint: I18n.t('administrate.hints.resources.site_setting.blurb'),
                   required: true } %>
         </div>
 
@@ -65,52 +65,48 @@
           <%= render_setting_select_field 'theme', page,
                 school_settings.find_by(slug: "theme"),
                 SiteSetting.theme_options,
-                { f: f, label: 'Theme',
-                  hint: "Choose the color scheme for your school" } %>
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.theme'),
+                  hint: I18n.t('administrate.hints.resources.site_setting.theme') } %>
         </div>
 
         <div class="field-unit field-unit--image-field my-4">
           <%= render_setting_image_field 'favicon', page,
                 school_images.find_by(slug: "favicon"),
                 :tiny,
-                { f: f, label: 'Favicon',
-                  hint: "This appears in the tab bar of desktop and tablet browsers and will be cropped using a ratio of 1:1 (square).<br />
-                          Please ensure the image you upload is at least 32px wide." } %>
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.favicon'),
+                  hint: I18n.t('administrate.hints.resources.site_setting.favicon') } %>
         </div>
 
         <div class="field-unit field-unit--image-field my-4">
           <%= render_setting_image_field 'landscape-logo', page,
                 school_images.find_by(slug: "landscape-logo"),
                 :small_landscape,
-                { f: f, label: 'Landscape logo',
-                  hint: "This will be the logo that shows in the top header bar of your school and will be cropped using a ratio of 3:1.<br />
-                          Please ensure the image you upload is at least 600px wide." } %>
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.landscape_logo'),
+                  hint: I18n.t('administrate.hints.resources.site_setting.landscape_logo') } %>
         </div>
 
         <div class="field-unit field-unit--image-field my-4">
           <%= render_setting_image_field 'square-logo', page,
                 school_images.find_by(slug: "square-logo"),
                 :small_square,
-                { f: f, label: 'Square logo',
-                  hint: "This appears in the footer of your school and will be cropped using a ratio of 1:1 (square).<br />
-                          Please ensure the image you upload is at least 500px wide.." } %>
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.square_logo'),
+                  hint: I18n.t('administrate.hints.resources.site_setting.square_logo') } %>
         </div>
 
 
         <div class="field-unit field-unit--string">
           <%= render_setting_string_field 'site-byline', page,
                 school_settings.find_by(slug: "site-byline"),
-                { f: f, label: 'School strapline', required: true,
-                  hint: 'A short sentence. Helpful for branding.' } %>
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.byline'), required: true,
+                  hint: I18n.t('administrate.hints.resources.site_setting.byline') } %>
         </div>
 
         <div class="field-unit field-unit--image-field my-4">
           <%= render_setting_image_field 'email-banner', page,
                 school_images.find_by(slug: "email-banner"),
                 :small_landscape,
-                { f: f, label: 'Email banner',
-                  hint: "This appears at the top of all emails sent out to students and will be cropped using a ratio of 3:2.<br />
-                          Please ensure the image you upload is at least 600px wide.." } %>
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.email_banner'),
+                  hint: I18n.t('administrate.hints.resources.site_setting.email_banner') } %>
         </div>
 
         <div class="form-actions mt-4 d-flex">
@@ -129,41 +125,38 @@
         <div class="field-unit field-unit--string">
           <%= render_setting_string_field 'twitter-username', page,
                 school_settings.find_by(slug: "twitter-username"),
-                { f: f, label: 'Twitter username' } %>
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.twitter'),
+                  hint: I18n.t('administrate.hints.resources.site_setting.twitter') } %>
         </div>
 
         <div class="field-unit field-unit--string">
           <%= render_setting_string_field 'facebook-page-url', page,
                 school_settings.find_by(slug: "facebook-page-url"),
-                { f: f, label: 'Facebook page URL' } %>
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.fac
+                  '),
+                  hint: I18n.t('administrate.hints.resources.site_setting.facebook') } %>
         </div>
 
         <div class="field-unit field-unit--string">
           <%= render_setting_string_field 'instagram-username', page,
                 school_settings.find_by(slug: "instagram-username"),
-                { f: f, label: 'Instagram username' } %>
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.instagram'),
+                hint: I18n.t('administrate.hints.resources.site_setting.instagram') } %>
         </div>
 
         <div class="field-unit field-unit--string">
           <%= render_setting_string_field 'youtube-channel-id', page,
                 school_settings.find_by(slug: "youtube-channel-id"),
-                { f: f, label: 'YouTube Channel ID',
-                  hint: "You can find this here......." } %>
-        </div>
-
-        <div class="field-unit field-unit--string">
-          <%= render_setting_string_field 'google-analytics-id', page,
-                school_settings.find_by(slug: "google-analytics-id"),
-                { f: f, label: 'Google analytics ID',
-                  hint: "You can find this here......." } %>
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.youtube'),
+                  hint: I18n.t('administrate.hints.resources.site_setting.youtube') } %>
         </div>
 
         <div class="field-unit field-unit--textarea">
           <%= render_setting_text_field 'meta-description', page,
                 school_settings.find_by(slug: "meta-description"),
                 false,
-                { f: f, label: 'Meta description',
-                  hint: "Make sure to include some important keywords, this is an important field for how your school will appear in search engine results",
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.meta_description'),
+                  hint: I18n.t('administrate.hints.resources.site_setting.meta_description'),
                   required: true } %>
         </div>
 
@@ -182,8 +175,8 @@
         <div class="field-unit field-unit--string">
           <%= render_setting_email_field 'contact-email-address', page,
                 school_settings.find_by(slug: "contact-email-address"),
-                { f: f, label: 'Main email address',
-                  hint: "Your email address to recieve the school form submissions.",
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.contact_email'),
+                  hint: I18n.t('administrate.hints.resources.site_setting.contact_email'),
                   required: true } %>
         </div>
 
@@ -191,9 +184,8 @@
           <%= render_setting_image_field 'contact', page,
                 school_images.find_by(slug: "contact"),
                 :small_square,
-                { f: f, label: 'Profile image',
-                  hint: "This appears on the contact form for your school and will be cropped using a ratio of 1:1 (square).<br />
-                          Please ensure the image you upload is at least 500px wide.." } %>
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.contact_image'),
+                  hint: I18n.t('administrate.hints.resources.site_setting.contact_image') } %>
         </div>
 
 
