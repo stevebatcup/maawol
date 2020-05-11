@@ -51,14 +51,13 @@ class Maawol.AdminPage extends Maawol.Page
 		previewNode.parentNode.removeChild(previewNode)
 
 		fileDropzone = new Dropzone boxID,
-		  url: "/tmp-media?file_type=#{fileType}&resource_class=#{resourceClass}&resource_attribute=#{resourceAttribute}"
-		  thumbnailWidth: 80
-		  thumbnailHeight: 80
-		  parallelUploads: 1
-		  previewTemplate: previewTemplate
-		  autoQueue: true
-		  previewsContainer: "#{boxID} .previews"
-		  clickable: "#{boxID} .add_file"
+			url: "/tmp-media?file_type=#{fileType}&resource_class=#{resourceClass}&resource_attribute=#{resourceAttribute}"
+			maxFilesize: 25
+			parallelUploads: 1
+			previewTemplate: previewTemplate
+			autoQueue: true
+			previewsContainer: "#{boxID} .previews"
+			clickable: "#{boxID} .add_file"
 
 		fileDropzone.on "addedfile", (file) =>
 			$('[name=commit]').attr('disabled', true)

@@ -28,14 +28,14 @@ module Admin
     end
 
     def update
-      sleep(0.8)
+      sleep(0.5)
       @errors = []
       @status = nil
       case section
       when :basic
-        update_settings :basic, %w{ site-name site-easy-name site-byline site-blurb }
+        update_settings :basic, %w{ site-name site-easy-name site-blurb }
       when :branding
-        update_settings :branding, %w{ theme }
+        update_settings :branding, %w{ theme site-byline }
         update_images :branding, %w{ landscape-logo square-logo email-banner favicon } if @errors.empty?
       when :seo
         update_settings :seo, %w{ twitter-username facebook-page-url instagram-username youtube-channel-id google-analytics-id meta-description }

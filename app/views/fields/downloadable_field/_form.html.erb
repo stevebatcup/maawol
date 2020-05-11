@@ -4,7 +4,7 @@
 <div class="field-unit__field with_uploader document" id="dropzone_<%= field.attribute %>">
   <%= f.hidden_field field.resource.tmp_media_attribute(field.attribute) %>
 	<p class="mb-2 pl-2">
-      <%= link_to("<i class='fas fa-file mr-2'></i> View uploaded file".html_safe, field.file.url,
+      <%= link_to("<i class='fas fa-file mr-2'></i> View uploaded file".html_safe, field.file&.url || '',
                                       target: '_blank',
                                       id: 'file_link',
                                       class: 'player_target ml2e',
@@ -19,6 +19,7 @@
   <div class='hint ml-4 pl-0'>
   	<ul>
   		<li><%= t('administrate.hints.copyright') %></li>
+      <li><%= t('administrate.hints.file_size') %></li>
   		<li><%= t('administrate.hints.file_types_prefix') %> <b>.pdf</b>, <b>.doc</b> and <b>.docx</b></li>
   	</ul>
   </div>

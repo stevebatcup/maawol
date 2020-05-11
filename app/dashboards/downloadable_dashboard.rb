@@ -11,7 +11,9 @@ class DownloadableDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     file: DownloadableField,
-    image: ImageField,
+    image: ImageField.with_options(
+      hint: I18n.t('administrate.hints.resources.downloadable.image'),
+    ),
     author: Field::BelongsTo.with_options(scope: -> { Author.order(id: :asc) }),
     full_url: Field::String,
     basket_url: Field::String,

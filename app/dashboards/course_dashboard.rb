@@ -11,7 +11,9 @@ class CourseDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     author: Field::BelongsTo.with_options(scope: -> { Author.order(id: :asc) }),
-    image: ImageField,
+    image: ImageField.with_options(
+      hint: I18n.t('administrate.hints.resources.course.image'),
+    ),
     description: TinyMceField,
     teachings: NestedLessonField,
     lessons: Field::HasMany,

@@ -13,7 +13,9 @@ class LessonDashboard < Administrate::BaseDashboard
     videos: AttachableField,
     audio_files: AttachableField,
     downloadables: AttachableField,
-    thumbnail: ImageField,
+    thumbnail: ImageField.with_options(
+      hint: I18n.t('administrate.hints.resources.lesson.thumbnail'),
+    ),
     tags: HasLotsField,
     author: Field::BelongsTo.with_options(scope: -> { Author.order(id: :asc) }),
     categories: HasLotsField,
@@ -22,7 +24,7 @@ class LessonDashboard < Administrate::BaseDashboard
     is_free: Field::Boolean,
     playlists: HasLotsField,
     users: AttachableField.with_options(
-      hint: "Add one or more students into this box make this a personalised lesson that they can access from their MY LESSONS page.<br />These lessons will then show in not show in the lesson library listings.",
+      hint: I18n.t('administrate.hints.resources.lesson.users'),
     ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,

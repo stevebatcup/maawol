@@ -8,7 +8,9 @@ class AuthorDashboard < Administrate::BaseDashboard
     name: Field::String,
     referral_registration_url: LinkField,
     referral_home_url: LinkField,
-    avatar: ImageField,
+    avatar: ImageField.with_options(
+      hint: I18n.t('administrate.hints.resources.author.avatar'),
+    ),
     subscription_fee_split: SmallNumberField.with_options(
       searchable: false,
       min: 0,

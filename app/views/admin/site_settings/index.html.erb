@@ -20,12 +20,6 @@
     </div>
   </nav>
 
-  <!-- <p class="alert alert-danger mt-3"><i class="fas fa-exclamation-triangle mr-2"></i>Message to testers: <br />
-    - This section is still under construction.<br />
-    - The form can be tested but not submitted.<br />
-    - Ready for full testing by May 11th
-  </p> -->
-
   <div class="tab-content py-5 px-4" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-basic" role="tabpanel" aria-labelledby="nav-basic-tab">
 
@@ -44,12 +38,6 @@
                 { f: f, label: 'School short name',
                   hint: "The shorter or 'easy' name of your school (e.g. an abbreviation). Can be the same as the School Name field above",
                   required: true } %>
-        </div>
-
-        <div class="field-unit field-unit--string">
-          <%= render_setting_string_field 'site-byline', page,
-                school_settings.find_by(slug: "site-byline"),
-                { f: f, label: 'School strapline', required: true } %>
         </div>
 
         <div class="field-unit field-unit--tiny-mce-field">
@@ -81,36 +69,48 @@
                   hint: "Choose the color scheme for your school" } %>
         </div>
 
-        <div class="field-unit field-unit--image-field">
-          <%= render_setting_image_field 'landscape-logo', page,
-                school_images.find_by(slug: "landscape-logo"),
-                :small_landscape,
-                { f: f, label: 'Landscape logo',
-                  hint: "Main logo to appear in the header of your school." } %>
-        </div>
-
-        <div class="field-unit field-unit--image-field">
-          <%= render_setting_image_field 'square-logo', page,
-                school_images.find_by(slug: "square-logo"),
-                :small_square,
-                { f: f, label: 'Square logo',
-                  hint: "This appears in the footer of your school." } %>
-        </div>
-
-        <div class="field-unit field-unit--image-field">
-          <%= render_setting_image_field 'email-banner', page,
-                school_images.find_by(slug: "email-banner"),
-                :small_landscape,
-                { f: f, label: 'Email banner',
-                  hint: "This appears at the top of all emails sent to students." } %>
-        </div>
-
-        <div class="field-unit field-unit--image-field">
+        <div class="field-unit field-unit--image-field my-4">
           <%= render_setting_image_field 'favicon', page,
                 school_images.find_by(slug: "favicon"),
                 :tiny,
                 { f: f, label: 'Favicon',
-                  hint: "This appears in the tab bar of desktop and tablet browsers." } %>
+                  hint: "This appears in the tab bar of desktop and tablet browsers and will be cropped using a ratio of 1:1 (square).<br />
+                          Please ensure the image you upload is at least 32px wide." } %>
+        </div>
+
+        <div class="field-unit field-unit--image-field my-4">
+          <%= render_setting_image_field 'landscape-logo', page,
+                school_images.find_by(slug: "landscape-logo"),
+                :small_landscape,
+                { f: f, label: 'Landscape logo',
+                  hint: "This will be the logo that shows in the top header bar of your school and will be cropped using a ratio of 3:1.<br />
+                          Please ensure the image you upload is at least 600px wide." } %>
+        </div>
+
+        <div class="field-unit field-unit--image-field my-4">
+          <%= render_setting_image_field 'square-logo', page,
+                school_images.find_by(slug: "square-logo"),
+                :small_square,
+                { f: f, label: 'Square logo',
+                  hint: "This appears in the footer of your school and will be cropped using a ratio of 1:1 (square).<br />
+                          Please ensure the image you upload is at least 500px wide.." } %>
+        </div>
+
+
+        <div class="field-unit field-unit--string">
+          <%= render_setting_string_field 'site-byline', page,
+                school_settings.find_by(slug: "site-byline"),
+                { f: f, label: 'School strapline', required: true,
+                  hint: 'A short sentence. Helpful for branding.' } %>
+        </div>
+
+        <div class="field-unit field-unit--image-field my-4">
+          <%= render_setting_image_field 'email-banner', page,
+                school_images.find_by(slug: "email-banner"),
+                :small_landscape,
+                { f: f, label: 'Email banner',
+                  hint: "This appears at the top of all emails sent out to students and will be cropped using a ratio of 3:2.<br />
+                          Please ensure the image you upload is at least 600px wide.." } %>
         </div>
 
         <div class="form-actions mt-4 d-flex">
@@ -187,12 +187,13 @@
                   required: true } %>
         </div>
 
-        <div class="field-unit field-unit--image-field">
+        <div class="field-unit field-unit--image-field my-4">
           <%= render_setting_image_field 'contact', page,
                 school_images.find_by(slug: "contact"),
                 :small_square,
                 { f: f, label: 'Profile image',
-                  hint: "This appears on the contact form for your school." } %>
+                  hint: "This appears on the contact form for your school and will be cropped using a ratio of 1:1 (square).<br />
+                          Please ensure the image you upload is at least 500px wide.." } %>
         </div>
 
 

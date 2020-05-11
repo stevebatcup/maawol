@@ -96,7 +96,18 @@ en:
   administrate:
     hints:
       copyright: Before uploading, please make sure that you have the correct copyright permissions.
+      file_size: The size of the file you are uploading should not exceed 25MB.
       file_types_prefix: Acceptable file types are
+      resources:
+        lesson:
+          users: "Add one or more students into this box make this a personalised lesson that they can access from their MY LESSONS page.<br />This lesson will then show in not show in the lesson library listings."
+          thumbnail: Please ensure the image you upload is at least 600px wide. After processing the image you upload will be cropped using a ratio of 3:2.
+        course:
+          image: Please ensure the image you upload is at least 600px wide. After processing the image you upload will be cropped using a ratio of 3:2.
+        author:
+          avatar: Please ensure the image you upload is at least 150px wide. After processing the image you upload will be cropped using a ratio of 1:1 (square).
+        downloadable:
+          image: Please ensure the image you upload is at least 600px wide. After processing the image you upload will be cropped using a ratio of 3:2.
     actions:
       confirm: Are you sure?
       destroy: Destroy
