@@ -1,6 +1,7 @@
 $maawol_body_bg: #353535;
 $maawol_auth_page_bg: #353535;
 $maawol_auth_panel_bg: #292929;
+$maawol_yield_bg: linear-gradient(#353535 0%, #4a4a4a 50%);
 
 /* Text */
 $maawol_text_color: #ffffff;
@@ -17,11 +18,11 @@ $maawol_header_bg: #353535;
 $maawol_text_highlight: #50b159;
 $maawol_navbar_bg: #1e291d;
 $maawol_navbar_selected: #50b159;
-$maawol_navbar_hovered: #5f6f61;
+$maawol_navbar_hovered: #50b159;
 $maawol_footer_bg: #2e352d;
 $maawol_copyright_bg: #1e291d;
 $maawol_well_bg: #2e352d;
-$maawol_well_border: #586b57;
+$maawol_well_border: darken(#2e352d, 5%);
 $maawol_video_playlist_bg: #ffffff;
 $maawol_locked_lesson_color: #ffffff;
 

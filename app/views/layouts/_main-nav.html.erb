@@ -1,27 +1,17 @@
-<div class="header-bottom">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <nav class="navbar navbar-default navbar-expand-md d-flex justify-content-start">
-          <div id="menu" class="main-menu pull-left">
-            <ul class="nav navbar-nav">
-              <% navbar.sorted_navbar_items_for_device_type(:desktop).each do |item| %>
-                <% if item.can_be_seen_by_user(current_user) %>
-                  <li class="menu-item <%= 'active' if nav_item_is_current_request(item) %>">
-                    <a href="<%= item.url %>" data-turbolinks="false" ng-click="navigateUri($event, '<%= item.url %>')"><%= item.name %></a>
-                  </li>
-                <% end %>
-              <% end %>
+<nav class="navbar navbar-default navbar-expand-md">
+  <ul class="nav navbar-nav">
+    <% navbar.sorted_navbar_items_for_device_type(:desktop).each do |item| %>
+      <% if item.can_be_seen_by_user(current_user) %>
+        <li class="menu-item <%= 'active' if nav_item_is_current_request(item) %> px-3">
+          <a href="<%= item.url %>" data-turbolinks="false" ng-click="navigateUri($event, '<%= item.url %>')"><%= item.name %></a>
+        </li>
+      <% end %>
+    <% end %>
 
-              <% if show_subscription_nav_button? %>
-               <li class="">
-                  <a href="/subscribe" class="btn btn-block btn-success" data-turbolinks="false">Subscribe</a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </div>
-  </div>
-</div>
+    <% if show_subscription_nav_button? %>
+     <li class="">
+        <a href="/subscribe" class="btn btn-block btn-success" data-turbolinks="false">Subscribe</a>
+      </li>
+    <% end %>
+  </ul>
+</nav>

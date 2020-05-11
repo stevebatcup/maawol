@@ -1,10 +1,13 @@
 <% html_title "Lessons" %>
 
+<%= render 'lessons/filters' if current_user.has_full_account? && !params[:search] %>
+
 <%= render(partial: 'lessons/subscribe_callout') if show_subscription_interstitial? %>
 
 <section class="container list lessons video-contents <%= column_browser_class %>"
-          ng-controller="LessonsController"
-          data-redirect-locked-lessons="<%= locked_lesson_redirect_path %>">
+        ng-controller="LessonsController"
+        data-redirect-locked-lessons="<%= locked_lesson_redirect_path %>">
+
     <% if notice %>
       <p class="container alert alert-success"><%= notice %></p>
     <% end %>
@@ -29,7 +32,6 @@
       <% end %>
 
       <div ng-if="loaded" class="fader" ng-cloak>
-        <%= render 'lessons/filters' if current_user.has_full_account? && !params[:search] %>
         <div class="row">
           <div ng-repeat="lesson in lessons"
                     class="lesson_result search_result col-12 col-md-4 col-lg-3 mb-3"
