@@ -3,6 +3,9 @@ Maawol.configure do |config|
 	config.site_slug = "music_academy"
 	config.site_host = ENV['HOST']
 
+	config.currency_code = "USD"
+	config.currency_symbol = "$"
+
 	config.site_owner_fname = "James"
 	config.site_owner_lname = "McGillacuddy"
 	config.site_owner_email = "james.macgill@maawol.com"
@@ -28,9 +31,6 @@ Maawol.configure do |config|
 
 	config.vimeo_api_key = ENV['VIMEO_API_KEY']
 	config.vimeo_project_id = ENV['VIMEO_PROJECT_ID']
-
-	config.currency_code = "USD"
-	config.currency_symbol = "$"
 
 	config.chargebee_site = ENV['CHARGEBEE_SITE']
 	config.chargebee_api_key = ENV['CHARGEBEE_API_KEY']

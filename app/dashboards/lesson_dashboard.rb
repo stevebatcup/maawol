@@ -26,7 +26,7 @@ class LessonDashboard < Administrate::BaseDashboard
     ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    publish_date: Field::DateTime.with_options(
+    publish_date: Field::Date.with_options(
       format: "%b %d, %Y"
     )
   }.freeze

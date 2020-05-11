@@ -8,19 +8,12 @@ module Maawol
 			desc "Setting up maawol db..."
 			source_root File.expand_path("../../templates", __FILE__)
 
-			def setup
-				rake "db:create"
-				rake "db:schema:load"
-				rake "db:migrate"
-			end
-
-		  def migrations
-		  	rake "maawol_engine:install:migrations"
-		  	rake "db:migrate"
+		  def copy_migrations
+		  	rails "maawol_engine:install:migrations"
 		  end
 
-		  def seed
-		  	rake "db:seed"
+		  def setup
+		  	rails "db:setup"
 		  end
 		end
 	end

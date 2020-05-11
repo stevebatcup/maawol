@@ -9,6 +9,12 @@ module Maawol
 		mattr_accessor :site_host
 		@@site_host = nil
 
+		mattr_accessor :currency_code
+		@@currency_code = "USD"
+
+		mattr_accessor :currency_symbol
+		@@currency_symbol = "$"
+
 		mattr_accessor :application_controller_class
 		@@application_controller_class = 'ApplicationController'
 		def self.application_controller_class
@@ -75,12 +81,6 @@ module Maawol
 
 		mattr_accessor :vimeo_project_id
 		@@vimeo_project_id = nil
-
-		mattr_accessor :currency_code
-		@@currency_code = "USD"
-
-		mattr_accessor :currency_symbol
-		@@currency_symbol = "$"
 
 		mattr_accessor :paypal_client_id
 		@@paypal_client_id = nil

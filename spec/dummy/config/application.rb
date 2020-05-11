@@ -27,6 +27,8 @@ module Dummy
     config.web_console.development_only = false
     config.web_console.permissions = '192.168.0.0/16'
 
+    config.time_zone = "Asia/Dhaka"
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
