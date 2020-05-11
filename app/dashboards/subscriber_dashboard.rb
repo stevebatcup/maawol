@@ -17,7 +17,6 @@ class SubscriberDashboard < UserDashboard
     :subscription_created,
     :created_at,
     :is_admin,
-    :sign_in_count,
     :current_sign_in_at,
     :current_sign_in_ip,
     :last_sign_in_at,
