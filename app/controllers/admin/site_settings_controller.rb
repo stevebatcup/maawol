@@ -1,5 +1,7 @@
 module Admin
   class SiteSettingsController < Admin::ApplicationController
+    skip_before_action :verify_authenticity_token
+
     def valid_action?(name, resource = resource_class)
       %w[show new destroy].exclude?(name.to_s) && super
     end
