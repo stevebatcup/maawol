@@ -30,13 +30,13 @@
 </head>
 
 <body onunload="" ng-app="Maawol_NG" data-theme="<%= site_theme %>">
-  <header class="header d-flex justify-content-between px-5 py-3" ng-controller="NavController" data-signed-in="1">
-    <h1>
+  <header class="header d-flex justify-content-between px-5 py-2" ng-controller="NavController" data-signed-in="1">
+    <h1 class="py-0 my-0">
       <a href="/" id="logo_top" class="d-flex">
         <% unless school_image("square-logo").nil? %>
-          <img src="<%= school_image("square-logo").url(:large_square) %>" alt="<%= school_setting("site-name") %>" class="site-logo mr-2" />
+          <img src="<%= school_image("square-logo").url(:large_square) %>" alt="<%= school_setting("site-name") %>" class="site-logo mr-3" />
         <% end %>
-        <span><%= school_setting("site-name") %></span>
+        <span class="pt-2"><%= school_setting("site-name") %></span>
       </a>
     </h1>
 

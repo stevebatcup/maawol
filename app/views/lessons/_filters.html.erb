@@ -1,20 +1,20 @@
-<div class='desktop_filters d-flex justify-content-between px-5 container' id='filters'>
+<div class='desktop_filters d-flex justify-content-between container mb-2 pt-1 pb-4' id='filters'>
 	<form name="filter_form" class="d-flex" action="/lessons">
-	  <select name="root_category" id="root_category">
+	  <select name="root_category" id="root_category" class="mr-2 px-2">
 	    <option value=''>Select lesson category</option>
 	    <% @root_categories.each do |root_category| %>
 			  <option value="<%= root_category.id %>" <%= 'selected="selected"' if params[:root_category] && params[:root_category].to_i == root_category.id %>><%= root_category.name %></option>
 	    <% end %>
 	  </select>
 	  <% if params[:root_category] && params[:root_category].to_i > 0 %>
-	  	<select name="category" id="category">
+	  	<select name="category" id="category" class="mr-2 px-2">
 	  		<option value=''>select...</option>
 		    <% @categories.each do |category| %>
 				  <option value="<%= category.id %>"  <%= 'selected="selected"' if params[:category] && params[:category].to_i == category.id %>><%= category.name %></option>
 		    <% end %>
 	  	</select>
 	  <% else %>
-		  <select name="category" id="category" style="display:none;"><!-- --></select>
+		  <select name="category" id="category" style="display:none;" class="mr-2 px-2"><!-- --></select>
 		 <% end %>
 
 	  <input type="submit" class="btn btn-success" id="submit_filters" value="Go" />
