@@ -48,7 +48,7 @@ en:
         author_fee: Tutor receives
         author_name: Tutor
       downloadable:
-        when_associated: Downloadables
+        when_associated: Scores
         image: Thumbnail
         full_url: Download URL (only for subscribers)
         basket_url: Bakset URL (for YouTube etc)

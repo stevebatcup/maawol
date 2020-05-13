@@ -1,24 +1,14 @@
 #subscribe_instructions {
-	margin-top: -1.1em;
-	background: #efab0c;
-
-	p, ul {
-		color: #ffffff;
-	}
-
 	p {
-		font-size: 1em;
+		font-size: 1.4em;
 	}
 
 	ul {
-		padding-left: 11px;
-		font-size: 0.8em;
-		margin: 0px 0 8px;
 
 		li {
 			line-height: 1.5em;
-			list-style: none;
-			font-weight: bold;
+			margin-bottom: 1em;
+			font-size: 1em;
 		}
 	}
 }

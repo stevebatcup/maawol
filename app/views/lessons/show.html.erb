@@ -3,8 +3,6 @@
   <% meta_tag :description, @lesson.content_excerpt.truncate(160) %>
 <% end %>
 
-<%= render(partial: 'subscribe_callout') if show_subscription_interstitial? %>
-
 <article class="single-post lesson container"
         ng-controller="LessonsController"
         data-lesson-id="<%= @lesson.id %>"

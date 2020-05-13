@@ -54,6 +54,10 @@
 						width: 100% !important;
 						margin-left: 0;
 						height: initial;
+
+						&.no_thumbnail {
+							opacity: 0.35;
+						}
 					}
 				}
 			}

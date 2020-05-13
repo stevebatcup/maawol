@@ -7,6 +7,7 @@ else
 			json.id lesson.id
 			json.name lesson.name
 			json.image lesson.listing_thumbnail_path
+			json.hasThumbnail lesson.thumbnail.present?
 			json.category lesson.categories.first.name if lesson.categories.any?
 			json.published time_ago_in_words(lesson.publish_date)
 

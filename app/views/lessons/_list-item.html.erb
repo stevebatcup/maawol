@@ -1,7 +1,7 @@
 <article class="post type-post well">
   <div class="entry-thumbnail">
     <a href="{{lesson.path}}" class="img_wrap" ng-if="lesson.image">
-      <img ng-src="{{lesson.image}}" alt="{{lesson.name}}" />
+      <img ng-src="{{lesson.image}}" alt="{{lesson.name}}" ng-class="{'no_thumbnail': !lesson.hasThumbnail}" />
     </a>
   </div>
 

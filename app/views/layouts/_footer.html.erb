@@ -1,5 +1,6 @@
-<footer class="site-footer pt-4">
-  <div class="container">
+<footer class="site-footer">
+  <%= render(partial: 'lessons/subscribe_callout') if show_subscription_interstitial? %>
+  <div class="container pt-4">
     <div class="row">
       <div class="col-12 col-lg-3 px-4 text-center footer-branding mb-md-4 mb-lg-0">
         <div class="widget widget_about">

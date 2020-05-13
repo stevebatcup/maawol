@@ -1,3 +1,7 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+	display: none !important;
+}
+
 @import "library/_variables";
 
 // Vendor styles
@@ -25,7 +29,6 @@
 @import "library/_content_management";
 @import "library/_widgets";
 @import "library/_sidebar";
-
 
 // Page styles
 @import "pages/home";

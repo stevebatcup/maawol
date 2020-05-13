@@ -1,7 +1,5 @@
 <% html_title @contact.subject.html_safe %>
 
-<%= render(partial: 'lessons/subscribe_callout') if show_subscription_interstitial? %>
-
 <section class="contact-details container pt-3 pt-md-2 pb-0 pb-md-5" ng-controller="ContactController">
   <%= render 'contact' %>
 </section>

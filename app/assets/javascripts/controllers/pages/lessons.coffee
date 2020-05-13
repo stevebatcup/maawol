@@ -21,7 +21,7 @@ class Maawol.Lessons extends Maawol.Page
 			@scope.lessons = []
 			@scope.loaded = false
 			@scope.totalLessons = 0
-			@getItems(1)
+			@getItems 1, @bindScrollEvent
 		@bindEvents()
 		@videoHost = @element.data('video-host')
 
@@ -31,7 +31,6 @@ class Maawol.Lessons extends Maawol.Page
 	bindEvents: =>
 		super
 		@bindSubscribeCalloutClick()
-		@bindScrollEvent()
 		@bindDesktopOnlyEvents() unless @isMobile()
 
 		$('#post_comment', '.comment-form').on 'click', (e) =>
@@ -115,7 +114,7 @@ class Maawol.Lessons extends Maawol.Page
 					@scope.moreToLoad = false
 					@getItems(@scope.page)
 
-	getItems: (page) =>
+	getItems: (page, callback=null) =>
 		vars = {page: page}
 		if $('[data-search]').length
 			vars['search'] = $('[data-search]').data('search')
@@ -134,6 +133,7 @@ class Maawol.Lessons extends Maawol.Page
 					@scope.lessons.push item
 				@scope.moreToLoad = @scope.totalLessons > @scope.lessons.length
 				@scope.page += 1
+				callback.call(@) if callback?
 			, timeoutDelay
 		, (response) =>
 			@refreshPage() if response.status is 401

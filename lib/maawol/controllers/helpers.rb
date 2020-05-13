@@ -115,13 +115,7 @@ module Maawol
 			end
 
 			def results_per_page
-				if browser.device.mobile?
-					10
-				elsif browser.device.tablet?
-					21
-				else
-					12
-				end
+				browser.device.mobile? ? 10 : 12
 			end
 
 			def basket

@@ -1,5 +1,6 @@
-<footer class="site-footer pt-4">
-  <div class="container">
+<footer class="site-footer">
+  <%= render(partial: 'lessons/subscribe_callout') if show_subscription_interstitial? %>
+  <div class="container pt-4">
     <div class="text-center mb-4">
       <% if school_image("square-logo").present? %>
       <a href="/" class="d-block">

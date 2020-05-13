@@ -1,7 +1,5 @@
 <% html_title "Account settings" %>
 
-<%= render(partial: 'lessons/subscribe_callout') if show_subscription_interstitial? %>
-
 <section ng-controller="SettingsController"
   data-recurring-cancellation-error="Sorry, there has been an error cancelling your subscription"
   data-payment-error-prefix="<%= I18n.t('views.subscription.form.errors.prefix') %>"
