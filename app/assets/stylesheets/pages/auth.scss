@@ -14,7 +14,7 @@ section#payment {
 		border: 1px solid #cfd8dc;
 		padding: 30px;
 	  min-width: 30vw;
-	  max-width: 560px;
+	  max-width: 450px;
 	  margin: 0 auto 1em;
 
 		p {
@@ -56,9 +56,15 @@ section#payment {
 		}
 	}
 
+	&#checkout_complete_box {
+		.panel {
+			max-width: 550px;
+		}
+	}
+
 	&#payment {
 		.panel {
-			width: 550px;
+			max-width: 550px;
 		  text-align: left;
 		}
 	}

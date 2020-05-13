@@ -34,26 +34,32 @@
     <div class="header-top">
       <div class="container">
         <div class="row">
-          <div class="col-3 col-xl-4">
+          <div class="col-md-4">
             <% unless school_image("landscape-logo").nil? %>
               <a href="/" id="logo_top">
                 <img src="<%= school_image("landscape-logo").url(:large_landscape) %>" alt="<%= school_setting("site-name") %>" class="site-logo" />
               </a>
             <% end %>
           </div>
-          <div class="col-6 col-xl-4 text-center d-flex align-items-end justify-content-center">
+          <div class="col-md-4 text-center d-flex align-items-end justify-content-center">
             <form class="search-form" method="get" action="/lessons">
               <input name="search" type="text" class="search-input" size="20" maxlength="20" placeholder="Search for lessons..." required="" />
               <input type="submit" name="submit" class="search-submit" />
             </form>
           </div>
-          <div class="col-3 col-xl-4 d-flex align-items-end justify-content-end account_links_col">
+          <div class="col-md-4 d-flex align-items-end justify-content-end account_links_col">
             <div class="account_links">
-              <% if signed_in? && current_user.is_admin? && !browser.device.tablet? %>
-                <span><a href="/admin" target="_blank" data-turbolinks="false"><i class="fas fa-laptop-code mr-2"></i>Admin</a></span>
+              <% if signed_in? && current_user.is_admin? %>
+                <span class="d-none d-lg-inline">
+                  <a href="/admin" target="_blank" data-turbolinks="false"><i class="fas fa-laptop-code mr-2"></i>Admin</a>
+                </span>
               <% end %>
-              <span><a href="/settings"><i class="fa fa-user mr-1"></i> My account</a></span>
-              <span> <a data-method="delete" href="<%= sign_out_path %>"><i class="fa fa-lock mr-1"></i> Sign out</a></span>
+              <span class="d-lg-inline"><a href="/settings">
+                <i class="fa fa-user mr-1"></i> My account</a>
+              </span>
+              <span class="d-lg-inline"> <a data-method="delete" href="<%= sign_out_path %>">
+                <i class="fa fa-lock mr-1"></i> Sign out</a>
+              </span>
             </div>
           </div>
         </div>
