@@ -1,0 +1,38 @@
+@media (max-width: 1024px) {
+	.main-content {
+		margin-left: 24.5vw;
+	}
+
+	header#top_header {
+		left: 24.5vw;
+		width: 75.5vw;
+	}
+
+	#admin_sidenav {
+		width: 24.5vw;
+
+		.app-container.nav_hidden & {
+			left: -24.5vw;
+		}
+	}
+}
+
+
+@media (max-width: 768px) {
+	.main-content {
+		margin-left: 33vw;
+	}
+
+	header#top_header {
+		left: 33vw;
+		width: 67vw;
+	}
+
+	#admin_sidenav {
+		width: 33vw;
+
+		.app-container.nav_hidden & {
+			left: -33vw;
+		}
+	}
+}

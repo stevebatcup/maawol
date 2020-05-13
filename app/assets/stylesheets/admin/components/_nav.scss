@@ -1,7 +1,18 @@
 header#top_header {
 	color: #fff;
-	width: 100%;
 	background-color: $maawol_admin_bg;
+	position: fixed;
+	top: 0;
+	left: 18vw;
+	width: 82vw;
+	z-index: 1000;
+	height: 56px;
+	transition: left 0.2s;
+
+	.app-container.nav_hidden & {
+		left: 0;
+		width: 100vw;
+	}
 
 	h2 {
 		font-size: 1em;
@@ -28,7 +39,7 @@ header#top_header {
 
 #admin_sidenav {
 	flex: 1 1 auto;
-	width: 260px;
+	width: 18vw;
 	color: #fff;
 	padding: 0;
 	font-size: 0.95em;
@@ -39,13 +50,14 @@ header#top_header {
   bottom: 0;
   z-index: 500;
   overflow-y: auto;
+  background-color: #27373c;
 
   &::-webkit-scrollbar {
   	display: none;
   }
 
 	.app-container.nav_hidden & {
-		left: -260px;
+		left: -18vw;
 	}
 
 	& > header {

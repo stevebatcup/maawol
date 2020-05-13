@@ -17,6 +17,8 @@
 @import "components/_links";
 @import "components/_tables";
 
+@import "tablet";
+
 
 .collapse {
 	display: unset; /* Datepicker is interfereing with Bootstrap collapse */
