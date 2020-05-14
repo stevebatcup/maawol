@@ -176,6 +176,25 @@ header {
         list-style: none;
         display: block;
 
+        a {
+          font-size: 14px;
+          font-weight: 600;
+          padding: 0 2.5%;
+          padding: 0 2.5vw;
+          display: block;
+          position: relative;
+          text-transform: uppercase;
+          font-size: 1em;
+          line-height: 2.7em;
+
+          &.btn {
+            line-height: 1.8em;
+            position: relative;
+            top: 0.45em;
+            background-color: darken(#5ac664, 7%) !important;
+          }
+        }
+
         &.menu-item-has-children {
           a {
             padding: 2px 30px 0 26px;
@@ -199,25 +218,6 @@ header {
             border: none;
             box-shadow: none;
             outline: 0;
-          }
-        }
-
-        a {
-          font-size: 14px;
-          font-weight: 600;
-          padding: 0 2.3%;
-          padding: 0 2.3vw;
-          display: block;
-          position: relative;
-          text-transform: uppercase;
-          font-size: 1em;
-          line-height: 2.7em;
-
-          &.btn {
-            line-height: 1.8em;
-            position: relative;
-            top: 0.45em;
-            background-color: darken(#5ac664, 7%) !important;
           }
         }
 
@@ -278,6 +278,6 @@ header {
 @media (max-width: 1024px) {
   header .header-bottom.desktop .navbar-default .navbar-nav li a {
     font-size: 0.9em;
-    padding: 0 1.1vw;
+    padding: 0 1.9vw;
   }
 }

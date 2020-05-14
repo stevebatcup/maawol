@@ -22,11 +22,10 @@ header .header-bottom .navbar-default .navbar-nav li a.btn {
 }
 
 @media (max-width: 1200px) {
-  // header .header-bottom .navbar-default .navbar-nav li a {
-  //   padding: 0 3em;
-  // }
+  header .header-bottom .navbar-default .navbar-nav li a {
+    padding: 0 3.5vw;
+  }
 }
 
 @media (max-width: 992px) {
-
 }
