@@ -58,7 +58,7 @@ header {
         text-align: center;
         color: #868686;
         font-size: 15px;
-        line-height: 28px;
+        line-height: 34px;
         background: #eaeaea;
         border-radius: 0 5px 5px 0;
       }
@@ -80,17 +80,18 @@ header {
           right: 0;
           top: 0;
           width: 20%;
-          line-height: 40px;
+          line-height: 42px;
           border-radius: 0 5px 5px 0;
         }
       }
 
       input[type=text] {
-        padding: 2px 50px 3px 16px;
+        padding: 6px 50px 5px 16px;
         width: 100%;
         border-radius: 5px 0 0 5px;
-        font-size: 0.9em;
-        color: #8c8c8c;
+        font-size: 1em;
+        color: #656565;
+        font-weight: 600;
       }
     }
 
