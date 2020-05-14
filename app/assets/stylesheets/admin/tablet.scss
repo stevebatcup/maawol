@@ -1,18 +1,18 @@
 @media (max-width: 1024px) {
 	.main-content {
-		margin-left: 24.5vw;
+		margin-left: 26vw;
 	}
 
 	header#top_header {
-		left: 24.5vw;
-		width: 75.5vw;
+		left: 26vw;
+		width: 74vw;
 	}
 
 	#admin_sidenav {
-		width: 24.5vw;
+		width: 26vw;
 
 		.app-container.nav_hidden & {
-			left: -24.5vw;
+			left: -26vw;
 		}
 	}
 }
