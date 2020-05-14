@@ -154,6 +154,11 @@ header#top_header {
 				&:hover {
 					background-color: inherit;
 				}
+
+				.badge {
+					position: relative;
+					top: 2px;
+				}
 			}
 
 			&.active {

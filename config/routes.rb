@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 	namespace :admin do
 	  resources :users
 	  resources :subscribers
+	  resources :comps
 	  resources :authors
 	  resources :lessons
 	  resources :videos
@@ -45,6 +46,7 @@ Rails.application.routes.draw do
 	  resources :site_settings
 	  resources :site_images
 	  patch "set_homepage_video", to: "videos#set_for_homepage"
+	  get "resource-counts", to: "resource_counts#index"
 	  root to: "lessons#index"
 	end
 

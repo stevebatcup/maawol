@@ -5,7 +5,8 @@
 
   <ul class="pt-3">
     <li class="<%= 'active' if request.path.include?('/admin/overview') %>">
-      <a class="navigation__link" href="#">Overview (coming soon)
+      <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="#">
+        <span class="text">Dashboard</span>
       </a>
     </li>
   </ul>
@@ -19,26 +20,46 @@
   <div id="lesson_options" class="collapse show">
     <ul>
       <li class="<%= 'active' if request.path.include?('/admin/lessons') %>">
-        <a class="navigation__link" href="/admin/lessons">Lessons</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/lessons">
+          <span class="text">Lessons</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.lessons}}</span>
+        </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/courses') %>">
-        <a class="navigation__link" href="/admin/courses">Courses</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/courses">
+          <span class="text">Courses</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.courses}}</span>
+        </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/authors') %>">
-        <a class="navigation__link" href="/admin/authors">Tutors</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/authors">
+          <span class="text">Tutors</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.courses}}</span>
+        </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/root_categories') %>">
-        <a class="navigation__link" href="/admin/root_categories">Primary categories</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/root_categories">
+          <span class="text">Primary categories</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.rootCategories}}</span>
+        </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/categories') %>">
-        <a class="navigation__link" href="/admin/categories">Secondary categories
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/categories">
+          <span class="text">Secondary categories</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.categories}}</span>
         </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/tags') %>">
-        <a class="navigation__link" href="/admin/tags">Tags</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/tags">
+          <span class="text">Tags</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.tags}}</span>
+        </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/skill_levels') %>">
-        <a class="navigation__link" href="/admin/skill_levels">Skill levels</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/skill_levels">
+          <span class="text">Skill levels</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.skillLevels}}</span>
+        </a>
       </li>
     </ul>
   </div>
@@ -52,16 +73,28 @@
   <div id="resources_options" class="collapse show">
     <ul>
       <li class="<%= 'active' if request.path.include?('/admin/videos') %>">
-        <a class="navigation__link" href="/admin/videos">Videos</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/videos">
+          <span class="text">Videos</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.videos}}</span>
+        </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/audio_files') %>">
-        <a class="navigation__link" href="/admin/audio_files">Audio files</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/audio_files">
+          <span class="text">Audio files</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.audioFiles}}</span>
+        </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/downloadables') %>">
-        <a class="navigation__link" href="/admin/downloadables">Scores</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/downloadables">
+          <span class="text">Scores</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.downloadables}}</span>
+        </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/playlists') %>">
-        <a class="navigation__link" href="/admin/playlists">Playlists</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/playlists">
+          <span class="text">Playlists</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.playlists}}</span>
+        </a>
       </li>
     </ul>
   </div>
@@ -75,10 +108,22 @@
   <div id="student_options" class="collapse show">
     <ul>
       <li class="<%= 'active' if request.fullpath == '/admin/users' %>">
-        <a class="navigation__link" href="/admin/users">All students</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/users">
+          <span class="text">All students</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.students}}</span>
+        </a>
       </li>
       <li class="<%= 'active' if request.fullpath == '/admin/subscribers' %>">
-        <a class="navigation__link" href="/admin/subscribers">Subscribers</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/subscribers">
+          <span class="text">Paying subscribers</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.subscribers}}</span>
+        </a>
+      </li>
+      <li class="<%= 'active' if request.fullpath == '/admin/comps' %>">
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/comps">
+          <span class="text">Complimentary subscribers</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.comps}}</span>
+        </a>
       </li>
     </ul>
   </div>
@@ -92,16 +137,28 @@
   <div id="commerce_options" class="collapse show">
     <ul>
       <li class="<%= 'active' if request.path.include?('/admin/stores') %>">
-        <a class="navigation__link" href="/admin/stores">Stores</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/stores">
+          <span class="text">Stores</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.stores}}</span>
+        </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/product_payments') %>">
-        <a class="navigation__link" href="/admin/product_payments">Store payments</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/product_payments">
+          <span class="text">Store payments</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.storePayments}}</span>
+        </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/users_subscription_payments') %>">
-        <a class="navigation__link" href="/admin/users_subscription_payments">Subscription payments</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/users_subscription_payments">
+          <span class="text">Subscription payments</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.subscriptionPayments}}</span>
+        </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/income_reports') %>">
-        <a class="navigation__link" href="/admin/income_reports">Monthly income reports</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/income_reports">
+          <span class="text">Monthly income reports</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.incomeReports}}</span>
+        </a>
       </li>
     </ul>
   </div>
@@ -115,16 +172,16 @@
   <div id="cms_options" class="collapse show">
     <ul>
       <li class="<%= 'active' if request.path.include?('/admin/content_management/pages') %>">
-        <a class="navigation__link" href="/admin/content_management/pages">Pages</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/content_management/pages">Pages</a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/content_management/content_blocks') %>">
-        <a class="navigation__link" href="/admin/content_management/content_blocks">Content blocks</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/content_management/content_blocks">Content blocks</a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/content_management/images') %>">
-        <a class="navigation__link" href="/admin/content_management/images">Images</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/content_management/images">Images</a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/stuck') %>">
-        <a class="navigation__link" href="/admin/stuck_questions">"I am stuck" page</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/stuck_questions">"I am stuck" page</a>
       </li>
     </ul>
   </div>

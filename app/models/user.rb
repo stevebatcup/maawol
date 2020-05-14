@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  enum	status: [:free, :paying, :complimentary, :deleted, :expiring]
+  enum	status: [:free, :paying, :complimentary, :deleted]
 
   validates_presence_of :email, :first_name, :last_name
   validate :within_complimentary_account_limit, on: :update
@@ -25,6 +25,10 @@ class User < ApplicationRecord
   after_create  :add_to_mailchimp
   after_create  :send_welcome_email
   after_create  :send_admin_registration_email
+
+  def self.active
+    where.not(status: :deleted)
+  end
 
   def set_default_status
     self.status = :free

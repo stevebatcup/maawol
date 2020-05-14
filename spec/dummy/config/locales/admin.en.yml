@@ -38,6 +38,9 @@ en:
           multiple: Playlists
           singular: Playlist
       subscriber:
+        resource_name_overrides:
+          multiple: Paying subscribers
+          singular: Paying subscriber
         subscription_created: Subscription purchased at
         subscription_referring_author_name: Referred by
       users_subscription_payment:
@@ -66,7 +69,14 @@ en:
         category_ids: In categories
         is_free: Available for free?
         human_access_level: Access level
+      comp:
+        resource_name_overrides:
+          multiple: Complimentary subscribers
+          singular: Complimentary subscriber
       user:
+        resource_name_overrides:
+          multiple: Students
+          singular: Student
         when_associated: Peronalised for students
         encrypted_password: Password
         status: Membership status

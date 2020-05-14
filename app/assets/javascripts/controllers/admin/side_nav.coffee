@@ -13,12 +13,23 @@ class Maawol.AdminSideNavController extends Maawol.AdminPage
 	]
 
 	init: ->
+		@setDefaultHttpHeaders()
+		@setCsrfTokenHeaders()
 		@bindEvents()
+		@getResourceCounts()
 		angular.forEach @getCollapsibleStatesList(), (item) =>
 			$("##{item}", "#admin_sidenav").collapse('hide')
 
 	bindEvents: =>
 		@bindCollapsibleClicks()
+
+	getResourceCounts: =>
+		@scope.resourceCounts =
+			loaded: false
+			items: {}
+		@http.get("/admin/resource-counts").then (response) =>
+			@scope.resourceCounts.loaded = true
+			@scope.resourceCounts.items = response.data.items
 
 	bindCollapsibleClicks: =>
 		$(document).on 'hidden.bs.collapse', '.collapse', (e) =>
