@@ -45,13 +45,15 @@ class Maawol.Lessons extends Maawol.Page
 			name = $commentBox.data('name')
 			$replyBox.find('textarea').attr 'placeholder', "Reply to #{name}"
 			$replyBox.addClass('replying').detach().insertAfter($commentBox)
+			$('#post_comment', $replyBox).val("Add reply")
 
 		$('a#cancel_reply', '#respond').on 'click', (e) =>
 			e.preventDefault()
 			$replyBox = $('#respond')
 			$replyBox.find('a#cancel_reply').hide()
-			$replyBox.find('textarea').attr 'placeholder', 'Add a comment...'
+			$replyBox.find('textarea').attr 'placeholder', 'Add your comment...'
 			$replyBox.removeClass('replying').detach().appendTo('#comments_top')
+			$('#post_comment', $replyBox).val("Add comment")
 
 
 		$('#viewed', '#actions').on 'click', (e) =>
@@ -153,12 +155,12 @@ class Maawol.Lessons extends Maawol.Page
 					$li.append Mustache.render($('#comment_template').html(), comment)
 					if $commentBox.length
 						$listItem = $commentBox.parent()
-						$childList = $listItem.find('ol.children')
-						$listItem.append $('<ol class="children">') if $childList.length is 0
-						$childList = $listItem.find('ol.children')
+						$childList = $listItem.find('ul.children')
+						$listItem.append $('<ul class="children">') if $childList.length is 0
+						$childList = $listItem.find('ul.children')
 						$childList.prepend $li
 					else
-						$('ol.comment-list').prepend $li
+						$('ul.comment-list').prepend $li
 					$('textarea#comment').val('')
 					$('a#cancel_reply', '.respond').click() if $('a#cancel_reply', '.respond').is(':visible')
 					$('h2.title', '.respond').text 'Leave a new Comment'

@@ -212,11 +212,7 @@
   .blog-posts.video-post .post-navigation article .entry-content .entry-title {
     font-size: 13px;
   }
-  .respond form input,
-  .contact-form input,
-  .form-elements input {
-    width: 32.7%;
-  }
+
   .author-heading .heading-bottom .author-image {
     max-width: 135px;
   }
