@@ -37,7 +37,10 @@ class Lesson < ApplicationRecord
 
   def self.search(query)
     self.includes(:categories).includes(:tags)
-        .where("lessons.name LIKE :query OR lessons.content LIKE :query OR categories.name LIKE :query OR tags.name LIKE :query", query: "%#{query}%")
+        .where("lower(lessons.name) LIKE :query OR
+                lower(lessons.content) LIKE :query OR
+                lower(categories.name) LIKE :query OR
+                lower(tags.name) LIKE :query", query: "%#{query.downcase}%")
         .references(:categories).references(:tags)
   end
 
