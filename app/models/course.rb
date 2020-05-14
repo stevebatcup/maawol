@@ -21,7 +21,7 @@ class Course < ApplicationRecord
   end
 
   def snippet(count=250)
-  	self.description.truncate(count)
+  	self.description.truncate(count).html_safe
   end
 
   def find_teaching_by_sort(sort)
