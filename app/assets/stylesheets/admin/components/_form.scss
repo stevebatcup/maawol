@@ -10,11 +10,13 @@
 
 	&.with_uploader.image {
 		img {
-			border: 1px solid #676767;
-			border-radius: 3px;
-			background: #fff;
-			padding: 8px;
-			box-shadow: 2px 2px 1px #ccc;
+			border: 1px solid #aaa;
+			border-radius: 1px;
+			background-color: #fff;
+			background: asset_url("checkerboard.png") repeat left top;
+			background-size: 12px;
+			padding: 0;
+			box-shadow: 3px 3px 3px #aaaaaa;
 
 			&.small_square {
 				width: 170px;
@@ -34,6 +36,10 @@
 
 			&.small_landscape {
 				width: 170px;
+			}
+
+			&.large_landscape {
+				width: 510px;
 			}
 
 			&.downloadable.image {
