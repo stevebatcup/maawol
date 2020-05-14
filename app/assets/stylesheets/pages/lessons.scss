@@ -12,12 +12,14 @@ section.lessons {
 	#filters {
 		&.desktop_filters {
 
-			h4, select {
+			h4 {
 				display: inline-block;
 				font-size: 1.1em;
 			}
 
 			select {
+				display: inline-block;
+				font-size: 1em;
 				background: #fff;
 			}
 

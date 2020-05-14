@@ -80,6 +80,11 @@ header .header-bottom .navbar-default {
   background-color: $maawol_navbar_bg;
 }
 
+header .header-bottom {
+  border-top: 1px solid $maawol_navbar_border;
+  border-bottom: 1px solid $maawol_navbar_border;
+}
+
 header .header-bottom .navbar-default .navbar-nav li.menu-item a:hover,
 header .header-bottom .navbar-default .navbar-nav li.menu-item a:focus {
   color: $maawol_navbar_color;
