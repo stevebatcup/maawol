@@ -1,9 +1,10 @@
 $maawol_body_bg: #353535;
-$maawol_auth_page_bg: #353535;
+$maawol_auth_page_bg: #f1f1f1;
 $maawol_auth_panel_bg: #292929;
 
 /* Text */
 $maawol_text_color: #ffffff;
+$maawol_link_color: #78d681;
 $maawol_text_meta: #fdfdfd;
 $maawol_account_links: #ffffff;
 $maawol_navbar_color: #ffffff;
@@ -57,7 +58,7 @@ header .header-bottom .navbar-default .navbar-nav li .modal.interstitial#subscri
 .modal.interstitial#subscriptionInterstitialModal .modal-body .inner header .header-bottom .navbar-default .navbar-nav li a#green_subscribe,
 .btn-success {
 	color: #57985d !important;
-	border-color: #2b482d !important;
+	border-color: #1e9e27 !important;
 	font-weight: 800;
 	background-color: #ffffff !important;
 }

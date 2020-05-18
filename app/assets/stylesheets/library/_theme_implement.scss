@@ -12,7 +12,10 @@ p,
 	color: $maawol_text_color;
 }
 
-a,
+a {
+  color: $maawol_link_color;
+}
+
 article.lesson .comments .respond input.btn {
 	color: $maawol_comment_button_color
 }

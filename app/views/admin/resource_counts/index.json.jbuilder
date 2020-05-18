@@ -17,4 +17,7 @@ json.items do
 	json.storePayments @counts[:storePayments]
 	json.subscriptionPayments @counts[:subscriptionPayments]
 	json.incomeReports @counts[:incomeReports]
+	json.cmsPages @counts[:cmsPages]
+	json.cmsContentBlocks @counts[:cmsContentBlocks]
+	json.cmsImages @counts[:cmsImages]
 end

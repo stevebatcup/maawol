@@ -20,7 +20,10 @@ module Admin
     		storePayments: ProductPayment.count,
     		subscriptionPayments: UsersSubscriptionPayment.count,
     		incomeReports: IncomeReport.count,
-    	}
+        cmsPages: ::ContentManagement::Page.count,
+        cmsContentBlocks: ::ContentManagement::ContentBlock.count,
+        cmsImages: ::ContentManagement::Image.count,
+      }
     end
   end
 end

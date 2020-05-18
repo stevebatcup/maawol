@@ -26,23 +26,23 @@ Gem::Specification.new do |spec|
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   spec.test_files = Dir["spec/**/*"]
 
-  spec.add_dependency "rails", "~> 6.0.0"
-  spec.add_dependency "pg"
+  spec.add_dependency 'rails', '~> 6.0.0'
+  spec.add_dependency 'pg'
   spec.add_dependency 'acts_as_shopping_cart', '~> 0.4.0'
-  spec.add_dependency "acts_as_commentable_with_threading"
+  spec.add_dependency 'acts_as_commentable_with_threading'
   spec.add_dependency 'mandrill-api', '~> 1.0'
   spec.add_dependency 'mailchimp-api', '~> 2.0'
-  spec.add_dependency "clearance", "~> 2.1"
-  spec.add_dependency "browser", "~> 2.6"
-  spec.add_dependency "carrierwave", "~> 2.1"
-  spec.add_dependency "fog-aws", "~> 3.5"
-  spec.add_dependency "recaptcha", "~> 5.2"
-  spec.add_dependency "bootstrap", "~> 4.4"
-  spec.add_dependency "underscore-rails"
-  spec.add_dependency "ladda-rails"
-  spec.add_dependency "mustache"
-  spec.add_dependency "mustache-js-rails"
-  spec.add_dependency "mini_magick", '>= 4.9.5'
+  spec.add_dependency 'clearance', '~> 2.1'
+  spec.add_dependency 'browser', '~> 2.6'
+  spec.add_dependency 'carrierwave', '~> 2.1'
+  spec.add_dependency 'fog-aws', '~> 3.5'
+  spec.add_dependency 'recaptcha', '~> 5.2'
+  spec.add_dependency 'bootstrap', '~> 4.4'
+  spec.add_dependency 'underscore-rails'
+  spec.add_dependency 'ladda-rails'
+  spec.add_dependency 'mustache'
+  spec.add_dependency 'mustache-js-rails'
+  spec.add_dependency 'mini_magick', '>= 4.9.5'
   spec.add_dependency 'tinymce-rails', '~> 5.0'
   spec.add_dependency 'coffee-rails', '~> 5.0'
   spec.add_dependency 'angularjs-rails', '~> 1.6'
@@ -53,7 +53,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'sidekiq'
   spec.add_dependency 'exception_notification'
 
-  spec.add_dependency "administrate", "~> 0.13"
+  spec.add_dependency 'administrate', '~> 0.13'
   spec.add_dependency 'cocoon', '~> 1.2'
   spec.add_dependency 'rinku', '~> 2.0'
   spec.add_dependency 'dropzonejs-rails'
@@ -64,4 +64,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'web-console', '>= 3.3.0'
   spec.add_development_dependency 'listen'
+  spec.add_development_dependency 'better_errors'
+  spec.add_development_dependency 'binding_of_caller'
+  spec.add_development_dependency 'annotate'
 end

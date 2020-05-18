@@ -66,6 +66,10 @@ module Maawol
 			  errors.full_messages.map { |msg| msg }.first
 			end
 
+			def main_error_field(errors)
+				errors.keys.first.to_s.camelize(:lower)
+			end
+
 			def column_browser_class
 			  browser.device.mobile? ? 'column-2' : 'column-3'
 			end

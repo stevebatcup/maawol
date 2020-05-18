@@ -11,8 +11,10 @@
     <% end %>
 
 
-    <% if params[:paid] %>
-        <h3 id="paid" class="mb-5 mt-2">Great, thanks, You are now a subscriber and can view all lessons and courses</h3>
+    <% if params[:welcome] %>
+        <h4 id="paid" class="mb-5 mt-2"><%= t('views.lessons.welcome', school: school_setting('site-name')) %></h4>
+    <% elsif params[:paid] %>
+        <h3 id="paid" class="mb-5 mt-2"><%= t('views.lessons.paid') %></h3>
     <% end %>
 
     <div class="section">
@@ -27,7 +29,7 @@
       <% end %>
 
       <div ng-if="loaded" class="fader" ng-cloak>
-        <%= render 'lessons/filters' if current_user.has_full_account? && !params[:search] %>
+        <%= render 'lessons/filters' %>
         <div class="row">
           <div ng-repeat="lesson in lessons"
                     class="lesson_result search_result col-12 col-md-4 col-lg-3 mb-3"

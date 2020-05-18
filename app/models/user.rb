@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   COMPLIMENTARY_ACCOUNT_LIMIT = 5
 
-  attr_accessor :existing_password
+  attr_accessor :existing_password, :email_confirm
 
   has_many :watch_laters
   has_many :favourites
@@ -16,9 +16,9 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  enum	status: [:free, :paying, :complimentary, :deleted]
+  enum	status: [:free, :paying, :complimentary, :deleted, :expiring]
 
-  validates_presence_of :email, :first_name, :last_name
+  validates_presence_of :first_name, :last_name, :email
   validate :within_complimentary_account_limit, on: :update
 
   before_create :set_default_status

@@ -2,11 +2,6 @@
 
 <section class="" id="clearance" ng-controller="SignInController">
   <div id="login_box">
-
-    <p class="mb-2 text-center">
-      Don't have an account yet? <%= link_to "Register here", sign_up_url %>
-    </p>
-
     <div class="panel">
       <div class="text-center">
         <%= render 'layouts/auth-logo' %>
@@ -26,6 +21,10 @@
       </div>
 
       <%= render partial: 'sessions/form' %>
-    </div>
+
+      <p class="mb-2 text-center">
+        Don't have an account yet? <%= link_to "Register here", sign_up_url %>
+      </p>
+   </div>
   </div>
 </section>

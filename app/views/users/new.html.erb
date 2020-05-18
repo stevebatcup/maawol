@@ -2,10 +2,6 @@
 
 <section class="" id="clearance" ng-controller="SignUpController">
   <div id="registration_box">
-    <p class="mb-2 text-center">
-      Already have an account? <%= link_to "Sign in here", sign_in_path %>
-    </p>
-
     <div class="panel">
 
       <div class="text-center">
@@ -21,16 +17,20 @@
         <% end %>
       </div>
 
-      <%= form_for @user do |form| %>
+      <%= form_with(model: @user, id: :register_form, data: { type: :json }) do |form| %>
         <%= render partial: 'users/form', object: form %>
 
         <p class="submit-input">
-          <%= form.submit "Register for FREE", { class: 'btn btn-success btn-large' } %>
+          <%= form.submit "Register for FREE", { class: 'btn btn-success btn-large', data: { "disable-with": "Registering..." } } %>
           <span class="alt-methods" style="display: none;">
             <span>Or Register With</span>
             <a class="facebook" href="#"><i class="fa fa-facebook-official"></i></a>
             <a class="google" href="#"><i class="fa fa-google-plus"></i></a>
           </span>
+        </p>
+
+        <p class="mb-2 text-center">
+          Already have an account? <%= link_to "Sign in here", sign_in_path %>
         </p>
 
       <% end %>

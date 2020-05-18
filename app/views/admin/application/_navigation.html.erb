@@ -170,18 +170,24 @@
     </a>
   </h3>
   <div id="cms_options" class="collapse show">
-    <ul>
+    <ul class="pb-5">
       <li class="<%= 'active' if request.path.include?('/admin/content_management/pages') %>">
-        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/content_management/pages">Pages</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/content_management/pages">
+          <span class="text">Pages</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.cmsPages}}</span>
+        </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/content_management/content_blocks') %>">
-        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/content_management/content_blocks">Content blocks</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/content_management/content_blocks">
+          <span class="text">Content blocks</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.cmsContentBlocks}}</span>
+        </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/content_management/images') %>">
-        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/content_management/images">Images</a>
-      </li>
-      <li class="<%= 'active' if request.path.include?('/admin/stuck') %>">
-        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/stuck_questions">"I am stuck" page</a>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/content_management/images">
+          <span class="text">Images</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.cmsImages}}</span>
+        </a>
       </li>
     </ul>
   </div>

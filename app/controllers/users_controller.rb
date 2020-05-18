@@ -11,10 +11,26 @@ class UsersController < Clearance::UsersController
      if recaptcha_verified(@user) && @user.save
        sign_in @user
        flash.discard
-       redirect_back_or url_after_create
+       respond_to do |format|
+        format.html { redirect_back_or url_after_create }
+        format.json do
+          render json: { status: :success, redirect: url_after_create }
+        end
+      end
      else
-       flash[:alert] = legible_form_errors(@user.errors)
-       render template: "users/new"
+        respond_to do |format|
+          format.html do
+            flash[:alert] = legible_form_errors(@user.errors)
+            render template: "users/new"
+          end
+          format.json do
+            render json: {
+              status: :error,
+              message: legible_form_errors(@user.errors),
+              field: main_error_field(@user.errors)
+            }
+          end
+        end
      end
   end
 

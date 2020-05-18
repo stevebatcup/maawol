@@ -1,10 +1,20 @@
 en:
+  activerecord:
+    models:
+      downloadable: Score
+    attributes:
+      user:
+        email: "Email address"
+        email_confirm: "Confirm your email address"
   errors:
     messages:
       extension_whitelist_error: Please upload an acceptable file type
   views:
     defaults:
       save: Save
+    lessons:
+      welcome: Great, thanks for joining, you are now a member of %{school}.
+      paid: Great, thanks, you are now a subscriber and can view all lessons and courses.
     lesson:
       must_register: "You must be a paid member to view that lesson"
     register:

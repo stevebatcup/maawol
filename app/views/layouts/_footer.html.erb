@@ -98,14 +98,14 @@
       <div class="col-4 col-lg-3 px-4">
         <h3 class="widget-title">Info</h3>
         <ul class="other_pages p-0">
+          <% if signed_in? && current_user.is_admin? %>
+            <li class="menu-item">
+              <a href="/admin" target="_blank" data-turbolinks="false">Admin console</a>
+            </li>
+          <% end %>
           <% footer_navbar_items.each do |page| %>
             <li class="menu-item <%= 'active' if request.url.include?(page.url) %>">
               <a href="<%= page.url %>" data-turbolinks="false"><%= page.title %></a>
-            </li>
-          <% end %>
-          <% if signed_in? && current_user.is_admin? %>
-            <li class="menu-item">
-              <a href="/admin" target="_blank" data-turbolinks="false"><i class="fas fa-laptop-code mr-2"></i>Admin dashboard</a>
             </li>
           <% end %>
         </ul>

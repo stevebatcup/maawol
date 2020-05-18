@@ -125,7 +125,6 @@ navbars_data = [
 		{ name: "Courses", url: "/courses", desktop: true, mobile: true },
 		{ name: "My lessons", url: "/dashboard", desktop: true, mobile: true },
 		{ name: "Request a lesson", url: "/lesson-request", desktop: true, mobile: true },
-		{ name: "I'm Stuck", url: "/stuck", desktop: true, mobile: true }
 	]},
 	{ slug: :footer, items: [
 		{ name: "Privacy policy", url: "/privacy-policy", desktop: true, mobile: true },
