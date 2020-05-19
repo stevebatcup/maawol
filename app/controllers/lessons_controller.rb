@@ -4,16 +4,18 @@ class LessonsController < MaawolController
 	def index
 		respond_to do |format|
 			format.json do
+				@lessons = Lesson.published
+
 				if params[:search].present?
-					@lessons = Lesson.published.search(params[:search])
+					@lessons = @lessons.search(params[:search])
 				elsif params[:tag].present?
-					@lessons = Lesson.joins(:tags).where("tags.slug = ?", params[:tag]).published
-				elsif category_is_present?
-					@lessons = Lesson.in_category(category).published
+					@lessons = @lessons.joins(:tags).where("tags.slug = ?", params[:tag])
+				end
+
+				if category_is_present?
+					@lessons = @lessons.in_category(category)
 				elsif root_category_is_present?
-					@lessons = Lesson.in_root_category(root_category).published
-				else
-					@lessons = Lesson.published
+					@lessons = @lessons.in_root_category(root_category)
 				end
 
 				if params[:tag].present?
@@ -38,12 +40,7 @@ class LessonsController < MaawolController
 
 				if root_category_is_present?
 					@categories = root_category.categories
-					if category_is_present?
-						@category_title = "#{root_category.name} > #{category.name}"
-					else
-						params[:category] = :all
-						@category_title = "#{root_category.name}"
-					end
+					@category_title = "#{root_category.name}"
 				else
 					params[:root_category] = :all
 					params[:category] = :all

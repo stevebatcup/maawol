@@ -55,13 +55,13 @@
         <h2 class="section-title" data-tag="<%= params[:tag] %>">
           <%= t("views.lessons.title.tag", tag: params[:tag]) %>
         </h2>
-      <% elsif params[:root_category] %>
-        <h2 class="section-title" data-root-category="<%= params[:root_category] %>">
-          <%= t("views.lessons.title.category", category: @category_title) %>
-        </h2>
       <% elsif params[:search] %>
         <h2 class="section-title" data-search="<%= params[:search] %>">
           <%= t("views.lessons.title.search", search: params[:search]) %>
+        </h2>
+      <% elsif params[:root_category] %>
+        <h2 class="section-title" data-root-category="<%= params[:root_category] %>">
+          <%= t("views.lessons.title.category_html", category: @category_title.html_safe) %>
         </h2>
       <% else %>
         <h2 class="section-title">
@@ -88,11 +88,7 @@
 
       <p class="none_found" ng-if="loaded && !lessons.length" ng-cloak>
         <i class="far fa-sad-cry mr-1"></i>
-        <% if params[:tag] %>
-          <%= t("views.lessons.none_found.with_tag", tag: params[:tag]) %>
-        <% else %>
-          <%= t("views.lessons.none_found.default") %>
-        <% end %>
+        <%= t("views.lessons.none_found") %>
       </p>
 
     </div>

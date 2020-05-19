@@ -2,8 +2,8 @@
 	<div class="panel">
     <div class="text-center">
 			<% if @purchased_permissions.any? %>
-				<h3 class="mb-4">All done</h3>
-				<p>Thanks, here are the links to your purchased files.</p>
+				<h3 class="mb-4"><%= t("views.checkout.title") %></h3>
+				<p><%= t("views.checkout.thanks") %></p>
 				<ul class="mb-4">
 					<% @purchased_permissions.each do |permission| %>
 						<li>
@@ -12,9 +12,9 @@
 					<% end %>
 				</ul>
 			<% else %>
-				<h3 class="mb-4">Whoops</h3>
-				<p>You may have landed on this page in error.</p>
-				<p><a href="/" class="text-success">Try the homepage instead</a>.</p>
+				<h3 class="mb-4"><%= t("views.checkout.error.title") %></h3>
+				<p><%= t("views.checkout.error.desc") %></p>
+				<p><a href="/" class="text-success"></a><%= t("views.checkout.error.link") %>.</p>
 			<% end %>
 		</div>
 	</div>

@@ -15,6 +15,15 @@ en:
       all: All
       all_lessons: All lessons
       courses: Courses
+    comments:
+      reply: Reply
+    checkout:
+      title: All done
+      thanks: Thanks, here are the links to your purchased items.
+      error:
+        title: Whoops
+        desc: You may have landed on this page in error.
+        link: Try the homepage instead
     contact:
       send_email: Or you can send us an email at
       section_title:
@@ -32,6 +41,9 @@ en:
         contact: Send enquiry
         stuck: Get suggestions
     defaults:
+      close: close
+      or: or
+      pay: pay
       save: Save
       course: course
       subscribe: Subscribe
@@ -74,21 +86,23 @@ en:
       part_of_course_prefix: Part of the
     lessons:
       html_title: Lessons
-      all_lessons: All lessons
+      all_lessons: Lessons
       loading: Loading lessons...
       title:
         default: All lessons
-        tag: "Tagged as '%{tag}'"
-        category: "%{category}"
-        search: "Showing results for '%{search}'"
-      none_found:
-        default: Sorry, no lessons found
-        with_tag: Sorry, there are no lessons found for tag '%{tag}'
+        tag: "Lessons tagged as '%{tag}' > {{category}}"
+        category_html: "%{category} > {{category}}"
+        search: "Showing results for '%{search}' > {{category}}"
+      none_found: Sorry, no lessons found
       welcome: Great, thanks for joining, you are now a member of %{school}.
       paid: Great, thanks, you are now a subscriber and can view all lessons and courses.
     register:
       redirected: "You must first create your account before you can view any of the lessons. Joining is quick, easy and FREE using the form below!"
     subscription:
+      total_prefix: Total to pay today
+      empty_basket:
+        single: Sorry, cannot find that file!
+        multiple: There are no items in your basket!
       persuasion_items:
         messages: Send and read messages
         views: See who's viewed your profile
@@ -107,6 +121,12 @@ en:
           prefix: Sorry there was an error applying that discount code
           invalid: "Please enter a valid discount code"
       form:
+        back_link:
+          single: see all items in
+          multiple: go back to
+        paypal:
+          button: Checkout with Paypal
+          processing: Contacting paypal to complete your payment details, please wait...
         errors:
           prefix: Error processing payment
           email: Please enter a valid email address
@@ -118,9 +138,14 @@ en:
           selected: selected
           card_type: Payment by
           card_number: Card number
+          email: Email address
+          email_hint: Why? So we can email you a link to your purchases
+          first_name: First name
+          last_name: Last name
           expiry: Expiration date
           cv2: Security number
           submit: Confirm payment
+          expiration: Expiration
           paying: Submitting payment...
           secured_by: Secured by
           discount_code:
