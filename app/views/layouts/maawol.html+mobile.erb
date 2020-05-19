@@ -67,6 +67,13 @@
 
           <ul class="p-0 pt-2 mt-2 mb-0 mobile_account_links">
             <li class="menu-item">
+              <a href="<%= dashboard_path %>" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)">
+                <i class="fas fa-clipboard-list mr-1"></i>
+                <%= t('views.layouts.account_links.my_lists') %>
+              </a>
+            </li>
+
+            <li class="menu-item">
               <a href="<%= settings_path %>" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)">
                 <i class="fas fa-user mr-1"></i>
                 <%= t('views.layouts.account_links.my_account') %>

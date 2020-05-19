@@ -5,8 +5,16 @@
           data-lesson-locked-msg="<%= t('views.lesson.must_register') %>"
           data-redirect-locked-lessons="<%= locked_lesson_redirect_path %>">
   <div class="mb-3">
-    <h2 class="w-100"><%= @course.name %> course</h2>
-    <h6>by <%= @course.author.name %></h6>
+
+    <h2 class="w-100">
+      <%= @course.name %>&nbsp;
+      <%= t("views.defaults.courses") %>
+    </h2>
+
+    <h6>
+      <%= t("views.defaults.by") %>&nbsp;
+      <%= @course.author.name %>
+    </h6>
 
     <div class="entry-meta">
       <% if @course.tags.any? %>
@@ -18,7 +26,10 @@
 
     <div class="my-3"><%= simple_format(@course.description) %></div>
 
-    <h3 class="mt-4 mb-1 section-title">Lessons in this course</h3>
+    <h3 class="mt-4 mb-1 section-title">
+      <%= t("views.courses.lessons.title") %>
+    </h3>
+
     <% @course.teachings.order(sort: :asc).each do |teaching| %>
       <%
         lesson = teaching.lesson
@@ -57,19 +68,35 @@
 
       <% if @course.author && @course.author.avatar? %>
         <div id="author" class="">
-          <h3 class="widget-title mb-3">Course author</h3>
+          <h3 class="widget-title mb-3">
+            <%= t("views.courses.author_info.title") %>
+          </h3>
           <%= image_tag @course.author.avatar.url, alt: @course.author.name, class: 'rounded-circle w-25 mr-2' %>
           <%= @course.author.name %>
         </div>
       <% end %>
 
       <div class="course_details mt-5">
-        <h3 class="widget-title">Course details</h3>
+        <h3 class="widget-title">
+          <%= t("views.courses.details.title") %>
+        </h3>
+
         <ul>
-          <li>Lessons: <strong><%= @course.lessons.size %></strong></li>
-          <li>Difficulty: <strong><%= linked_skills_list(@course.skill_levels) %></strong></li>
+          <li>
+            <%= t("views.courses.details.labels.lessons") %>:&nbsp;
+            <strong><%= @course.lessons.size %></strong>
+          </li>
+
+          <li>
+            <%= t("views.courses.details.labels.difficulty") %>:&nbsp;
+            <strong><%= linked_skills_list(@course.skill_levels) %></strong>
+          </li>
+
           <% if @course.is_published %>
-            <li>Released: <strong><time datetime="2017-05-23"><%= @course.publish_date.strftime("%b %e, %Y") %></time></strong></li>
+            <li>
+              <%= t("views.courses.details.labels.released") %>:&nbsp;
+              <strong><time><%= @course.publish_date.strftime("%b %e, %Y") %></time></strong>
+            </li>
           <% end %>
         </ul>
       </div>

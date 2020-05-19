@@ -40,13 +40,29 @@ en:
         request: Request a lesson
         contact: Send enquiry
         stuck: Get suggestions
+    courses:
+      show_all: show all courses
+      lessons:
+        title: Lessons in this course
+      author_info:
+        title: Course author
+      details:
+        title: Course details
+        labels:
+          lessons: Lessons
+          difficulty: Difficulty
+          released: Released
     defaults:
       close: close
+      course: course
+      lesson: lesson
       or: or
+      by: by
       pay: pay
       save: Save
       course: course
       subscribe: Subscribe
+      viewed: viewed
     footer:
       run_own: Run your own Music School on
     home:
@@ -77,6 +93,7 @@ en:
         admin: Admin
         my_account: My account
         sign_out: Sign out
+        my_lists: My lessons
       footer:
         legals:
           privacy: Privacy policy

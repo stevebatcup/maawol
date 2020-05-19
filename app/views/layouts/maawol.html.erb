@@ -48,28 +48,36 @@
             </form>
           </div>
           <div class="col-md-4 d-flex align-items-end justify-content-end account_links_col">
-            <div class="account_links signed_in">
-              <% if signed_in? && current_user.is_admin? %>
-                <span class="d-none d-lg-inline">
-                  <a href="/admin" target="_blank" data-turbolinks="false">
-                    <i class="fas fa-laptop-code mr-2"></i>
-                    <%= t('views.layouts.account_links.admin') %>
+            <nav class="navbar">
+
+              <div class="btn-group">
+                <a href='#' type="button" class="dropdown-toggle" data-toggle="dropdown">
+                  <%= current_user.full_name %>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right mt-3 py-2 pb-0">
+                  <a href="<%= dashboard_path %>" class="dropdown-item pr-2 pb-3 my-2" type="button">
+                    <i class="fas fa-clipboard-list mr-1"></i>
+                    <%= t('views.layouts.account_links.my_lists') %>
                   </a>
-                </span>
-              <% end %>
-              <span class="d-lg-inline">
-                <a href="/settings">
-                  <i class="fa fa-user mr-1"></i>
-                  <%= t('views.layouts.account_links.my_account') %>
-                </a>
-              </span>
-              <span class="d-lg-inline">
-                <a data-method="delete" href="<%= sign_out_path %>">
-                  <i class="fas fa-sign-out-alt mr-1"></i>
-                    <%= t('views.layouts.account_links.sign_out') %>
-                </a>
-              </span>
-            </div>
+                  <a href="/settings" class="dropdown-item pr-2 pb-3 my-2" type="button">
+                    <i class="fa fa-user mr-1"></i>
+                    <%= t('views.layouts.account_links.my_account') %>
+                  </a>
+                  <% if signed_in? && current_user.is_admin? %>
+                    <a href="/admin" target="_blank" class="dropdown-item pr-2 pb-2 my-2" type="button">
+                      <i class="fas fa-laptop-code mr-2"></i>
+                      <%= t('views.layouts.account_links.admin') %>
+                    </a>
+                  <% end %>
+                  <div class="dropdown-divider"></div>
+                  <a data-method="delete" class="dropdown-item pr-2 pb-0 my-2" type="button" href="<%= sign_out_path %>">
+                    <i class="fas fa-sign-out-alt mr-1"></i>
+                      <%= t('views.layouts.account_links.sign_out') %>
+                  </a>
+                </div>
+              </div>
+            </nav>
           </div>
         </div>
       </div>

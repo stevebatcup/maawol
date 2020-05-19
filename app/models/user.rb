@@ -55,7 +55,7 @@ class User < ApplicationRecord
   end
 
   def display_name
-    self.username || self.first_name
+    self.first_name
   end
 
   def has_full_account?

@@ -8,10 +8,12 @@
 
           <div class="section">
             <% if params[:skill_level] %>
-              <h2 class="section-title">Courses > <%= @skill_level %></h2>
-              <p class="show_all"><a href="/courses">show all courses</a></p>
+              <h2 class="section-title"><%= t("views.defaults.course").capitalize.pluralize %> > <%= @skill_level %></h2>
+              <p class="show_all">
+                <a href="/courses"><%= t("views.courses.show_all") %></a>
+              </p>
             <% else %>
-              <h2 class="section-title">Courses</h2>
+              <h2 class="section-title"><%= t("views.defaults.course").capitalize.pluralize %></h2>
               <div class="mb-5"><%= render_content_block_by_slug("course-introduction") %></div>
             <% end %>
 
@@ -19,7 +21,7 @@
             <div class="row">
             <% @courses.each do |course| %>
               <div class="course_result search_result col-12 col-md-6 col-lg-4 mb-2">
-                <article class="post type-post well">
+                <article class="post type-post well p-3">
                   <div class="entry-thumbnail">
                     <a href="courses/<%= course.id %>" class="img_wrap">
                       <img src="<%= course.image.url(:square) %>" alt="<%= course.name %>" />
@@ -35,7 +37,11 @@
 
                     <div class="entry-meta">
                       <p><%= course.snippet(200) %></p>
-                      <b><%= course.author.name %> &bullet; <span class="count"><%= pluralize(course.lessons.size, "lesson") %></span></b>
+                      <b><%= course.author.name %> &bullet;
+                        <span class="count">
+                          <%= pluralize(course.lessons.size, t("views.defaults.lesson")) %>
+                        </span>
+                      </b>
                       <br /><br />
                       <%= linked_skills_list(course.skill_levels) if course.skill_levels.any? %>
                     </div>
