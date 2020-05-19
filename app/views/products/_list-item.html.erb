@@ -23,9 +23,9 @@
 						ng-cloak>
 							<span ng-show="item.inBasket">
 								<i class="fa fa-check mr-1"></i>
-								In cart
+								<%= t('views.store.items.in_cart') %>
 							</span>
-							<span ng-show="!item.inBasket">Add to cart - {{item.price}}</span>
+							<span ng-show="!item.inBasket"><%= t('views.store.items.add_to_cart') %> - {{item.price}}</span>
 			</h5>
 		<% end %>
 	</div>

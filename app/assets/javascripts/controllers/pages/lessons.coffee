@@ -50,7 +50,7 @@ class Maawol.Lessons extends Maawol.Page
 			name = $commentBox.data('name')
 			$replyBox.find('textarea').attr 'placeholder', "Reply to #{name}"
 			$replyBox.addClass('replying').detach().insertAfter($commentBox)
-			$('#post_comment', $replyBox).val("Add reply")
+			$('#post_comment', $replyBox).val @element.data('comment-text-reply')
 
 		$('a#cancel_reply', '#respond').on 'click', (e) =>
 			e.preventDefault()
@@ -58,7 +58,7 @@ class Maawol.Lessons extends Maawol.Page
 			$replyBox.find('a#cancel_reply').hide()
 			$replyBox.find('textarea').attr 'placeholder', 'Add your comment...'
 			$replyBox.removeClass('replying').detach().appendTo('#comments_top')
-			$('#post_comment', $replyBox).val("Add comment")
+			$('#post_comment', $replyBox).val @element.data('comment-text-add')
 
 
 		$('#viewed', '#actions').on 'click', (e) =>
@@ -173,10 +173,10 @@ class Maawol.Lessons extends Maawol.Page
 						$('ul.comment-list').prepend $li
 					$('textarea#comment').val('')
 					$('a#cancel_reply', '.respond').click() if $('a#cancel_reply', '.respond').is(':visible')
-					$('h2.title', '.respond').text 'Leave a new Comment'
+					$('h2.title', '.respond').text @element.data('comment-text-new')
 				else
 					alert comment.message
 		else
-			alert "Please make sure to type out your comment."
+			alert @element.data('comment-blank')
 
 Maawol.ControllerModule.controller('LessonsController', Maawol.Lessons)

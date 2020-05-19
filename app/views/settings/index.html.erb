@@ -1,4 +1,4 @@
-<% html_title "Account settings" %>
+<% html_title t('views.account_settings.html_title') %>
 
 <section ng-controller="SettingsController"
   data-recurring-cancellation-error="Sorry, there has been an error cancelling your subscription"
@@ -31,7 +31,10 @@
         <% end %>
 
         <div class="well no-border p-3 p-md-4 tab-pane fade <%= 'show active' unless @mode == 'password' %>" id="account_details" role="tabpanel">
-          <h6 class="section_intro">Update the details for your account</h6>
+          <h6 class="section_intro">
+            <%= t('views.account_settings.details.title') %>
+          </h6>
+
           <%= form_for current_user, url: "/settings/#{current_user.id}" do |f| %>
             <p class="form-input">
               <%= f.label :first_name %>
@@ -59,19 +62,25 @@
 
             <p class="form-input">
               <%= f.label :receives_weekly_digest do %>
-                <span class="checkbox_label">Opt me into the <%= school_setting("site-easy-name") %> weekly digest email?</span>
+                <span class="checkbox_label">
+                  <%= t('views.account_settings.details.opt_in_label', school: school_setting("site-easy-name")) %>
+                </span>
                 <%= f.check_box :receives_weekly_digest, { class: 'form-control' } %>
               <% end %>
             </p>
 
             <p class="actions d-flex justify-content-start">
-              <%= f.submit "Update my details", { class: 'btn btn-block btn-success btn-large w-75 mx-auto mt-2 px-5' } %>
+              <%= f.submit t('views.account_settings.details.submit'),
+                      { class: 'btn btn-block btn-success btn-large w-50 mx-auto mt-2 px-5' } %>
             </p>
           <% end %>
         </div>
 
         <div class="well no-border p-3 p-md-4 tab-pane fade <%= 'show active' if @mode == 'password' %>" id="password" role="tabpanel">
-          <h6 class="section_intro">Update your password</h6>
+          <h6 class="section_intro">
+            <%= t('views.account_settings.password.title') %>
+          </h6>
+
           <%= form_for current_user, url: "/update_password" do |f| %>
             <p class="form-input">
               <%= f.label :existing_password %>
@@ -86,53 +95,88 @@
               <%= f.password_field :password_confirm, { class: 'form-control' } %>
             </p>
             <p class="actions">
-              <%= f.submit "Change my password", { class: 'btn btn-block btn-success btn-large w-75 mx-auto mt-2' } %>
+              <%= f.submit t('views.account_settings.password.submit'),
+                        { class: 'btn btn-block btn-success btn-large w-50 mx-auto mt-2' } %>
             </p>
           <% end %>
         </div>
 
         <div class="well no-border p-3 p-md-4 tab-pane fade" id="membership" role="tabpanel">
-          <h6 class="section_intro mb-3">Details of your membership status</h6>
+          <h6 class="section_intro mb-3">
+            <%= t('views.account_settings.membership.title') %>
+          </h6>
+
           <p>
-            <label>Current subscription status </label><br />
+            <label>
+              <%= t('views.account_settings.membership.labels.current_status') %>
+            </label>
+            <br />
             <strong><%= current_user.membership_status %></strong>
           </p>
+
           <% if current_user.status.to_sym == :free %>
-            <a href="/subscribe" class="btn btn-success btn-large btn-block w-75 mx-auto mt-2">Subscribe now</a>
+            <a href="/subscribe" class="btn btn-success btn-large btn-block w-50 mx-auto mt-2">
+              <%= t('views.account_settings.membership.subscribe_now') %>
+            </a>
+
           <% elsif [:paying, :expiring].include?(current_user.status.to_sym) && current_user.is_subscriber? %>
             <%
                 user_sub = current_user.current_subscription
                 subscription_option = user_sub.subscription_option
             %>
             <p>
-              <label>Subscription level </label><br />
+              <label>
+                <%= t('views.account_settings.membership.labels.subscription_level') %>
+              </label>
+              <br />
               <strong><%= subscription_option.name %></strong> (<%= subscription_option.description.html_safe %>)
             </p>
 
             <% if current_user.has_recurring_subscription? %>
               <p data-current-subscription-id="<%= user_sub.id %>">
-                <label>Next payment due </label><br />
+                <label>
+                  <%= t('views.account_settings.membership.labels.next_payment_due') %>
+                </label>
+                <br />
                 <strong><%= user_sub.next_payment_due_at.strftime("%B %d, %Y") %></strong>
               </p>
               <p>
-                <label>Payment method </label><br />
-                <strong><%= user_sub.is_paypal? ? "Paypal" : "Card" %></strong>
+                <label>
+                  <%= t('views.account_settings.membership.labels.payment_method') %>
+                </label><br />
+                <strong>
+                  <%= user_sub.is_paypal? ? "Paypal" : t('views.defaults.card').capitalize %>
+                </strong>
               </p>
+
               <%= render partial: "subscriptions/cancel_recurring", locals: { current_user: current_user } %>
-              <a href="#" id="cancel_recurring" class="btn btn-block btn-danger btn-mgn-btm w-75 mx-auto mt-2">Cancel my subscription</a>
+
+              <a href="#" id="cancel_recurring" class="btn btn-block btn-danger btn-mgn-btm w-50 mx-auto mt-2">
+                <%= t('views.account_settings.membership.cancel_sub') %>
+              </a>
+
             <% else %>
               <p>
-                <label>Subscription ends </label><br />
+                <label>
+                  <%= t('views.account_settings.membership.labels.sub_ends') %>
+                </label>
+                <br />
                 <%= user_sub.ends_at.strftime("%B, %d, %Y") %>
               </p>
-              <a href="/subscribe" class="btn btn-block btn-success btn-large w-75 mx-auto mt-2" style="white-space: normal;">Resubscribe now to continue enjoying the site</a>
+
+              <a href="/subscribe" class="btn btn-block btn-success btn-large w-50 mx-auto mt-2" style="white-space: normal;">
+                <%= t('views.account_settings.membership.resubscribe') %>
+              </a>
             <% end %>
           <% end %>
         </div>
 
         <% if current_user.is_paying_by_card? %>
           <div class="well no-border p-3 p-md-4 tab-pane fade" id="payment_details" role="tabpanel">
-            <h6 class="section_intro">Update your payment card details</h6>
+            <h6 class="section_intro">
+              <%= t('views.account_settings.card_details.title') %>
+            </h6>
+
             <%= form_tag('/card_details', { method: :patch, id: 'update_card_form' }) do %>
 
               <p class="form-input">
@@ -166,8 +210,9 @@
 
               <p class="form-input">
                 <label for="expiry">
-                  Expiry date
-                </label><br />
+                  <%= t('views.account_settings.card_details.labels.expiry') %>
+                </label>
+                <br />
 
                 <%= select_month(Date.today, { field_name: 'month', :prefix => 'card[expiry]', use_two_digit_numbers: true }, { "ng-model": "card.expiry.month" }) %>
                 <%= select_year(Date.today, { field_name: 'year', :prefix => 'card[expiry]', start_year: Date.today.year, end_year: Date.today.year + 8 }, { "ng-model": "card.expiry.year" } ) %>
@@ -181,7 +226,9 @@
                 <input type="text" id="cv2" class="small form-control" name="card[cv2]" ng-model="card.cv2" />
               </p>
 
-              <button type="submit" id="update_card_btn" class="btn btn-block btn-success btn-large w-75 mx-auto mt-2">Update card details</button>
+              <button type="submit" id="update_card_btn" class="btn btn-block btn-success btn-large w-50 mx-auto mt-2">
+                <%= t('views.account_settings.card_details.submit') %>
+              </button>
             <% end %>
 
             <%= render partial: "checkout/payment_error", locals: { current_user: current_user } %>

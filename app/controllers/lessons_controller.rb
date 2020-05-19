@@ -7,7 +7,7 @@ class LessonsController < MaawolController
 				@lessons = Lesson.published
 
 				if params[:search].present?
-					@lessons = @lessons.search(params[:search])
+					@lessons = @lessons.search(params[:search].strip)
 				elsif params[:tag].present?
 					@lessons = @lessons.joins(:tags).where("tags.slug = ?", params[:tag])
 				end

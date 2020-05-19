@@ -4,23 +4,23 @@
       <ul class="nav navbar-nav bd-navbar-nav flex-row pl-0" role="tablist" style="flex-wrap: nowrap;">
       	<li class="nav-item">
 				  <a class="nav-link <%= 'active' unless @mode == 'password' %>" data-toggle="tab" href="#account_details" role="tab">
-  					Account details
+  					<%= t('views.account_settings.menu.account_details') %>
 				  </a>
 				</li>
 				<li class="nav-item">
 				  <a class="nav-link <%= 'active' if @mode == 'password' %>" data-toggle="tab" href="#password" role="tab">
-				  	Password
+				  	<%= t('views.account_settings.menu.password') %>
 				  </a>
 				</li>
 				<li class="nav-item">
 				  <a class="nav-link" data-toggle="tab" href="#membership" role="tab">
-				  	Membership
+				  	<%= t('views.account_settings.menu.membership') %>
 				  </a>
 				</li>
 			  <% if current_user.is_paying_by_card? %>
 			  	<li class="nav-item">
 					  <a class="nav-link" data-toggle="tab" href="#payment_details" role="tab">
-					  	Payment details
+					  	<%= t('views.account_settings.menu.payment_details') %>
 					  </a>
 					</li>
 				<% end %>

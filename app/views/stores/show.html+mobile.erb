@@ -18,9 +18,13 @@
 			  <%= render 'products/list-item' %>
 			</div>
 
-			<p ng-if="products.items.length == 0  && products.loaded"">No files found for this store</p>
+			<p ng-if="products.items.length == 0  && products.loaded">
+				<%= t('views.store.nothing_found') %>
+			</p>
 
-			<p ng-if="!products.loaded">Loading list of files....</p>
+			<p ng-if="!products.loaded">
+				<%= t('views.store.loading') %>
+			</p>
 		</div>
 	</div>
 </section>

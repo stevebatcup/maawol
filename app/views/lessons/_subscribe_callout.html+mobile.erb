@@ -1,25 +1,34 @@
 <div class="p-2 w-100 mx-auto mb-3 pb-0" id="subscribe_instructions">
-  <p class="m-0 pb-2 text-center"><strong>Subscribe now to unlock the good stuff.....</strong></p>
+  <p class="m-0 pb-2 text-center">
+    <strong>
+      <%= t('views.subscribe_callout.title') %>
+    </strong>
+  </p>
+
   <ul>
     <li>
       <i class="fas fa-clipboard-check mr-1"></i>
-      Access to FULL Lesson Library and Courses
+      <%= t('views.subscribe_callout.items.library_access') %>
     </li>
+
     <li>
       <i class="fas fa-clipboard-check mr-1"></i>
-      Request 1-on-1 lessons with <%= Maawol::Config.site_owner_fname %>
+      <%= t('views.subscribe_callout.items.one_on_one', name: Maawol::Config.site_owner_fname) %>
     </li>
+
     <% if school_setting("facebook-page-url").present? %>
       <li><i class="fas fa-clipboard-check mr-1"></i>
-        Access to Exclusive Facebook page
+        <%= t('views.subscribe_callout.items.facebook_access') %>
       </li>
     <% else %>
-      <li><i class="fas fa-clipboard-check mr-1"></i>
-        Much more
+      <li>
+        <i class="fas fa-clipboard-check mr-1"></i>
+        <%= t('views.subscribe_callout.items.much_more') %>
       </li>
     <% end %>
-    <li><i class="fas fa-clipboard-check mr-1"></i>
-      Only <%= monthly_fee %> per month
+    <li>
+      <i class="fas fa-clipboard-check mr-1"></i>
+      <%= t('views.subscribe_callout.items.monthly_fee', monthly_fee: monthly_fee) %>
     </li>
   </ul>
 </div>

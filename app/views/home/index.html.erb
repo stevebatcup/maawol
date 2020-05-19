@@ -8,20 +8,16 @@
         <p class="alert alert-danger"><%= alert %></p>
       <% end %>
 
-      <div class="section" id="about">
+      <div class="">
+        <%= render_content_block_by_slug("bio") %>
+      </div>
+
+      <div class="section mt-3" id="about">
         <% unless homepage_video.nil? %>
-        <h2 class="section-title" style="">
-          <%= t("views.home.welcome", school: school_setting('site-name')) %>
-        </h2>
         <div id="homepage_video_box">
           <%= video_iframe(homepage_video) %>
         </div>
         <% end %>
-
-        <div class="mt-5">
-          <%= render_content_block_by_slug("bio") %>
-        </div>
-
       </div>
 
       <section class="cms_section mb-4 mb-md-5" id="register">

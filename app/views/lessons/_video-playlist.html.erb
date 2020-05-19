@@ -1,5 +1,9 @@
 <div class="mb-4">
-  <h5><%= pluralize(videos.count, "video") %> in this lesson</h5>
+  <h5>
+    <%= pluralize(videos.count, t('views.defaults.video')) %>&nbsp;
+    <%= t('views.lesson.video_playlist.count_suffix') %>
+  </h5>
+
   <div id="video_playlist">
     <ul class="nav nav-tabs pb-2" role="tablist">
       <% videos.each_with_index do |video, index| %>

@@ -16,15 +16,15 @@
 			</audio>
 		<% else %>
 			<h6 ng-show="item.inBasket" class="text-center text-success mb-0 mb-1">
-				<small><i class="fa fa-check mr-1"></i>Added to cart</small>
+				<small><i class="fa fa-check mr-1"></i><%= t('views.store.items.added_to_cart') %></small>
 			</h6>
 			<h5 ng-show="item.price.length > 0"
 					class="btn btn-success w-100 text-center p-0"
 					ng-cloak>
 						<span ng-show="item.inBasket" ng-click="proceedToCheckout(item)" class="d-block w-100 h-100 p-2">
-							<i class="fa fa-shopping-cart mr-2"></i>Go to checkout
+							<i class="fa fa-shopping-cart mr-2"></i><%= t('views.store.items.go_to_checkout') %>
 						</span>
-						<span ng-show="!item.inBasket" ng-click="addToBasket(item)" class="d-block w-100 h-100 p-2">Add to cart - {{item.price}}</span>
+						<span ng-show="!item.inBasket" ng-click="addToBasket(item)" class="d-block w-100 h-100 p-2"><%= t('views.store.items.add_to_cart') %> - {{item.price}}</span>
 			</h5>
 		<% end %>
 	</div>

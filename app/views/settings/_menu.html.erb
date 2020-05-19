@@ -1,8 +1,16 @@
 <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-  <a class="nav-link <%= 'active' unless @mode == 'password' %>" data-toggle="pill" href="#account_details" role="tab">Account details</a>
-  <a class="nav-link <%= 'active' if @mode == 'password' %>" data-toggle="pill" href="#password" role="tab">Password</a>
-  <a class="nav-link" data-toggle="pill" href="#membership" role="tab">Membership</a>
+  <a class="nav-link <%= 'active' unless @mode == 'password' %>" data-toggle="pill" href="#account_details" role="tab">
+  	<%= t('views.account_settings.menu.account_details') %>
+  </a>
+  <a class="nav-link <%= 'active' if @mode == 'password' %>" data-toggle="pill" href="#password" role="tab">
+  	<%= t('views.account_settings.menu.password') %>
+  </a>
+  <a class="nav-link" data-toggle="pill" href="#membership" role="tab">
+  	<%= t('views.account_settings.menu.membership') %>
+  </a>
   <% if current_user.is_paying_by_card? %>
-	  <a class="nav-link" data-toggle="pill" href="#payment_details" role="tab">Payment details</a>
+	  <a class="nav-link" data-toggle="pill" href="#payment_details" role="tab">
+	  	<%= t('views.account_settings.menu.payment_details') %>
+	  </a>
 	<% end %>
 </div>

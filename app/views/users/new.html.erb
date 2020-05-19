@@ -1,6 +1,15 @@
 <% html_title "Sign Up" %>
 
-<section class="" id="clearance" ng-controller="SignUpController">
+<section class="" id="clearance"
+  ng-controller="SignUpController"
+  data-errors-first-name="<%= t('views.register.errors.first_name') %>"
+  data-errors-last-name="<%= t('views.register.errors.last_name') %>"
+  data-errors-email="<%= t('views.register.errors.email') %>"
+  data-errors-email-confirm="<%= t('views.register.errors.email_confirm') %>"
+  data-errors-email-match="<%= t('views.register.errors.email_match') %>"
+  data-errors-password="<%= t('views.register.errors.password') %>"
+  data-errors-password-minimum="<%= t('views.register.errors.password_minimum') %>">
+
   <div id="registration_box">
     <div class="panel">
 

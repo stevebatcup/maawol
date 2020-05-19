@@ -1,0 +1,273 @@
+en:
+  views:
+    account_settings:
+      html_title: Account settings
+      menu:
+        account_details: Account details
+        password: Password
+        membership: Membership
+        payment_details: Payment details
+      details:
+        title: Update the details for your account
+        opt_in_label: Opt me into the %{school} weekly digest email?
+        submit: Update my details
+      password:
+        title: Update your password
+        submit: Change my password
+      card_details:
+        title: Update your payment card details
+        submit: Update card details
+        labels:
+          expiry: Expiry date
+      membership:
+        title: Details of your membership status
+        subscribe_now: Subscribe now
+        cancel_sub: Cancel my subscription
+        resubscribe: Resubscribe now to continue enjoying the site
+        labels:
+          sub_ends: Subscription ends
+          subscription_level: Subscription level
+          next_payment_due: Next payment due
+          payment_method: Payment method
+          current_status: Current subscription status
+
+    checkout:
+      title: All done
+      thanks: Thanks, here are the links to your purchased items.
+      error:
+        title: Whoops
+        desc: You may have landed on this page in error.
+        link: Try the homepage instead
+
+    comments:
+      reply: Reply
+
+    contact:
+      send_email: Or you can send us an email at
+      section_title:
+        request: Request a lesson
+        contact: Get in touch
+        stuck: Help! I don't know what to work on!
+      placeholders:
+        name: Name
+        email: Email
+        message:
+          request: Send as many details as you can of what you would like to see in your lesson...
+          contact: What would you like to ask?
+      submit:
+        request: Request a lesson
+        contact: Send enquiry
+        stuck: Get suggestions
+
+    courses:
+      show_all: show all courses
+      lessons:
+        title: Lessons in this course
+      author_info:
+        title: Course author
+      details:
+        title: Course details
+        labels:
+          lessons: Lessons
+          difficulty: Difficulty
+          released: Released
+
+    defaults:
+      by: by
+      card: card
+      close: close
+      course: course
+      lesson: lesson
+      or: or
+      pay: pay
+      save: Save
+      subscribe: Subscribe
+      video: video
+      viewed: viewed
+
+    footer:
+      run_own: Run your own Music School on
+
+    home:
+      welcome: Welcome to %{school}
+      recent_lessons: Recent lessons
+      facebook_item: Access to Exclusive %{school} Facebook page
+      register:
+        title: Register for FREE
+        items:
+          - Access to Selected Video Lessons
+          - Access to Exclusive Offers
+        facebook_item: Access to Exclusive %{school} Facebook page
+        button: Register now
+      subscribe:
+        title: Subscribe for FULL access
+        items:
+          - Access to FULL Lesson Library and Courses
+          - Lesson Requests
+          - 1-on-1 help
+        button: Subscribe now
+        fee: Only %{fee} per month
+
+    layouts:
+      account_links:
+        register: Register for FREE
+        sign_in: Sign in
+        sign_in_prefix: Already a member?
+        admin: Admin
+        my_account: My account
+        sign_out: Sign out
+        my_lists: My lessons
+      footer:
+        legals:
+          privacy: Privacy policy
+          terms: Terms & conditions
+
+    lesson:
+      must_register: "You must be a paid member to view that lesson"
+      part_of_course_prefix: Part of the
+      meta:
+        published_at: Published %{at} ago
+        video_length: Video length
+        course_info_html: "Lesson %{index} of the <a href='/courses/%{course_id}?token=%{token}'>%{course_name}</a> course"
+      video_playlist:
+        count_suffix: in this lesson
+      buttons:
+        viewed: Viewed
+        watch_later: Watch later
+        favourites: Favourites
+      comments:
+        title: Comments
+        cancel: Cancel
+        add_comment: Add comment
+        add_reply: Add reply
+        leave_new: Leave a new Comment
+        blank: Please make sure to type out your comment.
+      aside:
+        filed_under: Filed under
+        downloadables: Scores
+        audio: Audio
+        playlists: Further listening
+
+    lessons:
+      html_title: Lessons
+      all_lessons: Lessons
+      loading: Loading lessons...
+      title:
+        default: All lessons
+        tag: "Lessons tagged as '%{tag}' > {{category}}"
+        category_html: "%{category} > {{category}}"
+        search: "Showing results for '%{search}' > {{category}}"
+      none_found: Sorry, no lessons found
+      welcome: Great, thanks for joining, you are now a member of %{school}.
+      paid: Great, thanks, you are now a subscriber and can view all lessons and courses.
+
+    nav:
+      all: All
+      all_lessons: All lessons
+      courses: Courses
+
+    register:
+      redirected: "You must first create your account before you can view any of the lessons. Joining is quick, easy and FREE using the form below!"
+      errors:
+        first_name: Please enter your first name
+        last_name: Please enter your last name
+        email: Please enter your email address
+        email_confirm: Please confirm your email address
+        email_match: Please make sure your email address matches the confirmation
+        password: Please create a password for your account
+        password_minimum: Please make sure your password is at least 8 charctares long
+    store:
+      nothing_found: No items found for this store
+      loading: Loading list of files....
+      items:
+        in_cart: In cart
+        add_to_cart: Add to cart
+        added_to_cart: Added to cart
+        go_to_checkout: Go to checkout
+      cart:
+        title: Shopping cart
+        empty: No items in your cart just yet
+        go_to_checkout: Go to checkout
+        remove_all: Remove all items
+
+    subscribe_callout:
+      title: Subscribe now to unlock all the good stuff.....
+      items:
+        library_access: Access to FULL Lesson Library and Courses
+        one_on_one: Request 1-on-1 lessons with %{name}
+        facebook_access: Access to Exclusive Facebook page
+        much_more: Much more
+        monthly_fee: Only %{monthly_fee}bill@ert.com %> per month
+
+    subscription:
+      total_prefix: Total to pay today
+      empty_basket:
+        single: Sorry, cannot find that file!
+        multiple: There are no items in your basket!
+      persuasion_items:
+        messages: Send and read messages
+        views: See who's viewed your profile
+        interested: Find out who's interested in you
+        secure: Secure, safe and trusted
+      steps:
+        one: Choose your package
+        two: Choose your payment method
+      options:
+        most_popular: most popular
+        select: Select
+        selected: Selected
+        save: save
+      discount:
+        error:
+          prefix: Sorry there was an error applying that discount code
+          invalid: "Please enter a valid discount code"
+      form:
+        back_link:
+          single: see all items in
+          multiple: go back to
+        paypal:
+          button: Checkout with Paypal
+          processing: Contacting paypal to complete your payment details, please wait...
+        errors:
+          prefix: Error processing payment
+          email: Please enter a valid email address
+          name: Please fill in both your first and last name
+          card_number: Please enter a valid card number
+          expiry: Please select the correct expiry date for your card
+          cv2: Please enter the last 3 digits from the back of your card in the 'Security number' field
+        labels:
+          selected: selected
+          card_type: Payment by
+          card_number: Card number
+          email: Email address
+          email_hint: Why? So we can email you a link to your purchases
+          first_name: First name
+          last_name: Last name
+          expiry: Expiration date
+          cv2: Security number
+          submit: Confirm payment
+          expiration: Expiration
+          paying: Submitting payment...
+          secured_by: Secured by
+          discount_code:
+            applying: "Applying discount code: %{code}..."
+            applied: Discount code %{code} has been applied
+            placeholder: Enter a promo code
+            button: Apply
+      summary:
+        title: Your order
+        total: Pay today
+        daily_calculation: "works out at %{currency_symbol}@{dailyPrice} a day"
+      small_print_terms_html: "Your subscription will be automatically extended at the standard rate of %{currency_symbol}{{ subscription.fullPrice }} for successive renewal periods. You can cancel the automatic renewal by following the instructions given on your 'Account settings' page. Please allow 24 hours after the purchase of a subscription to cancel your automatic renewal. Notification of your wish to cancel must be given at least 24 hours prior to the renewal date."
+      success: Thanks for subscribing
+      recurring_cancelled: Your recurring billing has now been cancelled and your subscription will terminate on
+      errors:
+        already_recurring: Looks like you already have a recurring subscription
+        editing_auth: You do not have permission to edit this subscription
+        not_recurring: You do not currently have recurring billing setup on your subscription
+        cancel_recurring: There was a problem cancelling your recurring billing, please try again
+        card_fail: Sorry we were unable to process your subscription using the card details you entered
+      visits_restricted: You must be a subscriber to see who has visited your profile
+      favourites_restricted: You must be a subscriber to see who has added you to their favourites
+      messaging_restricted: You must be a subscriber to view and send messages
+

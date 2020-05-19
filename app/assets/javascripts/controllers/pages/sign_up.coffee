@@ -52,19 +52,19 @@ class Maawol.SignUp extends Maawol.Page
 		errors = {}
 		vals = @scope.formValues
 		if vals.firstName.length < 1
-			errors['firstName'] = "Please enter your first name"
+			errors['firstName'] = @element.data('errors-first-name')
 		else if vals.lastName.length < 1
-			errors['lastName'] = "Please enter your last name"
+			errors['lastName'] = @element.data('errors-last-name')
 		else if vals.email.length < 1
-			errors['email'] = "Please enter your email address"
+			errors['email'] = @element.data('errors-email')
 		else if vals.emailConfirm.length < 1
-			errors['emailConfirm'] = "Please confirm your email address"
+			errors['emailConfirm'] = @element.data('errors-email-confirm')
 		else if vals.emailConfirm isnt vals.email
-			errors['emailConfirm'] = "Please make sure your email address matches the confirmation"
+			errors['emailConfirm'] = @element.data('errors-email-match')
 		else if vals.password.length < 1
-			errors['password'] = "Please create a password for your account"
+			errors['password'] = @element.data('errors-password')
 		else if vals.password.length < 8
-			errors['password'] = "Please make sure your password is at least 8 charctares long"
+			errors['password'] = @element.data('errors-password-minimum')
 
 		if Object.entries(errors).length > 0
 			@scope.$apply =>

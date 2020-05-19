@@ -5,7 +5,11 @@
         ng-controller="LessonsController"
         data-lesson-id="<%= @lesson.id %>"
         data-video-url="<%= @lesson.main_video.present? ? @lesson.main_video.url : '' %>"
-        data-video-host="vimeo">
+        data-video-host="vimeo"
+        data-comment-text-add="<%= t('views.lesson.comments.add_comment') %>"
+        data-comment-text-reply="<%= t('views.lesson.comments.add_reply') %>"
+        data-comment-text-new="<%= t('views.lesson.comments.leave_new') %>"
+        data-comment-blank="<%= t('views.lesson.comments.blank') %>">
 
 
   <div class="content-tabs">
@@ -32,7 +36,9 @@
             <% if @lesson.is_published %>
               <span class="mb-1">
                 <i class="fas fa-globe-americas ml-1"></i>
-                <time datetime="PT5M">Published <%= time_ago_in_words(@lesson.publish_date) %> ago</time>
+                <time datetime="PT5M">
+                  <%= t('views.lesson.meta.published_at', at: time_ago_in_words(@lesson.publish_date)) %>
+                </time>
               </span>
             <% end %>
 
@@ -40,7 +46,7 @@
             <% if @lesson.active_videos.length == 1 %>
               <span class="mb-1">
                 <i class="fa fa-clock ml-1"></i>
-                Video length: <%= @lesson.active_videos.first.human_duration %>
+                <%= t('views.lesson.meta.video_length') %>: <%= @lesson.active_videos.first.human_duration %>
               </span>
             <% end %>
 
@@ -48,9 +54,7 @@
             <% unless @course.nil? %>
               <span id="part_of_course">
                 <i class="far fa-copy mr-2 ml-1"></i>
-                Lesson <%= @course.lesson_index(@lesson) %> of the <a href='/courses/<%= @course.id %>?token=<%= params[:token] %>'>
-                  <%= @course.name %>
-                </a> course
+                <%= t('views.lesson.meta.course_info_html', index: @course.lesson_index(@lesson), course_id: @course.id, token: params[:token], course_name: @course.name) %>
               </span>
             <% end %>
           </div>
@@ -59,18 +63,24 @@
         <!-- Interactive Buttons -->
         <% if full_access %>
           <div id='actions' data-lesson-id="<%= @lesson.id %>" class="mt-3 justify-content-center d-flex align-items-start">
-           <button id="viewed" class="<%= 'disabled' if current_user.in_views(@lesson) %>">
-             <i class="fa fa-check-square" aria-hidden="true"></i>
-             <span class="text">Viewed</span>
-           </button>
-           <button id="watchlater" class="mx-2 <%= 'disabled' if current_user.in_watch_laters(@lesson) %>">
-             <i class="fa fa-clock-o" aria-hidden="true"></i>
-             <span class="text">Watch later</span>
-           </button>
-           <button id="favourite" class="<%= 'disabled' if current_user.in_favourites(@lesson) %>">
-             <i class="fa fa-star" aria-hidden="true"></i>
-             <span class="text">Favorites</span>
-           </button>
+            <button id="viewed" class="<%= 'disabled' if current_user.in_views(@lesson) %>">
+               <i class="fa fa-check-square"></i>
+               <span class="text">
+                 <%= t('views.lesson.buttons.viewed') %>
+               </span>
+            </button>
+            <button id="watchlater" class="mx-2 <%= 'disabled' if current_user.in_watch_laters(@lesson) %>">
+               <i class="fas fa-stopwatch"></i>
+               <span class="text">
+                 <%= t('views.lesson.buttons.watch_later') %>
+               </span>
+            </button>
+            <button id="favourite" class="<%= 'disabled' if current_user.in_favourites(@lesson) %>">
+               <i class="fa fa-star"></i>
+               <span class="text">
+                 <%= t('views.lesson.buttons.favorites') %>
+               </span>
+            </button>
           </div>
         <% end %>
 
@@ -79,7 +89,8 @@
           <div id="video_playlist" class="mt-3 mobile">
             <ul class="nav nav-tabs" role="tablist">
               <li id="summary">
-                <%= pluralize(@lesson.active_videos.count, "video") %> in this lesson
+                <%= pluralize(@lesson.active_videos.count, "video") %>&nbsp;
+                <%= t('views.lesson.video_playlist.count_suffix') %>
               </li>
               <% @lesson.active_videos.each_with_index do |video, index| %>
                 <li role="presentation">
@@ -134,7 +145,7 @@
   <!-- Tags / Categories -->
   <% if @lesson.has_taxonomies? %>
     <div class="container" id="taxonomies">
-      <h5 class="mt-2">Filed under</h5>
+      <h5 class="mt-2"><%= t('views.lesson.aside.filed_under') %></h5>
       <% taxonomies = (@lesson.tags.to_a + @lesson.categories.to_a).shuffle %>
       <ul>
         <% taxonomies.each do |taxonomy| %>
@@ -153,7 +164,7 @@
   <!-- Downloadables -->
   <% if @lesson.downloadables.any? %>
     <div id="downloadables" class="container">
-      <h5 class="mt-2">Scores</h5>
+      <h5 class="mt-2"><%= t('views.lesson.aside.downloadables') %></h5>
       <p>Click on the <%= "link".pluralize(@lesson.downloadables.size) %> to download.</p>
       <% @lesson.downloadables.each do |file| %>
         <p class="pl-1">
@@ -169,7 +180,7 @@
   <!-- Audio files -->
   <% if @lesson.audio_files.any? %>
     <div id="audio_files" class="container">
-      <h5 class="mt-2">Audio</h5>
+      <h5 class="mt-2"><%= t('views.lesson.aside.audio') %></h5>
       <% @lesson.audio_files.each do |audio_file| %>
        <div class="my-2">
          <p class="mb-1"><%= audio_file.name.html_safe %>:</p>
@@ -185,7 +196,7 @@
   <!-- Playlists -->
   <% if @lesson.playlists.any? %>
     <div id="playlists" class="container">
-      <h5 class="mt-2">Further listening</h5>
+      <h5 class="mt-2"><%= t('views.lesson.aside.playlists') %></h5>
       <% @lesson.playlists.each do |playlist| %>
         <div class="widget playlist my-4">
           <% if playlist.spotify_embed_url.present? %>
@@ -221,9 +232,9 @@
   <div class="comments">
     <div id="comments_top" class="container">
       <% if @lesson.comment_count > 0 %>
-        <h5>Comments &bullet; <%= @lesson.comment_count %></h5>
+        <h5><%= t('views.lesson.comments.title') %> &bullet; <%= @lesson.comment_count %></h5>
       <% else %>
-        <h5>Comments</h5>
+        <h5><%= t('views.lesson.comments.title') %></h5>
       <% end %>
       <script type="text/html" id="comment_template">
         <%= render 'comments/comment' %>
@@ -232,7 +243,7 @@
         <form class="comment-form">
           <textarea id="comment" class="form-control" name="comment" placeholder="Add your comment..." rows="4"></textarea>
           <div class="d-flex justify-content-end px-2">
-            <a id="cancel_reply" href='#' style="display: none;" class="btn mr-2">Cancel</a>
+            <a id="cancel_reply" href='#' style="display: none;" class="btn mr-2"><%= t('views.lesson.comments.cancel') %></a>
             <input class="btn btn-small btn-success" id="post_comment" type="submit" value="Add comment" />
           </div>
         </form>

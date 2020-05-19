@@ -117,6 +117,14 @@ header .header-bottom .navbar-default .navbar-nav li.active a {
   background-color: $maawol_navbar_selected;
 }
 
+header .header-top .dropdown-toggler {
+  color: $maawol_navbar_color;
+}
+
+header .header-top .dropdown-menu a.dropdown-item i {
+  color: $maawol_navbar_selected;
+}
+
 header .header-top form.search-form input[type=text] {
   // border: 1px solid $maawol_checkout_input_border_color;
 }

@@ -93,8 +93,18 @@ header {
       }
     }
 
-    .dropdown-toggle {
-      font-size: 1.2em;
+    .dropdown-toggler {
+      font-size: 1.6em;
+    }
+
+    .dropdown-menu {
+      min-width: 15em;
+
+      h3 {
+        color: #333;
+        font-weight: 600;
+        font-size: 1.2em;
+      }
     }
 
     .account_links {
