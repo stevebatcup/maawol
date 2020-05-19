@@ -1,4 +1,4 @@
-<% html_title "Sign In" %>
+<% html_title t(".html_title") %>
 
 <section class="" id="clearance" ng-controller="SignInController">
   <div id="login_box">
@@ -6,11 +6,7 @@
       <div class="text-center">
         <%= render 'layouts/auth-logo' %>
 
-        <% if notice || alert %>
-          <h4>Sign in</h4>
-        <% else %>
-          <h4>Already have a <%= school_setting("site-easy-name") %> account? Sign in below</h4>
-        <% end %>
+          <h4><%= t(".title", school: school_setting("site-easy-name")) %></h4>
 
         <% if notice %>
           <p class="alert alert-success mt-3"><%= notice %></p>
@@ -23,7 +19,8 @@
       <%= render partial: 'sessions/form' %>
 
       <p class="mb-2 text-center">
-        Don't have an account yet? <%= link_to "Register here", sign_up_url %>
+        <%= t(".register_link.prefix") %>&nbsp;
+        <%= link_to t(".register_link.link"), sign_up_url %>
       </p>
    </div>
   </div>

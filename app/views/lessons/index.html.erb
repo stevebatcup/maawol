@@ -1,8 +1,41 @@
-<% html_title "Lessons" %>
+<% html_title t("views.lessons.html_title") %>
 
-<section class="container list lessons video-contents <%= column_browser_class %>"
+<section class="list lessons video-contents <%= column_browser_class %>"
           ng-controller="LessonsController"
-          data-redirect-locked-lessons="<%= locked_lesson_redirect_path %>">
+          data-redirect-locked-lessons="<%= locked_lesson_redirect_path %>"
+          data-category="<%= params[:category] %>">
+
+  <% if @categories.any? %>
+  <header class="secondary_nav_header">
+    <div class="header-bottom navbar navbar-expand navbar-dark flex-column flex-md-row scrolling-top-nav py-0">
+      <nav class="navbar-nav-scroll navbar-default">
+        <ul class="nav navbar-nav bd-navbar-nav flex-row" role="tablist" style="flex-wrap: nowrap;">
+          <li class="menu-item">
+            <a class="nav-link" data-toggle="pill" href="#"
+                ng-click="chooseCategory($event, 'all')"
+                ng-class="{'selected': category == 'all'}"
+                role="tab">
+              <%= t("views.nav.all") %>
+            </a>
+          </li>
+          <% @categories.each do |category| %>
+            <li class="menu-item">
+              <a class="nav-link" data-toggle="pill" href="#"
+                  ng-click="chooseCategory($event, '<%= category.slug %>')"
+                  ng-class="{'selected': category == '<%= category.slug %>'}"
+                  role="tab">
+                <%= category.name %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <% end %>
+
+  <div class="container ">
+
     <% if notice %>
       <p class="container alert alert-success"><%= notice %></p>
     <% end %>
@@ -19,17 +52,24 @@
 
     <div class="section">
       <% if params[:tag] %>
-        <h2 class="section-title" data-tag="<%= params[:tag] %>"><%= params[:tag] %></h2>
+        <h2 class="section-title" data-tag="<%= params[:tag] %>">
+          <%= t("views.lessons.title.tag", tag: params[:tag]) %>
+        </h2>
       <% elsif params[:root_category] %>
-        <h2 class="section-title" data-root-category="<%= params[:root_category] %>" data-category="<%= params[:category] %>"><%= @category_title %></h2>
+        <h2 class="section-title" data-root-category="<%= params[:root_category] %>">
+          <%= t("views.lessons.title.category", category: @category_title) %>
+        </h2>
       <% elsif params[:search] %>
-        <h2 class="section-title" data-search="<%= params[:search] %>">Showing results for: '<%= params[:search] %>'</h2>
+        <h2 class="section-title" data-search="<%= params[:search] %>">
+          <%= t("views.lessons.title.search", search: params[:search]) %>
+        </h2>
       <% else %>
-        <h2 class="section-title">All lessons</h2>
+        <h2 class="section-title">
+          <%= t("views.lessons.title.default") %>
+        </h2>
       <% end %>
 
       <div ng-if="loaded" class="fader" ng-cloak>
-        <%= render 'lessons/filters' %>
         <div class="row">
           <div ng-repeat="lesson in lessons"
                     class="lesson_result search_result col-12 col-md-4 col-lg-3 mb-3"
@@ -43,17 +83,18 @@
 
       <h3 id="loading" ng-if="!loaded" class="fader" ng-cloak>
         <span class="spinner"></span>
-        Loading lessons...
+        <%= t("views.lessons.loading") %>
       </h3>
 
       <p class="none_found" ng-if="loaded && !lessons.length" ng-cloak>
         <i class="far fa-sad-cry mr-1"></i>
         <% if params[:tag] %>
-          Sorry, there are no lessons found for tag '<%= params[:tag] %>
+          <%= t("views.lessons.none_found.with_tag", tag: params[:tag]) %>
         <% else %>
-          Sorry, no lessons found
+          <%= t("views.lessons.none_found.default") %>
         <% end %>
       </p>
 
     </div>
+  </div>
 </section>

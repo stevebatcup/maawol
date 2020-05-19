@@ -1,4 +1,4 @@
-<% html_title "Reset your password" %>
+<% html_title t(".html_title") %>
 
 <section class="" id="clearance" ng-controller="PasswordsController">
   <div id="passwords_box">
@@ -24,12 +24,12 @@
         </p>
 
         <p class="submit-input">
-           <%= form.submit "Password help", { class: 'btn btn-success btn-large' } %>
+           <%= form.submit t(".form.submit"), { class: 'btn btn-success btn-large' } %>
         </p>
       <% end %>
 
       <p class="mb-2 text-center">
-        <%= link_to "&lt; Back to sign in".html_safe, sign_in_url %>
+        <%= link_to t(".back_link_html"), sign_in_url %>
       </p>
     </div>
   </div>

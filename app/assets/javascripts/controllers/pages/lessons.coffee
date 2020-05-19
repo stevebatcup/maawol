@@ -16,17 +16,22 @@ class Maawol.Lessons extends Maawol.Page
 	init: ->
 		@getVars = @constructor.helpers.getUrlVars()
 		if @isListingsPage()
-			@scope.moreToLoad = true
-			@scope.page = 1
-			@scope.lessons = []
-			@scope.loaded = false
-			@scope.totalLessons = 0
-			@getItems 1, @bindScrollEvent
+			@scope.category = @element.data('category')
+			@initListings()
+			@getItems @bindScrollEvent
+		else
+			@videoHost = @element.data('video-host')
 		@bindEvents()
-		@videoHost = @element.data('video-host')
 
 	isListingsPage: =>
 		@element.hasClass('list')
+
+	initListings: =>
+		@scope.moreToLoad = true
+		@scope.page = 1
+		@scope.lessons = []
+		@scope.loaded = false
+		@scope.totalLessons = 0
 
 	bindEvents: =>
 		super
@@ -114,18 +119,23 @@ class Maawol.Lessons extends Maawol.Page
 					@pageScrollOffset = (footerHeight + (lessonHeight * 2))
 				if (scrollTop + $win.height()) >= (docHeight - @pageScrollOffset)
 					@scope.moreToLoad = false
-					@getItems(@scope.page)
+					@getItems()
 
-	getItems: (page, callback=null) =>
-		vars = {page: page}
+	chooseCategory: ($event, category) =>
+		$event.preventDefault()
+		if @scope.loaded
+			@scope.category = category
+			@initListings()
+			@getItems()
+
+	getItems: (callback=null) =>
+		vars = {page: @scope.page, category: @scope.category}
 		if $('[data-search]').length
 			vars['search'] = $('[data-search]').data('search')
 		if $('[data-tag]').length
 			vars['tag'] = $('[data-tag]').data('tag')
 		if $('[data-root-category]').length
 			vars['root_category'] = $('[data-root-category]').data('root-category')
-		if $('[data-category]').length
-			vars['category'] = $('[data-category]').data('category')
 		timeoutDelay = if @scope.page is 1 then 1200 else 1
 		@Lesson.query(vars).then (response) =>
 			@timeout =>

@@ -54,6 +54,9 @@ Rails.application.routes.draw do
 	delete 'tmp-media/:id', to: 'tmp_media#destroy'
 
 	resources :lessons
+	get "lessons/section/:root_category", to: 'lessons#index', as: :section, category: :all
+	get "lessons/section/:root_category/:category", to: 'lessons#index', as: :category
+	get "lessons/tag/:tag", to: 'lessons#index', as: :tag
 	resources :courses
 	resources :views
 	resources :watch_laters
@@ -98,8 +101,10 @@ Rails.application.routes.draw do
 	get "checkout-complete", to: "checkout#show", as: :checkout_complete
 	get "checkout/paypal/success", to: "checkout#update"
 
-	get "/store/:slug", :to => "stores#show", as: :store
+	get "store/:slug", :to => "stores#show", as: :store
 
+	get "privacy-policy", to: "content_management/pages#show", slug: 'privacy-policy'
+	get "terms-and-conditions", to: "content_management/pages#show", slug: 'terms-and-conditions'
 	get "*slug", to: "content_management/pages#show", as: :cms_page, constraints: lambda { |req|
 	  req.path.exclude? 'amazonaws.com'
 	}

@@ -1,1 +1,5 @@
-<%= pluralize(field.data.size, field.attribute.to_s.humanize.downcase) %>
+<% if field.resources.any? %>
+  <%= pluralize(field.data.size, field.attribute.to_s.humanize.downcase) %>
+<% else %>
+  <%= t("administrate.fields.has_many.none", default: "–") %>
+<% end %>

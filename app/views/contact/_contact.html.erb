@@ -1,3 +1,4 @@
+<% translate_key = @lesson_request ? 'request' : ( @stuck ? 'stuck' : 'contact') %>
 <div class="row">
   <div class="col-12 col-lg-8">
     <% if notice %>
@@ -10,7 +11,7 @@
     <%= form_for(@contact, html: { class: 'contact-form' }) do |f| %>
       <% if @stuck %>
         <div class="col-12">
-          <h2 class="section-title">Help! I don't know what to work on!</h2>
+          <h2 class="section-title"><%= t("views.contact.section_title.#{translate_key}") %></h2>
           <%= f.hidden_field :name, value: current_user.full_name %>
           <%= f.hidden_field :email, value: current_user.email %>
           <%= f.hidden_field :subject %>
@@ -31,17 +32,17 @@
             <div class="clearfix"></div>
           <% end %>
 
-          <%= f.submit 'Get suggestions', { class: 'btn btn-success btn-large' } %>
+          <%= f.submit t("views.contact.submit.#{translate_key}"), { class: 'btn btn-success btn-large' } %>
         </div>
       <% else %>
         <h2 class="section-title">
-          <%= @lesson_request ? 'Request a lesson' : 'Get in touch' %>
+          <%= t("views.contact.section_title.#{translate_key}") %>
         </h2>
 
         <% if @lesson_request %>
-          <%= render_content_block_by_name("lesson_request_introduction") %>
+          <%= render_content_block_by_slug("lesson-request-introduction") %>
         <% else %>
-          <%= render_content_block_by_name("contact_introduction") %>
+          <%= render_content_block_by_slug("contact-page-introduction") %>
         <% end %>
 
         <%= f.hidden_field(:from_home, value: 1) if params[:controller].to_sym == :home %>
@@ -51,19 +52,18 @@
           <%= f.hidden_field :name, value: current_user.full_name %>
           <%= f.hidden_field :email, value: current_user.email %>
         <% else %>
-          <%= f.text_field :name, { placeholder: "Name (required)", :required => true, class: 'contact-form-control' } %>
-          <%= f.email_field :email, { placeholder: "Email (required)", :required => true, class: 'contact-form-control' } %>
+          <%= f.text_field :name, { placeholder: t("views.contact.placeholders.name"), :required => true, class: 'contact-form-control' } %>
+          <%= f.email_field :email, { placeholder: t("views.contact.placeholders.email"), :required => true, class: 'contact-form-control' } %>
         <% end %>
 
-        <% msg_placeholder = @lesson_request ? 'Send as many details as you can of what you would like to see in your lesson...' : 'What would you like to ask?' %>
-        <%= f.text_area :message, { placeholder: msg_placeholder, :required => true, class: 'contact-form-control' } %>
+        <%= f.text_area :message, { placeholder: t("views.contact.placeholders.message.#{translate_key}"), :required => true, class: 'contact-form-control' } %>
 
         <% if use_recaptcha? %>
           <div class="mb-4" style="clear: both;">
             <%= recaptcha_tags(site_key: recaptcha_site_key) %>
           </div>
         <% end %>
-        <%= f.submit @lesson_request ? 'Request a lesson' : 'Send enquiry', { class: 'btn btn-success btn-large' } %>
+        <%= f.submit t("views.contact.submit.#{translate_key}"), { class: 'btn btn-success btn-large' } %>
 
       <% end %>
 
@@ -81,7 +81,7 @@
             <img src="<%= school_image("contact") %>" alt="<%= school_setting("site-name") %>" class="rounded-circle avatar mr-3" />
           <% end %>
           <div class="item-details media-body">
-            <h3 class="item-title">Or you can send us an email at:</h3>
+            <h3 class="item-title"><%= t('views.contact.send_email') %>:</h3>
             <span>
               <a href="mailto:<%= school_setting('contact-email-address') %>"><%= school_setting('contact-email-address') %></a>
             </span>

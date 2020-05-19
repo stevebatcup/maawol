@@ -55,6 +55,12 @@ as well as a link to its edit page.
         [namespace, resource_index_route_key(page.resource_name)],
         class: "button"
       )  %>
+    <%= link_to(
+      "Add another",
+      [:new, namespace, page.resource_path],
+      class: "button",
+    ) if valid_action?(:new) && show_action?(:new, new_resource) %>
+
   </div>
 
 </section>

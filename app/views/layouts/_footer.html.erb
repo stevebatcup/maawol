@@ -3,53 +3,7 @@
   <div class="container pt-4">
     <div class="row">
       <div class="col-12 col-lg-3 px-4 text-center footer-branding mb-md-4 mb-lg-0">
-        <div class="widget widget_about">
-          <div class="widget-details">
-            <% if school_image("square-logo").present? %>
-              <a href="/" class="d-block mb-3">
-                <img src="<%= school_image("square-logo").url(:large_square) %>" alt="<%= school_setting("site-name") %>" class="footer-logo d-block w-50 mx-auto" />
-              </a>
-            <% end %>
-
-            <% if (!school_setting("site-blurb").nil?) %>
-              <p><%= school_setting("site-blurb") %></p>
-            <% end %>
-            <% if params[:show_env] %><p><small>[<%= Rails.env.to_s %>]</small></p><% end %>
-
-            <div class="footer-social text-center mt-3 mt-md-4">
-              <% if (!school_setting("facebook-page-url").nil?) %>
-                <a href="<%= school_setting("facebook-page-url") %>" target="_blank">
-                  <i class="fab fa-facebook"></i>
-                </a>
-              <% end %>
-
-              <% if (!school_setting("twitter-username").nil?) %>
-                <a href="https://www.twitter.com/<%= school_setting("twitter-username") %>" target="_blank">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              <% end %>
-
-               <% if (!school_setting("instagram-username").nil?) %>
-                <a href="https://www.instagram.com/<%= school_setting("instagram-username") %>" target="_blank">
-                  <i class="fab fa-instagram"></i>
-                </a>
-              <% end %>
-
-              <% if (!school_setting("youtube-channel-id").nil?) %>
-                <a href="https://www.youtube.com/channel/<%= school_setting("youtube-channel-id") %>" target="_blank">
-                  <i class="fab fa-youtube"></i>
-                </a>
-              <% end %>
-
-              <% if (!school_setting("vimeo-id").nil?) %>
-                <a href="https://vimeo.com/<%= school_setting("vimeo-id") %>" target="_blank">
-                  <i class="fab fa-vimeo-square"></i>
-                </a>
-              <% end %>
-            </div>
-
-          </div><!-- /.widget-details -->
-        </div><!-- /.widget -->
+        <%= render 'layouts/footer_branding' %>
       </div>
 
       <div class="col-4 col-lg-3 px-4">
@@ -114,7 +68,5 @@
     </div>
   </div>
 
-  <div class="copyright mt-3 pt-2 pb-3 text-center">&copy; <%= "#{Date.today.strftime("%Y")} #{school_setting("site-name")}" %><br />
-    <small class="mt-2 d-block">Run your own Music School on <a href='https://www.maawol.com' target='_blank'>Maawol</a>.</small>
-  </div>
+  <%= render 'layouts/copyright' %>
 </footer>

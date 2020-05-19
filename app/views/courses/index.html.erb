@@ -1,6 +1,6 @@
 <% html_title "Courses" %>
 
-<section class="lessons" id="courses" ng-controller="CoursesController">
+<section class="lessons pb-5" id="courses" ng-controller="CoursesController">
   <div class="list">
     <div class="container">
       <div class="row">
@@ -12,7 +12,7 @@
               <p class="show_all"><a href="/courses">show all courses</a></p>
             <% else %>
               <h2 class="section-title">Courses</h2>
-              <div class="mb-5"><%= render_content_block_by_name("course_introduction") %></div>
+              <div class="mb-5"><%= render_content_block_by_slug("course-introduction") %></div>
             <% end %>
 
 

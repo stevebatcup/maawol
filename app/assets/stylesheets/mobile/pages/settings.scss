@@ -1,4 +1,13 @@
 #settings {
+	.secondary_nav_header {
+		li {
+			a {
+				&.active {
+					opacity: 1;
+				}
+			}
+		}
+	}
 	.tab-content {
 		label {
 			margin-bottom: 0;

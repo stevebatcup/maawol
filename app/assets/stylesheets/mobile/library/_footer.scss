@@ -4,6 +4,15 @@ footer.site-footer {
 		margin-bottom: 30px;
 	}
 
+
+  &.home {
+    .footer-branding {
+      img {
+        max-width: 40vw;
+      }
+    }
+  }
+
 	.widget.widget_tags {
 		margin-bottom: 15px;
 	}

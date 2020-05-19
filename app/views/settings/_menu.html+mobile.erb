@@ -1,23 +1,30 @@
-<header class="navbar navbar-expand navbar-dark flex-column flex-md-row scrolling-top-nav pt-1 pb-2">
-  <div class="navbar-nav-scroll">
-  	<div class="nav navbar-nav bd-navbar-nav flex-row" role="tablist" style="flex-wrap: nowrap;">
-		  <a class="nav-link <%= 'active' unless @mode == 'password' %>" data-toggle="pill" href="#account_details" role="tab">
-		  	Account details
-		  </a>
-
-		  <a class="nav-link <%= 'active' if @mode == 'password' %>" data-toggle="pill" href="#password" role="tab">
-		  	Password
-		  </a>
-
-		  <a class="nav-link" data-toggle="pill" href="#membership" role="tab">
-		  	Membership
-		  </a>
-
-		  <% if current_user.is_paying_by_card? %>
-			  <a class="nav-link" data-toggle="pill" href="#payment_details" role="tab">
-			  	Payment details
-			  </a>
-			<% end %>
-	  </div>
-	</div>
+<header class="secondary_nav_header">
+	<div class="header-bottom navbar navbar-expand navbar-dark flex-column flex-md-row scrolling-top-nav py-0">
+	  <nav class="navbar-nav-scroll navbar-default">
+      <ul class="nav navbar-nav bd-navbar-nav flex-row pl-0" role="tablist" style="flex-wrap: nowrap;">
+      	<li class="nav-item">
+				  <a class="nav-link <%= 'active' unless @mode == 'password' %>" data-toggle="tab" href="#account_details" role="tab">
+  					Account details
+				  </a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link <%= 'active' if @mode == 'password' %>" data-toggle="tab" href="#password" role="tab">
+				  	Password
+				  </a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" data-toggle="tab" href="#membership" role="tab">
+				  	Membership
+				  </a>
+				</li>
+			  <% if current_user.is_paying_by_card? %>
+			  	<li class="nav-item">
+					  <a class="nav-link" data-toggle="tab" href="#payment_details" role="tab">
+					  	Payment details
+					  </a>
+					</li>
+				<% end %>
+			</ul>
+		</nav>
+  </div>
 </header>

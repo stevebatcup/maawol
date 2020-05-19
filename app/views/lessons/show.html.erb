@@ -185,9 +185,9 @@
                   <% taxonomies.each do |taxonomy| %>
                     <li class="mx-1">
                       <% if taxonomy.is_a?(Tag) %>
-                        <%= link_to taxonomy.name, lessons_path(tag: taxonomy.slug), class: 'tag' %>
+                        <%= link_to taxonomy.name, tag_path(tag: taxonomy.slug), class: 'tag' %>
                       <% elsif taxonomy.is_a?(Category) %>
-                        <%= link_to taxonomy.name, lessons_path(root_category: taxonomy.root_category_id, category: taxonomy.id), class: 'category' %>
+                        <%= link_to taxonomy.name, category_path(root_category: taxonomy.root_category.slug, category: taxonomy.slug), class: 'category' %>
                       <% end %>
                     </li>
                   <% end %>

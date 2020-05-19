@@ -6,8 +6,8 @@ en:
       site_image:
         update: Update image
       root_category:
-        create: Create Primary category
-        update: Update Primary category
+        create: Create Section
+        update: Update Section
       author:
         create: Create Tutor
         update: Update Tutor
@@ -15,11 +15,6 @@ en:
         create: Create Score
         update: Update Score
     label:
-      course:
-        name: Name of course
-        description: Description of course
-        skill_level_ids: Skill levels
-        teachings: Lessons
       tag:
         name: Tag name
         lesson_ids: Tagged to these lessons
@@ -27,11 +22,12 @@ en:
         when_associated: Tagged with
       root_category:
         resource_name_overrides:
-          multiple: Primary categories
-          singular: Primary category
+          multiple: Sections
+          singular: Section
       category:
         when_associated: In categories
         lesson_ids: Lessons in this category
+        root_category_id: Section
       listening_lab:
         spotify_url: Spotify playlist URL
         resource_name_overrides:
@@ -63,6 +59,13 @@ en:
           singular: Score
       downloadable_store:
         products: Files
+      course:
+        name: Name of course
+        description: Description of course
+        skill_level_ids: Skill levels
+        teachings: Lessons
+        tag_ids: Tagged with
+        category_ids: In categories
       lesson:
         name: Lesson name
         tag_ids: Tagged with
@@ -179,7 +182,7 @@ en:
         none: None
     form:
       error: error
-      errors: "%{pluralized_errors} stopped this %{resource_name} from being saved:"
+      errors: "%{pluralized_errors} stopped this from being saved:"
       site_settings:
         labels:
           name: Site name

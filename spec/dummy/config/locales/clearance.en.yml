@@ -49,16 +49,33 @@ en:
       description: Choose a new password below.
       title: Change your password
     new:
+      html_title: Reset your password
       description: Enter your email address below and if we have an account for you we will send you
         instructions on how to reset your password.
       title: Reset your password
+      back_link_html: "&lt; Back to sign in"
+      form:
+        submit: Password help
   sessions:
     form:
-      forgot_password: Forgot password?
+      forgot_password: Forgotten your password?
       sign_up: Sign up
+      submit: Sign in
     new:
-      title: Sign in
+      title: Already have a %{school} account? Sign in below
+      html_title: Sign in
+      register_link:
+        link: Register here
+        prefix: Don't have an account yet?
   users:
     new:
       sign_in: Sign in
       title: Sign up
+      title_html: Create Your FREE <br />%{site_name} Account
+      sign_in_link:
+        link: Sign in here
+        prefix: Already have an account?
+      form:
+        submit: Register for FREE
+        submitting: Registering...
+

@@ -52,12 +52,12 @@ class Lesson < ApplicationRecord
   	where('publish_date <= ?', Time.now).where(access_level: :global)
   end
 
-  def self.in_category(id)
-    includes(:categories).where("categories.id": id)
+  def self.in_category(category)
+    includes(:categories).where("categories.id": category.id)
   end
 
-  def self.in_root_category(id)
-    includes(categories: :root_category).where("root_categories.id": id)
+  def self.in_root_category(root_category)
+    includes(categories: :root_category).where("root_categories.id": root_category.id)
   end
 
   def comment_count

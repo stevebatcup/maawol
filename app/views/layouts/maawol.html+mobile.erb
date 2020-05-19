@@ -42,39 +42,53 @@
     </div>
 
     <div class="header-bottom main-menu collapse w-100 pt-2" id="menu">
-      <div class="container">
-        <nav class="navbar navbar-default">
-          <ul class="nav navbar-nav mb-3 mt-1 w-100">
-            <% navbar.sorted_navbar_items_for_device_type(:mobile).each do |item| %>
-              <% if item.can_be_seen_by_user(current_user) %>
-                <li class="menu-item <%= 'active' if nav_item_is_current_request(item) %>">
-                  <a href="<%= item.url %>" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)"><%= item.name %></a>
-                </li>
-              <% end %>
+      <nav class="navbar navbar-default container">
+        <div class="nav navbar-nav mb-3 mt-1 w-100">
+
+          <ul class="p-0 mb-0">
+            <li class="menu-item <%= 'active' if request.path == "/lessons" %>">
+              <a href="/lessons" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)">
+                All lessons
+              </a>
+            </li>
+
+            <% signed_in_nav_items.each do |item| %>
+              <li class="menu-item <%= 'active' if nav_item_is_current_request(item) %>">
+                <a href="<%= item.url %>" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)"><%= item.name %></a>
+              </li>
             <% end %>
 
-            <li class="menu-item">
-              <a href="<%= settings_path %>" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2">Account settings</a>
-            </li>
-
-            <li class="menu-item">
-              <a href="<%= sign_out_path %>" data-method="delete" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)">Sign out</a>
+            <li class="menu-item <%= 'active' if request.path == "/courses" %>">
+              <a href="/courses" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)">
+                Courses
+              </a>
             </li>
           </ul>
-        </nav>
-      </div>
+
+          <ul class="p-0 pt-2 mt-2 mb-0 mobile_account_links">
+            <li class="menu-item">
+              <a href="<%= settings_path %>" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)">
+                <i class="fas fa-user mr-1"></i>
+                <%= t('views.layouts.account_links.my_account') %>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a href="<%= sign_out_path %>" data-method="delete" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)">
+                <i class="fas fa-sign-out-alt mr-1"></i>
+                <%= t('views.layouts.account_links.sign_out') %></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
   </header>
-
-  <%= render 'settings/menu' if is_settings_page? %>
 
   <div id='yield_wrapper' class="has-fixed-header">
   	<%= yield %>
   </div>
 
   <%= render 'layouts/footer' %>
-  <%= render 'layouts/angular_bootstrap' %>
-
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </body>
 </html>

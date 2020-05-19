@@ -42,8 +42,8 @@ module Maawol
 			}
 		end
 
-		def render_content_block_by_name(name)
-			block = ContentManagement::ContentBlock.find_by(name: name.downcase)
+		def render_content_block_by_slug(slug)
+			block = ContentManagement::ContentBlock.find_by(slug: slug.downcase)
 			render_content_block(block) unless block.nil?
 		end
 
@@ -59,8 +59,8 @@ module Maawol
 		def nav_item_is_current_request(nav_item)
 			if nav_item.url == "/"
 				request.path == "/"
-			elsif nav_item.url == "/lessons"
-				(params[:controller] == 'lessons') && (params[:action] != 'show')
+			elsif nav_item.url.include?("/lessons")
+				(params[:controller] == 'lessons') && (params[:action] != 'show') && (params[:root_category] == nav_item.slug)
 			else
 				request.path.include?(nav_item.url)
 			end

@@ -46,15 +46,35 @@
               </div>
               <div class="col-6 d-flex align-items-end justify-content-end">
                 <div class="account_links text-right">
-                  <span><a href="<%= sign_up_path %>"><i class="fa fa-user mr-1"></i> Register for FREE</a></span>
-                  <span><a href="<%= sign_in_path %>"><i class="fa fa-lock mr-1"></i> Sign in</a></span>
+                  <span>
+                    <i class="fas fa-sign-in-alt mr-1"></i>
+                    <%= t('views.layouts.account_links.sign_in_prefix') %>&nbsp;
+                    <a href="<%= sign_in_path %>">
+                      <%= t('views.layouts.account_links.sign_in') %>
+                    </a>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <%= render 'layouts/main-nav' %>
+        <div class="header-bottom tablet navbar navbar-expand navbar-dark flex-column flex-md-row scrolling-top-nav py-0">
+          <nav class="navbar-nav-scroll navbar-default">
+            <div class="nav navbar-nav bd-navbar-nav flex-row" role="tablist" style="flex-wrap: nowrap;">
+              <ul class="p-0 d-flex">
+                <% navbar.sorted_navbar_items_for_device_type(:desktop).each do |item| %>
+                  <li class="menu-item <%= 'active' if nav_item_is_current_request(item) %>">
+                    <a class="nav-link" href="<%= item.url %>"
+                        data-turbolinks="false"
+                        ng-click="navigateUri($event, '<%= item.url %>')"><%= item.name %></a>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
       </header>
     <% end %>
 
@@ -63,10 +83,24 @@
     </div>
 
     <% unless is_auth_page?  %>
-      <%= render 'layouts/footer' %>
+      <footer class="site-footer home">
+        <div class="container pt-4 footer-branding">
+          <div class="d-flex justify-content-center">
+            <%= render 'layouts/footer_branding' %>
+          </div>
+
+          <ul id="footer_legals" class="px-0 mx-0 my-2 justify-content-center d-flex">
+            <% footer_navbar_items.each do |page| %>
+              <li class="mx-2">
+                <a href="<%= page.url %>" data-turbolinks="false"><%= page.title %></a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <%= render 'layouts/copyright' %>
+      </footer>
     <% end %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
   </body>
 </html>

@@ -6,6 +6,8 @@ class Tag < ApplicationRecord
   	where(show_in_cloud: true).order("RANDOM()").limit(20)
   end
 
+private
+
   def set_slug
     self.slug = self.name.parameterize
   end

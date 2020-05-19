@@ -131,6 +131,25 @@
     </div>
   <% end %>
 
+  <!-- Tags / Categories -->
+  <% if @lesson.has_taxonomies? %>
+    <div class="container" id="taxonomies">
+      <h5 class="mt-2">Filed under</h5>
+      <% taxonomies = (@lesson.tags.to_a + @lesson.categories.to_a).shuffle %>
+      <ul>
+        <% taxonomies.each do |taxonomy| %>
+          <li class="mx-1">
+            <% if taxonomy.is_a?(Tag) %>
+              <%= link_to taxonomy.name, tag_path(tag: taxonomy.slug), class: 'tag' %>
+            <% elsif taxonomy.is_a?(Category) %>
+              <%= link_to taxonomy.name, category_path(root_category: taxonomy.root_category.slug, category: taxonomy.slug), class: 'category' %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <!-- Downloadables -->
   <% if @lesson.downloadables.any? %>
     <div id="downloadables" class="container">

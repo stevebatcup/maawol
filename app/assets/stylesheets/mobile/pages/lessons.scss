@@ -91,7 +91,9 @@ body.mobile {
 	}
 
 	#downloadables,
-	#audio_files {
+	#audio_files,
+	#taxonomies,
+	#playlists {
 		padding-top: 0.6em;
 		border-top: 1px solid #ededed;
 		padding-bottom: 0.8em;
@@ -132,11 +134,5 @@ body.mobile {
 				}
 			}
 		}
-	}
-
-	#playlists {
-		padding-top: 0.6em;
-		border-top: 1px solid #ccc;
-		padding-bottom: 0.4em;
 	}
 }

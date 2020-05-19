@@ -9,15 +9,16 @@
 		&#register {
 
 			.col {
-				min-height: 20em;
+				min-height: 22em;
 				position: relative;
 
 				ul {
 				}
 
-				.btn {
-					width: 80% !important;
+				.btn_box {
+					width: 80%;
 					position: absolute;
+					left: 10%;
 					bottom: 0;
 				}
 			}

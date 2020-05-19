@@ -6,7 +6,7 @@ module Admin
 					page = ::ContentManagement::Page.find(params[:page_id])
 					page.content_blocks
 				else
-					super
+					::ContentManagement::ContentBlock.where(is_editable: true)
 				end
 			end
 		end

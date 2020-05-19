@@ -10,52 +10,69 @@
 
       <div class="section" id="about">
         <% unless homepage_video.nil? %>
-        <h2 class="section-title" style="">Welcome to <%= school_setting('site-name') %></h2>
+        <h2 class="section-title" style="">
+          <%= t("views.home.welcome", school: school_setting('site-name')) %>
+        </h2>
         <div id="homepage_video_box">
           <%= video_iframe(homepage_video) %>
         </div>
         <% end %>
 
-        <div class="mt-3">
-          <%= render_content_block_by_name("bio") %>
+        <div class="mt-5">
+          <%= render_content_block_by_slug("bio") %>
         </div>
 
       </div>
 
       <section class="cms_section mb-4 mb-md-5" id="register">
-        <h2 class="section-title" style="">Register or Subscribe</h2>
         <div class="row">
-          <div class="col col-12 col-md-6 px-md-4 pb-4 pb-md-3 pt-md-3">
-            <h5>Subscribed Members:</h5>
+          <div class="col col-12 col-md-6 align-items-end px-md-4 pb-md-3 pt-md-3 mt-3 mt-md-0 mb-3 mb-md-0">
+            <h2 class="section-title" style="">
+              <%= t("views.home.register.title") %>
+            </h2>
             <ul>
-              <li>Access to FULL Lesson Library and Courses</li>
-              <li>Lesson Requests</li>
-              <li>1-on-1 help</li>
-              <% if school_setting("facebook-page-url").present? %>
-                <li>Access to Exclusive <%= Maawol::Config.site_name %> Facebook page</li>
+              <% t("views.home.register.items").each do |item| %>
+                <li><%= item %></li>
               <% end %>
-              <li>Only <%= monthly_fee %> per month</li>
+              <% if school_setting("facebook-page-url").present? %>
+                <li><%= t("views.home.facebook_item", school: Maawol::Config.site_name) %></li>
+              <% end %>
             </ul>
-            <a class="mt-3 mb-md-5 btn btn-success btn-large" style="bottom: 0;" href="/sign_up?remember=/subscribe">Subscribe now</a></div>
-
-            <div class="col col-12 col-md-6 align-items-end px-md-4 pb-md-3 pt-md-3">
-              <h5>Registered Members:</h5>
-              <ul>
-                <li>FREE</li>
-                <li>Access to Selected Video Lessons</li>
-                <li>Access to Exclusive Offers</li>
-                <% if school_setting("facebook-page-url").present? %>
-                  <li>Access to Exclusive <%= Maawol::Config.site_name %> Facebook page</li>
-                <% end %>
-              </ul>
-            <a class="mt-3 mb-md-5 btn btn-info btn-large" style="bottom: 0;" href="/sign_up">Register now</a>
+            <div class="mt-3 mb-md-5 btn_box">
+              <a href="/sign_up" class="btn btn-info btn-large mx-auto w-100">
+                <%= t("views.home.register.button") %>
+              </a>
+            </div>
           </div>
+
+          <div class="col col-12 col-md-6 px-md-4 pb-4 pb-md-3 pt-md-3 mt-3 mt-md-0 mb-3 mb-md-0">
+            <h2 class="section-title" style="">
+              <%= t("views.home.subscribe.title") %>
+            </h2>
+            <ul>
+              <% t("views.home.subscribe.items").each do |item| %>
+                <li><%= item %></li>
+              <% end %>
+              <% if school_setting("facebook-page-url").present? %>
+                <li><%= t("views.home.facebook_item", school: Maawol::Config.site_name) %></li>
+              <% end %>
+              <li><%= t("views.home.subscribe.fee", fee: monthly_fee) %></li>
+            </ul>
+            <div class="mt-3 mb-md-5 btn_box">
+              <a class="btn btn-success btn-large mx-auto w-100" href="/sign_up?remember=/subscribe">
+                <%= t("views.home.subscribe.button") %>
+              </a>
+            </div>
+          </div>
+
         </div>
       </section>
 
       <% if @latest_lessons.any? %>
         <div class="section" id="recent_lessons">
-          <h2 class="section-title" style="">Recent lessons</h2>
+          <h2 class="section-title" style="">
+            <%= t("views.home.recent_lessons") %>
+          </h2>
           <div class="video-contents list">
               <div class="row">
                   <% @latest_lessons.each do |lesson| %>

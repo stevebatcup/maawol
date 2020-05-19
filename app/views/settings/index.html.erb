@@ -8,6 +8,8 @@
   data-card-error-cv2-invalid="<%= I18n.t('views.subscription.form.errors.cv2') %>"
   id="settings">
 
+  <%= render 'settings/menu' if browser.device.mobile? %>
+
   <div class="container">
     <% unless browser.device.mobile? %>
       <h2 class="section-title">My Account</h2>

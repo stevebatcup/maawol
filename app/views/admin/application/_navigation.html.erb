@@ -39,13 +39,13 @@
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/root_categories') %>">
         <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/root_categories">
-          <span class="text">Primary categories</span>
+          <span class="text">Sections</span>
           <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.rootCategories}}</span>
         </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/categories') %>">
         <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/categories">
-          <span class="text">Secondary categories</span>
+          <span class="text">Categories</span>
           <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.categories}}</span>
         </a>
       </li>
@@ -173,7 +173,7 @@
     <ul class="pb-5">
       <li class="<%= 'active' if request.path.include?('/admin/content_management/pages') %>">
         <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/content_management/pages">
-          <span class="text">Pages</span>
+          <span class="text">Info Pages</span>
           <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.cmsPages}}</span>
         </a>
       </li>

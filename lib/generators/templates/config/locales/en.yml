@@ -9,14 +9,83 @@ en:
   errors:
     messages:
       extension_whitelist_error: Please upload an acceptable file type
+      page_needs_blocks: are required to save a page
   views:
+    nav:
+      all: All
+      all_lessons: All lessons
+      courses: Courses
+    contact:
+      send_email: Or you can send us an email at
+      section_title:
+        request: Request a lesson
+        contact: Get in touch
+        stuck: Help! I don't know what to work on!
+      placeholders:
+        name: Name
+        email: Email
+        message:
+          request: Send as many details as you can of what you would like to see in your lesson...
+          contact: What would you like to ask?
+      submit:
+        request: Request a lesson
+        contact: Send enquiry
+        stuck: Get suggestions
     defaults:
       save: Save
-    lessons:
-      welcome: Great, thanks for joining, you are now a member of %{school}.
-      paid: Great, thanks, you are now a subscriber and can view all lessons and courses.
+      course: course
+      subscribe: Subscribe
+    footer:
+      run_own: Run your own Music School on
+    home:
+      welcome: Welcome to %{school}
+      recent_lessons: Recent lessons
+      facebook_item: Access to Exclusive %{school} Facebook page
+      register:
+        title: Register for FREE
+        items:
+          - Access to Selected Video Lessons
+          - Access to Exclusive Offers
+        facebook_item: Access to Exclusive %{school} Facebook page
+        button: Register now
+      subscribe:
+        title: Subscribe for FULL access
+        items:
+          - Access to FULL Lesson Library and Courses
+          - Lesson Requests
+          - 1-on-1 help
+        button: Subscribe now
+        fee: Only %{fee} per month
+
+    layouts:
+      account_links:
+        register: Register for FREE
+        sign_in: Sign in
+        sign_in_prefix: Already a member?
+        admin: Admin
+        my_account: My account
+        sign_out: Sign out
+      footer:
+        legals:
+          privacy: Privacy policy
+          terms: Terms & conditions
     lesson:
       must_register: "You must be a paid member to view that lesson"
+      part_of_course_prefix: Part of the
+    lessons:
+      html_title: Lessons
+      all_lessons: All lessons
+      loading: Loading lessons...
+      title:
+        default: All lessons
+        tag: "Tagged as '%{tag}'"
+        category: "%{category}"
+        search: "Showing results for '%{search}'"
+      none_found:
+        default: Sorry, no lessons found
+        with_tag: Sorry, there are no lessons found for tag '%{tag}'
+      welcome: Great, thanks for joining, you are now a member of %{school}.
+      paid: Great, thanks, you are now a subscriber and can view all lessons and courses.
     register:
       redirected: "You must first create your account before you can view any of the lessons. Joining is quick, easy and FREE using the form below!"
     subscription:

@@ -1,15 +1,17 @@
-<footer class="site-footer">
-  <%= render(partial: 'lessons/subscribe_callout') if show_subscription_interstitial? %>
-  <div class="container pt-4">
-    <div class="text-center mb-4">
-      <% if school_image("square-logo").present? %>
-      <a href="/" class="d-block">
-        <img src="<%= school_image("square-logo").url(:large_square) %>" alt="<%= school_setting("site-name") %>" class="footer-logo w-25 d-block mx-auto" />
+<div class="widget widget_about">
+  <div class="widget-details">
+    <% if school_image("square-logo").present? %>
+      <a href="/" class="d-block mb-3">
+        <img src="<%= school_image("square-logo").url(:large_square) %>" alt="<%= school_setting("site-name") %>" class="footer-logo d-block w-50 mx-auto" />
       </a>
-      <% end %>
-    </div>
+    <% end %>
 
-    <div class="text-center footer-social text-center mb-1">
+    <% if (!school_setting("site-blurb").nil?) %>
+      <p><%= school_setting("site-blurb") %></p>
+    <% end %>
+    <% if params[:show_env] %><p><small>[<%= Rails.env.to_s %>]</small></p><% end %>
+
+    <div class="footer-social text-center mt-3 mt-md-4">
       <% if (!school_setting("facebook-page-url").nil?) %>
         <a href="<%= school_setting("facebook-page-url") %>" target="_blank">
           <i class="fab fa-facebook"></i>
@@ -41,15 +43,5 @@
       <% end %>
     </div>
 
-    <ul class="other_pages mt-3 text-center p-0">
-    <% footer_navbar_items.each do |page| %>
-      <li class="d-inline-block mr-3 menu-item <%= 'active' if request.url.include?(page.url) %>">
-        <a href="<%= page.url %>" data-turbolinks="false"><%= page.title %></a>
-      </li>
-    <% end %>
-    </ul>
-
-  </div>
-
-  <%= render 'layouts/copyright' %>
-</footer>
+  </div><!-- /.widget-details -->
+</div><!-- /.widget -->

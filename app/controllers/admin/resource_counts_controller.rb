@@ -20,8 +20,8 @@ module Admin
     		storePayments: ProductPayment.count,
     		subscriptionPayments: UsersSubscriptionPayment.count,
     		incomeReports: IncomeReport.count,
-        cmsPages: ::ContentManagement::Page.count,
-        cmsContentBlocks: ::ContentManagement::ContentBlock.count,
+        cmsPages: ::ContentManagement::Page.where(is_editable: true).count,
+        cmsContentBlocks: ::ContentManagement::ContentBlock.where(is_editable: true).count,
         cmsImages: ::ContentManagement::Image.count,
       }
     end

@@ -4,23 +4,19 @@ class LessonsController < MaawolController
 	def index
 		respond_to do |format|
 			format.json do
-				if params[:search]
+				if params[:search].present?
 					@lessons = Lesson.published.search(params[:search])
-				elsif params[:tag]
+				elsif params[:tag].present?
 					@lessons = Lesson.joins(:tags).where("tags.slug = ?", params[:tag]).published
-				elsif params[:root_category] && params[:root_category].to_i > 0
-					root_category = RootCategory.find(params[:root_category])
-					if params[:category] && params[:category].to_i > 0
-						category = Category.find(params[:category])
-						@lessons = Lesson.in_category(params[:category].to_i).published
-					else
-						@lessons = Lesson.in_root_category(params[:root_category].to_i).published
-					end
+				elsif category_is_present?
+					@lessons = Lesson.in_category(category).published
+				elsif root_category_is_present?
+					@lessons = Lesson.in_root_category(root_category).published
 				else
 					@lessons = Lesson.published
 				end
 
-				if params[:tag]
+				if params[:tag].present?
 					@total = @lessons.size if params[:page].to_i == 1
 					@lessons = @lessons.page(params[:page] ||= 1).per(results_per_page)
 				else
@@ -33,21 +29,26 @@ class LessonsController < MaawolController
 				else
 					@lessons = @lessons.order(is_free: :desc, publish_date: :desc)
 				end
+
 				@lessons = @lessons.includes(:videos).references(:videos).includes(:categories).references(:categories)
 			end
 
 			format.html do
 				return redirect_to(root_path) unless signed_in?
-				@root_categories = RootCategory.all
-				if params[:root_category] && params[:root_category].to_i > 0
-					@categories = Category.where(root_category_id: params[:root_category])
-					root_category = RootCategory.find(params[:root_category])
-					if params[:category] && params[:category].to_i > 0
-						category = Category.find(params[:category])
+
+				if root_category_is_present?
+					@categories = root_category.categories
+					if category_is_present?
 						@category_title = "#{root_category.name} > #{category.name}"
 					else
+						params[:category] = :all
 						@category_title = "#{root_category.name}"
 					end
+				else
+					params[:root_category] = :all
+					params[:category] = :all
+					@category_title = t("views.lessons.all_lessons")
+					@categories = Category.order(name: :asc)
 				end
 			end
 		end
@@ -69,6 +70,22 @@ class LessonsController < MaawolController
 	end
 
 private
+
+	def root_category_is_present?
+		params[:root_category].present? && params[:root_category].to_sym != :all
+	end
+
+	def root_category
+		RootCategory.find_by(slug: params[:root_category])
+	end
+
+	def category
+		Category.find_by(slug: params[:category])
+	end
+
+	def category_is_present?
+		params[:category].present? && params[:category].to_sym != :all
+	end
 
 	def lesson_not_accessible?
 		@lesson.nil? || (!@lesson.is_published && !params[:preview])

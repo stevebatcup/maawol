@@ -47,7 +47,7 @@ lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 blocks = [
 	{
-	  name: "bio",
+	  name: "Bio",
 	  title: "#{Maawol::Config.site_name}",
 	  content: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -55,25 +55,29 @@ blocks = [
 					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>",
-	  is_editable: 1
+	  is_editable: 1,
+	  is_deletable: 0
 	},
 	{
-	  name: "course_introduction",
+	  name: "Course introduction",
 	  title: "",
 	  content: "<p>Feel like digging a little deeper into something? That&rsquo;s what this section is for. Each course is a multi-lesson exploration into some subjects that can&rsquo;t be summed up in a lesson or two.</p>\r\n<p>Take a course from start to finish, or just pop in and work on any of the lessons individually.</p>",
-	  is_editable: 1
+	  is_editable: 1,
+	  is_deletable: 0
 	},
 	{
-	  name: "lesson_request_introduction",
+	  name: "Lesson request introduction",
 	  title: "",
 	  content: "<p>As part of your subscription you can request a lesson from us.</p>",
-	  is_editable: 1
+	  is_editable: 1,
+	  is_deletable: 0
 	},
 	{
-	  name: "contact_introduction",
+	  name: "Contact page introduction",
 	  title: "",
 	  content: "<p>Have a question for us? Fill in the form below.</p>",
-	  is_editable: 1
+	  is_editable: 1,
+	  is_deletable: 0
 	}
 ]
 blocks.each { |block| ContentManagement::ContentBlock.find_or_create_by(block) }
@@ -81,18 +85,21 @@ blocks.each { |block| ContentManagement::ContentBlock.find_or_create_by(block) }
 puts "> Creating Homepage...."
 homepage = ContentManagement::Page.find_or_create_by(title: "Homepage", slug: "")
 
+
 puts "> Creating Privacy Policy page...."
 privacy_block_data = {
   name: "Privacy Policy",
   title: "Privacy Policy",
   content: "<p>Privacy Policy stuff here</p><p>#{lorem}</p><p>#{lorem}</p><p>#{lorem}</p>",
-  is_editable: 1
+  is_editable: 0,
+  is_deletable: 0
 }
 privacy_block = ContentManagement::ContentBlock.find_or_create_by(privacy_block_data)
 unless ContentManagement::Page.find_by(title: "Privacy Policy")
 	ContentManagement::Page.create({
 		title: "Privacy Policy",
-		sections_attributes: [{ sort: 1, content_block_id: privacy_block.id }]
+		sections_attributes: [{ sort: 1, content_block_id: privacy_block.id }],
+		is_editable: 0
 	})
 end
 
@@ -101,13 +108,15 @@ terms_and_conditions_data = {
   name: "Terms and Conditions",
   title: "Terms and Conditions",
   content: "<p>Terms and Conditions stuff here</p><p>#{lorem}</p><p>#{lorem}</p><p>#{lorem}</p>",
-  is_editable: 1
+  is_editable: 0,
+  is_deletable: 0
 }
 terms_and_conditions_block = ContentManagement::ContentBlock.find_or_create_by(terms_and_conditions_data)
 unless ContentManagement::Page.find_by(title: "Terms and Conditions")
 	ContentManagement::Page.create({
 		title: "Terms and Conditions",
-		sections_attributes: [{ sort: 1, content_block_id: terms_and_conditions_block.id }]
+		sections_attributes: [{ sort: 1, content_block_id: terms_and_conditions_block.id }],
+		is_editable: 0
 	})
 end
 
@@ -117,7 +126,6 @@ navbars_data = [
 		{ name: "Welcome", url: "/", desktop: true, mobile: true },
 		{ name: "Register for FREE", url: "/sign_up", desktop: true, mobile: true },
 		{ name: "Recent lessons", url: "#recent_lessons", desktop: true, mobile: true },
-		{ name: "Sample store", url: "/store/sample-store", desktop: true, mobile: true },
 		{ name: "Get in touch", url: "/contact", desktop: true, mobile: true }
 	]},
 	{ slug: :signed_in, items: [
@@ -221,7 +229,7 @@ categories_data = [
 		{ name: "Comping", description: "So much of our sound comes from our approach to comping. Whether you think of it 'Complimenting' or 'Accompanying,' it's got lots of moving parts." },
 		{ name: "Soloing", description: "Here you'll find soloing phrases, soling concepts, and general advice on everything from lengthy, open solos, to fills." }
 	]},
-	{ root_category: "Performace", secondary_categories: [
+	{ root_category: "Performance", secondary_categories: [
 		{ name: "Gig preparation", description: "Philosophy on gigs, prep exercises, and general 'pre-game' stuff." },
 		{ name: "Recording", description: "How to prepare for the moment they hit that record button!" }
 	]},
@@ -250,30 +258,6 @@ sub_options = [
 		custom: false,
 		tag: nil,
 		payment_system_plan: 'monthly'
-	},
-	{
-		days: 90,
-		level:	2,
-		status: 'active',
-		price: 50.00,
-		display_sort: 1,
-		description: '3 months -save 33%',
-		name: '3 months',
-		custom: false,
-		tag: 'most-popular',
-		payment_system_plan: '3_monthly'
-	},
-	{
-		days: 180,
-		level:	3,
-		status: 'active',
-		price: 75.00,
-		display_sort: 1,
-		description: '6 months - save 50%',
-		name: '6 months',
-		custom: false,
-		tag: nil,
-		payment_system_plan: '6_monthly'
 	}
 ]
 sub_options.each do |sub_option|

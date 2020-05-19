@@ -7,7 +7,7 @@
       <div class="text-center">
         <%= render 'layouts/auth-logo' %>
 
-        <h4>Create Your FREE <br /><%= Maawol::Config.site_name %> Account</h4>
+        <h4><%= t(".title_html", site_name: Maawol::Config.site_name) %></h4>
 
         <% if notice %>
           <p class="alert alert-success"><%= notice %></p>
@@ -21,7 +21,7 @@
         <%= render partial: 'users/form', object: form %>
 
         <p class="submit-input">
-          <%= form.submit "Register for FREE", { class: 'btn btn-success btn-large', data: { "disable-with": "Registering..." } } %>
+          <%= form.submit t(".form.submit"), { class: 'btn btn-success btn-large', data: { "disable-with": t(".form.submitting") } } %>
           <span class="alt-methods" style="display: none;">
             <span>Or Register With</span>
             <a class="facebook" href="#"><i class="fa fa-facebook-official"></i></a>
@@ -30,7 +30,8 @@
         </p>
 
         <p class="mb-2 text-center">
-          Already have an account? <%= link_to "Sign in here", sign_in_path %>
+          <%= t(".sign_in_link.prefix") %>&nbsp;
+          <%= link_to t(".sign_in_link.link"), sign_in_path %>
         </p>
 
       <% end %>

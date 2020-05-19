@@ -19,6 +19,7 @@ class CourseDashboard < Administrate::BaseDashboard
     lessons: Field::HasMany,
     skill_levels: HasLotsField,
     tags: HasLotsField,
+    categories: HasLotsField,
     publish_date: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -56,6 +57,7 @@ class CourseDashboard < Administrate::BaseDashboard
     :image,
     :skill_levels,
     :tags,
+    :categories,
     :teachings,
     :publish_date,
     :description,
@@ -69,6 +71,6 @@ class CourseDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    [ :id, :image_tmp_media_id, :name, :author_id, :image, :description, :publish_date, skill_level_ids: [], tag_ids: [], teachings_attributes: [:id, :lesson_id, :sort, :description, :_destroy ] ]
+    [ :id, :image_tmp_media_id, :name, :author_id, :image, :description, :publish_date, skill_level_ids: [], tag_ids: [], category_ids: [], teachings_attributes: [:id, :lesson_id, :sort, :description, :_destroy ] ]
   end
 end

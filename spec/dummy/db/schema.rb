@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_121558) do
+ActiveRecord::Schema.define(version: 2020_05_19_084640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,7 +80,15 @@ ActiveRecord::Schema.define(version: 2020_05_10_121558) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "root_category_id"
+    t.string "slug"
     t.index ["name"], name: "index_categories_on_name"
+  end
+
+  create_table "categories_courses", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "course_id"
+    t.index ["category_id"], name: "index_categories_courses_on_category_id"
+    t.index ["course_id"], name: "index_categories_courses_on_course_id"
   end
 
   create_table "categories_lessons", id: false, force: :cascade do |t|
@@ -97,6 +105,8 @@ ActiveRecord::Schema.define(version: 2020_05_10_121558) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.boolean "is_deletable", default: true
+    t.string "slug"
   end
 
   create_table "cms_images", force: :cascade do |t|
@@ -352,6 +362,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_121558) do
 
   create_table "root_categories", id: :serial, force: :cascade do |t|
     t.string "name"
+    t.string "slug"
   end
 
   create_table "site_images", force: :cascade do |t|

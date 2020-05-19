@@ -1,22 +1,3 @@
-#tablet_main_nav.scrolling-top-nav {
-  .navbar-nav-scroll {
-    max-width: 94vw;
-    margin: 0 auto;
-    font-size: 0.9em;
-    height: 2.4rem;
-    overflow: hidden;
-
-    .nav {
-      overflow-x: auto;
-      white-space: nowrap;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    }
-  }
-}
-
 header .header-bottom .navbar-default .navbar-nav li a.btn {
   top: 0.65em;
 }

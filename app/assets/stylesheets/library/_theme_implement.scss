@@ -60,6 +60,20 @@ header .header-top {
 
 header .header-top .account_links span {
   a {
+    color: $maawol_link_color;
+
+    &:hover {
+      color: darken($maawol_link_color, 5%);
+    }
+  }
+
+  &:after {
+    background: $maawol_link_color;
+  }
+}
+
+header .header-top .account_links.signed_in span {
+  a {
     color: $maawol_account_links;
 
     &:hover {
@@ -86,6 +100,11 @@ header .header-bottom .navbar-default {
 header .header-bottom {
   border-top: 1px solid $maawol_navbar_border;
   border-bottom: 1px solid $maawol_navbar_border;
+}
+
+header.secondary_nav_header .header-bottom,
+header.secondary_nav_header .header-bottom .navbar-default {
+  background-color: $maawol_secondary_nav_bg;
 }
 
 header .header-bottom .navbar-default .navbar-nav li.menu-item a:hover,
@@ -146,6 +165,12 @@ section.cms_section h2 .first-word,
 
 footer.site-footer {
   background-color: $maawol_footer_bg;
+
+  #footer_legals li {
+    a {
+      color: $maawol_footer_legals_color;
+    }
+  }
 }
 
 footer .copyright {
@@ -200,9 +225,6 @@ section#payment form#payment_form .form_item ul#choose_payment_type li label i {
 /* Mobile only */
 header .header-top .navbar-toggle {
   color: $maawol_mobile_navbar_toggle;
-}
-header.scrolling-top-nav {
-  background: $maawol_mobile_scrolling_nav_bg;
 }
 
 #video_playlist {

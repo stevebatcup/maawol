@@ -48,17 +48,26 @@
             </form>
           </div>
           <div class="col-md-4 d-flex align-items-end justify-content-end account_links_col">
-            <div class="account_links">
+            <div class="account_links signed_in">
               <% if signed_in? && current_user.is_admin? %>
                 <span class="d-none d-lg-inline">
-                  <a href="/admin" target="_blank" data-turbolinks="false"><i class="fas fa-laptop-code mr-2"></i>Admin</a>
+                  <a href="/admin" target="_blank" data-turbolinks="false">
+                    <i class="fas fa-laptop-code mr-2"></i>
+                    <%= t('views.layouts.account_links.admin') %>
+                  </a>
                 </span>
               <% end %>
-              <span class="d-lg-inline"><a href="/settings">
-                <i class="fa fa-user mr-1"></i> My account</a>
+              <span class="d-lg-inline">
+                <a href="/settings">
+                  <i class="fa fa-user mr-1"></i>
+                  <%= t('views.layouts.account_links.my_account') %>
+                </a>
               </span>
-              <span class="d-lg-inline"> <a data-method="delete" href="<%= sign_out_path %>">
-                <i class="fa fa-lock mr-1"></i> Sign out</a>
+              <span class="d-lg-inline">
+                <a data-method="delete" href="<%= sign_out_path %>">
+                  <i class="fas fa-sign-out-alt mr-1"></i>
+                    <%= t('views.layouts.account_links.sign_out') %>
+                </a>
               </span>
             </div>
           </div>
@@ -66,7 +75,33 @@
       </div>
     </div>
 
-    <%= render 'layouts/main-nav' %>
+    <div class="header-bottom tablet navbar navbar-expand navbar-dark flex-column flex-md-row scrolling-top-nav py-0">
+      <nav class="navbar-nav-scroll navbar-default">
+        <div class="nav navbar-nav bd-navbar-nav flex-row" role="tablist" style="flex-wrap: nowrap;">
+          <ul class="p-0 d-flex">
+            <li class="menu-item <%= 'active' if request.path == lessons_path %>">
+              <a class="nav-link" href="/lessons"
+                  data-turbolinks="false"
+                  ng-click="navigateUri($event, '/lessons')"><%= t("views.nav.all_lessons") %></a>
+            </li>
+
+            <% signed_in_nav_items.each do |item| %>
+            <li class="menu-item <%= 'active' if nav_item_is_current_request(item) %>">
+              <a class="nav-link" href="<%= item.url %>"
+                  data-turbolinks="false"
+                  ng-click="navigateUri($event, '<%= item.url %>')"><%= item.name %></a>
+            </li>
+          <% end %>
+
+            <li class="menu-item <%= 'active' if request.path == courses_path %>">
+              <a class="nav-link" href="/courses"
+                  data-turbolinks="false"
+                  ng-click="navigateUri($event, '/courses')"><%= t("views.nav.courses") %></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <div id='yield_wrapper'>
@@ -74,8 +109,6 @@
   </div>
 
   <%= render 'layouts/footer' %>
-  <%= render 'layouts/angular_bootstrap' %>
-
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </body>
 </html>

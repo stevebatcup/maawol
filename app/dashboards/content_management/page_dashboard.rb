@@ -11,7 +11,6 @@ module ContentManagement
     ATTRIBUTE_TYPES = {
       title: Field::String,
       url: LinkField,
-      slug: Field::String,
       sections: NestedContentField,
       created_at: Field::DateTime,
       updated_at: Field::DateTime,
@@ -42,7 +41,6 @@ module ContentManagement
     # on the model's form (`new` and `edit`) pages.
     FORM_ATTRIBUTES = %i[
     	title
-    	slug
     	sections
     ].freeze
 

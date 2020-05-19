@@ -14,7 +14,7 @@ class Maawol.AdminContentManagementContentBlocksController extends Maawol.AdminP
 	init: ->
 		@setDefaultHttpHeaders()
 		@setCsrfTokenHeaders()
-		@initSelectize()
+		@initTinyMce()
 		@bindEvents()
 		if $('.field-unit__field.audio').length > 0
 			@initializeUploader 'audio_file', 'audio_file', 'player'
