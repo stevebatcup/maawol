@@ -9,7 +9,7 @@ class SiteImageUploader < BaseUploader
   end
 
   version :large_square do
-    process resize_to_fit: [500, 500]
+    process resize_to_fill: [500, 500]
 
     def store_dir
       "#{Rails.env}/#{site_basket_dir}/site-images/#{model.id}"
@@ -17,7 +17,7 @@ class SiteImageUploader < BaseUploader
   end
 
   version :small_square do
-    process resize_to_fit: [170, 170]
+    process resize_to_fill: [170, 170]
 
     def store_dir
       "#{Rails.env}/#{site_basket_dir}/site-images/#{model.id}"
@@ -41,7 +41,7 @@ class SiteImageUploader < BaseUploader
   end
 
   version :tiny do
-    process resize_to_fit: [16, 16]
+    process resize_to_fill: [16, 16]
 
     def store_dir
       "#{Rails.env}/#{site_basket_dir}/site-images/#{model.id}"
