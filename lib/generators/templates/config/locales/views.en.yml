@@ -262,6 +262,7 @@ en:
       success: Thanks for subscribing
       recurring_cancelled: Your recurring billing has now been cancelled and your subscription will terminate on
       errors:
+        already_recurring: Looks like you already have a recurring subscription
         editing_auth: You do not have permission to edit this subscription
         not_recurring: You do not currently have recurring billing setup on your subscription
         cancel_recurring: There was a problem cancelling your recurring billing, please try again

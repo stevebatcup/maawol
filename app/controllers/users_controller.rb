@@ -1,7 +1,7 @@
 class UsersController < Clearance::UsersController
 	def new
 	  @user = User.new
-    flash[:notice] = "Registered below for access to lessons" if params[:from] && params[:from] == "locked_lesson"
+    flash[:notice] = t("controllers.users.new.from_locked") if params[:from] && params[:from] == "locked_lesson"
 	  render template: "users/new"
 	end
 

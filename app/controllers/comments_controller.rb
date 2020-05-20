@@ -11,10 +11,10 @@ class CommentsController < MaawolController
 				comment.move_to_child_of Comment.find(parent_id) if parent_id > 0
 				@comment[:status] = :success
 			else
-				@comment = { status: :error, message: "Could not create comment!" }
+				@comment = { status: :error, message: t('contollers.comments.create.errors.general') }
 			end
 		else
-			@comment = { status: :error, message: "You must be signed in to create a comment!" }
+			@comment = { status: :error, message: t('contollers.comments.create.errors.auth') }
 		end
 	end
 end

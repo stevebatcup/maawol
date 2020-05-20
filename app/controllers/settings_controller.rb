@@ -15,9 +15,9 @@ class SettingsController < MaawolController
 			elsif old_digest_setting != current_user.receives_weekly_digest
 				mailchimp_service.update_on_list
 			end
-			redirect_to settings_path, notice: "Settings updated"
+			redirect_to settings_path, notice: t('controllers.settings.update.success')
 		else
-			flash.alert = "Sorry, there was an error updating your account settings: #{legible_form_errors(current_user.errors)}"
+			flash[:alert] = "#{t('controllers.settings.update.errors.prefix')}: #{legible_form_errors(current_user.errors)}"
 			render :index
 		end
 	end
@@ -25,24 +25,26 @@ class SettingsController < MaawolController
 	def update_password
 		@mode = 'password'
 		if (user_params[:existing_password].length == 0) || (user_params[:password].length == 0) || (user_params[:password_confirm].length == 0)
-				flash.alert = "To change your password please fill out all 3 fields"
+				flash[:alert] = t('controllers.settings.update_password.errors.blank')
+				params[:preclick] = 'password'
 				render :index
 		else
-			if current_user.valid_password?(user_params[:existing_password])
-				if user_params[:password] != user_params[:password_confirm]
-					flash.alert = "Please make sure your new password matches the confirmation"
-					render :index
-				elsif user_params[:password].length < 8
-					flash.alert = "Please make sure your new password is at least 8 characters long"
-					render :index
-				else
-					current_user.update_attribute(:password, user_params[:password])
-					bypass_sign_in(current_user)
-					redirect_to settings_path, notice: "Your password has been updated"
-				end
-			else
-				flash.alert = "The existing password you entered is wrong, please try again"
+			if !User.authenticate(current_user.email, user_params[:existing_password])
+				flash[:alert] = t('controllers.settings.update_password.errors.original_wrong')
+				params[:preclick] = 'password'
 				render :index
+			elsif user_params[:password] != user_params[:password_confirm]
+				flash[:alert] = t('controllers.settings.update_password.errors.match')
+				params[:preclick] = 'password'
+				render :index
+			else
+				if current_user.update_password(user_params[:password])
+					redirect_to settings_path, notice: t('controllers.settings.update_password.success')
+				else
+					flash[:alert] = legible_form_errors(current_user.errors)
+					params[:preclick] = 'password'
+					render :index
+				end
 			end
 		end
 	end

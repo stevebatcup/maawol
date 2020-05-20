@@ -9,7 +9,7 @@ class BasketController < MaawolController
 				remove_from_basket(product, params[:quantity])
 			end
 		else
-			render json: { status: :error, message: "Sorry we cannot find that item for your basket." }
+			render json: { status: :error, message: t('controllers.basket.update.error') }
 		end
 	end
 
@@ -22,7 +22,7 @@ class BasketController < MaawolController
 		if basket.clear
 			render json: { status: :success, total: total_price(basket) }
 		else
-			render json: { status: :error, message: "Sorry there was an error clearing your basket." }
+			render json: { status: :error, message: t('controllers.basket.destroy.error') }
 		end
 	end
 
@@ -37,7 +37,7 @@ private
 		if basket.add(product, product.price)
 			render json: { status: :success, total: total_price(basket) }
 		else
-			render json: { status: :error, message: "There was an error adding this to your basket" }
+			render json: { status: :error, message: t('controllers.basket.add_to_basket.error') }
 		end
 	end
 
@@ -45,7 +45,7 @@ private
 		if basket.remove(product, quantity)
 			render json: { status: :success, total: total_price(basket) }
 		else
-			render json: { status: :error, message: "There was an error removing this from your basket" }
+			render json: { status: :error, message: t('controllers.basket.remove_from_basket.error') }
 		end
 	end
 end

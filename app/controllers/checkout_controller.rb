@@ -41,7 +41,7 @@ class CheckoutController < MaawolController
 							complete_checkout(payment_params[:email], payment_params[:firstName], payment_params[:lastName], :chargebee)
 						else
 							@status = :error
-							@error = "An unknown error occurred whilst processing your card payment, please try again."
+							@error = t('controllers.checkout.create.errors.card')
 						end
 					end
 				end
@@ -51,7 +51,7 @@ class CheckoutController < MaawolController
 			end
 		else
 			@status = :error
-			@error = empty_basket_msg
+			@error = t('controllers.checkout.empty_basket')
 		end
 	end
 
@@ -64,7 +64,7 @@ class CheckoutController < MaawolController
 		rescue Exception => e
 			@paypal_error = true
 			record_payments_from_basket_items(:failed, :paypal)
-			flash.now[:alert] = "Oops there's been a problem completing your Paypal payment, please try again. <br /><b>Error: #{e.message}</b>".html_safe
+			flash.now[:alert] = t('controllers.checkout.create.errors.paypal_html', message: e.message).html_safe
 			render action: 'new'
 		end
 	end
@@ -118,9 +118,5 @@ private
 
 	def payment_params
 		params[:payment]
-	end
-
-	def empty_basket_msg
-		"There are no items in your basket"
 	end
 end

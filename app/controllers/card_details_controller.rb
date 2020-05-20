@@ -7,9 +7,9 @@ class CardDetailsController < MaawolController
 			begin
 				if subscription = current_user.current_subscription
 					PaymentService::Chargebee.update_card_details(subscription, card)
-					flash[:notice] = "Thanks, your card details have been updated"
+					flash[:notice] = t('controllers.card_details.update.success')
 				else
-					flash[:alert] = "Your subscription cannot be not found"
+					flash[:alert] = t('controllers.card_details.update.error')
 				end
 			rescue Exception => e
 				flash[:alert] = e.message

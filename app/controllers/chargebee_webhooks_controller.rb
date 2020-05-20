@@ -2,9 +2,9 @@ class ChargebeeWebhooksController < MaawolController
 
 	def payment_messages
 		@payment_messages ||= {
-			success: 'success',
-			not_recurring: "fail: user subscription is no longer recurring",
-			not_found: "fail: user subscription ID #{@subscription_id} not found"
+			success: t('controllers.chargee_webhooks.payment_messages.success'),
+			not_recurring: t('controllers.chargee_webhooks.payment_messages.not_recurring'),
+			not_found: t('controllers.chargee_webhooks.payment_messages.not_found', subscription_id: @subscription_id)
 		}
 	end
 
@@ -89,10 +89,10 @@ class ChargebeeWebhooksController < MaawolController
 		if user_subscription = UsersSubscription.find_by(remote_customer_id: @customer_id, status: :recurring)
 			UserMailer.card_expiry_reminder(user_subscription.user, params[:content][:card][:expiry_month], params[:content][:card][:expiry_year]).deliver_now
 			user_id = user_subscription.user_id
-			result = "reminder email sent"
+			result = t('controllers.chargee_webhooks.handle_card_expiry_reminder.success')
 		else
 			user_id = nil
-			result = "fail: recurring user subscription for customer ID #{@customer_id} not found"
+			result = t('controllers.chargee_webhooks.handle_card_expiry_reminder.error', customer_id: @customer_id)
 		end
 		ApiLog.webhook({
 			service: :chargebee,

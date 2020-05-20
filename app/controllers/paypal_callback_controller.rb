@@ -9,7 +9,7 @@ class PaypalCallbackController < MaawolController
 			redirect_to settings_path
 		rescue Exception => e
 			DevMailer.notify_error_paypal_flow(current_user, params[:token], e).deliver_now
-			flash[:alert] = "Ooops there has been an error completing your paypal agreement: #{e.message}"
+			flash[:alert] = t('controllers.paypal_callback.create.error', message: e.message)
 			redirect_to subscribe_path
 		end
 	end
@@ -39,9 +39,9 @@ class PaypalCallbackController < MaawolController
 private
 	def payment_messages
 		@payment_messages ||= {
-			success: 'success',
-			not_recurring: "fail: user subscription is no longer recurring",
-			not_found: "fail: user subscription ID #{@subscription_id} not found"
+			success: t('controllers.paypal_callback.payment_messages.success'),
+			not_recurring: t('controllers.paypal_callback.payment_messages.not_recurring'),
+			not_found: t('controllers.paypal_callback.payment_messages.not_found', subscription_id: @subscription_id)
 		}
 	end
 

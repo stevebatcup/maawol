@@ -1,5 +1,10 @@
 class SessionsController < Clearance::SessionsController
 
+	def destroy
+		flash.clear
+		super
+	end
+
 	private
 
 	def url_after_create

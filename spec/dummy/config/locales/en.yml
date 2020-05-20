@@ -7,6 +7,8 @@ en:
         email: "Email address"
         email_confirm: "Confirm your email address"
   errors:
+    users:
+      invalid_password: Please enter a password with 8 or more characters
     messages:
       extension_whitelist_error: Please upload an acceptable file type
       page_needs_blocks: are required to save a page

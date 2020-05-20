@@ -3,23 +3,23 @@
 	  <nav class="navbar-nav-scroll navbar-default">
       <ul class="nav navbar-nav bd-navbar-nav flex-row pl-0" role="tablist" style="flex-wrap: nowrap;">
       	<li class="nav-item">
-				  <a class="nav-link <%= 'active' unless @mode == 'password' %>" data-toggle="tab" href="#account_details" role="tab">
+				  <a class="nav-link <%= 'active' unless @mode == 'password' %>" data-toggle="tab" href="#account_details" id="menu_account_details" role="tab">
   					<%= t('views.account_settings.menu.account_details') %>
 				  </a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link <%= 'active' if @mode == 'password' %>" data-toggle="tab" href="#password" role="tab">
+				  <a class="nav-link <%= 'active' if @mode == 'password' %>" data-toggle="tab" href="#password" id="menu_password" role="tab">
 				  	<%= t('views.account_settings.menu.password') %>
 				  </a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link" data-toggle="tab" href="#membership" role="tab">
+				  <a class="nav-link" data-toggle="tab" href="#membership" id="menu_membership" role="tab">
 				  	<%= t('views.account_settings.menu.membership') %>
 				  </a>
 				</li>
 			  <% if current_user.is_paying_by_card? %>
 			  	<li class="nav-item">
-					  <a class="nav-link" data-toggle="tab" href="#payment_details" role="tab">
+					  <a class="nav-link" data-toggle="tab" href="#payment_details" id="menu_payment_details" role="tab">
 					  	<%= t('views.account_settings.menu.payment_details') %>
 					  </a>
 					</li>

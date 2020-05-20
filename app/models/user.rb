@@ -19,7 +19,8 @@ class User < ApplicationRecord
   enum	status: [:free, :paying, :complimentary, :deleted, :expiring]
 
   validates_presence_of :first_name, :last_name, :email
-  validate :within_complimentary_account_limit, on: :update
+  validate :valid_password
+  validate :within_complimentary_accounts_limit, on: :update
 
   before_create :set_default_status
   after_create  :add_to_mailchimp
@@ -28,6 +29,18 @@ class User < ApplicationRecord
 
   def self.active
     where.not(status: :deleted)
+  end
+
+  def valid_password
+    if self.password.length < 8
+      self.errors.add(:password, I18n.t('errors.users.invalid_password'))
+    end
+  end
+
+  def within_complimentary_accounts_limit
+    if (self.status.to_sym == :complimentary) && (current_complimentary_account_count >= COMPLIMENTARY_ACCOUNT_LIMIT)
+      errors.add(:base, "You may only set up to #{COMPLIMENTARY_ACCOUNT_LIMIT} accounts as complimentary.")
+    end
   end
 
   def set_default_status
@@ -82,12 +95,6 @@ class User < ApplicationRecord
 
   def can_access_dashboard?
     has_full_account? || is_admin?
-  end
-
-  def within_complimentary_account_limit
-    if (self.status.to_sym == :complimentary) && (current_complimentary_account_count >= COMPLIMENTARY_ACCOUNT_LIMIT)
-      errors.add(:base, "You may only set up to #{COMPLIMENTARY_ACCOUNT_LIMIT} accounts as complimentary.")
-    end
   end
 
   def current_complimentary_account_count

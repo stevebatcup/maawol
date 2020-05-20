@@ -27,6 +27,12 @@ class Maawol.Settings extends Maawol.Page
 		@scope.paymentError =
 			title: ''
 			msg: ''
+		vars = Maawol.FormHelpers.getUrlVars()
+		if 'preclick' of vars
+			@timeout =>
+				$("a.nav-link#menu_#{vars['preclick']}").click()
+			, 100
+
 
 
 	bindEvents: =>

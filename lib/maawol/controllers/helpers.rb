@@ -67,7 +67,7 @@ module Maawol
 			end
 
 			def legible_form_errors(errors)
-			  errors.full_messages.map { |msg| msg }.first
+			  errors.values.first.first
 			end
 
 			def main_error_field(errors)

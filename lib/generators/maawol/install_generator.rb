@@ -33,6 +33,8 @@ module Maawol
 		  def locales
 				template "config/locales/en.yml", "config/locales/maawol.en.yml"
 				template "config/locales/admin.en.yml", "config/locales/admin.en.yml"
+				template "config/locales/views.en.yml", "config/locales/views.en.yml"
+				template "config/locales/controllers.en.yml", "config/locales/controllers.en.yml"
 				template "config/locales/clearance.en.yml", "config/locales/clearance.en.yml"
 		  end
 

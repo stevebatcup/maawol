@@ -1,12 +1,12 @@
 class ContactController < MaawolController
 	def new
 		@contact = Contact.new
-		@contact.subject = "Get in touch"
+		@contact.subject = t('controllers.contact.new.subject.default')
 
 		if signed_in?
 			if params[:lesson_request].present?
 				require_subscription
-				@contact.subject = "Request a lesson"
+				@contact.subject = t('controllers.contact.new.subject.lesson_request')
 				@lesson_request = true
 			elsif params[:stuck].present?
 				setup_stuck_form
@@ -29,17 +29,17 @@ class ContactController < MaawolController
 
 		if recaptcha_verified(@contact) && @contact.save
 			if contact_params[:message].present?
-				notice = "Thanks We'll be back in touch ASAP"
+				notice = t('controllers.contact.create.success.default')
 				if contact_params[:from_home].present?
 					redirect_to root_path, notice: notice
 				else
 					redirect_to new_contact_path, notice: notice
 				end
 			else
-				redirect_to lessons_path(stuck: true), notice: "Thanks! We'll get back to you ASAP with some suggestions of things to work on."
+				redirect_to lessons_path(stuck: true), notice: t('controllers.contact.create.success.stuck')
 			end
 		else
-			flash[:alert] = "Sorry there was an error sending your message: #{legible_form_errors(@contact.errors)}"
+			flash[:alert] = "#{t('controllers.contact.create.error_prefix')}: #{legible_form_errors(@contact.errors)}"
 			setup_stuck_form if is_stuck_submission?
 			render :new
 		end
@@ -49,7 +49,7 @@ private
 
 	def setup_stuck_form
 		@stuck = true
-		@contact.subject = "Help! I don't know what to work on!"
+		@contact.subject = t('controllers.contact.new.subject.stuck')
 		@questions = StuckQuestion.includes(:stuck_answers).references(:stuck_answers).order(sort: :asc)
 	end
 

@@ -1,2 +1,84 @@
 en:
   controllers:
+    basket:
+      update:
+        error: Sorry we cannot find that item for your basket
+      destory:
+        error: Sorry there was an error clearing your basket
+      add_to_basket:
+        error: There was an error adding this to your basket
+      remove_from_basket:
+        error: There was an error removing this from your basket
+
+    card_details:
+      update:
+        success: Thanks, your card details have been updated
+        error: Your subscription cannot be not found
+
+    chargebee_webhooks:
+      handle_card_expiry_reminder:
+        success: reminder email sent
+        error: "fail: recurring user subscription for customer ID %{customer_id} not found"
+      payment_messages:
+        success: Success
+        not_recurring: "fail: user subscription is no longer recurring"
+        not_found: "fail: user subscription ID %{subscription_id} not found"
+
+    checkout:
+      empty_basket: There are no items in your basket
+      create:
+        errors:
+          card: "An unknown error occurred whilst processing your card payment, please try again."
+          paypal_html: "Oops there's been a problem completing your Paypal payment, please try again. <br /><b>Error: %{message}</b>"
+
+    comments:
+      create:
+        errors:
+          general: Could not create comment!
+          auth: You must be signed in to create a comment!
+
+    contact:
+      create:
+        success:
+          default: Thanks We'll be back in touch ASAP
+          stuck: Thanks! We'll get back to you ASAP with some suggestions of things to work on.
+        error_prefix: Sorry there was an error sending your message
+      new:
+        subject:
+          default: Get in touch
+          lesson_request: Request a lesson
+          stuck: Help! I don't know what to work on!
+
+    maawol:
+      require_subscription: That page requires a subcription, unlock full access to the library by subscribing below, it's quick and easy.
+
+    paypal_callback:
+      create:
+        error: "Ooops there has been an error completing your paypal agreement: %{message}"
+      payment_messages:
+        success: Success
+        not_recurring: "fail: user subscription is no longer recurring"
+        not_found: "fail: user subscription ID %{subscription_id} not found"
+
+    settings:
+      update:
+        success: Settings updated
+        errors:
+          prefix: Sorry, there was an error updating your account settings
+      update_password:
+        success: Your password has been updated
+        errors:
+          blank: To change your password please fill out all 3 fields
+          original_wrong: Your existing password is incorrect, please try again
+          match: Please make sure your new password matches the confirmation
+          invalid: Please make sure your new password is at least 8 characters long
+
+    subscriptions:
+      new:
+        from_locked: Subscribe below for full access to the lesson library
+        errors:
+          already_recurring: Looks like you already have a recurring subscription
+
+    users:
+      new:
+        from_locked: Register below for access to the lesson library
