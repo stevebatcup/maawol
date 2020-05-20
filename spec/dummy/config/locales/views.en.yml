@@ -117,7 +117,9 @@ en:
         my_account: My account
         sign_out: Sign out
         my_lists: My lessons
+        lesson_request: Request a lesson
       footer:
+        contact: Get in touch
         legals:
           privacy: Privacy policy
           terms: Terms & conditions

@@ -42,11 +42,14 @@
     </div>
 
     <ul class="other_pages mt-3 text-center p-0">
-    <% footer_navbar_items.each do |page| %>
-      <li class="d-inline-block mr-3 menu-item <%= 'active' if request.url.include?(page.url) %>">
-        <a href="<%= page.url %>" data-turbolinks="false"><%= page.title %></a>
+      <li class="d-inline-block mr-3 menu-item">
+        <a href="/contact" data-turbolinks="false"><%= t('views.layouts.footer.contact') %></a>
       </li>
-    <% end %>
+      <% footer_navbar_items.each do |page| %>
+        <li class="d-inline-block mr-3 menu-item">
+          <a href="<%= page.url %>" data-turbolinks="false"><%= page.title %></a>
+        </li>
+      <% end %>
     </ul>
 
   </div>

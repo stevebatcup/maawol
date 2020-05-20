@@ -94,7 +94,29 @@ header {
     }
 
     .dropdown-toggler {
-      font-size: 1.6em;
+      line-height: 1.4em;
+
+      i {
+        font-size: 1.85em;
+      }
+
+      img {
+        width: 32px;
+      }
+
+      span.name {
+        font-size: 1.1em;
+        position: relative;
+      }
+
+      i + span.name {
+        top: -4px;
+        left: -1px;
+      }
+
+      img + span.name {
+        top: 1px;
+      }
     }
 
     .dropdown-menu {

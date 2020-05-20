@@ -81,6 +81,13 @@
             </li>
 
             <li class="menu-item">
+              <a href="/lesson-request" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)">
+                <i class="fas fa-passport mr-1"></i>
+                <%= t('views.layouts.account_links.lesson_request') %>
+              </a>
+            </li>
+
+            <li class="menu-item">
               <a href="<%= sign_out_path %>" data-method="delete" data-turbolinks="false" class="w-100 d-inline-block py-0 px-2" ng-click="closeMenu($event)">
                 <i class="fas fa-sign-out-alt mr-1"></i>
                 <%= t('views.layouts.account_links.sign_out') %></a>

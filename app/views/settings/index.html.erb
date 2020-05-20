@@ -54,7 +54,7 @@
             <p class="form-input">
               <%= f.label :avatar %>
               <% if current_user.avatar %>
-                <img src="<%= current_user.avatar.url(:thumbnail) %>" alt="<%= current_user.username %>" width="80px" class="rounded-circle" />
+                <img src="<%= current_user.avatar.url(:thumbnail) %>" alt="<%= current_user.username %>" width="80px" class="m-3 rounded-circle" />
                 <div class="clearfix"></div>
               <% end %>
               <%= f.file_field :avatar %>

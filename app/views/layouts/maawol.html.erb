@@ -48,11 +48,16 @@
             </form>
           </div>
           <div class="col-md-4 d-flex align-items-end justify-content-end account_links_col">
-            <nav class="navbar">
+            <nav class="navbar p-0">
 
               <div class="btn-group">
                 <a href='#' type="button" class="dropdown-toggler" data-toggle="dropdown">
-                  <i class="fas fa-sliders-h mr-1"></i>
+                  <% if current_user.avatar.file.nil? %>
+                    <i class="fas fa-user mr-1"></i>
+                  <% else %>
+                    <%= image_tag current_user.avatar.url(:thumbnail), alt: current_user.display_name, class: "rounded-circle" %>
+                  <% end %>
+                  <span class="name pl-1"><%= current_user.first_name %></span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right mt-3 py-2 pb-0">
@@ -66,7 +71,13 @@
                     <i class="fa fa-user mr-1"></i>
                     <%= t('views.layouts.account_links.my_account') %>
                   </a>
-                  <% if signed_in? && current_user.is_admin? %>
+                  <% if current_user.has_full_account? %>
+                    <a href="/lesson-request" class="dropdown-item pr-2 pb-2 my-2" type="button">
+                      <i class="fas fa-passport mr-2"></i>
+                      <%= t('views.layouts.account_links.lesson_request') %>
+                    </a>
+                  <% end %>
+                  <% if current_user.is_admin? %>
                     <a href="/admin" target="_blank" class="dropdown-item pr-2 pb-2 my-2" type="button">
                       <i class="fas fa-laptop-code mr-2"></i>
                       <%= t('views.layouts.account_links.admin') %>

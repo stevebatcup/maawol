@@ -19,8 +19,17 @@ class User < ApplicationRecord
   enum	status: [:free, :paying, :complimentary, :deleted, :expiring]
 
   validates_presence_of :first_name, :last_name, :email
-  validate :valid_password
-  validate :within_complimentary_accounts_limit, on: :update
+  validates :password, presence: true,
+                         confirmation: true,
+                         length: { within: 6..40, message: I18n.t('errors.users.invalid_password') },
+                         on: :create
+
+  validates :password, confirmation: true,
+                         length: { within: 6..40, message: I18n.t('errors.users.invalid_password') },
+                         allow_blank: true,
+                         on: :update
+
+   validate :within_complimentary_accounts_limit, on: :update
 
   before_create :set_default_status
   after_create  :add_to_mailchimp
@@ -29,12 +38,6 @@ class User < ApplicationRecord
 
   def self.active
     where.not(status: :deleted)
-  end
-
-  def valid_password
-    if self.password.length < 8
-      self.errors.add(:password, I18n.t('errors.users.invalid_password'))
-    end
   end
 
   def within_complimentary_accounts_limit
@@ -75,7 +78,7 @@ class User < ApplicationRecord
     @has_full_account ||= begin
       user_status = self.status.to_sym
     	if [:paying, :complimentary].include?(user_status)
-       true
+        true
       elsif user_status == :expiring
         if self.current_ending_subscription.present?
           true
@@ -83,6 +86,8 @@ class User < ApplicationRecord
           self.update_attribute(:status, :free)
           false
         end
+      elsif self.is_admin?
+        true
       else
         false
       end
