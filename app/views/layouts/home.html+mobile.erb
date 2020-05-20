@@ -22,7 +22,10 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body class="mobile <%= 'auth' if is_auth_page? %>" data-turbolinks='false' data-theme="<%= site_theme %>">
+  <body class="mobile <%= 'auth' if is_auth_page? %>"
+          data-turbolinks='false'
+          data-theme="<%= site_theme %>"
+          data-requires-cookie-permissions="<%= cookies[:cookie_permission_set] ? 0 : 1 %>">
 
     <% unless is_auth_page?  %>
       <header class="header fixed" ng-controller="NavController" data-signed-in="0">
@@ -88,6 +91,8 @@
       </div>
       <%= render 'layouts/copyright' %>
     </footer>
+
+    <%= render 'layouts/cookie-acceptance' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </body>
 </html>

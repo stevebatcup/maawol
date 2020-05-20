@@ -23,7 +23,9 @@
   <%= stylesheet_link_tag    "themes/#{site_theme}", media: 'all', 'data-turbolinks-track' => true %>
 </head>
 
-<body class="mobile" data-turbolinks='false' onunload="" ng-app="Maawol_NG" data-theme="<%= site_theme %>">
+<body class="mobile" data-turbolinks='false' onunload="" ng-app="Maawol_NG"
+          data-theme="<%= site_theme %>"
+          data-requires-cookie-permissions="<%= cookies[:cookie_permission_set] ? 0 : 1 %>">
 
   <header class="header fixed" ng-controller="NavController" data-signed-in="1">
     <div class="header-top container mobile">
@@ -103,6 +105,7 @@
   </div>
 
   <%= render 'layouts/footer' %>
+  <%= render 'layouts/cookie-acceptance' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </body>
 </html>

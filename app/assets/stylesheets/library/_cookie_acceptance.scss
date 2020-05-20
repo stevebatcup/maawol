@@ -1,0 +1,38 @@
+#cookie-notice {
+	display: none;
+	box-shadow: 0 -1px 4px #555;
+	position: fixed;
+	min-width: 100%;
+	height: auto;
+	z-index: 100000;
+	line-height: 20px;
+	left: 0;
+	text-align: center;
+	color: #ffffff;
+	background-color: #4a4a4a;
+	visibility: visible;
+	bottom: 0;
+
+	.cookie-notice-container {
+		padding: 10px;
+		text-align: center;
+		width: 100%;
+
+		p {
+			font-size: 0.9em;
+			line-height: 1.3em;
+			max-width: 600px;
+			margin: 0 auto 13px;
+			color: #ffffff;
+
+			a {
+				color: #ffffff;
+				text-decoration: underline;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}

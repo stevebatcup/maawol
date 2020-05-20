@@ -1,6 +1,29 @@
 class Maawol.Page extends Maawol.NGController
 	constructor: ->
 		super
+		if !!$('body').data('requires-cookie-permissions')
+			@timeout =>
+				@showCookieNotice()
+				@bindCookieAcceptance()
+			, 1000
+
+	showCookieNotice: =>
+		$('#cookie-notice').show()
+
+	bindCookieAcceptance: =>
+		$('#cn-accept-cookie').on 'click', (e) =>
+			e.preventDefault()
+			$.getJSON '/cookie-acceptance', (response) =>
+				if response.status is 'success'
+					$('#cookie-notice').fadeOut()
+					$('body').removeClass('show_cookie_notice')
+				else
+					@cookieAcceptanceError()
+			.fail (error) =>
+				@cookieAcceptanceError()
+
+	cookieAcceptanceError: =>
+		@alert "Sorry there has been an error. Please try again.", "Error"
 
 	isMobile: ->
 		$('body').hasClass('mobile') and $(window).width() < 900

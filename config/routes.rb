@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   default_url_options :host => Maawol::Config.site_host
 
 	root to: 'home#index'
+	get 'cookie-acceptance',                     to: 'cookie_acceptance#new'
 
 	resources :passwords, controller: "passwords", only: [:create, :new]
 	resource :session, controller: "sessions", only: [:create]

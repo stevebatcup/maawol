@@ -1,0 +1,15 @@
+<div id="cookie-notice" role="banner" class="cn-bottom pb-2" style="display: none;">
+	<div class="cookie-notice-container">
+		<p id="cn-notice-text">
+			<%= t('views.cookie_acceptance.message_html') %>
+		</p>
+
+			<a href="#" id="cn-accept-cookie" data-cookie-set="accept" class="mx-2 cn-set-cookie cn-button btn btn-success">
+				<%= t('views.cookie_acceptance.ok') %>
+			</a>
+
+			<a href="/privacy-policy/" id="cn-more-info" class="mx-2 cn-more-info cn-button btn btn-light text-dark">
+				<%= t('views.cookie_acceptance.privacy_policy') %>
+			</a>
+	</div>
+</div>

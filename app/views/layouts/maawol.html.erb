@@ -29,7 +29,9 @@
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 </head>
 
-<body onunload="" ng-app="Maawol_NG" data-theme="<%= site_theme %>">
+<body onunload="" ng-app="Maawol_NG"
+        data-theme="<%= site_theme %>"
+        data-requires-cookie-permissions="<%= cookies[:cookie_permission_set] ? 0 : 1 %>">
   <header class="header" ng-controller="NavController" data-signed-in="1">
     <div class="header-top">
       <div class="container">
@@ -130,6 +132,7 @@
   </div>
 
   <%= render 'layouts/footer' %>
+  <%= render 'layouts/cookie-acceptance' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </body>
 </html>

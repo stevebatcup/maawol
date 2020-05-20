@@ -59,6 +59,13 @@ en:
         contact: Send enquiry
         stuck: Get suggestions
 
+    cookie_acceptance:
+      ok: Accept Cookies
+      privacy_policy: View Privacy Policy
+      message_html: We use cookies to improve user experience, and analyze website traffic.
+              For these reasons, we may share your site usage data with our analytics partners.
+              By clicking "OK" you consent to store on your device all the technologies described in our <a href="/privacy-policy">Privacy Policy</a>.
+
     courses:
       show_all: show all courses
       lessons:
