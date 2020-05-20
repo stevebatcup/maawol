@@ -30,7 +30,7 @@ class Maawol.Lessons extends Maawol.Page
 			$(".owl-carousel").owlCarousel
 				stagePadding: 5
 				margin: 10
-				loop: true
+				loop: @scope.lessons.length > 3
 				nav: false
 				dots: true
 				center: true

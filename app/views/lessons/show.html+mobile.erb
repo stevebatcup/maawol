@@ -34,8 +34,8 @@
           <div class="entry-meta text-left my-2">
             <!-- Published at -->
             <% if @lesson.is_published %>
-              <span class="mb-1">
-                <i class="fas fa-globe-americas ml-1"></i>
+              <span class="mb-1 d-flex">
+                <i class="fas fa-globe-americas mt-1 ml-1 mr-2"></i>
                 <time datetime="PT5M">
                   <%= t('views.lesson.meta.published_at', at: time_ago_in_words(@lesson.publish_date)) %>
                 </time>
@@ -44,17 +44,17 @@
 
             <!-- Video length -->
             <% if @lesson.active_videos.length == 1 %>
-              <span class="mb-1">
-                <i class="fa fa-clock ml-1"></i>
-                <%= t('views.lesson.meta.video_length') %>: <%= @lesson.active_videos.first.human_duration %>
+              <span class="mb-1 d-flex">
+                <i class="fa fa-clock mt-1 ml-1 mr-2"></i>
+                <span><%= t('views.lesson.meta.video_length') %>: <%= @lesson.active_videos.first.human_duration %></span>
               </span>
             <% end %>
 
             <!-- Course info -->
             <% unless @course.nil? %>
-              <span id="part_of_course">
-                <i class="far fa-copy mr-2 ml-1"></i>
-                <%= t('views.lesson.meta.course_info_html', index: @course.lesson_index(@lesson), course_id: @course.id, token: params[:token], course_name: @course.name) %>
+              <span id="part_of_course" class="d-flex">
+                <i class="far fa-copy mr-2 mt-1 ml-1"></i>
+                <span><%= t('views.lesson.meta.course_info_html', index: @course.lesson_index(@lesson), course_id: @course.id, token: params[:token], course_name: @course.name) %></span>
               </span>
             <% end %>
           </div>

@@ -6,14 +6,14 @@
   </div>
 
   <div class="entry-content">
-    <h4 class="entry-title mt-2 px-1">
+    <h4 class="entry-title mt-2 px-1 mb-2">
       <a href="{{lesson.path}}">
         {{lesson.name}}
       </a>
     </h4>
 
-    <div class="entry-meta mt-1 lesson_course_link" ng-if="lesson.course">
-      <%= t("views.lesson.part_of_course_prefix") %> <a href="{{lesson.course.path}}">{{lesson.course.name}}</a> <%= t("views.defaults.course") %>
+    <div class="entry-meta bottom_meta pl-1">
+      {{lesson.author.name}} <br /> {{lesson.published}}
     </div>
   </div>
 </article>

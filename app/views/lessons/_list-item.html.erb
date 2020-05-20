@@ -1,19 +1,23 @@
-<article class="post type-post well">
-  <div class="entry-thumbnail">
+<article class="post type-post well pb-2">
+  <div class="entry-thumbnail mb-2">
     <a href="{{lesson.path}}" class="img_wrap" ng-if="lesson.image">
       <img ng-src="{{lesson.image}}" alt="{{lesson.name}}" ng-class="{'no_thumbnail': !lesson.hasThumbnail}" ng-cloak />
     </a>
   </div>
 
-  <div class="entry-content">
-    <h3 class="entry-title">
-      <a href="{{lesson.path}}">
-        {{lesson.name}}
-      </a>
-    </h3>
+  <div class="entry-content d-flex align-items-start">
+    <img ng-src="{{lesson.author.avatar}}" alt="{{lesson.author.name}}" class="rounded-circle author_avatar m-2" ng-cloak />
 
-    <div class="entry-meta mt-1 lesson_course_link" ng-if="lesson.course">
-      <%= t("views.lesson.part_of_course_prefix") %> <a href="{{lesson.course.path}}">{{lesson.course.name}}</a> <%= t("views.defaults.course") %>
+    <div class="pl-1">
+      <h3 class="entry-title">
+        <a href="{{lesson.path}}" class="">
+          <span>{{lesson.name}}</span>
+        </a>
+      </h3>
+
+      <div class="entry-meta bottom_meta">
+        {{lesson.author.name}} <br /> {{lesson.published}}
+      </div>
     </div>
   </div>
 </article>

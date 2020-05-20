@@ -20,7 +20,7 @@ p.all_loaded {
 	}
 
 	.lesson_result {
-		min-height: 272px;
+		min-height: 290px;
 
 		&.blocked {
 			article {
@@ -40,11 +40,19 @@ p.all_loaded {
 
 		article.post {
 			margin-bottom: 10px;
-			height: 272px;
+			height: 100%;
 
 			.entry-title {
 			  font-size: 1em;
 			  line-height: 1.4em;
+			}
+
+			.bottom_meta {
+				line-height: 1.5em;
+			}
+
+			img.author_avatar {
+				width: 36px;
 			}
 
 			.lesson_course_link {
@@ -54,7 +62,6 @@ p.all_loaded {
 
 			.entry-thumbnail {
 				max-height: 190px;
-				margin-bottom: 5px !important;
 
 				a.img_wrap {
 					width: 100%;

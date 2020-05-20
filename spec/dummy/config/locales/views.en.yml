@@ -135,7 +135,7 @@ en:
       must_register: "You must be a paid member to view that lesson"
       part_of_course_prefix: Part of the
       meta:
-        published_at: Published %{at} ago
+        published_at: "%{at} ago"
         video_length: Video length
         course_info_html: "Lesson %{index} of the <a href='/courses/%{course_id}?token=%{token}'>%{course_name}</a> course"
       video_playlist:

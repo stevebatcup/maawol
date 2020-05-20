@@ -57,13 +57,11 @@ body.mobile {
 		}
 
 		.lesson_result {
-			min-height: 290px;
+			min-height: unset;
 			border-radius: 1px !important;
 
 			article.post {
 				border-radius: 1px;
-				margin: 0 0 -10px;
-				height: 292px;
 
 				a.img_wrap {
 				}

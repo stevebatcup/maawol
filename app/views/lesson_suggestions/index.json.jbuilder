@@ -1,11 +1,14 @@
 json.set! :suggestions do
 	json.array! @suggestions do |lesson|
 		json.id lesson.id
+		json.author do
+			json.name lesson.author.name
+		end
 		json.name lesson.name
 		json.image lesson.listing_thumbnail_path
 		json.hasThumbnail lesson.thumbnail.present?
 		json.category lesson.categories.first.name if lesson.categories.any?
-		json.published time_ago_in_words(lesson.publish_date)
+		json.published t('views.lesson.meta.published_at', at: time_ago_in_words(lesson.publish_date)).capitalize
 
 		if lesson.courses.any?
 			course = lesson.courses.first

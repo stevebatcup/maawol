@@ -5,11 +5,15 @@ else
 	json.set! :items do
 		json.array! @lessons do |lesson|
 			json.id lesson.id
+			json.author do
+				json.name lesson.author.name
+				json.avatar lesson.author.avatar.url(:thumbnail)
+			end
 			json.name lesson.name
 			json.image lesson.listing_thumbnail_path
 			json.hasThumbnail lesson.thumbnail.present?
 			json.category lesson.categories.first.name if lesson.categories.any?
-			json.published time_ago_in_words(lesson.publish_date)
+			json.published t('views.lesson.meta.published_at', at: time_ago_in_words(lesson.publish_date)).capitalize
 
 			if lesson.courses.any?
 				course = lesson.courses.first

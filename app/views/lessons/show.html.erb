@@ -47,27 +47,27 @@
             <div class="entry-meta">
               <!-- Published at -->
               <% if @lesson.is_published %>
-                <span class="mb-1">
-                  <i class="fas fa-globe-americas ml-1"></i>
+                <span class="mb-1 d-flex">
+                  <i class="fas fa-globe-americas mt-1 ml-1 mr-2"></i>
                   <time datetime="PT5M">
-                    <%= t('views.lesson.meta.published_at', at: time_ago_in_words(@lesson.publish_date)) %>
+                    <%= t('views.lesson.meta.published_at', at: time_ago_in_words(@lesson.publish_date)).capitalize %>
                   </time>
                 </span>
               <% end %>
 
               <!-- Video length -->
               <% if @lesson.active_videos.length == 1 %>
-                <span class="mb-1">
-                  <i class="fa fa-clock ml-1"></i>
-                  <%= t('views.lesson.meta.video_length') %>: <%= @lesson.active_videos.first.human_duration %>
+                <span class="mb-1 d-flex">
+                  <i class="fa fa-clock mt-1 ml-1 mr-2"></i>
+                  <span><%= t('views.lesson.meta.video_length') %>: <%= @lesson.active_videos.first.human_duration %></span>
                 </span>
               <% end %>
 
               <!-- Course info -->
               <% unless @course.nil? %>
-                <span class="mb-1" id="part_of_course">
-                  <i class="far fa-copy mr-2 ml-1"></i>
-                  <%= t('views.lesson.meta.course_info_html', index: @course.lesson_index(@lesson), course_id: @course.id, token: params[:token], course_name: @course.name) %>
+                <span class="mb-1 d-flex" id="part_of_course">
+                  <i class="far fa-copy mr-2 mt-1 ml-1"></i>
+                  <span><%= t('views.lesson.meta.course_info_html', index: @course.lesson_index(@lesson), course_id: @course.id, token: params[:token], course_name: @course.name) %></span>
                 </span>
               <% end %>
             </div>
@@ -75,21 +75,21 @@
 
           <!-- Interactive Buttons -->
           <% if full_access %>
-           <div id='actions' data-lesson-id="<%= @lesson.id %>" class="col-6 col-lg-7 col-xl-6 justify-content-end d-flex align-items-start">
+           <div id='actions' data-lesson-id="<%= @lesson.id %>" class="col-6 col-lg-7 col-xl-6 justify-content-end d-flex align-items-start pl-0">
              <button id="viewed" class="<%= 'disabled' if current_user.in_views(@lesson) %>">
-                <i class="fa fa-check-square"></i>
+                <i class="fa fa-check-square mr-1"></i>
                 <span class="text">
                   <%= t('views.lesson.buttons.viewed') %>
                 </span>
              </button>
              <button id="watchlater" class="mx-2 <%= 'disabled' if current_user.in_watch_laters(@lesson) %>">
-                <i class="fas fa-stopwatch"></i>
+                <i class="fas fa-stopwatch mr-1"></i>
                 <span class="text">
                   <%= t('views.lesson.buttons.watch_later') %>
                 </span>
              </button>
              <button id="favourite" class="<%= 'disabled' if current_user.in_favourites(@lesson) %>">
-                <i class="fa fa-star"></i>
+                <i class="fa fa-star mr-1"></i>
                 <span class="text">
                   <%= t('views.lesson.buttons.favorites') %>
                 </span>
@@ -129,7 +129,7 @@
 
       <div class="clearfix"></div>
 
-      <div ng-if="loaded" class="fader container pt-2" id="suggestions" ng-cloak>
+      <div ng-if="loaded" class="fader container pt-3" id="suggestions" ng-cloak>
         <h5 class="mb-2"><%= t('views.lesson.suggestions.title') %></h5>
         <div class="row">
           <div id="watchlist-carousel" class="owl-carousel owl-theme">
