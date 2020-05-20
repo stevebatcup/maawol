@@ -3,7 +3,10 @@ class LessonSuggestionsController < MaawolController
 		limit = (params[:limit] || 10).to_i
 		@suggestions = []
 		@master_lesson = Lesson.find(params[:id])
-		@suggestions = @master_lesson.recommendation_lessons.limit(limit).to_a
+		@suggestions = @master_lesson.recommendation_lessons
+													.where.not(id: @master_lesson.id)
+													.limit(limit)
+													.to_a
 
 		if @suggestions.length < limit
 			@master_lesson.categories.each do |category|

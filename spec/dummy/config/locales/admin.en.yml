@@ -66,6 +66,8 @@ en:
         teachings: Lessons
         tag_ids: Tagged with
         category_ids: In categories
+      recommendation_lesson:
+        when_associated: Other recommended lessons
       lesson:
         name: Lesson name
         tag_ids: Tagged with

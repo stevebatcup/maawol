@@ -66,6 +66,8 @@ en:
         teachings: Lessons
         tag_ids: Tagged with
         category_ids: In categories
+      recommendation_lesson:
+        when_associated: Other recommended lessons
       lesson:
         name: Lesson name
         tag_ids: Tagged with
@@ -118,6 +120,8 @@ en:
         site_setting:
           name: The full name of your school. This appears on the main website and in student's emails.
           easy_name: The shorter or 'easy' name of your school (e.g. an abbreviation). Can be the same as the School Name field above
+          monthly_subscription_price_html: "This is how much your students pay you per month. It must be at least %{lower_limit}.<br />
+                                      <b>Remember: the more high quality content you have the more you can charge.</b>"
           blurb: A brief description that will appear in the footer of every page
           theme: Choose the color scheme for your school
           favicon: This appears in the tab bar of desktop and tablet browsers and will be cropped using a ratio of 1:1 (square).<br />
@@ -187,6 +191,7 @@ en:
         labels:
           name: Site name
           easy_name: School short name
+          monthly_subscription_price: Monthly subscription price for students
           blurb: School description
           theme: Theme
           favicon: Favicon
