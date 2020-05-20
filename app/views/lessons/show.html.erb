@@ -129,8 +129,25 @@
 
       <div class="clearfix"></div>
 
+      <div ng-if="loaded" class="fader container pt-2" id="suggestions" ng-cloak>
+        <h5 class="mb-2"><%= t('views.lesson.suggestions.title') %></h5>
+        <div class="row">
+          <div id="watchlist-carousel" class="owl-carousel owl-theme">
+            <div ng-repeat="lesson in lessons"
+                      class="lesson_result search_result"
+                      ng-class="{'blocked': !lesson.available}"
+                      id="item_{{lesson.id}}"
+                      ng-cloak>
+              <%= render partial: 'lessons/suggestion' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+
       <!-- Comments -->
-      <div class="comments mt-4">
+      <div class="comments mt-4 pt-1">
        <div id="comments_top" class="px-4">
          <% if @lesson.comment_count > 0 %>
            <h5><%= t('views.lesson.comments.title') %> &bullet; <%= @lesson.comment_count %></h5>

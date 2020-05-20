@@ -1,0 +1,23 @@
+<article class="post type-post well">
+  <div class="entry-thumbnail">
+    <a href="{{lesson.path}}" class="img_wrap" ng-if="lesson.image">
+      <img ng-src="{{lesson.image}}" alt="{{lesson.name}}" ng-class="{'no_thumbnail': !lesson.hasThumbnail}" ng-cloak />
+    </a>
+  </div>
+
+  <div class="entry-content">
+    <h4 class="entry-title mt-2 px-1">
+      <a href="{{lesson.path}}">
+        {{lesson.name}}
+      </a>
+    </h4>
+
+    <div class="entry-meta mt-1 lesson_course_link" ng-if="lesson.course">
+      <%= t("views.lesson.part_of_course_prefix") %> <a href="{{lesson.course.path}}">{{lesson.course.name}}</a> <%= t("views.defaults.course") %>
+    </div>
+  </div>
+</article>
+
+<a href="#" ng-click="lockedLessonClick($event)" class="img_wrap" ng-if="!lesson.available">
+  <i class="fa fa-lock"></i>
+</a>

@@ -58,6 +58,7 @@ Rails.application.routes.draw do
 	get "lessons/section/:root_category", to: 'lessons#index', as: :section, category: :all
 	get "lessons/section/:root_category/:category", to: 'lessons#index', as: :category
 	get "lessons/tag/:tag", to: 'lessons#index', as: :tag
+	get "lesson-suggestions", to: 'lesson_suggestions#index', as: :lesson_suggestions
 	resources :courses
 	resources :views
 	resources :watch_laters

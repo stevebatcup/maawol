@@ -12,6 +12,7 @@ class LessonDashboard < Administrate::BaseDashboard
     human_access_level: NonEditableStringField.with_options( searchable: false ),
     videos: AttachableField,
     audio_files: AttachableField,
+    recommendation_lessons: AttachableField,
     downloadables: AttachableField,
     thumbnail: ImageField.with_options(
       hint: I18n.t('administrate.hints.resources.lesson.thumbnail'),
@@ -66,6 +67,7 @@ class LessonDashboard < Administrate::BaseDashboard
     :author,
     :publish_date,
     :videos,
+    :recommendation_lessons,
     :audio_files,
     :downloadables,
     :tags,
@@ -89,7 +91,6 @@ class LessonDashboard < Administrate::BaseDashboard
     [ :id, :name, :thumbnail_tmp_media_id, :author_id, :publish_date, :content,
           :course_only, :is_free, video_ids: [],
           audio_file_ids: [], downloadable_ids: [], tag_ids: [],
-          category_ids: [], playlist_ids: [], user_ids: [] ]
+          category_ids: [], playlist_ids: [], user_ids: [], recommendation_lesson_ids: [] ]
   end
-
 end

@@ -144,6 +144,8 @@ en:
         viewed: Viewed
         watch_later: Watch later
         favourites: Favourites
+      suggestions:
+        title: You might also like...
       comments:
         title: Comments
         cancel: Cancel

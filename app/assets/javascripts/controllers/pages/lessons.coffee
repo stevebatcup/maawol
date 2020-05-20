@@ -10,23 +10,41 @@ class Maawol.Lessons extends Maawol.Page
 	  '$timeout'
 	  '$compile'
 	  'Lesson'
+	  'SuggestedLesson'
 	  'Comment'
 	]
 
 	init: ->
 		@getVars = @constructor.helpers.getUrlVars()
+		@initLessonItems()
 		if @isListingsPage()
 			@scope.category = @element.data('category')
-			@initListings()
 			@getItems @bindScrollEvent
 		else
 			@videoHost = @element.data('video-host')
+			@getSuggestions @initOwlCarouselForSuggestions
 		@bindEvents()
+
+	initOwlCarouselForSuggestions: =>
+		@timeout =>
+			$(".owl-carousel").owlCarousel
+				stagePadding: 5
+				margin: 10
+				loop: true
+				nav: false
+				dots: true
+				center: true
+				responsive:
+					0:
+						items:1
+					700:
+						items:3
+		, 500
 
 	isListingsPage: =>
 		@element.hasClass('list')
 
-	initListings: =>
+	initLessonItems: =>
 		@scope.moreToLoad = true
 		@scope.page = 1
 		@scope.lessons = []
@@ -125,7 +143,7 @@ class Maawol.Lessons extends Maawol.Page
 		$event.preventDefault()
 		if @scope.loaded
 			@scope.category = category
-			@initListings()
+			@initLessonItems()
 			@getItems()
 
 	getItems: (callback=null) =>
@@ -142,6 +160,21 @@ class Maawol.Lessons extends Maawol.Page
 				@scope.loaded = true
 				@scope.totalLessons = response.total if @scope.page is 1
 				angular.forEach response.items, (item) =>
+					@scope.lessons.push item
+				@scope.moreToLoad = @scope.totalLessons > @scope.lessons.length
+				@scope.page += 1
+				callback.call(@) if callback?
+			, timeoutDelay
+		, (response) =>
+			@refreshPage() if response.status is 401
+
+	getSuggestions:  (callback=null) =>
+		timeoutDelay = if @scope.page is 1 then 1200 else 1
+		@SuggestedLesson.query({limit: 12, id: @element.data('lesson-id')}).then (response) =>
+			@timeout =>
+				@scope.loaded = true
+				@scope.totalLessons = response.total if @scope.page is 1
+				angular.forEach response.suggestions, (item) =>
 					@scope.lessons.push item
 				@scope.moreToLoad = @scope.totalLessons > @scope.lessons.length
 				@scope.page += 1

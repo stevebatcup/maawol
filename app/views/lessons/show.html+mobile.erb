@@ -142,25 +142,6 @@
     </div>
   <% end %>
 
-  <!-- Tags / Categories -->
-  <% if @lesson.has_taxonomies? %>
-    <div class="container" id="taxonomies">
-      <h5 class="mt-2"><%= t('views.lesson.aside.filed_under') %></h5>
-      <% taxonomies = (@lesson.tags.to_a + @lesson.categories.to_a).shuffle %>
-      <ul>
-        <% taxonomies.each do |taxonomy| %>
-          <li class="mx-1">
-            <% if taxonomy.is_a?(Tag) %>
-              <%= link_to taxonomy.name, tag_path(tag: taxonomy.slug), class: 'tag' %>
-            <% elsif taxonomy.is_a?(Category) %>
-              <%= link_to taxonomy.name, category_path(root_category: taxonomy.root_category.slug, category: taxonomy.slug), class: 'category' %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <!-- Downloadables -->
   <% if @lesson.downloadables.any? %>
     <div id="downloadables" class="container">
@@ -190,6 +171,25 @@
          </audio>
        </div>
       <% end %>
+    </div>
+  <% end %>
+
+  <!-- Tags / Categories -->
+  <% if @lesson.has_taxonomies? %>
+    <div class="container" id="taxonomies">
+      <h5 class="mt-2"><%= t('views.lesson.aside.filed_under') %></h5>
+      <% taxonomies = (@lesson.tags.to_a + @lesson.categories.to_a).shuffle %>
+      <ul>
+        <% taxonomies.each do |taxonomy| %>
+          <li class="mx-1">
+            <% if taxonomy.is_a?(Tag) %>
+              <%= link_to taxonomy.name, tag_path(tag: taxonomy.slug), class: 'tag' %>
+            <% elsif taxonomy.is_a?(Category) %>
+              <%= link_to taxonomy.name, category_path(root_category: taxonomy.root_category.slug, category: taxonomy.slug), class: 'category' %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 
@@ -227,6 +227,21 @@
       <% end %>
     </div>
   <% end %>
+
+  <div ng-if="loaded" class="fader container" id="suggestions" ng-cloak>
+    <h5 class=""><%= t('views.lesson.suggestions.title') %></h5>
+    <div class="row">
+      <div id="watchlist-carousel" class="owl-carousel owl-theme">
+        <div ng-repeat="lesson in lessons"
+                  class="lesson_result search_result"
+                  ng-class="{'blocked': !lesson.available}"
+                  id="item_{{lesson.id}}"
+                  ng-cloak>
+          <%= render partial: 'lessons/suggestion' %>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Comments -->
   <div class="comments">

@@ -6,3 +6,11 @@ Maawol.FactoryModule.factory("Lesson", ['RailsResource',
         name: 'lesson'
         interceptAuth: true
 ])
+.factory("SuggestedLesson", ['RailsResource',
+  (RailsResource) ->
+    class SuggestedLesson extends RailsResource
+      @configure
+        url: '/lesson-suggestions'
+        name: 'suggested_lesson'
+        interceptAuth: true
+])

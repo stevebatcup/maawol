@@ -12,7 +12,7 @@ class LessonThumbnailUploader < BaseUploader
   end
 
   version :large do
-    process resize_to_fit: [600, 400]
+    process resize_to_fill: [600, 400]
 
     def store_dir
       "#{Rails.env}/#{site_basket_dir}/lesson-thumbnails/#{model.id}"
@@ -20,7 +20,7 @@ class LessonThumbnailUploader < BaseUploader
   end
 
   version :small do
-    process resize_to_fit: [450, 250]
+    process resize_to_fill: [450, 250]
 
     def store_dir
       "#{Rails.env}/#{site_basket_dir}/lesson-thumbnails/#{model.id}"
@@ -28,7 +28,7 @@ class LessonThumbnailUploader < BaseUploader
   end
 
   version :square do
-    process resize_to_fit: [400, 400]
+    process resize_to_fill: [400, 400]
 
     def store_dir
       "#{Rails.env}/#{site_basket_dir}/lesson-thumbnails/#{model.id}"

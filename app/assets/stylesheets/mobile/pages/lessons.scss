@@ -2,6 +2,20 @@ body.mobile {
 	article.lesson {
 		margin-top: -1em;
 
+		#suggestions {
+			clear: both;
+			margin-bottom: 20px !important;
+
+			article.post {
+				min-height: 280px;
+
+				h4 {
+					font-size: 1em;
+					line-height: 1.3em;
+				}
+			}
+		}
+
 		h2.entry-title {
 			font-size: 1.2em;
 			margin: 0.85em 0 0.3em;
@@ -93,14 +107,14 @@ body.mobile {
 	#downloadables,
 	#audio_files,
 	#taxonomies,
-	#playlists {
+	#playlists,
+	#suggestions {
 		padding-top: 0.6em;
 		border-top: 1px solid #ededed;
 		padding-bottom: 0.8em;
 	}
 
 	.comments {
-		border-top: 1px solid #ccc;
 		margin-bottom: 20px !important;
 
 		ul.comment-list {

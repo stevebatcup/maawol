@@ -33,9 +33,23 @@ section.lessons {
 }
 
 article.lesson {
-
 	h2#main-title {
 		font-size: 1.35em;
+	}
+
+	#suggestions {
+		clear: both;
+		margin-bottom: 20px !important;
+		border-top: 1px solid #ccc;
+
+		article.post {
+			min-height: 280px;
+
+			h4 {
+				font-size: 1.1em;
+				line-height: 1.5em;
+			}
+		}
 	}
 
 	#lesson_meta {

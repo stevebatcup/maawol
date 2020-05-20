@@ -1,0 +1,2 @@
+class RecommendationLesson < Lesson
+end

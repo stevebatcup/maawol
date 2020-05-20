@@ -14,6 +14,12 @@ class Lesson < ApplicationRecord
   has_many :courses, through: :teachings
   belongs_to :author, optional: false
 
+  # has_many :received_recommendations, foreign_key: :recommended_lesson_id, class_name: "LessonRecommendation"
+  # has_many :recommender_lessons, through: :received_recommendations, source: :recommender
+
+  has_many :given_recommendations, foreign_key: :recommender_lesson_id, class_name: "LessonRecommendation"
+  has_many :recommendation_lessons, through: :given_recommendations, source: :recommended
+
   validates_presence_of :name
   before_save :set_slug
   before_save :set_access_level
