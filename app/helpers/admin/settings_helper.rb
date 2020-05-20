@@ -8,6 +8,12 @@ module Admin
 		  render locals: locals, partial: "/fields/site_settings/string"
 		end
 
+		def render_setting_price_field(attribute_name, page, resource, locals = {})
+			field = Administrate::Field::Number.new(attribute_name, resource.value, page, { resource: resource, decimals: 2 })
+		  locals.merge!(field: field, value: resource.value)
+		  render locals: locals, partial: "/fields/site_settings/price"
+		end
+
 		def render_setting_email_field(attribute_name, page, resource, locals = {})
 			field = Administrate::Field::Email.new(attribute_name, resource.value, page, resource: resource)
 		  locals.merge!(field: field, value: resource.value)

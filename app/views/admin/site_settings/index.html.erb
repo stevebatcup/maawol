@@ -40,6 +40,21 @@
                   required: true } %>
         </div>
 
+        <div class="field-unit field-unit--number">
+          <%
+            lower_limit = SubscriptionOption.lower_price_limit
+            currency_symbol = Maawol::Config.currency_symbol
+          %>
+          <%= render_setting_price_field 'monthly-subscription-price', page,
+                school_settings.find_by(slug: "monthly-subscription-price"),
+                { f: f, label: I18n.t('administrate.form.site_settings.labels.monthly_subscription_price'),
+                  hint: I18n.t('administrate.hints.resources.site_setting.monthly_subscription_price_html', lower_limit: "#{currency_symbol}#{lower_limit}").html_safe,
+                  required: true,
+                  step: 0.01,
+                  min: lower_limit,
+                  currency_symbol: currency_symbol } %>
+        </div>
+
         <div class="field-unit field-unit--tiny-mce-field">
           <%= render_setting_text_field 'site-blurb', page,
                 school_settings.find_by(slug: "site-blurb"),

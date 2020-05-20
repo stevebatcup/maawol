@@ -35,7 +35,8 @@ module Admin
       @status = nil
       case section
       when :basic
-        update_settings :basic, %w{ site-name site-easy-name site-blurb }
+        update_settings :basic, %w{ site-name site-easy-name site-blurb monthly-subscription-price }
+        update_monthly_plan_price(params['monthly-subscription-price'])
       when :branding
         update_settings :branding, %w{ theme site-byline }
         update_images :branding, %w{ landscape-logo square-logo email-banner favicon } if @errors.empty?
@@ -87,6 +88,10 @@ module Admin
       end
 
       @status = @errors.any? ? :error : :success
+    end
+
+    def update_monthly_plan_price(price)
+      SubscriptionOption.find_by(payment_system_plan: :monthly).update_attribute(:price, price)
     end
   end
 end

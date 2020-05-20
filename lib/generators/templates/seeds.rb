@@ -17,6 +17,7 @@ settings_data = [
 	{ name: "Site blurb", value: "#{Maawol::Config.site_name} - lorem	ipsum doo dah day", is_editable: true },
 	{ name: "Site byline", value: "#{Maawol::Config.site_name} - lorem ipsum doo dah day", is_editable: true },
 	{ name: "Theme", value: "light-blue", is_editable: true },
+	{ name: "Monthly subscription price", value: "25.00", is_editable: true },
 	{ name: "Meta description", value: "Please enter your meta description, this will help your site's SEO ranking", is_editable: true },
 	{ name: "Contact email address", value: Maawol::Config.site_owner_email, is_editable: true },
 	{ name: "Facebook page URL", value: "https://www.facebook.com/#{Maawol::Config.site_slug}", is_editable: true },

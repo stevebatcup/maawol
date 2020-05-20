@@ -3,6 +3,10 @@ class SubscriptionOption < ApplicationRecord
 	default_scope { where(status: :active) }
 	before_save :set_months
 
+	def self.lower_price_limit
+		15.00
+	end
+
 	def set_months
 		self.months = (days / 30).ceil if months.nil?
 	end

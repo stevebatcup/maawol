@@ -3,8 +3,8 @@ Maawol.configure do |config|
 	config.site_slug = "music_academy"
 	config.site_host = ENV['HOST']
 
-	config.currency_code = "USD"
-	config.currency_symbol = "$"
+	config.currency_code = "GBP"
+	config.currency_symbol = "£"
 
 	config.site_owner_fname = "James"
 	config.site_owner_lname = "McGillacuddy"

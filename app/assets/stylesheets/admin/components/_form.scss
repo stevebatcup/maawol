@@ -295,6 +295,13 @@ dd.attribute-data--image-field {
 	}
 }
 
+.price_field {
+	input[type=number] {
+		width: 80px;
+		font-size: 0.9em;
+	}
+}
+
 [type="color"],
 [type="date"],
 [type="datetime-local"],

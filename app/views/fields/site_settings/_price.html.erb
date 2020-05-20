@@ -1,0 +1,19 @@
+<div class="field-unit__label">
+  <%= f.label label %>
+</div>
+<div class="field-unit__field price_field">
+	<div class="input-group mb-3">
+	  <div class="input-group-prepend">
+	    <span class="input-group-text px-2 py-0"><%= defined?(currency_symbol) ? currency_symbol : '$' %></span>
+	  </div>
+	  <%= f.number_field field.attribute,
+	  				value: value,
+	  				width: 5,
+	  				required: (defined?(required) ? required : false),
+	  				step: defined?(step) ? step : 1,
+	  				min: defined?(min) ? min : 0 %>
+	</div>
+  <% if defined?(hint) %>
+	  <small class="form-text text-muted d-block"><%= hint %></small>
+  <% end %>
+</div>
