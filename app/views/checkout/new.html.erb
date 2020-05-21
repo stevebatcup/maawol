@@ -2,13 +2,13 @@
 
 <section id="payment" class="solo_checkout mx-auto my-1 my-md-3 my-md-4"
 					ng-controller="CheckoutPageController"
-					data-payment-error-prefix="<%= I18n.t('views.subscription.form.errors.prefix') %>"
-					data-card-error-number-invalid="<%= I18n.t('views.subscription.form.errors.card_number') %>"
-					data-card-error-expiry-invalid="<%= I18n.t('views.subscription.form.errors.expiry') %>"
-					data-card-error-cv2-invalid="<%= I18n.t('views.subscription.form.errors.cv2') %>"
-					data-card-error-email-invalid="<%= I18n.t('views.subscription.form.errors.email') %>"
-					data-card-error-name-invalid="<%= I18n.t('views.subscription.form.errors.name') %>"
-					data-server-error-options="<%= I18n.t('mobile.views.subscribe.error_loading_options') %>"
+					data-payment-error-prefix="<%= t('views.subscription.form.errors.prefix') %>"
+					data-card-error-number-invalid="<%= t('views.subscription.form.errors.card_number') %>"
+					data-card-error-expiry-invalid="<%= t('views.subscription.form.errors.expiry') %>"
+					data-card-error-cv2-invalid="<%= t('views.subscription.form.errors.cv2') %>"
+					data-card-error-email-invalid="<%= t('views.subscription.form.errors.email') %>"
+					data-card-error-name-invalid="<%= t('views.subscription.form.errors.name') %>"
+					data-server-error-options="<%= t('mobile.views.subscribe.error_loading_options') %>"
 					data-preselected-payment-type="<%= @paypal_cancelled || @paypal_error ? 'paypal' : nil %>">
 
 	<div class="panel">
@@ -17,7 +17,9 @@
 			<%= render 'layouts/auth-logo' %>
 		</div>
 
-		<h5 class="loading text-center text-dark" ng-show="!basket.loaded">Loading checkout...</h5>
+		<h5 class="loading text-center text-dark" ng-show="!basket.loaded">
+			<%= t('views.checkout.loading') %>
+		</h5>
 
 		<div ng-show="basket.loaded">
 			<h3 class="empty_basket mt-3 text-center" ng-show="basket.items.length == 0">
@@ -77,11 +79,12 @@
 			  </div>
 
 			  <div ng-show="payment.type == 'paypal'">
-				   <button id="checkout_with_paypal" class="pay_btn" ng-if="!paying">
+				   <button id="checkout_with_paypal" class="pay_btn" ng-hide="paying" ng-cloak>
 					   	<%= t('views.subscription.form.paypal.button') %>
 				   	</button>
-				   <h5 ng-if="paying" id="paypal_forwarding" style="text-align: center; padding-top: 15px;">
-				   	<%= t('views.subscription.form.paypal.processing') %>
+				   <h5 ng-hide="!paying" id="paypal_forwarding" class="d-flex text-center" ng-cloak>
+				   		<span class="mr-2 mr-md-3"><%= render partial: 'layouts/loader', locals: { size: :small } %></span>
+				   		<span><%= t('views.subscription.form.paypal.processing') %></span>
 				   </h5>
 			  </div>
 
@@ -147,12 +150,15 @@
 				    <input type="text" id="cv2" class="small" ng-model="payment.cv2" />
 				  </div>
 
-				  <button type="submit" id="pay_btn" class="pay_btn ladda-button btn btn-success mb-2"
-				  data-size="xs" data-style="expand-left" ng-class="{ 'paying': paying == true }">
-				    <span class='ladda-label'>
-				     <span ng-if="!paying"><%= t('views.defaults.pay').capitalize %> {{basket.total}}</span>
-				     <span ng-if="paying == true"><%= t('views.subscription.form.labels.paying') %></span>
-				    </span>
+				  <button type="submit" id="pay_btn"
+				  				class="pay_btn btn btn-success mb-2"
+				  				data-style="expand-left"
+				  				ng-class="{ 'paying': paying == true }">
+			      <span ng-if="!paying"><%= t('views.defaults.pay').capitalize %> {{basket.total}}</span>
+			      <span ng-if="paying == true">
+			      	<span class="mr-2 text-white"><%= render partial: 'layouts/loader', locals: { size: :button } %></span>
+			      	<%= t('views.subscription.form.labels.paying') %>
+		      	</span>
 				  </button>
 				  <p class="text-center mt-1 pt-0">
 				  	<small><%= t('views.defaults.or') %> <a ng-href='{{basket.store.url}}'>

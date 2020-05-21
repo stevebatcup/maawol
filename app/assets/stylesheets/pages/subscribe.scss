@@ -92,29 +92,14 @@
 
 	section#choose_option {
 		padding: 15px;
-		// margin-bottom: 30px;
-		// height: 370px;
+
+		ul.option_desc {
+			li {
+				list-style: none;
+			}
+		}
 
 		div.subscription_option {
-			// height: 370px;
-
-			ul.option_desc {
-				text-align: left;
-				height: 162px;
-				padding: 2px 0 0 30px;
-				max-width: 90%;
-
-				&.most_popular {
-					height: 145px;
-				}
-
-				li {
-					color: #666;
-					font-size: 0.8em;
-					font-weight: normal;
-				}
-			}
-
 			p#most_popular {
 				text-align: center;
 				text-transform: uppercase;
@@ -430,65 +415,6 @@
 					font-size: 1.3em;
 					line-height: 1em;
 					top: 2px;
-				}
-			}
-
-			ul#persuasion_items {
-				padding: 0 0 0;
-				margin:  20px auto 35px;
-				overflow: hidden;
-				text-align: center;
-				width: 100%;
-
-				li {
-					margin: 0 1%;
-					float: left;
-					display: inline-block;
-					width: 31%;
-					font-size: 0.85em;
-					text-align: center;
-					position: relative;
-
-					span.icon {
-						color: #b5b5b5;
-						display: block;
-						font-size: 70px;
-						margin-bottom: -18px;
-					}
-
-					span.tick {
-						@extend .ion-checkmark-circled !optional;
-						color: #4fc051;
-						position: absolute;
-						top: 49px;
-						left: 48px;
-						display: block;
-						font-size: 24px;
-					}
-
-					&#messages {
-						span.icon {
-							@extend .ion-chatboxes !optional;
-					    position: relative;
-					    top: -2px;
-						}
-					}
-
-					&#views {
-						span.icon {
-							@extend .ion-ios-monitor !optional;
-						}
-					}
-
-					&#interested {
-						span.icon {
-							@extend .ion-ios-people !optional;
-							font-size: 84px;
-					    margin-bottom: -38px;
-					    position: relative;
-					    top: -7px;
-						}
-					}
 				}
 			}
 

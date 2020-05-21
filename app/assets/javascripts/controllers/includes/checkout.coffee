@@ -17,8 +17,6 @@ class Maawol.Checkout
 		$form = $clicked.closest('form')
 		@scope.paying = true
 		$clicked = $form.find('#pay_btn')
-		ldaButton = $clicked.ladda()
-		ldaButton.ladda('start')
 		url = $form.attr('action')
 		paymentData =
 			payment: @scope.payment
@@ -27,13 +25,11 @@ class Maawol.Checkout
 				level: @scope.subscription.level
 		@timeout =>
 			@http.post(url, paymentData).then (response) =>
-				ldaButton.ladda('stop')
 				if response.data.status is 'error'
 					@paymentError response.data.error
 				else
 					@paymentSuccess(response)
 			, (error) =>
-				ldaButton.ladda('stop')
 				@paymentError error.statusText
 		, 1250
 

@@ -81,9 +81,8 @@
         </div>
       </div>
 
-      <h3 id="loading" ng-if="!loaded" class="fader" ng-cloak>
-        <span class="spinner"></span>
-        <%= t("views.lessons.loading") %>
+      <h3 id="loading" ng-if="!loaded" class="fader mt-5" ng-cloak>
+        <%= render partial: 'layouts/loader', locals: { size: :large } %>
       </h3>
 
       <p class="none_found" ng-if="loaded && !lessons.length" ng-cloak>

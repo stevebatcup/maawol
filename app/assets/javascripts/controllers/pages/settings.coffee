@@ -27,6 +27,7 @@ class Maawol.Settings extends Maawol.Page
 		@scope.paymentError =
 			title: ''
 			msg: ''
+		@scope.cancellingRecurringBilling = false
 		vars = Maawol.FormHelpers.getUrlVars()
 		if 'preclick' of vars
 			@timeout =>
@@ -76,25 +77,23 @@ class Maawol.Settings extends Maawol.Page
 
 	cancelRecurringBilling: (e) =>
 		$clicked = $(e.currentTarget)
-		ldaButton = $clicked.ladda()
-		ldaButton.ladda('start')
+		@scope.cancellingRecurringBilling = true
 		id = $('[data-current-subscription-id]').data('current-subscription-id')
 		@timeout =>
 			@http.patch("/subscriptions/#{id}").then (response) =>
-				ldaButton.ladda('stop')
 				$('button[data-dismiss=modal]', '#cancelRecurringAreYouSureModal').click()
 				if response.data.status is 'success'
 					window.location.reload()
 				else
 					@recurringCancellationError(response.data.message)
 			, (error) =>
-				ldaButton.ladda('stop')
 				@recurringCancellationError(error.statusText)
 		, 750
 		true
 
 	recurringCancellationError: (msg) =>
+		@scope.cancellingRecurringBilling = false
 		msgPrefix = @element.data('recurring-cancellation-error')
-		alert "#{msgPrefix}: #{msg}"
+		@alert "#{msgPrefix}: #{msg}"
 
 Maawol.ControllerModule.controller('SettingsController', Maawol.Settings)

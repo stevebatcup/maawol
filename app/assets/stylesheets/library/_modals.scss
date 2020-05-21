@@ -2,122 +2,126 @@
 	top: 15%;
 
 	.modal-dialog {
-	}
 
-	.modal-content {
-		border-radius: 4px;
-	}
-
-	.modal-header {
-		background: #7b7b7b;
-		text-align: center;
-		position: relative;
-		border-radius: 0;
-
-		h3 {
-			font-size: 1.25em;
-			margin: 0;
-			color: #fff;
-		}
-
-		button[data-dismiss=modal] {
-			border: none;
-			float: right;
-			width: 11px;
-			font-size: 1.1em;
-			position: absolute;
-			top: 7px;
-			right: 20px;
-			background: transparent;
-			color: #fff;
-			outline: none;
-
-			&:active,
-			&:focus {
-				outline: none;
-			}
-		}
-
-		&.bright {
-			background: $header-bg;
-			color: #fff;
-
-			a, button {
-				color: #fff;
-			}
-		}
-	}
-
-	.modal-body {
-		color: #333;
-
-		textarea {
-			width: 90%;
-			border-radius: 2px;
-			border-color: #ccc;
-			padding: 0.4em 0.6em;
-			height: 120px;
-		}
-
-		p {
-			color: #333;
-
-			&.center {
-				text-align: center;
-			}
-
-			&.error {
-				margin: 0 10px;
-				max-width: 80%;
-			}
-		}
-
-		.btn-danger {
-			background-color: #dc3545;
-		}
-
-		.btn-success {
-			background-color: #5ac664;
-		}
-
-		button {
-			@extend .btn;
-			display: block;
-			margin: 15px auto 2px;
-
-
-			&.dismiss {
-				width: 30%;
-				margin-top: 25px;
-				background: #dcdcdc;
-			}
-
-			&.sending {
-				background: #999;
-				width: 40%;
-			}
-		}
-	}
-
-	&.mini {
-		.modal-dialog {
-			width: 350px !important;
-		}
-	}
-
-	&.error {
-		.modal-dialog {
-			width: 400px;
+		.modal-content {
+			border-radius: 4px;
 		}
 
 		.modal-header {
-			background: desaturate($salmon, 5%);
-			color: #fff;
+			background: #7b7b7b;
+			text-align: center;
+			position: relative;
+			border-radius: 0;
 
-			a, button {
+			h3 {
+				font-size: 1.25em;
+				margin: 0;
 				color: #fff;
+			}
+
+			button[data-dismiss=modal] {
+				border: none;
+				float: right;
+				width: 11px;
+				font-size: 1.1em;
+				position: absolute;
+				top: 7px;
+				right: 20px;
+				background: transparent;
+				color: #fff;
+				outline: none;
+
+				&:active,
+				&:focus {
+					outline: none;
+				}
+			}
+
+			&.bright {
+				background: $header-bg;
+				color: #fff;
+
+				a, button {
+					color: #fff;
+				}
+			}
+		}
+
+		.modal-body {
+			color: #333;
+
+			textarea {
+				width: 90%;
+				border-radius: 2px;
+				border-color: #ccc;
+				padding: 0.4em 0.6em;
+				height: 120px;
+			}
+
+			h4 {
+				color: #333 !important;
+			}
+
+			p {
+				color: #333 !important;
+				line-height: 1.65em;
+
+				&.center {
+					text-align: center;
+				}
+
+				&.error {
+					margin: 0 10px;
+					max-width: 80%;
+				}
+			}
+
+			.btn-danger {
+				background-color: #dc3545;
+			}
+
+			.btn-success {
+				background-color: #5ac664;
+			}
+
+			button {
+				@extend .btn;
+				display: block;
+				margin: 15px auto 2px;
+
+
+				&.dismiss {
+					width: 30%;
+					margin-top: 25px;
+					background: #dcdcdc;
+				}
+
+				&.sending {
+					background: #999;
+					width: 40%;
+				}
+			}
+		}
+
+		&.mini {
+			.modal-dialog {
+				width: 350px !important;
+			}
+		}
+
+		&.error {
+			.modal-dialog {
+				width: 400px;
+			}
+
+			.modal-header {
+				background: desaturate($salmon, 5%);
+				color: #fff;
+
+				a, button {
+					color: #fff;
+				}
 			}
 		}
 	}
-
 }

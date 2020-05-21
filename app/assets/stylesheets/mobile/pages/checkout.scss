@@ -3,6 +3,9 @@ section#payment  {
 	padding-right: 1.5vw;
 
 	form#payment_form {
+		padding-left: 0;
+		padding-right: 0;
+
 		#selected_option {
 			p {
 				width: 55%;
@@ -18,32 +21,64 @@ section#payment  {
 			}
 		}
 
+		#paypal_forwarding {
+			width: 95%;
+		}
 
-		.form_item.d-flex {
-			label + * {
-				width: 60% !important;
+		.form_item {
+			label {
+				width: 30%;
+			}
 
-				input[type=text] {
-					width: 100%;
+			&.d-flex {
+				label + * {
+					width: 70% !important;
+
+					input[type=text] {
+						width: 100%;
+					}
+				}
+
+				p.hint {
+					line-height: 1.1em;
+					font-size: 0.9em;
+					text-align: right;
+					padding-left: 6px;
+					padding-right: 2px;
 				}
 			}
 
-			p.hint {
-				line-height: 1.1em;
-				font-size: 0.9em;
-				text-align: right;
-				padding-left: 6px;
-				padding-right: 2px;
-			}
-		}
+			ul#choose_payment_type {
+				top: -0.5em;
 
-		ul#choose_payment_type {
-			li {
-				margin-right: 0.8em;
+				li {
+					margin-right: 0.8em;
 
-				label {
-					i {
-						top: 0 !important;
+					label {
+						i {
+							top: 0.2em;
+							font-size: 2.6em;
+							position: relative;
+						}
+					}
+				}
+
+
+				&.subscribe {
+					top: 0.3em;
+
+					li {
+						label {
+							input {
+								position: relative;
+								top: 0.8em;
+							}
+
+							i {
+								top: 0;
+								font-size: 3.1em;
+							}
+						}
 					}
 				}
 			}

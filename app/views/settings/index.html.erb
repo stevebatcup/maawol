@@ -17,12 +17,12 @@
 
     <div class="row">
       <% unless browser.device.mobile? %>
-        <div class="col-4 mt-2">
+        <div class="col-md-4 offset-lg-1 mt-2">
           <%= render 'settings/menu' %>
         </div>
       <% end %>
 
-      <div class="tab-content col-12 col-md-8 pb-5">
+      <div class="tab-content col-12 col-md-8 col-lg-6 pb-5">
         <% if notice %>
           <p class="container alert alert-success"><%= notice %></p>
         <% end %>
@@ -71,7 +71,7 @@
 
             <p class="actions d-flex justify-content-start">
               <%= f.submit t('views.account_settings.details.submit'),
-                      { class: 'btn btn-block btn-success btn-large w-50 mx-auto mt-2 px-5' } %>
+                      { class: 'btn btn-block btn-success btn-large w-100 mx-auto mt-2 px-5' } %>
             </p>
           <% end %>
         </div>
@@ -96,7 +96,7 @@
             </p>
             <p class="actions">
               <%= f.submit t('views.account_settings.password.submit'),
-                        { class: 'btn btn-block btn-success btn-large w-50 mx-auto mt-2' } %>
+                        { class: 'btn btn-block btn-success btn-large w-100 mx-auto mt-2' } %>
             </p>
           <% end %>
         </div>
@@ -115,7 +115,7 @@
           </p>
 
           <% if current_user.status.to_sym == :free %>
-            <a href="/subscribe" class="btn btn-success btn-large btn-block w-50 mx-auto mt-2">
+            <a href="/subscribe" class="btn btn-success btn-large btn-block w-100 mx-auto mt-2">
               <%= t('views.account_settings.membership.subscribe_now') %>
             </a>
 
@@ -151,7 +151,7 @@
 
               <%= render partial: "subscriptions/cancel_recurring", locals: { current_user: current_user } %>
 
-              <a href="#" id="cancel_recurring" class="btn btn-block btn-danger btn-mgn-btm w-50 mx-auto mt-2">
+              <a href="#" id="cancel_recurring" class="btn btn-block btn-danger btn-mgn-btm w-100 mx-auto mt-2">
                 <%= t('views.account_settings.membership.cancel_sub') %>
               </a>
 
@@ -164,7 +164,7 @@
                 <%= user_sub.ends_at.strftime("%B, %d, %Y") %>
               </p>
 
-              <a href="/subscribe" class="btn btn-block btn-success btn-large w-50 mx-auto mt-2" style="white-space: normal;">
+              <a href="/subscribe" class="btn btn-block btn-success btn-large w-100 mx-auto mt-2" style="white-space: normal;">
                 <%= t('views.account_settings.membership.resubscribe') %>
               </a>
             <% end %>
@@ -188,13 +188,13 @@
                  <li>
                     <label class="payment_chooser">
                       <input type="radio" name="card[type]" value="visa" ng-model="card.type" />
-                      <%= image_tag 'subscribe/visa.png', alt: 'Visa', style: 'max-width: 58%;' %>
+                       <i class="fab fa-cc-visa"></i>
                     </label>
                   </li>
                   <li>
                     <label class="payment_chooser">
                       <input type="radio" name="card[type]" value="mastercard" ng-model="card.type" />
-                      <%= image_tag 'subscribe/mastercard.png', alt: 'Mastercard', style: 'max-width: 70%;' %>
+                       <i class="fab fa-cc-mastercard"></i>
                     </label>
                   </li>
                 </ul>
@@ -226,7 +226,7 @@
                 <input type="text" id="cv2" class="small form-control" name="card[cv2]" ng-model="card.cv2" />
               </p>
 
-              <button type="submit" id="update_card_btn" class="btn btn-block btn-success btn-large w-50 mx-auto mt-2">
+              <button type="submit" id="update_card_btn" class="btn btn-block btn-success btn-large w-100 mx-auto mt-2">
                 <%= t('views.account_settings.card_details.submit') %>
               </button>
             <% end %>

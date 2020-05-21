@@ -39,7 +39,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'recaptcha', '~> 5.2'
   spec.add_dependency 'bootstrap', '~> 4.4'
   spec.add_dependency 'underscore-rails'
-  spec.add_dependency 'ladda-rails'
   spec.add_dependency 'mustache'
   spec.add_dependency 'mustache-js-rails'
   spec.add_dependency 'mini_magick', '>= 4.9.5'

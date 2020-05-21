@@ -111,7 +111,10 @@ module Maawol
 			end
 
 			def show_subscription_interstitial?
-				signed_in? && !current_user.has_full_account? && !current_user.is_admin?
+				signed_in? &&
+					!current_user.has_full_account? &&
+						!current_user.is_admin? &&
+							!params[:controller].include?('subscriptions')
 			end
 
 			def show_subscription_nav_button?

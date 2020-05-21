@@ -14,7 +14,6 @@
 @import "vendor/animate.min";
 @import "vendor/responsive";
 @import "vendor/font-awesome-base";
-@import "ladda";
 
 // Local styles
 @import "library/_mixins";
@@ -30,6 +29,7 @@
 @import "library/_widgets";
 @import "library/_sidebar";
 @import "library/_cookie_acceptance";
+@import "library/_loader";
 
 // Page styles
 @import "pages/home";

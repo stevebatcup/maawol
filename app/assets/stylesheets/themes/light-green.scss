@@ -65,4 +65,8 @@ header .header-bottom .navbar-default .navbar-nav li .modal.interstitial#subscri
 	background-color: #ffffff !important;
 }
 
+.lds-dual-ring.button:after {
+	border-color: #57985d transparent #57985d transparent !important
+}
+
 @import "../library/_theme_implement";

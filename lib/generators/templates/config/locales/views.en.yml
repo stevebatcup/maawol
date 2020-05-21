@@ -7,9 +7,17 @@ en:
         password: Password
         membership: Membership
         payment_details: Payment details
+      cancel_recurring_modal:
+        title: Cancel my subscription
+        subtitle: Are you sure you want to cancel your subscription?
+        desc: Only members with a subscription are able to view the lessons and enjoy a host of other benefits.
+        buttons:
+          ok: Yes, cancel my subscription
+          processing: Cancelling subscription
+          cancel: No, i'm done here
       details:
         title: Update the details for your account
-        opt_in_label: Opt me into the %{school} weekly digest email?
+        opt_in_label: Opt me into the weekly digest email
         submit: Update my details
       password:
         title: Update your password
@@ -33,6 +41,7 @@ en:
 
     checkout:
       title: All done
+      loading: Loading checkout...
       thanks: Thanks, here are the links to your purchased items.
       error:
         title: Whoops
@@ -87,8 +96,9 @@ en:
       lesson: lesson
       or: or
       pay: pay
-      save: Save
-      subscribe: Subscribe
+      save: save
+      submit: submit
+      subscribe: subscribe
       video: video
       viewed: viewed
 
@@ -135,7 +145,7 @@ en:
       must_register: "You must be a paid member to view that lesson"
       part_of_course_prefix: Part of the
       meta:
-        published_at: Published %{at} ago
+        published_at: "%{at} ago"
         video_length: Video length
         course_info_html: "Lesson %{index} of the <a href='/courses/%{course_id}?token=%{token}'>%{course_name}</a> course"
       video_playlist:
@@ -202,24 +212,27 @@ en:
         remove_all: Remove all items
 
     subscribe_callout:
-      title: Subscribe now to unlock all the good stuff.....
+      title: "Subscribe now to unlock all the good stuff....."
       items:
         library_access: Access to FULL Lesson Library and Courses
-        one_on_one: Request 1-on-1 lessons with %{name}
+        one_on_one: "Request 1-on-1 lessons with %{name}"
         facebook_access: Access to Exclusive Facebook page
         much_more: Much more
-        monthly_fee: Only %{monthly_fee}bill@ert.com %> per month
+        monthly_fee: Only %{monthly_fee} per month
 
     subscription:
+      main_title: "Subscribe to %{school}"
       total_prefix: Total to pay today
+      reasons:
+        title: "Subscribe now to receive:"
+      choose:
+        title: "Choose an option:"
+      chosen:
+        title: "Chosen option:"
+      back_to_options_html: "&lt; Change selected option"
       empty_basket:
         single: Sorry, cannot find that file!
         multiple: There are no items in your basket!
-      persuasion_items:
-        messages: Send and read messages
-        views: See who's viewed your profile
-        interested: Find out who's interested in you
-        secure: Secure, safe and trusted
       steps:
         one: Choose your package
         two: Choose your payment method
@@ -255,7 +268,7 @@ en:
           first_name: First name
           last_name: Last name
           expiry: Expiration date
-          cv2: Security number
+          cv2: Security code
           submit: Confirm payment
           expiration: Expiration
           paying: Submitting payment...

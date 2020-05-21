@@ -12,6 +12,10 @@ p,
 	color: $maawol_text_color;
 }
 
+.lds-dual-ring:after {
+  border-color: $maawol_navbar_selected transparent $maawol_navbar_selected transparent;
+}
+
 a {
   color: $maawol_link_color;
 }
@@ -307,6 +311,7 @@ section#payment .panel {
 
       label.option {
         border-color: $maawol_checkout_input_border_color;
+        background: $maawol_navbar_bg;
 
         &.selected {
           background: $maawol_checkout_selected_option;

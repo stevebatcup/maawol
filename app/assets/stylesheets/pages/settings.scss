@@ -29,21 +29,11 @@ form.edit_user {
 		}
 
 		input[type=checkbox] {
-			-ms-transform: scale(1.5); /* IE */
-			-moz-transform: scale(1.5); /* FF */
-			-webkit-transform: scale(1.5); /* Safari and Chrome */
-			-o-transform: scale(1.5); /* Opera */
-			transform: scale(1.5);
-			padding: 10px;
-			color: green;
-			background-color: green;
-			width: fit-content;
-			max-width: 20px;
-			margin-left: 10px;
-			outline: none;
-			box-shadow: none;
+			width: 25px;
+			height: 25px;
 			position: relative;
-			top: 0.8em;
+			left: 12px;
+			top: 7px;
 
 			&:active, &:focus {
 				outline: none;
@@ -58,7 +48,13 @@ form#update_card_form {
 		li {
 			list-style: none;
 			display: inline-block;
-			margin-right: 12px;
+			margin-right: 1.7em;
+
+			i {
+				font-size: 3em;
+				position: relative;
+				top: 0.2em;
+			}
 		}
 	}
 

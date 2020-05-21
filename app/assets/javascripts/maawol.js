@@ -2,17 +2,13 @@
 //= require rails-ujs
 //= require bootstrap
 //= require underscore
+//= require mustache
 
 //= require vendor/modernizr.custom
 //= require vendor/jquery.match-height
 //= require vendor/owl-carousel.min
 //= require vendor/video-stories-theme
 //= require vendor/console-hook
-
-//= require spin
-//= require ladda
-//= require ladda.jquery
-//= require mustache
 
 //= require angular
 //= require angular-animate
