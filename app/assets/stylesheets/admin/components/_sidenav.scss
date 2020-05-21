@@ -12,6 +12,7 @@
   z-index: 500;
   overflow-y: auto;
   background-color: #27373c;
+  min-width: 250px;
 
   &::-webkit-scrollbar {
   	display: none;
