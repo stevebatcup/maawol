@@ -1,4 +1,42 @@
 en:
+  admin_help_modal:
+    heading: Admin console help
+    section_chooser:
+      label: "What do you need help with? "
+      groups:
+        basics: Admin console
+        library: Lesson library
+        resources: Lesson resources
+        students: Students
+        ecommerce: E-commerce
+        cms: CMS
+      options:
+        general: Introduction
+        dashboard: Dashboard
+        lessons: Lessons
+        courses: Courses
+        authors: Tutors
+        sections: Sections
+        categories: Categories
+        tags: Tags
+        skill_levels: Skill levels
+        site_settings: School settings
+        videos: Videos
+        audio_files: Audio files
+        downloadables: Scores
+        playlists: Playlists
+        students: Students
+        subscribers: Subscribers
+        comp_subscribers: Complimentary subscribers
+        stores: Stores
+        store_payments: Store payments
+        subscription_payments: Subscription payments
+        income_reports: Income reports
+        info_page: CMS > Info pages
+        content_blocks: CMS > Content blocks
+        images: CMS > Images
+
+
   helpers:
     submit:
       create: Create %{model}

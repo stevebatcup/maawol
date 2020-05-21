@@ -1,0 +1,11 @@
+#help_modal {
+	.modal-dialog {
+		max-width: 90%;
+		max-width: 90vw;
+
+		.modal-body {
+			height: 82vh;
+			overflow-y: auto;
+		}
+	}
+}

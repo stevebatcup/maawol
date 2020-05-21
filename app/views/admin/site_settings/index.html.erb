@@ -2,7 +2,10 @@
   School settings
 <% end %>
 
-<section class="main-content__body main-content__body--flush" id="main-content__site_settings" ng-controller="AdminSiteSettingsController">
+<section class="main-content__body main-content__body--flush"
+          id="main-content__site_settings"
+          ng-controller="AdminSiteSettingsController"
+          data-help-section="<%= page.resource_name %>">
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link active" id="nav-basic-tab" data-toggle="tab" href="#nav-basic" role="tab" aria-controls="nav-basic" aria-selected="true">
@@ -214,4 +217,6 @@
     </div>
 
   </div>
+
+  <%= render 'admin/help/modal' %>
 </section>

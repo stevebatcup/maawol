@@ -1,0 +1,55 @@
+.app-container {
+	padding: 0;
+	margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+  background-color: $maawol_admin_bg;
+
+	a, select, input {
+		outline: none;
+
+		&:active,
+		&:hover {
+			outline: none;
+		}
+	}
+}
+
+header#top_header {
+	color: #fff;
+	background-color: $maawol_admin_bg;
+	position: fixed;
+	top: 0;
+	left: 19vw;
+	width: 81vw;
+	z-index: 1000;
+	height: 56px;
+	transition: left 0.2s;
+
+	.app-container.nav_hidden & {
+		left: 0;
+		width: 100vw;
+	}
+
+	h2 {
+		font-size: 1em;
+		line-height: 1.5em;
+	}
+
+	a {
+		color: #ffffff;
+
+		&#side_menu_toggle {
+			font-size: 1.3em;
+			line-height: 1em;
+			position: relative;
+			top: 2px;
+		}
+	}
+
+	.top_links {
+		a {
+			font-size: 0.8em;
+		}
+	}
+}

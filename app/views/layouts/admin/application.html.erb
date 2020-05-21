@@ -49,19 +49,24 @@ By default, it renders:
           </div>
 
           <div class="top_links">
+            <a class="mr-2" href="#" ng-click="openHelp($event)">
+              <i class="fas fa-question-circle mr-1"></i>
+                Help
+            </a>
+            <span class="text-muted">|</span>
             <a class="mr-2" href="/admin/site_settings">
-              <i class="fas fa-sliders-h mr-1"></i>
+              <i class="fas fa-sliders-h pl-2 mr-1"></i>
                 Settings
             </a>
-            |
+            <span class="text-muted">|</span>
             <a class="mr-2" href="/" target="_blank">
               <i class="fas fa-school pl-2 mr-1"></i>
-                View school
+                View School
             </a>
-            |
+            <span class="text-muted">|</span>
             <a class="ml-2" href="<%= sign_out_path %>" data-method="delete">
               <i class="fas fa-sign-out-alt mr-1"></i>
-              Sign out
+              Sign Out
             </a>
           </div>
         </header>
@@ -69,6 +74,7 @@ By default, it renders:
         <%= content_for(:search) %>
         <%= render "flashes" -%>
         <%= yield %>
+
       </main>
     </div>
 

@@ -10,16 +10,18 @@
 @import "datetime_picker";
 
 @import "../library/variables";
+@import "../library/loader";
 @import "_variables";
 
-@import "components/_app-container";
-@import "components/_nav";
+@import "components/_layout";
+@import "components/_sidenav";
 @import "components/_form";
 @import "components/_content";
 @import "components/_search";
 @import "components/_text";
 @import "components/_links";
 @import "components/_tables";
+@import "components/_help";
 
 @import "tablet";
 
@@ -38,4 +40,8 @@ h4,
 h5,
 h6 {
 	font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+}
+
+.lds-dual-ring.large:after {
+	border-color: #3f788a transparent #3f788a transparent;
 }

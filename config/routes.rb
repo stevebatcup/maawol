@@ -48,6 +48,7 @@ Rails.application.routes.draw do
 	  resources :site_images
 	  patch "set_homepage_video", to: "videos#set_for_homepage"
 	  get "resource-counts", to: "resource_counts#index"
+	  get "help", to: "help#show"
 	  root to: "lessons#index"
 	end
 

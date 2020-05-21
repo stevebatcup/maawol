@@ -6,9 +6,10 @@ class Maawol.AdminPage extends Maawol.Page
 	@$inject: [
 		'$scope'
 		'$rootScope'
-		'$http'
 		'$element'
+		'$http'
 		'$timeout'
+		'$sce'
 	]
 
 	init: ->

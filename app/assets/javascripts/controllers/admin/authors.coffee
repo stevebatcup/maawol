@@ -9,9 +9,12 @@ class Maawol.AdminAuthorsController extends Maawol.AdminPage
 		'$http'
 		'$element'
 		'$timeout'
+		'$compile'
+		'$sce'
 	]
 
 	init: ->
+		super
 		@setDefaultHttpHeaders()
 		@setCsrfTokenHeaders()
 		@initSelectize()

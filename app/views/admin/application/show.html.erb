@@ -32,7 +32,9 @@ as well as a link to its edit page.
   </div>
 </header>
 
-<section class="main-content__body" ng-controller="<%= angular_controller(page.resource_name) %>">
+<section class="main-content__body"
+             data-help-section="<%= page.resource_name %>"
+             ng-controller="<%= angular_controller(page.resource_name) %>">
   <dl>
     <% page.attributes.each do |attribute| %>
       <dt class="attribute-label" id="<%= attribute.name %>">
@@ -63,4 +65,5 @@ as well as a link to its edit page.
 
   </div>
 
+  <%= render 'admin/help/modal' %>
 </section>

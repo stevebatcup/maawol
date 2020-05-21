@@ -12,11 +12,12 @@ window.App = angular.module(moduleName, ['rails',
   'Maawol.factories',
   'Maawol.filters',
   'Maawol.controllers'
-]).config(function(cookiesProvider) {
+]).config(function(cookiesProvider, $sceProvider) {
   cookiesProvider.useDefaults({
     path: '/admin',
     maxAge: 24*60*60
   });
+  $sceProvider.enabled(true);
 });
 window.App.run(function ($rootScope) {
   $rootScope._ = _;

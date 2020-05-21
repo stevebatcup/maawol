@@ -32,7 +32,9 @@ as well as a link to its edit page.
   </div>
 </header>
 
-<section class="main-content__body" ng-controller="<%= angular_controller(page.resource_name) %>">
+<section class="main-content__body"
+            data-help-section="<%= page.resource_name %>"
+            ng-controller="<%= angular_controller(page.resource_name) %>">
   <dl>
     <dt class="attribute-label">Preview</dt>
     <dd class="attribute-data">
@@ -65,4 +67,6 @@ as well as a link to its edit page.
         class: "button",
       ) if valid_action?(:new) && show_action?(:new, new_resource) %>
   </div>
+
+  <%= render 'admin/help/modal' %>
 </section>

@@ -1,0 +1,77 @@
+<div class="modal fade" id="help_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header d-flex justify-content-between">
+        <div class="w-50">
+          <h2 class="mb-4">
+            <i class="fas fa-question-circle mr-1"></i>
+            <%= t('admin_help_modal.heading') %>
+          </h2>
+
+          <div class="d-flex">
+            <label class="mt-1 mr-2 mb-0 ml-1 pt-1 text-muted">
+              <%= t('admin_help_modal.section_chooser.label') %>
+            </label>
+            <select name="help_section_chooser"
+                      id="help_section_chooser"
+                      class="form-control"
+                      ng-model="helpData.section">
+
+              <optgroup label="<%= t('admin_help_modal.section_chooser.groups.basics') %>">
+                <option value="general"><%= t('admin_help_modal.section_chooser.options.general') %></option>
+                <option value="dashboard"><%= t('admin_help_modal.section_chooser.options.dashboard') %></option>
+                <option value="site_setting"><%= t('admin_help_modal.section_chooser.options.site_settings') %></option>
+              </optgroup>
+
+              <optgroup label="<%= t('admin_help_modal.section_chooser.groups.library') %>">
+                <option value="lesson"><%= t('admin_help_modal.section_chooser.options.lessons') %></option>
+                <option value="course"><%= t('admin_help_modal.section_chooser.options.courses') %></option>
+                <option value="author"><%= t('admin_help_modal.section_chooser.options.authors') %></option>
+                <option value="category"><%= t('admin_help_modal.section_chooser.options.categories') %></option>
+                <option value="tag"><%= t('admin_help_modal.section_chooser.options.tags') %></option>
+                <option value="skill_level"><%= t('admin_help_modal.section_chooser.options.skill_levels') %></option>
+              </optgroup>
+
+              <optgroup label="<%= t('admin_help_modal.section_chooser.groups.resources') %>">
+                <option value="video"><%= t('admin_help_modal.section_chooser.options.videos') %></option>
+                <option value="audio_file"><%= t('admin_help_modal.section_chooser.options.audio_files') %></option>
+                <option value="downloadable"><%= t('admin_help_modal.section_chooser.options.downloadables') %></option>
+                <option value="playlist"><%= t('admin_help_modal.section_chooser.options.playlists') %></option>
+              </optgroup>
+
+              <optgroup label="<%= t('admin_help_modal.section_chooser.groups.students') %>">
+                <option value="student"><%= t('admin_help_modal.section_chooser.options.students') %></option>
+                <option value="subscriber"><%= t('admin_help_modal.section_chooser.options.subscribers') %></option>
+                <option value="comp_subscriber"><%= t('admin_help_modal.section_chooser.options.comp_subscribers') %></option>
+              </optgroup>
+
+              <optgroup label="<%= t('admin_help_modal.section_chooser.groups.ecommerce') %>">
+                <option value="store"><%= t('admin_help_modal.section_chooser.options.stores') %></option>
+                <option value="store_payment"><%= t('admin_help_modal.section_chooser.options.store_payments') %></option>
+                <option value="subscription_payment"><%= t('admin_help_modal.section_chooser.options.subscription_payments') %></option>
+                <option value="income_report"><%= t('admin_help_modal.section_chooser.options.income_reports') %></option>
+              </optgroup>
+
+              <optgroup label="<%= t('admin_help_modal.section_chooser.groups.cms') %>">
+                <option value="info_page"><%= t('admin_help_modal.section_chooser.options.info_page') %></option>
+                <option value="content_block"><%= t('admin_help_modal.section_chooser.options.content_blocks') %></option>
+                <option value="image"><%= t('admin_help_modal.section_chooser.options.images') %></option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="modal-body p-4">
+        <div ng-if="helpData.loading" class="text-center m-4"><%= render partial: 'layouts/loader', locals: { size: :large } %></div>
+        <div ng-if="!helpData.loading" ng-bind-html="helpData.content"></div>
+      </div>
+
+    </div>
+  </div>
+</div>

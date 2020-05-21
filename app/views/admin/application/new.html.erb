@@ -33,6 +33,9 @@ to do the heavy lifting.
   </div>
 </header>
 
-<section class="main-content__body" ng-controller="<%= angular_controller(page.resource_name) %>">
+<section class="main-content__body"
+           data-help-section="<%= page.resource_name %>"
+           ng-controller="<%= angular_controller(page.resource_name) %>">
   <%= render "form", page: page %>
+  <%= render 'admin/help/modal' %>
 </section>
