@@ -17,6 +17,16 @@ module Maawol
 		    template "config/paypal.yml", "config/paypal.yml"
 		  end
 
+		  def error_pages
+		    template "404.html", "public/404.html"
+		    template "422.html", "public/422.html"
+		    template "500.html", "public/500.html"
+		  end
+
+		  def robots_txt
+		    template "robots.txt", "public/robots.txt"
+		  end
+
 		  def database_config
 		    template "config/database.yml", "config/database.yml"
 		  end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
 	root to: 'home#index'
 	get 'cookie-acceptance',                     to: 'cookie_acceptance#new'
+  get 'sitemap.xml', to: 'sitemap#index'
 
 	resources :passwords, controller: "passwords", only: [:create, :new]
 	resource :session, controller: "sessions", only: [:create]
