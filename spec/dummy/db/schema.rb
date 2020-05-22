@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_132241) do
+ActiveRecord::Schema.define(version: 2020_05_22_192722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_132241) do
     t.string "referral_token"
     t.integer "subscription_fee_split"
     t.integer "avatar_tmp_media_id"
+    t.boolean "is_main", default: false
   end
 
   create_table "basket_items", force: :cascade do |t|

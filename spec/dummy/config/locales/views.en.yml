@@ -52,7 +52,7 @@ en:
       reply: Reply
 
     contact:
-      send_email: Or you can send us an email at
+      send_email: Or you can email us at
       section_title:
         request: Request a lesson
         contact: Get in touch
@@ -87,6 +87,24 @@ en:
           lessons: Lessons
           difficulty: Difficulty
           released: Released
+
+    dashboard:
+      personalised:
+        title_html: "<span class='first-word'>Personalised</span> lessons"
+        empty: As a subscriber you can request personalised lessons from %{author}
+        button: Request a lesson
+      watch_list:
+        title_html: "<span class='first-word'>Watch</span> list"
+        empty: You have not yet marked any lessons to watch later
+        button: Find lessons
+      favourites:
+        title_html: "<span class='first-word'>Favourite</span> lessons"
+        empty: You have not yet added any lessons to your favorites
+        button: Find lessons
+      viewed:
+        title_html: "<span class='first-word'>Viewed</span> lessons"
+        empty: You have not yet marked any lessons as viewed
+        button: Find lessons
 
     defaults:
       by: by

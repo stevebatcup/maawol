@@ -11,19 +11,23 @@ class SiteSetting < ApplicationRecord
 	end
 
 	def self.site_admin_gets_new_registration_email?
-		find_by(name: "Receives new-registration admin email").value == 'yes'
+		find_by(slug: "receives-new-registration-admin-email").value == 'yes'
 	end
 
 	def self.site_admin_gets_new_subscription_email?
-		find_by(name: "Receives new-subscription admin email").value == 'yes'
+		find_by(slug: "receives-new-subscription-admin-email").value == 'yes'
+	end
+
+	def self.admin_email_address
+	  find_by(slug: "contact-email-address").value
 	end
 
 	def self.site_admin_gets_subscription_cancelled_email?
-		find_by(name: "Receives subscription-cancelled admin email").value == 'yes'
+		find_by(slug: "receives-subscription-cancelled-admin-email").value == 'yes'
 	end
 
 	def self.site_admin_gets_failed_payment_email?
-		find_by(name: "Receives failed-payment admin email").value == 'yes'
+		find_by(slug: "receives-failed-payment-admin-email").value == 'yes'
 	end
 
 	def self.editable
@@ -31,7 +35,7 @@ class SiteSetting < ApplicationRecord
 	end
 
 	def self.get_profit_split_percentage
-		find_by(name: "Owner profit split percentage").value.to_i
+		find_by(slug: "owner-profit-split-percentage").value.to_i
 	end
 
 	def self.theme_options

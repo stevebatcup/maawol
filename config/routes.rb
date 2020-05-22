@@ -47,7 +47,8 @@ Rails.application.routes.draw do
 	  end
 	  resources :site_settings
 	  resources :site_images
-	  patch "set_homepage_video", to: "videos#set_for_homepage"
+	  put "set_homepage_video", to: "videos#set_for_homepage"
+	  put "set_main_author", to: "authors#set_main"
 	  get "resource-counts", to: "resource_counts#index"
 	  get "help", to: "help#show"
 	  root to: "lessons#index"

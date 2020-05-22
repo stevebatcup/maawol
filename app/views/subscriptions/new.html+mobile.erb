@@ -44,7 +44,7 @@
           </li>
           <li class="d-flex mb-2">
             <i class="fas fa-clipboard-check mr-2 pr-1 mt-2"></i>
-            <span><%= t('views.subscribe_callout.items.one_on_one', name: Maawol::Config.site_owner_fname) %></span>
+            <span><%= t('views.subscribe_callout.items.one_on_one', name: Author.main_author.name) %></span>
           </li>
           <% if school_setting("facebook-page-url").present? %>
             <li class="d-flex mb-2">

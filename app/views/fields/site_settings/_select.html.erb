@@ -9,7 +9,7 @@
     options_from_collection_for_select(
       field.selectable_options,
       :to_s,
-      :humanize,
+      :titleize,
       field.data.presence,
     )
   ) %>

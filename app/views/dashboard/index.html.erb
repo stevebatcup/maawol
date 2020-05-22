@@ -8,7 +8,9 @@
         <% if current_user.is_subscriber? || current_user.is_admin? %>
         <h2 class="section-title" id="personalised_lessons">
           <i class="fa fa-user" aria-hidden="true"></i>
-          <span class="text"><span class="first-word">Personalised</span> lessons</span>
+          <span class="text">
+            <%= t('views.dashboard.personalised.title_html') %>
+          </span>
         </h2>
         <div class="row dashboard_row">
           <% if @personalised_lessons.any? %>
@@ -21,8 +23,10 @@
             </div>
           <% else %>
             <p class="none_found mt-2 mb-4 my-md-4 my-lg-5 w-75 mx-auto" >
-              As a subscriber you can request personalised lessons from <%= Maawol::Config.site_owner_name %> as part of your package<br />
-              <a href='/lesson-request' class='mt-2 btn btn-success'>Request a personalised lesson</a>
+              <%= t('views.dashboard.personalised.empty', author: Author.main_author.name) %><br />
+              <a href='/lesson-request' class='mt-2 btn btn-success'>
+                <%= t('views.dashboard.personalised.button') %>
+              </a>
             </p>
           <% end %>
         </div>
@@ -32,7 +36,9 @@
       <div class="col-12 col-md-6 mb-2">
         <h2 class="section-title" id="watch_list">
           <i class="fas fa-stopwatch"></i>
-          <span class="text"><span class="first-word">Watch</span> List</span>
+          <span class="text">
+            <%= t('views.dashboard.watch_list.title_html') %>
+          </span>
         </h2>
         <div class="row dashboard_row">
           <% if @watch_laters.any? %>
@@ -45,8 +51,10 @@
             </div>
           <% else %>
             <p class="none_found mt-2 mb-4 my-md-4 my-lg-5 w-75 mx-auto" >
-              You have not yet marked any lessons to watch later<br />
-              <a href='/lessons' class='mt-2 btn btn-success'>Find a lesson to add to your Watch List</a>
+              <%= t('views.dashboard.watch_list.empty') %><br />
+              <a href='/lessons' class='mt-2 btn btn-success'>
+                <%= t('views.dashboard.watch_list.button') %>
+              </a>
             </p>
           <% end %>
         </div>
@@ -56,7 +64,9 @@
       <div class="col-12 col-md-6 mt-3 mb-2">
         <h2 class="section-title" id="favourite_lessons">
           <i class="fa fa-star" aria-hidden="true"></i>
-          <span class="text"><span class="first-word">Favorite</span> lessons</span>
+          <span class="text">
+            <%= t('views.dashboard.favourites.title_html') %>
+          </span>
         </h2>
         <div class="row dashboard_row">
           <% if @favourites.any? %>
@@ -69,8 +79,10 @@
             </div>
           <% else %>
             <p class="none_found mt-2 mb-4 my-md-4 my-lg-5 w-75 mx-auto" >
-              You have not yet added any lessons to your favorites<br />
-              <a href='/lessons' class='mt-2 btn btn-success'>Find a lesson to add to your Favourites</a>
+              <%= t('views.dashboard.favourites.empty') %><br />
+              <a href='/lessons' class='mt-2 btn btn-success'>
+                <%= t('views.dashboard.favourites.button') %>
+              </a>
             </p>
           <% end %>
         </div>
@@ -79,7 +91,9 @@
       <div class="col-12 col-md-6 mt-3 mb-2">
         <h2 class="section-title" id="viewed_lessons">
           <i class="fa fa-check-square" aria-hidden="true"></i>
-          <span class="text"><span class="first-word">Viewed</span> lessons</span>
+          <span class="text">
+            <%= t('views.dashboard.viewed.title_html') %>
+          </span>
         </h2>
         <div class="row dashboard_row">
           <% if @views.any? %>
@@ -92,8 +106,10 @@
             </div>
           <% else %>
             <p class="none_found mt-2 mb-4 my-md-4 my-lg-5 w-75 mx-auto" >
-              You have not yet marked any lessons as viewed<br />
-              <a href='/lessons' class='mt-2 btn btn-success'>Find a lesson to add click 'viewed'</a>
+              <%= t('views.dashboard.viewed.empty') %><br />
+              <a href='/lessons' class='mt-2 btn btn-success'>
+                <%= t('views.dashboard.viewed.button') %>
+              </a>
             </p>
           <% end %>
         </div>

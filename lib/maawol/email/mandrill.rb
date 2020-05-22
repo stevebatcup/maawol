@@ -16,7 +16,7 @@ module Maawol
       end
 
       def send_admin_mail(subject, body)
-        data = mail_data(Maawol::Config.mail_admin_to, subject, body)
+        data = mail_data(SiteSetting.admin_email_address, subject, body)
         response = api.messages.send(data)
         log_request(nil, "send_admin_mail", data, response)
       end
@@ -50,7 +50,7 @@ module Maawol
         {
           FROM_NAME: Maawol::Config.site_name,
           FROM_EMAIL: Maawol::Config.mail_from,
-          ADMIN_NAME: Maawol::Config.site_owner_name,
+          ADMIN_NAME: Maawol::Config.site_owner_fname,
           SITE_NAME: Maawol::Config.site_name,
           SITE_HOST: Maawol::Config.site_host,
           SITE_HEADER_IMG: SiteImage.email_banner_url,

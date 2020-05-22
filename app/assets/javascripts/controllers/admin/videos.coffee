@@ -15,6 +15,7 @@ class Maawol.AdminVideosController extends Maawol.AdminPage
 		@setDefaultHttpHeaders()
 		@setCsrfTokenHeaders()
 		@initSelectize()
+		@scope.settingHomepageVideo = false
 		@bindEvents()
 		if $('.field-unit__field.video_field').length > 0
 			@initializeUploader 'video', 'tmp_video_file', 'video'
@@ -22,10 +23,10 @@ class Maawol.AdminVideosController extends Maawol.AdminPage
 	bindEvents: ->
 
 	updateHomepageVideo: ($event, videoId) =>
-		return if @scope.settingHomepageVideo
 		$event.preventDefault()
+		return if @scope.settingHomepageVideo
 		@scope.settingHomepageVideo = true
-		@http.patch("/admin/set_homepage_video", { id: videoId}).then (response) =>
+		@http.put("/admin/set_homepage_video", { id: videoId }).then (response) =>
 			if response.data.status is 'success'
 				@updateHomepageVideoSuccess()
 			else

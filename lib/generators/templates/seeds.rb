@@ -190,7 +190,8 @@ author_name = "#{Maawol::Config.site_owner_fname} #{Maawol::Config.site_owner_ln
 unless author = Author.find_by(name: author_name)
 	author = Author.create({
 		name: author_name,
-		remote_avatar_url: avatar_url
+		remote_avatar_url: avatar_url,
+		is_main: true
 	})
 end
 

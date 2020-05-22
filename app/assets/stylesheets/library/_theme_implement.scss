@@ -313,8 +313,17 @@ section#payment .panel {
         border-color: $maawol_checkout_input_border_color;
         background: $maawol_navbar_bg;
 
+        h3, h5, h6 {
+          color: $maawol_navbar_color;
+        }
+
+
         &.selected {
           background: $maawol_checkout_selected_option;
+
+          h3, h5, h6 {
+            color: $maawol_text_color;
+          }
 
           h5:after {
             border-left-color: $maawol_checkout_selected_option !important;
