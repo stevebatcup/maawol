@@ -2,6 +2,25 @@ module Maawol
   module Models
     module Concerns
 			module Subscribable
+				extend ActiveSupport::Concern
+
+				class_methods do
+					def complimentary_subscription_limit
+					  SiteSetting.find_by(slug: 'comp-account-limit').value.to_i
+					end
+				end
+
+				def current_complimentary_subscription_count
+				  self.class.where(status: :complimentary).all.size
+				end
+
+				def within_complimentary_subscriptions_limit
+				  limit = self.class.complimentary_subscription_limit
+				  if (self.status.to_sym == :complimentary) && (current_complimentary_subscription_count >= limit)
+				    errors.add(:base, "You may only set up to #{limit} accounts as complimentary.")
+				  end
+				end
+
 				def subscription_status
 				  if self.is_subscriber?
 				  	if current_recurring_subscription.present? || self.future_recurring_subscription.present?

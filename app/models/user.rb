@@ -29,7 +29,7 @@ class User < ApplicationRecord
                          allow_blank: true,
                          on: :update
 
-   validate :within_complimentary_accounts_limit, on: :update
+  validate :within_complimentary_subscriptions_limit, on: :update
 
   before_create :set_default_status
   after_create  :add_to_mailchimp
@@ -38,12 +38,6 @@ class User < ApplicationRecord
 
   def self.active
     where.not(status: :deleted)
-  end
-
-  def within_complimentary_accounts_limit
-    if (self.status.to_sym == :complimentary) && (current_complimentary_account_count >= COMPLIMENTARY_ACCOUNT_LIMIT)
-      errors.add(:base, "You may only set up to #{COMPLIMENTARY_ACCOUNT_LIMIT} accounts as complimentary.")
-    end
   end
 
   def set_default_status
@@ -100,9 +94,5 @@ class User < ApplicationRecord
 
   def can_access_dashboard?
     has_full_account? || is_admin?
-  end
-
-  def current_complimentary_account_count
-    self.class.where(status: :complimentary).all.size
   end
 end

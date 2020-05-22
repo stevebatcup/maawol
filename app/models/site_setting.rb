@@ -1,5 +1,10 @@
 class SiteSetting < ApplicationRecord
 	after_save	:bust_cache
+  before_save :set_slug
+
+  def set_slug
+    self.slug = self.name.parameterize
+  end
 
 	def bust_cache
 		Rails.cache.delete("school_settings")

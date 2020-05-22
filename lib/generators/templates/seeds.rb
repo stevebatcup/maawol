@@ -30,6 +30,7 @@ settings_data = [
 	{ name: "Receives new-subscription admin email", value: "yes", is_editable: false },
 	{ name: "Receives subscription-cancelled admin email", value: "yes", is_editable: false },
 	{ name: "Receives failed-payment admin email", value: "yes", is_editable: false },
+	{ name: "Comp Account Limit", value: 25, is_editable: false },
 ]
 settings_data.each do |setting_data|
 	SiteSetting.find_or_create_by(name: setting_data[:name]) do |setting|
