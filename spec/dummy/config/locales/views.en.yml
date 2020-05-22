@@ -5,7 +5,7 @@ en:
       menu:
         account_details: Account details
         password: Password
-        membership: Membership
+        membership: Membership level
         payment_details: Payment details
       cancel_recurring_modal:
         title: Cancel my subscription

@@ -21,11 +21,12 @@ class CheckoutController < MaawolController
 					payment: payment_params,
 					basket: basket,
 					description: payment_description,
-					currency: Maawol::Config.currency_code,
+					currency_code: Maawol::Config.currency_code,
 					domain: Maawol::Config.site_host
 				}
 				if payment_params[:type] == 'paypal'
-					PaymentService::Paypal.create_payment(options) do |status, payment|
+					pay = Payment::Paypal::SinglePayment.new(options)
+					pay.create do |status, payment|
 						basket.update_attribute(:paypal_payment_id, payment.id)
 						@status = status
 						if status == :success
@@ -35,7 +36,8 @@ class CheckoutController < MaawolController
 						end
 					end
 				else
-					PaymentService::Chargebee.do_payment(options) do |invoice|
+					pay = Payment::Chargebee::SinglePayment.new(options)
+					pay.create do |invoice|
 						if invoice && invoice.status == "paid"
 							@status = :success
 							complete_checkout(payment_params[:email], payment_params[:firstName], payment_params[:lastName], :chargebee)
@@ -47,7 +49,7 @@ class CheckoutController < MaawolController
 				end
 			rescue Exception => e
 				@status = :error
-				@error = e.message
+				@error = e.backtrace
 			end
 		else
 			@status = :error
@@ -57,7 +59,7 @@ class CheckoutController < MaawolController
 
 	def update # redirected from paypal
 		begin
-			PaymentService::Paypal.execute_payment_for_files(params[:paymentId], params[:token], params[:PayerID]) do |email, first_name, last_name|
+			Payment::Paypal::SinglePayment.finalise_payment_for_files(params[:paymentId], params[:token], params[:PayerID]) do |email, first_name, last_name|
 				complete_checkout(email, first_name, last_name, :paypal)
 				redirect_to checkout_complete_path
 			end

@@ -2,9 +2,9 @@ class ChargebeeWebhooksController < MaawolController
 
 	def payment_messages
 		@payment_messages ||= {
-			success: t('controllers.chargee_webhooks.payment_messages.success'),
-			not_recurring: t('controllers.chargee_webhooks.payment_messages.not_recurring'),
-			not_found: t('controllers.chargee_webhooks.payment_messages.not_found', subscription_id: @subscription_id)
+			success: t('controllers.chargebee_webhooks.payment_messages.success'),
+			not_recurring: t('controllers.chargebee_webhooks.payment_messages.not_recurring'),
+			not_found: t('controllers.chargebee_webhooks.payment_messages.not_found', subscription_id: @subscription_id)
 		}
 	end
 
@@ -41,7 +41,6 @@ class ChargebeeWebhooksController < MaawolController
 					first_payment: is_first_payment,
 					created_at: Time.now
 				})
-				@user_subscription.increment!(:successful_recurring_payments)
 				result = :success
 			else
 				result = :not_recurring
@@ -61,8 +60,14 @@ class ChargebeeWebhooksController < MaawolController
 	  result
 	end
 
+	def next_payment_due_at
+		Time.at(params[:content][:subscription][:current_term_end]).to_datetime
+	end
+
 	def handle_successful_payment
 		result = log_payment(:success)
+		@user_subscription.increment!(:successful_recurring_payments)
+		@user_subscription.update_attribute(:next_payment_due_at, next_payment_due_at)
 		amount = params[:content][:transaction][:amount].to_f / 100
 		is_first_payment = params[:content][:invoice][:first_invoice]
 		send_email = true
@@ -89,10 +94,10 @@ class ChargebeeWebhooksController < MaawolController
 		if user_subscription = UsersSubscription.find_by(remote_customer_id: @customer_id, status: :recurring)
 			UserMailer.card_expiry_reminder(user_subscription.user, params[:content][:card][:expiry_month], params[:content][:card][:expiry_year]).deliver_now
 			user_id = user_subscription.user_id
-			result = t('controllers.chargee_webhooks.handle_card_expiry_reminder.success')
+			result = t('controllers.chargebee_webhooks.handle_card_expiry_reminder.success')
 		else
 			user_id = nil
-			result = t('controllers.chargee_webhooks.handle_card_expiry_reminder.error', customer_id: @customer_id)
+			result = t('controllers.chargebee_webhooks.handle_card_expiry_reminder.error', customer_id: @customer_id)
 		end
 		ApiLog.webhook({
 			service: :chargebee,

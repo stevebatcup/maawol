@@ -15,14 +15,16 @@ class SubscriptionsController < MaawolController
 		payment = params[:payment]
 
 		if payment[:type] == 'paypal'	# PAYPAL PAYMENT
-			remote_subscription = PaymentService::Paypal.setup_recurring_billing({
+			options = {
 				site_name: school_setting("site-name"),
 				current_user: current_user,
 				subscription_level: subscription_level,
 				session_discount_code: session_discount_code || nil,
 				return_url: "#{host}/paypal/success",
-				cancel_url: "#{host}/paypal/cancel"
-			})
+				cancel_url: "#{host}/paypal/cancel",
+				currency_code: Maawol::Config.currency_code
+			}
+			remote_subscription = Payment::Paypal::Subscription.new(options).create
 			respond_to do |format|
 				if remote_subscription.error
 					format.json { @status = :error; @error = "#{remote_subscription.error}"; }
@@ -32,7 +34,7 @@ class SubscriptionsController < MaawolController
 				end
 			end
 		else	# CARD PAYMENT
-	    if error_msg = PaymentService::Chargebee.detect_card_errors(payment)
+	    if error_msg = Payment::Chargebee::Service.detect_card_errors(payment)
 	    	respond_to do |format|
 	    		format.html do
 	    			flash[:error] = error_msg
@@ -42,13 +44,14 @@ class SubscriptionsController < MaawolController
 	    	end
 		  else
 				begin
-					@subscription = PaymentService::Chargebee.do_subscription_payment({
+					options = {
 						current_user: current_user,
 						subscription_level: subscription_level,
 						card_details: payment,
 						session_discount_code: session_discount_code || nil
-					})
-					unless @subscription.changed?
+					}
+					@subscription = Payment::Chargebee::Subscription.new(options).create
+					if !@subscription.errors.any?
 						session.delete(:discount_code)
 						respond_to do |format|
 							format.html do
@@ -74,7 +77,7 @@ class SubscriptionsController < MaawolController
 							flash[:error] = error_msg
 							redirect_to settings_path
 						end
-						format.json { @status = :error; @error = error_msg; @full_error = e.message }
+						format.json { @status = :error; @error = error_msg; @full_error = e.backtrace }
 					end
 				end
 			end

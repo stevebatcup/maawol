@@ -6,6 +6,7 @@ en:
       user:
         email: "Email address"
         email_confirm: "Confirm your email address"
+
   errors:
     users:
       invalid_password: Please enter a password with 8 or more characters
@@ -17,6 +18,12 @@ en:
     errors:
       verification_failed: Please check the box at the bottom of the form labelled "I'm not a robot"!
       recaptcha_unreachable: Oops, there was an error verifying that you are not a ROBOT. Please try again.
+
+  payments:
+    card_errors:
+      invalid:
+        visa: "Please enter a valid VISA card number"
+        mastercard: "Please enter a valid Mastercard card number"
 
   mobile:
     views:

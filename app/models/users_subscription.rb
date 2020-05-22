@@ -35,7 +35,7 @@ class UsersSubscription < ApplicationRecord
 	end
 
 	def cancel_recurring_billing(site_name)
-		if PaymentService.cancel_recurring_billing(self, site_name)
+		if cancel_remote_recurring_billing(site_name)
 			if self.subscription_option.custom?
 				new_status = :ending
 			else
@@ -53,6 +53,16 @@ class UsersSubscription < ApplicationRecord
 		end
 	end
 
+	def cancel_remote_recurring_billing(site_name)
+		if self.is_paypal?
+			Payment::Paypal::Subscription.cancel(self, site_name)
+		elsif self.is_card?
+			Payment::Chargebee::Subscription.cancel(self)
+		else
+			false
+		end
+	end
+
 	def within_one_day?
 		self.created_at > (Time.now - 1.day)
 	end
@@ -65,18 +75,33 @@ class UsersSubscription < ApplicationRecord
 		self.payment_system.to_sym == :chargebee
 	end
 
+	def finalise_paypal(agreement)
+		apply_paypal_agreement(agreement)
+		send_admin_subscription_email
+		send_receipt
+	end
+
+	def apply_paypal_agreement(agreement)
+		self.update_attributes({
+			remote_customer_id: agreement.payer.payer_info.email,
+			remote_subscription_id: agreement.id,
+			next_payment_due_at: Date.parse(agreement.start_date),
+			status: :recurring
+		})
+	end
+
 	def update_mailchimp
 		mailchimp_service = Maawol::Email::Mailchimp.new(self)
 		mailchimp_service.update_on_list
-	end
-
-	def send_receipt
-		UserMailer.subscription_receipt(self).deliver_now unless self.status == 'pending_paypal'
 	end
 
 	def send_admin_subscription_email
 		if SiteSetting.site_admin_gets_new_subscription_email?
 		  AdminMailer.new_subscription(self).deliver_now unless self.status == 'pending_paypal'
 		end
+	end
+
+	def send_receipt
+		UserMailer.subscription_receipt(self).deliver_now unless self.status == 'pending_paypal'
 	end
 end

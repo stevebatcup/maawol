@@ -125,7 +125,7 @@
           <p id="terms">* <%= t('views.subscription.small_print_terms_html', currency_symbol: Maawol::Config.currency_symbol) %></p>
 
           <p id="discount_applied" ng-if="discount.applied" ng-bind-html="discount.description"></p>
-          <form id="discount_form" ng-if="!discount.applied" class="d-flex">
+          <form id="discount_form" ng-if="!discount.applied" class="d-none">
             <input type="text" placeholder="<%= t('views.subscription.form.labels.discount_code.placeholder') %>" id="discount_code_input" ng-model="discount.code" />
             <button id="discount_code_button"><%= t('views.subscription.form.labels.discount_code.button') %></button>
           </form>

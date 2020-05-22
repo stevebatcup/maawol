@@ -4,7 +4,7 @@ class PaypalCallbackController < MaawolController
 
 	def create
 		begin
-			PaymentService::Paypal.complete_agreement(current_user, params[:token], session)
+			Payment::Paypal::Subscription.complete_agreement(current_user, params[:token], session)
 			flash[:notice] = t('views.subscription.success')
 			redirect_to settings_path
 		rescue Exception => e
@@ -64,7 +64,6 @@ private
 					first_payment: false,
 					created_at: Time.now
 				})
-				@user_subscription.increment!(:successful_recurring_payments) if outcome == :success
 				result = :success
 			else
 				result = :not_recurring
@@ -84,8 +83,15 @@ private
 	  result
 	end
 
+	def next_payment_due_at
+		days = @user_subscription.subscription_option.days
+		days.to_i.days.from_now.to_datetime
+	end
+
 	def handle_successful_payment
 		result = log_payment(:success)
+		@user_subscription.increment!(:successful_recurring_payments)
+		@user_subscription.update_attribute(:next_payment_due_at, next_payment_due_at)
 		UserMailer.payment_received(@user_subscription.user, params[:amount].to_f).deliver_now if result == :success
 		render json: { result: payment_messages[result] }
 	end
