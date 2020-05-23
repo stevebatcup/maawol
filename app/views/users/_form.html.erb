@@ -5,31 +5,31 @@
 <p class="text-danger pt-1" ng-hide="!formErrors.base" ng-cloak>{{formErrors.base}}</p>
 
 <p class="form-input">
-  <%= form.label :first_name %><br />
+  <%= form.label :first_name, class: 'mb-0' %>
   <%= form.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name", "ng-model": "formValues.firstName" %>
   <span class="text-danger" ng-hide="!formErrors.firstName" ng-cloak>{{formErrors.firstName}}</span>
 </p>
 
 <p class="form-input">
-  <%= form.label :last_name %><br />
+  <%= form.label :last_name, class: 'mb-0' %>
   <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name", "ng-model": "formValues.lastName" %>
   <span class="text-danger" ng-hide="!formErrors.lastName" ng-cloak>{{formErrors.lastName}}</span>
 </p>
 
 <p class="form-input">
-  <%= form.label :email %>
+  <%= form.label :email, class: 'mb-0' %>
   <%= form.text_field :email, class: "form-control", type: 'email', "ng-model": "formValues.email" %>
   <span class="text-danger" ng-hide="!formErrors.email" ng-cloak>{{formErrors.email}}</span>
 </p>
 
 <p class="form-input">
-  <%= form.label :email_confirm %>
+  <%= form.label :email_confirm, class: 'mb-0' %>
   <%= form.text_field :email_confirm, class: "form-control", type: 'email', "ng-model": "formValues.emailConfirm" %>
   <span class="text-danger" ng-hide="!formErrors.emailConfirm" ng-cloak>{{formErrors.emailConfirm}}</span>
 </p>
 
 <p class="form-input">
-  <%= form.label :password %>
+  <%= form.label :password, class: 'mb-0' %>
   <%= form.password_field :password, class: "form-control", "ng-model": "formValues.password" %>
   <small class="hint" ng-hide="formErrors.password">At least 8 characters</small>
   <span class="text-danger" ng-hide="!formErrors.password" ng-cloak>{{formErrors.password}}</span>

@@ -20,7 +20,11 @@ h6 {
 
 p,
 .description {
-  line-height: 2em;
+  line-height: 1.6em;
+}
+
+p.small {
+  line-height: 1em;
 }
 
 .section-title {

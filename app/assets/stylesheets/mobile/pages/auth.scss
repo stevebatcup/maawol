@@ -12,9 +12,11 @@ section#payment {
 	padding-bottom: 1em;
 
 	.panel {
-		width: 96vw;
+		width: 100%;
+		width: 100vw;
 		border: none;
-		padding: 1.5em;
+		padding: 2.5em 1.2em 1.2em;
+		// margin: -1em 0;
 	}
 
 	.bottom-text {
@@ -24,7 +26,7 @@ section#payment {
 	&#payment {
 		.panel {
 		  text-align: left;
-		  width: 93vw;
+		  // width: 93vw;
 		}
 	}
 }
