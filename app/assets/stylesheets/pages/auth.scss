@@ -27,6 +27,17 @@ section#payment {
 		  width: 100% !important;
 		}
 
+		.tandcs_input {
+			label {
+				line-height: 1.2em;
+			}
+
+			input[type=checkbox] {
+				width: 2.2em;
+				height: 2.2em;
+			}
+		}
+
 		.submit-input {
 		  margin-top: 0;
 		}

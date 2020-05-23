@@ -16,8 +16,17 @@ section#payment {
 		width: 100vw;
 		border: none;
 		padding: 2.5em 1.2em 1.2em;
-		// margin: -1em 0;
+
+		.tandcs_input {
+			input[type=checkbox] {
+				width: 3em;
+				height: 3em;
+				position: relative;
+				top: -0.3em;
+			}
+		}
 	}
+
 
 	.bottom-text {
 		padding-top: 0;

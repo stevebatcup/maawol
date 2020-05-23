@@ -35,6 +35,18 @@
   <span class="text-danger" ng-hide="!formErrors.password" ng-cloak>{{formErrors.password}}</span>
 </p>
 
+<p class="form-input tandcs_input">
+  <span class="d-flex align-items-start">
+    <input type="checkbox" class="mr-3" name="tandcs" id="tandcs" ng-model='formValues.tandcs' value="1" />
+    <label for="tandcs" class="my-0">
+      <small>
+        <%= t('views.register.tandcs_html', school: SiteSetting.school_name) %>
+      </small>
+    </label>
+  </span>
+  <span class="text-danger" ng-hide="!formErrors.tandcs" ng-cloak>{{formErrors.tandcs}}</span>
+</p>
+
 <% if use_recaptcha? %>
 <div class="mb-4" style="clear: both;">
   <%= recaptcha_tags(site_key: recaptcha_site_key) %>

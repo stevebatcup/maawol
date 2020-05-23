@@ -21,6 +21,7 @@ class Maawol.SignUp extends Maawol.Page
 			email: ''
 			emailConfirm: ''
 			password: ''
+			tandcs: false
 		@initFormErrors()
 		@bindEvents()
 
@@ -32,7 +33,7 @@ class Maawol.SignUp extends Maawol.Page
 				@timeout =>
 					$button = $(e.currentTarget).find('[data-disable-with]')[0]
 					Rails.enableElement($button)
-				, 750
+				, 500
 		).on("ajax:success", (e) =>
 			[responseData, status, xhr] = e.detail
 			@formSuccess(responseData)
@@ -47,6 +48,7 @@ class Maawol.SignUp extends Maawol.Page
 			email: null
 			emailConfirm: null
 			password: null
+			tandcs: false
 
 	validateForm: (errorCallback) =>
 		errors = {}
@@ -65,12 +67,16 @@ class Maawol.SignUp extends Maawol.Page
 			errors['password'] = @element.data('errors-password')
 		else if vals.password.length < 8
 			errors['password'] = @element.data('errors-password-minimum')
+		else if !vals.tandcs
+			errors['tandcs'] = @element.data('errors-tandcs')
 
 		if Object.entries(errors).length > 0
 			@scope.$apply =>
 				angular.forEach errors, (value, key) =>
 					@scope.formErrors[key] = value
 			errorCallback.call(@)
+		else
+			@scope.$apply @initFormErrors
 
 	formSuccess: (responseData) =>
 		if responseData.status == 'success'

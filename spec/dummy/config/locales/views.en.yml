@@ -221,6 +221,8 @@ en:
       courses: Courses
 
     register:
+      tandcs_html: "I am over 18 and agree to the <a href='/terms-and-conditions' target='_blank'>
+        Terms &amp; Conditions</a> and <a href='/privacy-policy' target='_blank'>Privacy Policy</a> for %{school}"
       redirected: "You must first create your account before you can view any of the lessons. Joining is quick, easy and FREE using the form below!"
       errors:
         first_name: Please enter your first name
@@ -229,7 +231,8 @@ en:
         email_confirm: Please confirm your email address
         email_match: Please make sure your email address matches the confirmation
         password: Please create a password for your account
-        password_minimum: Please make sure your password is at least 8 charctares long
+        password_minimum: Please make sure your password is at least 8 characters long
+        tandcs: Please confirm that you are over 16 and you agree to our Terms and Conditions
     store:
       nothing_found: No items found for this store
       loading: Loading list of files....
