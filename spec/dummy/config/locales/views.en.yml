@@ -26,9 +26,9 @@ en:
           deleting: Processing
           cancel: Cancel
           error: Sorry, there has been an error deleting your account
-          account_deleted_html: Sorry to see you go.
+          account_deleted_html: "Sorry to see you go.
                             Your data has now been deleted as per the privacy policy you signed up to upon registration.<br /><br />
-                            Feel free to rejoin %{school} at anytime. All the best, %{main_tutor}.
+                            Feel free to rejoin %{school} at anytime. All the best, %{main_tutor}."
       password:
         title: Update your password
         submit: Change my password

@@ -39,7 +39,7 @@ class UsersController < Clearance::UsersController
     sign_out
     flash[:alert] = t('views.account_settings.details.delete.account_deleted_html',
                         main_tutor: Author.main_author.name,
-                        school: SiteSetting.school_name)
+                        school: SiteSetting.school_name).html_safe
     render json: { status: :success }
   end
 
