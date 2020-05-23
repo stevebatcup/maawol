@@ -10,6 +10,10 @@ class SiteSetting < ApplicationRecord
 		Rails.cache.delete("school_settings")
 	end
 
+  def self.school_name
+  	find_by(slug: "site-name").value
+  end
+
 	def self.site_admin_gets_new_registration_email?
 		find_by(slug: "receives-new-registration-admin-email").value == 'yes'
 	end

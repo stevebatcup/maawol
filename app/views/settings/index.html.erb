@@ -1,11 +1,12 @@
 <% html_title t('views.account_settings.html_title') %>
 
 <section ng-controller="SettingsController"
-  data-recurring-cancellation-error="Sorry, there has been an error cancelling your subscription"
-  data-payment-error-prefix="<%= I18n.t('views.subscription.form.errors.prefix') %>"
-  data-card-error-number-invalid="<%= I18n.t('views.subscription.form.errors.card_number') %>"
-  data-card-error-expiry-invalid="<%= I18n.t('views.subscription.form.errors.expiry') %>"
-  data-card-error-cv2-invalid="<%= I18n.t('views.subscription.form.errors.cv2') %>"
+  data-recurring-cancellation-error="<%= t('views.account_settings.cancel_recurring_modal.error') %>"
+  data-account-deletion-error="<%= t('views.account_settings.details.delete.error') %>"
+  data-payment-error-prefix="<%= t('views.subscription.form.errors.prefix') %>"
+  data-card-error-number-invalid="<%= t('views.subscription.form.errors.card_number') %>"
+  data-card-error-expiry-invalid="<%= t('views.subscription.form.errors.expiry') %>"
+  data-card-error-cv2-invalid="<%= t('views.subscription.form.errors.cv2') %>"
   id="settings">
 
   <%= render 'settings/menu' if browser.device.mobile? %>
@@ -74,6 +75,16 @@
                       { class: 'btn btn-block btn-success btn-large w-100 mx-auto mt-2 px-5' } %>
             </p>
           <% end %>
+
+          <% unless current_user.is_admin? %>
+          <p class="actions d-flex justify-content-start">
+            <a href='#' ng-click="accountDeleteDialog($event)"
+                class="text-danger d-block text-center w-100 mx-auto mt-2 px-5">
+              <%= t('views.account_settings.details.delete.button') %>
+            </a>
+            <%= render partial: "confirm_delete_account", locals: { current_user: current_user } %>
+          </p>
+          <% end %>
         </div>
 
         <div class="well no-border p-3 p-md-4 tab-pane fade <%= 'show active' if @mode == 'password' %>" id="password" role="tabpanel">
@@ -108,14 +119,12 @@
 
           <p>
             <label>
-              <%= t('views.account_settings.membership.labels.current_status') %>
+              <%= t("views.account_settings.membership.access_levels.#{current_user.status.to_s}") %>
             </label>
-            <br />
-            <strong><%= current_user.membership_status %></strong>
           </p>
 
           <% if current_user.status.to_sym == :free %>
-            <a href="/subscribe" class="btn btn-success btn-large btn-block w-100 mx-auto mt-2">
+            <a href="/subscribe" class="btn btn-success btn-large btn-block w-100 mx-auto mt-3">
               <%= t('views.account_settings.membership.subscribe_now') %>
             </a>
 
@@ -126,7 +135,7 @@
             %>
             <p>
               <label>
-                <%= t('views.account_settings.membership.labels.subscription_level') %>
+                <%= t('views.account_settings.membership.labels.subscription_level') %>:
               </label>
               <br />
               <strong><%= subscription_option.name %></strong> (<%= subscription_option.description.html_safe %>)
@@ -135,7 +144,7 @@
             <% if current_user.has_recurring_subscription? %>
               <p data-current-subscription-id="<%= user_sub.id %>">
                 <label>
-                  <%= t('views.account_settings.membership.labels.next_payment_due') %>
+                  <%= t('views.account_settings.membership.labels.next_payment_due') %>:
                 </label>
                 <br />
                 <strong><%= user_sub.next_payment_due_at.strftime("%B %d, %Y") %></strong>
@@ -151,20 +160,20 @@
 
               <%= render partial: "subscriptions/cancel_recurring", locals: { current_user: current_user } %>
 
-              <a href="#" id="cancel_recurring" class="btn btn-block btn-danger btn-mgn-btm w-100 mx-auto mt-2">
+              <a href="#" id="cancel_recurring" class="btn btn-block btn-danger btn-mgn-btm w-100 mx-auto mt-3">
                 <%= t('views.account_settings.membership.cancel_sub') %>
               </a>
 
             <% else %>
               <p>
                 <label>
-                  <%= t('views.account_settings.membership.labels.sub_ends') %>
+                  <%= t('views.account_settings.membership.labels.sub_ends') %>:
                 </label>
                 <br />
-                <%= user_sub.ends_at.strftime("%B, %d, %Y") %>
+                <strong><%= user_sub.ends_at.strftime("%B, %d, %Y") %></strong>
               </p>
 
-              <a href="/subscribe" class="btn btn-block btn-success btn-large w-100 mx-auto mt-2" style="white-space: normal;">
+              <a href="/subscribe" class="btn btn-block btn-success btn-large w-100 mx-auto mt-3" style="white-space: normal;">
                 <%= t('views.account_settings.membership.resubscribe') %>
               </a>
             <% end %>

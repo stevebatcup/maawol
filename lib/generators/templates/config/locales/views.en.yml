@@ -5,12 +5,13 @@ en:
       menu:
         account_details: Account details
         password: Password
-        membership: Membership
+        membership: Access level
         payment_details: Payment details
       cancel_recurring_modal:
         title: Cancel my subscription
         subtitle: Are you sure you want to cancel your subscription?
         desc: Only members with a subscription are able to view the lessons and enjoy a host of other benefits.
+        error: Sorry, there has been an error cancelling your subscription
         buttons:
           ok: Yes, cancel my subscription
           processing: Cancelling subscription
@@ -19,6 +20,15 @@ en:
         title: Update the details for your account
         opt_in_label: Opt me into the weekly digest email
         submit: Update my details
+        delete:
+          button: Delete my account
+          confirm: Are you sure you wish to completely delete your %{school} account?
+          deleting: Processing
+          cancel: Cancel
+          error: Sorry, there has been an error deleting your account
+          account_deleted_html: Sorry to see you go.
+                            Your data has now been deleted as per the privacy policy you signed up to upon registration.<br /><br />
+                            Feel free to rejoin %{school} at anytime. All the best, %{main_tutor}.
       password:
         title: Update your password
         submit: Change my password
@@ -28,10 +38,15 @@ en:
         labels:
           expiry: Expiry date
       membership:
-        title: Details of your membership status
+        title: Your access level
         subscribe_now: Subscribe now
         cancel_sub: Cancel my subscription
         resubscribe: Resubscribe now to continue enjoying the site
+        access_levels:
+          free: You are currently a free member. Subscribe now to unlock the full lesson library and a host of other benefits
+          paying: You are currently a paying subscriber.
+          complimentary: You are currently on a complimentary subscription.
+          expiring: You have a current subscription but your payments are no longer recurring.
         labels:
           sub_ends: Subscription ends
           subscription_level: Subscription level
@@ -52,7 +67,7 @@ en:
       reply: Reply
 
     contact:
-      send_email: Or you can send us an email at
+      send_email: Or you can email us at
       section_title:
         request: Request a lesson
         contact: Get in touch
@@ -87,6 +102,24 @@ en:
           lessons: Lessons
           difficulty: Difficulty
           released: Released
+
+    dashboard:
+      personalised:
+        title_html: "<span class='first-word'>Personalised</span> lessons"
+        empty: As a subscriber you can request personalised lessons from %{author}
+        button: Request a lesson
+      watch_list:
+        title_html: "<span class='first-word'>Watch</span> list"
+        empty: You have not yet marked any lessons to watch later
+        button: Find lessons
+      favourites:
+        title_html: "<span class='first-word'>Favourite</span> lessons"
+        empty: You have not yet added any lessons to your favorites
+        button: Find lessons
+      viewed:
+        title_html: "<span class='first-word'>Viewed</span> lessons"
+        empty: You have not yet marked any lessons as viewed
+        button: Find lessons
 
     defaults:
       by: by

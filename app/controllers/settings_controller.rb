@@ -49,6 +49,10 @@ class SettingsController < MaawolController
 		end
 	end
 
+	def destroy
+		render json: { status: success }
+	end
+
 private
 
 	def mailchimp_service

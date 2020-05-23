@@ -28,13 +28,12 @@ class Maawol.Settings extends Maawol.Page
 			title: ''
 			msg: ''
 		@scope.cancellingRecurringBilling = false
+		@scope.deletingAccount = false
 		vars = Maawol.FormHelpers.getUrlVars()
 		if 'preclick' of vars
 			@timeout =>
 				$("a.nav-link#menu_#{vars['preclick']}").click()
 			, 100
-
-
 
 	bindEvents: =>
 		@bindSubscribeCalloutClick()
@@ -60,6 +59,30 @@ class Maawol.Settings extends Maawol.Page
 			e.preventDefault()
 			@validateCardDetails @scope.card, =>
 				$('form#update_card_form').submit()
+
+	accountDeleteDialog: ($event) =>
+		$event.preventDefault()
+		$('#deleteAccountModal').modal()
+
+	confirmDeleteAccount: ($event) =>
+		$event.preventDefault()
+		@scope.deletingAccount = true
+		@timeout =>
+			@http.delete("/delete-account").then (response) =>
+				$('button[data-dismiss=modal]', '#deleteAccountModal').click()
+				if response.data.status is 'success'
+					window.location.href = "/"
+				else
+					@deleteAccountError(response.data.message)
+			, (error) =>
+				@deleteAccountError(error.statusText)
+		, 750
+		true
+
+	deleteAccountError: (msg) =>
+		@scope.deletingAccount = false
+		msgPrefix = @element.data('account-deletion-error')
+		@alert "#{msgPrefix}: #{msg}"
 
 	cardDetailsError: (msg) =>
 		@scope.$apply =>

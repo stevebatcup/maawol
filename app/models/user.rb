@@ -40,6 +40,16 @@ class User < ApplicationRecord
     where.not(status: :deleted)
   end
 
+  def self.authenticate(email, password)
+    if user = find_by_normalized_email(email)
+      if password.present? && user.authenticated?(password)
+        if user.status.to_sym != :deleted
+          user
+        end
+      end
+    end
+  end
+
   def set_default_status
     self.status = :free
   end
@@ -94,5 +104,20 @@ class User < ApplicationRecord
 
   def can_access_dashboard?
     has_full_account? || is_admin?
+  end
+
+  def poisoned_email
+    "deleted__#{self.email}"
+  end
+
+  def purge
+    self.watch_laters.destroy_all
+    self.favourites.destroy_all
+    self.views.destroy_all
+    self.lessons.destroy_all
+    self.update_attributes({
+      email: poisoned_email,
+      status: :deleted
+    })
   end
 end
