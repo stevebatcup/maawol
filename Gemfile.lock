@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    maawol (0.3.20)
+    maawol (0.3.21)
       acts_as_commentable_with_threading
       acts_as_shopping_cart (~> 0.4.0)
       administrate (~> 0.13)
@@ -202,7 +202,7 @@ GEM
       factory_bot (~> 5.1.0)
       railties (>= 4.2.0)
     ffi (1.12.2)
-    fog-aws (3.6.4)
+    fog-aws (3.6.5)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
       fog-xml (~> 0.1)
@@ -308,7 +308,7 @@ GEM
     pg (1.2.3)
     popper_js (1.16.0)
     public_suffix (4.0.5)
-    puma (4.3.3)
+    puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-protection (2.0.8.1)
@@ -417,7 +417,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    websocket-driver (0.7.1)
+    websocket-driver (0.7.2)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
     xml-simple (1.1.5)
@@ -438,7 +438,7 @@ DEPENDENCIES
   listen
   maawol!
   mini_racer
-  puma (~> 4.1)
+  puma (~> 4.3.5)
   rails-assets-ng-cookies!
   rspec-rails
   sass-rails (>= 6)
