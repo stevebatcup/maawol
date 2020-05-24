@@ -39,7 +39,7 @@ module Payment
 		end
 
 		def redeem_discount_code
-			if discount_code = DiscountCode.find_by_code(session_discount_code)
+			if discount_code = DiscountCode.find_by_code(session[:discount_code])
 				discount_code.increment!(:redemption_count)
 			end
 			session.delete(:discount_code)

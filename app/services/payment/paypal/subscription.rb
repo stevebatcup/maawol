@@ -25,7 +25,7 @@ module Payment
 
 			def self.complete_agreement(current_user, token, session)
 				agreement = execute_agreement(token, current_user)
-				redeem_discount_code if session_discount_code.present?
+				redeem_discount_code if session[:discount_code].present?
 				pending_subscription = current_user.get_pending_paypal_subscription
 				redeem_custom_option if pending_subscription.subscription_option.custom
 				pending_subscription.finalise_paypal(agreement)
