@@ -128,7 +128,9 @@ module Payment
 				friendly_start_at = start_at.strftime('%B %d, %Y')
 				data = {
 					name: "#{site_name} billing agreement",
-					description: "Monthly subscription. #{to_pay_now} and then #{Maawol::Config.currency_symbol}#{('%.2f' % recurring_price)} #{monthly_desc} starting on #{friendly_start_at}",
+					description: "Monthly subscription to #{Maawol::Config.site_name}. #{to_pay_now} and then
+												#{Maawol::Config.currency_symbol}#{('%.2f' % recurring_price)} #{monthly_desc}
+												starting on #{friendly_start_at}",
 					start_date: start_at.strftime('%Y-%m-%dT%H:%M:%S.%L%z'),
 					payer: { payment_method: "paypal" },
 					plan: { id: recurring_plan.id },

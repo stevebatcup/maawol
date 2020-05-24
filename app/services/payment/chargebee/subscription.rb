@@ -74,6 +74,10 @@ module Payment
 				end
 			end
 
+			def invoice_notes
+				"School: #{Maawol::Config.site_name} | Plan ID: #{plan_id}"
+			end
+
 			def first_subscribe
 				data = {
 					plan_id: plan_id,
@@ -81,7 +85,8 @@ module Payment
 					status: :active,
 					customer: { email: current_user.email, first_name: current_user.first_name, last_name: current_user.last_name },
 					card: self.class.chargebee_card_data(card_details),
-					currency_code: Maawol::Config.currency_code
+					currency_code: Maawol::Config.currency_code,
+					invoice_notes: invoice_notes
 				}
 				data[:coupon_ids] = [chargebee_coupon_code] if chargebee_coupon_code.present?
 				if result = ChargeBee::Subscription.create(data)
@@ -97,7 +102,8 @@ module Payment
 					status: :future,
 					card: self.class.chargebee_card_data(card_details),
 					start_date: start_date.to_time.to_i,
-					currency_code: Maawol::Config.currency_code
+					currency_code: Maawol::Config.currency_code,
+					invoice_notes: invoice_notes
 				}
 				data[:coupon_ids] = [chargebee_coupon_code] if chargebee_coupon_code.present?
 				customer_id = current_user.current_ending_subscription.remote_customer_id
@@ -115,7 +121,8 @@ module Payment
 					customer: { email: current_user.email, first_name: current_user.first_name, last_name: current_user.last_name },
 					card: self.class.chargebee_card_data(card_details),
 					start_date: start_date.to_time.to_i,
-					currency_code: Maawol::Config.currency_code
+					currency_code: Maawol::Config.currency_code,
+					invoice_notes: invoice_notes
 				}
 				if result = ChargeBee::Subscription.create(data)
 					log(current_user, :custom_subscribe, self.class.mask_data(data), result)

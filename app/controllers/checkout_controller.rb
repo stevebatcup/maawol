@@ -49,7 +49,7 @@ class CheckoutController < MaawolController
 				end
 			rescue Exception => e
 				@status = :error
-				@error = e.backtrace
+				@error = e.message
 			end
 		else
 			@status = :error
@@ -114,7 +114,7 @@ private
 	def payment_description
 		@payment_description ||= begin
 			store = basket.shopping_cart_items.first.item.store
-			"#{basket.shopping_cart_items.length} item#{'s' if basket.shopping_cart_items.length > 1} from the #{store.name} store"
+			"#{basket.shopping_cart_items.length} item#{'s' if basket.shopping_cart_items.length > 1} from the #{store.name} store on #{Maawol::Config.site_name}"
 		end
 	end
 
