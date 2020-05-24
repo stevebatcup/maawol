@@ -33,13 +33,7 @@ module Payment
 			  })
 			end
 
-		protected
-
-			def log(user, action, request, result)
-				self.class.log(user, action, request, result)
-			end
-
-			def chargebee_card_data(card)
+			def self.chargebee_card_data(card)
 				{
 					gateway_account_id: Maawol::Config.chargebee_gateway,
 					number: card[:cardNumber],
@@ -50,13 +44,19 @@ module Payment
 				}
 			end
 
-			def mask_data(data)
+			def self.mask_data(data)
 				last_digits = data[:card][:number].to_s.slice(-4..-1)
 				data[:card][:number] = "************#{last_digits}"
 				data[:card][:cvv] = "***"
 				data[:card][:expiry_month] = "**"
 				data[:card][:expiry_year] = "****"
 				data
+			end
+
+		protected
+
+			def log(user, action, request, result)
+				self.class.log(user, action, request, result)
 			end
 
 		end

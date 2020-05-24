@@ -24,13 +24,13 @@ module Payment
 
 		def future_start
 			if has_chosen_custom_option?(chosen_option, custom_option)
-				future_start = Time.now + chosen_option.days.to_i.days
+				Time.now + chosen_option.days.to_i.days
 			elsif payment_system == :card && current_user.has_current_ending_card_subscription?
-				future_start = current_user.current_ending_subscription.ends_at
+				current_user.current_ending_subscription.ends_at
 			elsif payment_system == :paypal && current_user.has_current_ending_paypal_subscription?
-				future_start = current_user.current_ending_subscription.ends_at
+				current_user.current_ending_subscription.ends_at
 			else
-				future_start = nil
+				nil
 			end
 		end
 

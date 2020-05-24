@@ -12,12 +12,14 @@ module Payment
 			end
 
 			def	create
-				if subscription.save
+				remote_subscription = build_remote_subscription
+				local_subscription = build_local_subscription(remote_subscription)
+				if local_subscription.save
 					redeem_discount_code if session_discount_code.present?
 					current_user.update_attribute(:status, :paying)
 					custom_option.update_attribute(:redeemed, :true) if custom_option
 				end
-				subscription
+				local_subscription
 			end
 
 			def self.cancel(subscription)
@@ -50,7 +52,7 @@ module Payment
 				end
 			end
 
-			def subscription
+			def build_local_subscription(remote_subscription)
 				current_user.build_new_subscription({
 					remote_subscription: remote_subscription,
 					future_start: start_date,
@@ -64,7 +66,7 @@ module Payment
 				"#{chosen_option.payment_system_plan}_#{Maawol::Config.currency_code.downcase}"
 			end
 
-			def remote_subscription
+			def build_remote_subscription
 				if future_start.nil?
 					first_subscribe
 				else
@@ -78,12 +80,12 @@ module Payment
 					plan_unit_price: recurring_price_in_pence,
 					status: :active,
 					customer: { email: current_user.email, first_name: current_user.first_name, last_name: current_user.last_name },
-					card: chargebee_card_data(card_details),
+					card: self.class.chargebee_card_data(card_details),
 					currency_code: Maawol::Config.currency_code
 				}
 				data[:coupon_ids] = [chargebee_coupon_code] if chargebee_coupon_code.present?
 				if result = ChargeBee::Subscription.create(data)
-					log(current_user, :first_subscribe, mask_data(data), result)
+					log(current_user, :first_subscribe, self.class.mask_data(data), result)
 					result
 				end
 			end
@@ -93,14 +95,14 @@ module Payment
 					plan_id: plan_id,
 					plan_unit_price: recurring_price_in_pence,
 					status: :future,
-					card: chargebee_card_data(card_details),
+					card: self.class.chargebee_card_data(card_details),
 					start_date: start_date.to_time.to_i,
 					currency_code: Maawol::Config.currency_code
 				}
 				data[:coupon_ids] = [chargebee_coupon_code] if chargebee_coupon_code.present?
 				customer_id = current_user.current_ending_subscription.remote_customer_id
 				if result = ChargeBee::Subscription.create_for_customer(customer_id, data)
-					log(current_user, :resubscribe, mask_data(data), result)
+					log(current_user, :resubscribe, self.class.mask_data(data), result)
 					result
 				end
 			end
@@ -111,12 +113,12 @@ module Payment
 					plan_unit_price: recurring_price_in_pence,
 					status: :active,
 					customer: { email: current_user.email, first_name: current_user.first_name, last_name: current_user.last_name },
-					card: chargebee_card_data(card_details),
+					card: self.class.chargebee_card_data(card_details),
 					start_date: start_date.to_time.to_i,
 					currency_code: Maawol::Config.currency_code
 				}
 				if result = ChargeBee::Subscription.create(data)
-					log(current_user, :custom_subscribe, mask_data(data), result)
+					log(current_user, :custom_subscribe, self.class.mask_data(data), result)
 					result
 				end
 			end

@@ -43,7 +43,7 @@ module Payment
 			def single_payment_customer
 				ChargeBee::Customer.create({
 					email: payment_details[:email],
-					card: chargebee_card_data(payment_details)
+					card: self.class.chargebee_card_data(payment_details)
 				}).customer()
 			end
 		end
