@@ -57,7 +57,6 @@ class CourseDashboard < Administrate::BaseDashboard
     :image,
     :skill_levels,
     :tags,
-    :categories,
     :teachings,
     :publish_date,
     :description,

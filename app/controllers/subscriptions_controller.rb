@@ -77,7 +77,12 @@ class SubscriptionsController < MaawolController
 							flash[:error] = error_msg
 							redirect_to settings_path
 						end
-						format.json { @status = :error; @error = error_msg; @full_error = e.backtrace }
+						format.json do
+							@status = :error
+							@error = error_msg
+							@full_error = e.message
+							@backtrace = e.backtrace
+						end
 					end
 				end
 			end

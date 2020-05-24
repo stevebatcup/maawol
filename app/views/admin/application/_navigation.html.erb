@@ -19,22 +19,16 @@
   </h3>
   <div id="lesson_options" class="collapse show">
     <ul>
-      <li class="<%= 'active' if request.path.include?('/admin/lessons') %>">
-        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/lessons">
-          <span class="text">Lessons</span>
-          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.lessons}}</span>
-        </a>
-      </li>
-      <li class="<%= 'active' if request.path.include?('/admin/courses') %>">
-        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/courses">
-          <span class="text">Courses</span>
-          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.courses}}</span>
-        </a>
-      </li>
       <li class="<%= 'active' if request.path.include?('/admin/authors') %>">
         <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/authors">
           <span class="text">Tutors</span>
           <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.courses}}</span>
+        </a>
+      </li>
+      <li class="<%= 'active' if request.path.include?('/admin/lessons') %>">
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/lessons">
+          <span class="text">Lessons</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.lessons}}</span>
         </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/root_categories') %>">
@@ -55,9 +49,15 @@
           <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.tags}}</span>
         </a>
       </li>
+      <li class="<%= 'active' if request.path.include?('/admin/courses') %>">
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/courses">
+          <span class="text">Courses</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.courses}}</span>
+        </a>
+      </li>
       <li class="<%= 'active' if request.path.include?('/admin/skill_levels') %>">
         <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/skill_levels">
-          <span class="text">Skill levels</span>
+          <span class="text">Course skill levels</span>
           <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.skillLevels}}</span>
         </a>
       </li>

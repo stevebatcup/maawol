@@ -22,5 +22,11 @@ module Admin
 				"/sign_up?from=locked_lesson"
 			end
 		end
+
+		def help_image_tag(help_section, width='100%')
+			image_tag("https://maawol.s3.amazonaws.com/admin-help/screenshots/#{help_section}.png",
+									class: 'admin_help_screenshot d-block mb-2',
+									width: width)
+		end
 	end
 end

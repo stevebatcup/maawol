@@ -1,11 +1,28 @@
 #help_modal {
 	.modal-dialog {
-		max-width: 90%;
-		max-width: 90vw;
+		max-width: 65%;
+		max-width: 65vw;
 
 		.modal-body {
-			height: 82vh;
+			height: 75vh;
 			overflow-y: auto;
+		}
+	}
+
+	img.admin_help_screenshot {
+		box-shadow: 2px 2px 7px #666;
+	}
+
+	p.admin_help_caption {
+		font-size: 0.85em;
+		color: #aaa;
+	}
+
+	ul {
+		padding-left: 25px;
+
+		li {
+			list-style: disc;
 		}
 	}
 }

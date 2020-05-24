@@ -32,8 +32,6 @@ class AuthorDashboard < Administrate::BaseDashboard
     referral_home_url
     subscription_fee_split
     avatar
-    lessons
-    courses
   ].freeze
 
   FORM_ATTRIBUTES = %i[

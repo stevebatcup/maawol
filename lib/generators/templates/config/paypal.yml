@@ -8,4 +8,4 @@ test:
 
 production:
   <<: *default
-  mode: live
+  mode: # Rails.application.credentials.paypal[:mode] %>

@@ -13,12 +13,11 @@ en:
       options:
         general: Introduction
         dashboard: Dashboard
-        lessons: Lessons
-        courses: Courses
         authors: Tutors
-        sections: Sections
-        categories: Categories
+        lessons: Lessons
+        sections: Sections & Categories
         tags: Tags
+        courses: Courses
         skill_levels: Skill levels
         site_settings: School settings
         videos: Videos
@@ -65,6 +64,7 @@ en:
       category:
         when_associated: In categories
         lesson_ids: Lessons in this category
+        root_category: Section
         root_category_id: Section
       listening_lab:
         spotify_url: Spotify playlist URL
@@ -142,7 +142,7 @@ en:
         earnings: You earned
         store_payments_count: Store payments
         subscription_payments_count: Subscription payments
-        profit_split_percentage: Your income percentage (Maawol gets the reaminder)
+        profit_split_percentage: Your income percentage (Maawol gets the remainder)
         total_income: Total income for website
       author:
         resource_name_overrides:

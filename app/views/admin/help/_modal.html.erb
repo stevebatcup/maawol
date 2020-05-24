@@ -3,7 +3,7 @@
     <div class="modal-content">
 
       <div class="modal-header d-flex justify-content-between">
-        <div class="w-50">
+        <div class="w-75">
           <h2 class="mb-4">
             <i class="fas fa-question-circle mr-1"></i>
             <%= t('admin_help_modal.heading') %>
@@ -25,11 +25,11 @@
               </optgroup>
 
               <optgroup label="<%= t('admin_help_modal.section_chooser.groups.library') %>">
-                <option value="lesson"><%= t('admin_help_modal.section_chooser.options.lessons') %></option>
-                <option value="course"><%= t('admin_help_modal.section_chooser.options.courses') %></option>
                 <option value="author"><%= t('admin_help_modal.section_chooser.options.authors') %></option>
-                <option value="category"><%= t('admin_help_modal.section_chooser.options.categories') %></option>
+                <option value="lesson"><%= t('admin_help_modal.section_chooser.options.lessons') %></option>
+                <option value="section"><%= t('admin_help_modal.section_chooser.options.sections') %></option>
                 <option value="tag"><%= t('admin_help_modal.section_chooser.options.tags') %></option>
+                <option value="course"><%= t('admin_help_modal.section_chooser.options.courses') %></option>
                 <option value="skill_level"><%= t('admin_help_modal.section_chooser.options.skill_levels') %></option>
               </optgroup>
 

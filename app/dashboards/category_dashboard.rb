@@ -24,7 +24,7 @@ class CategoryDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
-    :description,
+    :root_category,
     :lessons,
   ].freeze
 
@@ -32,7 +32,6 @@ class CategoryDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
-    :description,
     :lessons,
   ].freeze
 
@@ -43,7 +42,6 @@ class CategoryDashboard < Administrate::BaseDashboard
     :name,
     :root_category,
     :lessons,
-    :description,
   ].freeze
 
   # Overwrite this method to customize how categories are displayed

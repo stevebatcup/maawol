@@ -14,7 +14,6 @@ class Maawol.AdminHeaderBarController extends Maawol.AdminPage
 	]
 
 	init: ->
-		@setDefaultHttpHeaders()
 		@setCsrfTokenHeaders()
 		@initSideMenu()
 		@initHelp()
@@ -45,6 +44,7 @@ class Maawol.AdminHeaderBarController extends Maawol.AdminPage
 	openHelp: ($event) =>
 		$event.preventDefault()
 		helpSection = $("[data-help-section]").first().data('help-section')
+		helpSection = 'section' if helpSection is 'category'
 		@rootScope.helpData.section = helpSection
 		@rootScope.helpData.loading = true
 		$('#help_modal').modal()
@@ -53,11 +53,12 @@ class Maawol.AdminHeaderBarController extends Maawol.AdminPage
 		, 400
 
 	getHelpContent: (helpSection) =>
+		@http.defaults.headers.common['Accept'] = 'text/html'
+		@http.defaults.headers.common['Content-Type'] = 'text/html'
 		@http.get("/admin/help?section=#{helpSection}").then (response) =>
 			@rootScope.helpData.loading = false
-			@rootScope.helpData.content = @sce.trustAsHtml(response.data.content)
+			@rootScope.helpData.content = @sce.trustAsHtml(response.data)
 		, (error) =>
-			console.log error
 			@rootScope.helpData.loading = false
 			@rootScope.helpData.content = @sce.trustAsHtml("<h2 class='text-center m-5'><i class='fas fa-sad-cry mr-3'></i>Help page not found</h2>")
 
