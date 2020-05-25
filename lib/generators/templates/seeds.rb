@@ -40,7 +40,7 @@ settings_data.each do |setting_data|
 	end
 end
 
-puts "> Seeding CMS Blocks for homepage et al...."
+puts "> Seeding CMS Blocks for page introductions...."
 lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -51,12 +51,7 @@ blocks = [
 	{
 	  name: "Homepage introduction",
 	  title: "#{Maawol::Config.site_name}",
-	  content: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>",
+	  content: lorem,
 	  is_editable: 1,
 	  is_deletable: 0
 	},
@@ -84,40 +79,20 @@ blocks = [
 ]
 blocks.each { |block| ContentManagement::ContentBlock.find_or_create_by(block) }
 
-puts "> Creating Homepage...."
-homepage = ContentManagement::Page.find_or_create_by(title: "Homepage", slug: "")
-
-
-puts "> Creating Privacy Policy page...."
-privacy_block_data = {
-  name: "Privacy Policy",
-  title: "Privacy Policy",
-  content: "<p>Privacy Policy stuff here</p><p>#{lorem}</p><p>#{lorem}</p><p>#{lorem}</p>",
-  is_editable: 0,
-  is_deletable: 0
+puts "> Creating About Us page...."
+about_us_block_data = 	{
+	  name: "About Us page main content",
+	  title: "About Us",
+	  content: "<p>Lots of information here about #{Maawol::Config.site_name}.</p><p>#{lorem}</p>",
+	  is_editable: 1,
+	  is_deletable: 0
 }
-privacy_block = ContentManagement::ContentBlock.find_or_create_by(privacy_block_data)
-unless ContentManagement::Page.find_by(title: "Privacy Policy")
+about_us_block = ContentManagement::ContentBlock.find_or_create_by(about_us_block_data)
+unless ContentManagement::Page.find_by(slug: "about-us")
 	ContentManagement::Page.create({
-		title: "Privacy Policy",
-		sections_attributes: [{ sort: 1, content_block_id: privacy_block.id }],
-		is_editable: 0
-	})
-end
-
-puts "> Creating Terms and Conditions page...."
-terms_and_conditions_data = {
-  name: "Terms and Conditions",
-  title: "Terms and Conditions",
-  content: "<p>Terms and Conditions stuff here</p><p>#{lorem}</p><p>#{lorem}</p><p>#{lorem}</p>",
-  is_editable: 0,
-  is_deletable: 0
-}
-terms_and_conditions_block = ContentManagement::ContentBlock.find_or_create_by(terms_and_conditions_data)
-unless ContentManagement::Page.find_by(title: "Terms and Conditions")
-	ContentManagement::Page.create({
-		title: "Terms and Conditions",
-		sections_attributes: [{ sort: 1, content_block_id: terms_and_conditions_block.id }],
+		title: "About Us",
+		slug: "about-us",
+		sections_attributes: [{ sort: 1, content_block_id: about_us_block.id }],
 		is_editable: 0
 	})
 end
@@ -126,8 +101,8 @@ puts "> Seeding CMS Navbars...."
 navbars_data = [
 	{ slug: :signed_out, items: [
 		{ name: "Welcome", url: "/", desktop: true, mobile: true },
+		{ name: "About Us", url: "/about-us", desktop: true, mobile: true },
 		{ name: "Register for FREE", url: "/sign_up", desktop: true, mobile: true },
-		{ name: "Recent lessons", url: "#recent_lessons", desktop: true, mobile: true },
 		{ name: "Get in touch", url: "/contact", desktop: true, mobile: true }
 	]},
 	{ slug: :signed_in, items: [
