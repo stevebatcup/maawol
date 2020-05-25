@@ -63,6 +63,8 @@ Rails.application.routes.draw do
 	get "lessons/tag/:tag", to: 'lessons#index', as: :tag
 	get "lesson-suggestions", to: 'lesson_suggestions#index', as: :lesson_suggestions
 	resources :courses
+	get "course/:slug", :to => "courses#show", as: :course_by_slug
+
 	resources :views
 	resources :watch_laters
 	resources :favourites

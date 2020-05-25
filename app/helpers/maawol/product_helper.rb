@@ -14,7 +14,7 @@ module Maawol
 			if item.is_a?(Downloadable)
 				download_file_url(token: item.token)
 			elsif item.is_a?(Course)
-				course_path(item)
+				course_by_slug_path(slug: item.slug)
 			end
 		end
 

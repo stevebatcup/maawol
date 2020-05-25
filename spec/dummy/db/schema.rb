@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_22_192722) do
+ActiveRecord::Schema.define(version: 2020_05_25_182001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -188,6 +188,7 @@ ActiveRecord::Schema.define(version: 2020_05_22_192722) do
     t.integer "include_in_menu", default: 0
     t.integer "author_id", default: 1
     t.integer "image_tmp_media_id"
+    t.string "slug"
   end
 
   create_table "courses_skill_levels", id: false, force: :cascade do |t|

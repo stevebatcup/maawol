@@ -14,6 +14,10 @@ class CoursesController < MaawolController
 	end
 
 	def show
-		@course = Course.find(params[:id])
+		if params[:slug]
+			@course = Course.find_by(slug: params[:slug])
+		elsif params[:id]
+			@course = Course.find(params[:id])
+		end
 	end
 end

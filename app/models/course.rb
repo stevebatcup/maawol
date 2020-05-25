@@ -15,7 +15,12 @@ class Course < ApplicationRecord
 
   mount_uploader :image, CourseImageUploader
 
+  before_save :set_slug
   after_save  :migrate_file_from_tmp_upload, if: -> { self.image_tmp_media_id.present? }
+
+  def set_slug
+    self.slug = self.name.parameterize
+  end
 
   def fields_for_upload
     [:image]

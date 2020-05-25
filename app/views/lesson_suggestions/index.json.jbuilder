@@ -13,7 +13,7 @@ json.set! :suggestions do
 		if lesson.courses.any?
 			course = lesson.courses.first
 			json.course do
-				json.path course_path(course)
+				json.path course_by_slug_path(slug: course.slug)
 				json.name course.name
 			end
 			available = signed_in? ? lesson.available_for_user?(current_user) : can_access_full_course_without_account(course)
