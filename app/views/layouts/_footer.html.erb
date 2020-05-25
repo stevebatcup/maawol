@@ -57,14 +57,20 @@
               <a href="/admin" target="_blank" data-turbolinks="false">Admin console</a>
             </li>
           <% end %>
-            <li class="menu-item">
-              <a href="/contact" data-turbolinks="false"><%= t('views.layouts.footer.contact') %></a>
-            </li>
           <% footer_navbar_items.each do |page| %>
             <li class="menu-item <%= 'active' if request.url.include?(page.url) %>">
               <a href="<%= page.url %>" data-turbolinks="false"><%= page.title %></a>
             </li>
           <% end %>
+          <li class="menu-item">
+            <a href="/contact" data-turbolinks="false"><%= t('views.layouts.footer.contact') %></a>
+          </li>
+          <li class="menu-item">
+            <a href="/privacy-policy" data-turbolinks="false"><%= t('views.layouts.footer.legals.privacy') %></a>
+          </li>
+          <li class="menu-item">
+            <a href="/terms-and-conditions" data-turbolinks="false"><%= t('views.layouts.footer.legals.terms') %></a>
+          </li>
         </ul>
       </div>
 

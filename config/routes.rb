@@ -110,8 +110,8 @@ Rails.application.routes.draw do
 
 	delete "delete-account", to: 'users#destroy'
 
-	get "privacy-policy", to: "content_management/pages#show", slug: 'privacy-policy'
-	get "terms-and-conditions", to: "content_management/pages#show", slug: 'terms-and-conditions'
+	get "privacy-policy", to: "privacy_policy#show", slug: 'privacy-policy'
+	get "terms-and-conditions", to: "terms_and_conditions#show", slug: 'terms-and-conditions'
 	get "*slug", to: "content_management/pages#show", as: :cms_page, constraints: lambda { |req|
 	  req.path.exclude? 'amazonaws.com'
 	}
