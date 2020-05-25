@@ -97,6 +97,15 @@
                 <a href="<%= page.url %>" data-turbolinks="false"><%= page.title %></a>
               </li>
             <% end %>
+            <li class="mx-2">
+              <a href="/contact" data-turbolinks="false"><%= t('views.layouts.footer.contact') %></a>
+            </li>
+            <li class="mx-2">
+              <a href="/privacy-policy" data-turbolinks="false"><%= t('views.layouts.footer.legals.privacy') %></a>
+            </li>
+            <li class="mx-2">
+              <a href="/terms-and-conditions" data-turbolinks="false"><%= t('views.layouts.footer.legals.terms') %></a>
+            </li>
           </ul>
         </div>
         <%= render 'layouts/copyright' %>

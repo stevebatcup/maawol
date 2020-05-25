@@ -1,11 +1,19 @@
 footer.site-footer {
 	.footer-social {
-		margin-top: 15px;
-		margin-bottom: 30px;
+		margin-top: 12px;
+		// margin-bottom: 30px;
 	}
 
 
   &.home {
+  	#footer_legals {
+	  	li {
+	  		a {
+	  			text-decoration: none;
+	  		}
+	  	}
+	  }
+
     .footer-branding {
       img {
         max-width: 40vw;

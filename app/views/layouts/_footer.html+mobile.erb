@@ -41,7 +41,7 @@
       <% end %>
     </div>
 
-    <ul class="other_pages mt-3 text-center p-0">
+    <ul class="other_pages mt-3 text-center p-0" id="footer_legals">
       <li class="d-inline-block mr-3 menu-item">
         <a href="/contact" data-turbolinks="false"><%= t('views.layouts.footer.contact') %></a>
       </li>
@@ -50,6 +50,16 @@
           <a href="<%= page.url %>" data-turbolinks="false"><%= page.title %></a>
         </li>
       <% end %>
+      <li class="d-inline-block mr-3 menu-item">
+        <a href="/contact" data-turbolinks="false"><%= t('views.layouts.footer.contact') %></a>
+      </li>
+      <li class="d-inline-block mr-3 menu-item">
+        <a href="/privacy-policy" data-turbolinks="false"><%= t('views.layouts.footer.legals.privacy') %></a>
+      </li>
+      <li class="d-inline-block mr-3 menu-item">
+        <a href="/terms-and-conditions" data-turbolinks="false"><%= t('views.layouts.footer.legals.terms') %></a>
+      </li>
+
     </ul>
 
   </div>
