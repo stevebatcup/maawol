@@ -9,10 +9,8 @@
 	<% elsif field.data == 'deleted' %>
 		<input type="radio" checked disabled name="user[<%= field.attribute %>]" />Deleted
 	<% else %>
-	  <input type="radio" name="user[<%= field.attribute %>]" value="free" <%= 'checked' if field.data == 'free' %> />Free member
+	  <input type="radio" name="user[<%= field.attribute %>]" value="free" <%= 'checked' if field.data == 'free' %> />Free
 	  <br />
-	  <input type="radio" name="user[<%= field.attribute %>]" value="complimentary" <%= 'checked' if field.data == 'complimentary' %> />Complimentary member
-	 	<br />
-	  <input type="radio" name="user[<%= field.attribute %>]" value="paying" <%= 'checked' if field.data == 'paying' %> />Paying
+	  <input type="radio" name="user[<%= field.attribute %>]" value="complimentary" <%= 'checked' if field.data == 'complimentary' %> />Complimentary
 	<% end %>
 </div>

@@ -14,6 +14,10 @@ class SiteSetting < ApplicationRecord
   	find_by(slug: "site-name").value
   end
 
+  def self.comp_subscriber_limit
+  	find_by(slug: "comp-account-limit").value
+  end
+
 	def self.site_admin_gets_new_registration_email?
 		find_by(slug: "receives-new-registration-admin-email").value == 'yes'
 	end

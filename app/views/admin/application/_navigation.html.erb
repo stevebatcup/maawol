@@ -6,7 +6,7 @@
   <ul class="pt-3">
     <li class="<%= 'active' if request.path.include?('/admin/overview') %>">
       <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="#">
-        <span class="text">Dashboard</span>
+        <span class="text">Dashboard (coming soon)</span>
       </a>
     </li>
   </ul>
@@ -19,16 +19,16 @@
   </h3>
   <div id="lesson_options" class="collapse show">
     <ul>
-      <li class="<%= 'active' if request.path.include?('/admin/authors') %>">
-        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/authors">
-          <span class="text">Tutors</span>
-          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.courses}}</span>
-        </a>
-      </li>
       <li class="<%= 'active' if request.path.include?('/admin/lessons') %>">
         <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/lessons">
           <span class="text">Lessons</span>
           <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.lessons}}</span>
+        </a>
+      </li>
+      <li class="<%= 'active' if request.path.include?('/admin/authors') %>">
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/authors">
+          <span class="text">Tutors</span>
+          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.courses}}</span>
         </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/root_categories') %>">
@@ -184,9 +184,8 @@
         </a>
       </li>
       <li class="<%= 'active' if request.path.include?('/admin/content_management/images') %>">
-        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2" href="/admin/content_management/images">
-          <span class="text">Images</span>
-          <span ng-hide="!resourceCounts.loaded" class="resource_count badge badge-info" ng-cloak>{{resourceCounts.items.cmsImages}}</span>
+        <a class="navigation__link d-inline-flex justify-content-between align-items-start pr-2">
+          <span class="text">Images (coming soon)</span>
         </a>
       </li>
     </ul>

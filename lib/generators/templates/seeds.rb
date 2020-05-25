@@ -49,7 +49,7 @@ lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 blocks = [
 	{
-	  name: "Bio",
+	  name: "Homepage introduction",
 	  title: "#{Maawol::Config.site_name}",
 	  content: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -61,7 +61,7 @@ blocks = [
 	  is_deletable: 0
 	},
 	{
-	  name: "Course introduction",
+	  name: "Courses introduction",
 	  title: "",
 	  content: "<p>Feel like digging a little deeper into something? That&rsquo;s what this section is for. Each course is a multi-lesson exploration into some subjects that can&rsquo;t be summed up in a lesson or two.</p>\r\n<p>Take a course from start to finish, or just pop in and work on any of the lessons individually.</p>",
 	  is_editable: 1,

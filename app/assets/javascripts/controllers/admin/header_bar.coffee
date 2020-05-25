@@ -41,10 +41,12 @@ class Maawol.AdminHeaderBarController extends Maawol.AdminPage
 					@getHelpContent newVal
 				, 400
 
-	openHelp: ($event) =>
+	openHelp: ($event, helpSection=null) =>
 		$event.preventDefault()
-		helpSection = $("[data-help-section]").first().data('help-section')
-		helpSection = 'section' if helpSection is 'category'
+		unless helpSection?
+			helpSection = $("[data-help-section]").first().data('help-section')
+			helpSection = 'section' if helpSection is 'category'
+		helpSection = helpSection.replace('content_management/', 'cms_')
 		@rootScope.helpData.section = helpSection
 		@rootScope.helpData.loading = true
 		$('#help_modal').modal()

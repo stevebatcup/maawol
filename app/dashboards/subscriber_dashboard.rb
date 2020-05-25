@@ -25,5 +25,6 @@ class SubscriberDashboard < UserDashboard
     :status,
     :subscription_status,
     :is_admin,
+    :author
   ].freeze
 end

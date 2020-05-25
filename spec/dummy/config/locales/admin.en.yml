@@ -12,6 +12,7 @@ en:
         cms: CMS
       options:
         general: Introduction
+        referrals: Tutors > Referrals
         dashboard: Dashboard
         lessons: Lessons
         courses: Courses
@@ -31,9 +32,9 @@ en:
         store_payments: Store payments
         subscription_payments: Subscription payments
         income_reports: Income reports
-        info_page: CMS > Info pages
-        content_blocks: CMS > Content blocks
-        images: CMS > Images
+        info_page: Info pages
+        content_blocks: Content blocks
+        images: Images
 
 
   helpers:
@@ -75,6 +76,7 @@ en:
         resource_name_overrides:
           multiple: Paying subscribers
           singular: Paying subscriber
+        is_admin: Administrator?
         subscription_created: Subscription purchased at
         subscription_referring_author_name: Referred by
       users_subscription_payment:
@@ -89,6 +91,7 @@ en:
         author_name: Tutor
       downloadable:
         when_associated: Scores
+        author_id: Tutor
         image: Thumbnail
         full_url: Download URL (only for subscribers)
         basket_url: Bakset URL (for YouTube etc)

@@ -20,13 +20,13 @@
 
               <optgroup label="<%= t('admin_help_modal.section_chooser.groups.basics') %>">
                 <option value="general"><%= t('admin_help_modal.section_chooser.options.general') %></option>
-                <option value="dashboard"><%= t('admin_help_modal.section_chooser.options.dashboard') %></option>
                 <option value="site_setting"><%= t('admin_help_modal.section_chooser.options.site_settings') %></option>
               </optgroup>
 
               <optgroup label="<%= t('admin_help_modal.section_chooser.groups.library') %>">
-                <option value="author"><%= t('admin_help_modal.section_chooser.options.authors') %></option>
                 <option value="lesson"><%= t('admin_help_modal.section_chooser.options.lessons') %></option>
+                <option value="author"><%= t('admin_help_modal.section_chooser.options.authors') %></option>
+                <option value="referrals"><%= t('admin_help_modal.section_chooser.options.referrals') %></option>
                 <option value="section"><%= t('admin_help_modal.section_chooser.options.sections') %></option>
                 <option value="tag"><%= t('admin_help_modal.section_chooser.options.tags') %></option>
                 <option value="course"><%= t('admin_help_modal.section_chooser.options.courses') %></option>
@@ -41,22 +41,21 @@
               </optgroup>
 
               <optgroup label="<%= t('admin_help_modal.section_chooser.groups.students') %>">
-                <option value="student"><%= t('admin_help_modal.section_chooser.options.students') %></option>
+                <option value="user"><%= t('admin_help_modal.section_chooser.options.students') %></option>
                 <option value="subscriber"><%= t('admin_help_modal.section_chooser.options.subscribers') %></option>
-                <option value="comp_subscriber"><%= t('admin_help_modal.section_chooser.options.comp_subscribers') %></option>
+                <option value="comp"><%= t('admin_help_modal.section_chooser.options.comp_subscribers') %></option>
               </optgroup>
 
               <optgroup label="<%= t('admin_help_modal.section_chooser.groups.ecommerce') %>">
                 <option value="store"><%= t('admin_help_modal.section_chooser.options.stores') %></option>
-                <option value="store_payment"><%= t('admin_help_modal.section_chooser.options.store_payments') %></option>
-                <option value="subscription_payment"><%= t('admin_help_modal.section_chooser.options.subscription_payments') %></option>
+                <option value="product_payment"><%= t('admin_help_modal.section_chooser.options.store_payments') %></option>
+                <option value="user_subscription_payment"><%= t('admin_help_modal.section_chooser.options.subscription_payments') %></option>
                 <option value="income_report"><%= t('admin_help_modal.section_chooser.options.income_reports') %></option>
               </optgroup>
 
               <optgroup label="<%= t('admin_help_modal.section_chooser.groups.cms') %>">
-                <option value="info_page"><%= t('admin_help_modal.section_chooser.options.info_page') %></option>
-                <option value="content_block"><%= t('admin_help_modal.section_chooser.options.content_blocks') %></option>
-                <option value="image"><%= t('admin_help_modal.section_chooser.options.images') %></option>
+                <option value="cms_page"><%= t('admin_help_modal.section_chooser.options.info_page') %></option>
+                <option value="cms_content_block"><%= t('admin_help_modal.section_chooser.options.content_blocks') %></option>
               </optgroup>
             </select>
           </div>
