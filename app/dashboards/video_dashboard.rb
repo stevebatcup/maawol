@@ -12,7 +12,6 @@ class VideoDashboard < Administrate::BaseDashboard
     human_status: Field::String,
     human_duration: Field::String,
     tmp_video_file: VideoField,
-    url: LinkField
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,14 +23,12 @@ class VideoDashboard < Administrate::BaseDashboard
     :name,
     :human_status,
     :human_duration,
-    :url
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
-    :url,
     :tmp_video_file,
     :human_status,
     :human_duration,

@@ -11,13 +11,14 @@ module Maawol
     	  def upload_to_vimeo
     	  	video_file = File.open(tmp_video_file.file.file)
 			    remote_video_data = vimeo_client.upload_video(video_file, **{name: self.name})
-			    puts remote_video_data.inspect
+			    # puts remote_video_data.inspect
 
 			    remote_id = remote_id_from_uri(remote_video_data['uri'])
 			    add_remote_video_to_folder(remote_id, Maawol::Config.vimeo_project_id)
 
 			    sleep(20)
 			    update_local(remote_video_data, remote_id)
+			    UpdateVideoVimeoEmbedProfileJob.set(wait: 30.seconds).perform_later(self)
 			    true
 			  rescue VimeoMe2::RequestFailed => e
 			    self.errors.add(:video_file, e.message)
@@ -59,6 +60,29 @@ module Maawol
 			    rescue
 			    end
 			  end
+
+			  def update_vimeo_embed_profile
+			  	HTTParty.public_send(:put, embed_url, embed_request)
+			  end
+
+			  def embed_url
+			  	"https://api.vimeo.com/videos/#{self.vimeo_id}/presets/#{embed_preset_id}"
+			  end
+
+			  def embed_preset_id
+			  	120714863
+			  end
+
+				def embed_request
+			  	token = Maawol::Config.vimeo_api_key
+					{
+						headers: {
+							authorization: "Bearer #{token}"
+						},
+						body: nil
+					}
+				end
+
 			end
 		end
 	end

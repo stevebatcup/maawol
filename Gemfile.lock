@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    maawol (0.3.22.4)
+    maawol (0.3.22.6)
       acts_as_commentable_with_threading
       acts_as_shopping_cart (~> 0.4.0)
       administrate (~> 0.13)
@@ -25,6 +25,7 @@ PATH
       dropzonejs-rails
       exception_notification
       fog-aws (~> 3.5)
+      httparty
       mailchimp-api (~> 2.0)
       mandrill-api (~> 1.0)
       mini_magick (>= 4.9.5)

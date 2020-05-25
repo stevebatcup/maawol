@@ -51,6 +51,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'paypal-sdk-rest', '~> 1.7'
   spec.add_dependency 'sidekiq'
   spec.add_dependency 'exception_notification'
+  spec.add_dependency 'httparty'
 
   spec.add_dependency 'administrate', '~> 0.13'
   spec.add_dependency 'cocoon', '~> 1.2'

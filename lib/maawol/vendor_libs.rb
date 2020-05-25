@@ -3,6 +3,7 @@ require 'acts_as_commentable_with_threading'
 require 'acts_as_shopping_cart'
 require 'sidekiq'
 require 'exception_notification'
+require 'httparty'
 
 # Views
 require 'browser'
