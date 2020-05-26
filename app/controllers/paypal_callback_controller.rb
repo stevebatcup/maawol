@@ -6,7 +6,7 @@ class PaypalCallbackController < MaawolController
 		begin
 			Payment::Paypal::Subscription.complete_agreement(current_user, params[:token], session)
 			flash[:notice] = t('views.subscription.success')
-			redirect_to settings_path
+			redirect_to "/lessons?paid=1"
 		rescue Exception => e
 			DevMailer.notify_error_paypal_flow(current_user, params[:token], e).deliver_now
 			flash[:alert] = t('controllers.paypal_callback.create.error', message: e.message)

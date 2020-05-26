@@ -6,7 +6,6 @@ class UsersSubscription < ApplicationRecord
 	after_create :send_receipt
   after_create  :send_admin_subscription_email
   after_create  :update_mailchimp
-  after_create  :send_to_store_front
 
 	attr_accessor	:length
 
@@ -79,6 +78,7 @@ class UsersSubscription < ApplicationRecord
 
 	def finalise_paypal(agreement)
 		apply_paypal_agreement(agreement)
+		send_to_store_front
 		send_admin_subscription_email
 		send_receipt
 	end

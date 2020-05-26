@@ -53,10 +53,11 @@ class SubscriptionsController < MaawolController
 					@subscription = Payment::Chargebee::Subscription.new(options).create
 					if !@subscription.errors.any?
 						session.delete(:discount_code)
+						@subscription.send_to_store_front
 						respond_to do |format|
 							format.html do
 								flash[:notice] = t('views.subscription.success')
-								redirect_to settings_path
+								redirect_to "/lessons?paid=1"
 							end
 							format.json { @status = :success }
 						end
