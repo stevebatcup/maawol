@@ -65,4 +65,6 @@ Rails.application.configure do
       subject: "Exception on Maawol Engine in development",
       recipient_address: "developer@maawol.com"
     }
+
+  config.hosts << "engine"
 end

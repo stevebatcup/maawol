@@ -1,4 +1,5 @@
 class ChargebeeWebhooksController < MaawolController
+	skip_before_action :verify_authenticity_token
 
 	def payment_messages
 		@payment_messages ||= {
@@ -66,12 +67,12 @@ class ChargebeeWebhooksController < MaawolController
 
 	def handle_successful_payment
 		result = log_payment(:success)
-		@user_subscription.increment!(:successful_recurring_payments)
-		@user_subscription.update_attribute(:next_payment_due_at, next_payment_due_at)
 		amount = params[:content][:transaction][:amount].to_f / 100
 		is_first_payment = params[:content][:invoice][:first_invoice]
 		send_email = true
 		if result == :success
+			@user_subscription.increment!(:successful_recurring_payments)
+			@user_subscription.update_attribute(:next_payment_due_at, next_payment_due_at)
 			send_email = false if is_first_payment && @user_subscription.is_immediate
 			UserMailer.payment_received(@user_subscription.user, amount).deliver_now if send_email
 		end

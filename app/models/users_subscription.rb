@@ -6,6 +6,7 @@ class UsersSubscription < ApplicationRecord
 	after_create :send_receipt
   after_create  :send_admin_subscription_email
   after_create  :update_mailchimp
+  after_create  :send_to_store_front
 
 	attr_accessor	:length
 
@@ -42,6 +43,7 @@ class UsersSubscription < ApplicationRecord
 				new_status = self.starts_at > Time.now ? :cancelled : :ending
 			end
 			if self.update_attributes({status: new_status, ends_at: self.next_payment_due_at, next_payment_due_at: nil})
+				cancel_on_store_front
 				update_mailchimp
 				UserMailer.cancel_recurring_billing(self).deliver
 				true
@@ -88,6 +90,27 @@ class UsersSubscription < ApplicationRecord
 			next_payment_due_at: Date.parse(agreement.start_date),
 			status: :recurring
 		})
+	end
+
+	def send_to_store_front
+		request = {
+			body: {
+				id: self.remote_subscription_id,
+				platform: self.payment_system,
+				access_token: ENV['STORE_FRONT_ACCESS_TOKEN']
+			}
+		}
+		HTTParty.public_send(:post, ENV['STORE_FRONT_SUBSCRIPTIONS_URL'], request)
+	end
+
+	def cancel_on_store_front
+		request = {
+			body: {
+				id: self.remote_subscription_id,
+				access_token: ENV['STORE_FRONT_ACCESS_TOKEN']
+			}
+		}
+		HTTParty.public_send(:delete, ENV['STORE_FRONT_SUBSCRIPTIONS_URL'], request)
 	end
 
 	def update_mailchimp
