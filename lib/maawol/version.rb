@@ -1,3 +1,3 @@
 module Maawol
-  VERSION = '0.3.26'
+  VERSION = '0.3.26.1'
 end

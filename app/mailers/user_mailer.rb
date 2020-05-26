@@ -52,11 +52,10 @@ class UserMailer < MaawolMailer
 	  send_mail(user.email, subject, body, user.first_name, user.id)
 	end
 
-	def card_expiry_reminder(user, month, year)
+	def card_expiry_reminder(user)
 	  subject = "Update your payment details"
 	  merge_vars = {
-	    "FNAME" => user.display_name,
-	    "EXPIRY" => "#{Date::MONTHNAMES[month]} #{year}"
+	    "FNAME" => user.display_name
 	  }
 	  body = template('card-expiry-reminder', merge_vars)
 	  send_mail(user.email, subject, body, user.first_name, user.id)

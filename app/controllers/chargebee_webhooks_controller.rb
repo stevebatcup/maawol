@@ -93,7 +93,7 @@ class ChargebeeWebhooksController < MaawolController
 
 	def handle_card_expiry_reminder
 		if user_subscription = UsersSubscription.find_by(remote_customer_id: @customer_id, status: :recurring)
-			UserMailer.card_expiry_reminder(user_subscription.user, params[:content][:card][:expiry_month], params[:content][:card][:expiry_year]).deliver_now
+			UserMailer.card_expiry_reminder(user_subscription.user).deliver_now
 			user_id = user_subscription.user_id
 			result = t('controllers.chargebee_webhooks.handle_card_expiry_reminder.success')
 		else

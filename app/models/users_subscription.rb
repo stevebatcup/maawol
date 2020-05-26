@@ -96,6 +96,7 @@ class UsersSubscription < ApplicationRecord
 		request = {
 			body: {
 				id: self.remote_subscription_id,
+				customer_id: self.remote_customer_id,
 				platform: self.payment_system,
 				access_token: ENV['STORE_FRONT_ACCESS_TOKEN']
 			}
