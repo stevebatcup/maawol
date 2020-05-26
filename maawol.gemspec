@@ -27,6 +27,8 @@ Gem::Specification.new do |spec|
   spec.test_files = Dir["spec/**/*"]
 
   spec.add_dependency 'rails', '~> 6.0.0'
+  spec.add_dependency "actionpack", ">= 6.0.3.1"
+  spec.add_dependency "activestorage", ">= 6.0.3.1"
   spec.add_dependency 'pg'
   spec.add_dependency 'acts_as_shopping_cart', '~> 0.4.0'
   spec.add_dependency 'acts_as_commentable_with_threading'
