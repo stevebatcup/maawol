@@ -12,7 +12,6 @@
   z-index: 500;
   overflow-y: auto;
   background-color: #27373c;
-  min-width: 250px;
 
   &::-webkit-scrollbar {
   	display: none;
@@ -99,6 +98,7 @@
 			list-style-position: inside;
 			padding-left: 1em;
 			cursor: pointer;
+			position: relative;
 
 			&:hover {
 				background-color: lighten(#3c3c3c, 6.5%);
@@ -111,15 +111,15 @@
 				text-decoration: none;
 				display: inline-block;
 				background-color: transparent;
-				width: 95%;
 
 				&:hover {
 					background-color: inherit;
 				}
 
 				.badge {
-					position: relative;
-					top: 2px;
+					position: absolute;
+					right: 12px;
+					top: 6px;
 				}
 			}
 

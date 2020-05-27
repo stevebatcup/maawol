@@ -20,7 +20,7 @@ By default, it renders:
     <meta name="viewport" content="initial-scale=1">
 
     <title>
-      <%= content_for(:title) %> - <%= Rails.application.class.parent_name.titlecase %>
+      <%= content_for(:title) %> - <%= Maawol::Config.site_name %> Admin Console
     </title>
 
     <% unless school_image("favicon").nil? %>
