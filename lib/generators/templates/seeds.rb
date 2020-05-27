@@ -310,14 +310,6 @@ videos_data.each do |video_data|
 	end
 end
 
-puts "> Seeding Listening labs...."
-labs_data = [
-	{ name: "Big Band", spotify_url: "https://open.spotify.com/playlist/6YrkhXFSoo24wdaX680PXw" },
-	{ name: "Ballads", spotify_url: "https://open.spotify.com/playlist/5G6gcY3qRlB8oFjpEfMIUe" },
-	{ name: "ECM", spotify_url: "https://open.spotify.com/playlist/4KNkbxw74H0bIbf1Qm5nk5" }
-]
-labs_data.each { |lab_data| ListeningLab.find_or_create_by(lab_data) }
-
 puts "> Seeding Lessons...."
 long_lorem = "
 <p>Do eiusmod tempor incididunt ut labore et dolore magna aliqua. Architecto beatae vitae dicta sunt explicabo. Eaque ipsa quae ab illo inventore veritatis et quasi. Do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
