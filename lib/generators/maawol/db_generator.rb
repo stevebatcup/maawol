@@ -9,11 +9,11 @@ module Maawol
 			source_root File.expand_path("../../templates", __FILE__)
 
 		  def copy_migrations
-		  	rails "maawol_engine:install:migrations"
+		  	rake "maawol_engine:install:migrations"
 		  end
 
 		  def setup
-		  	rails "db:setup"
+		  	rake "db:setup"
 		  end
 		end
 	end
