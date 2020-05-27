@@ -13,7 +13,10 @@ module Maawol
 		  end
 
 		  def setup
-		  	rake "db:setup"
+		  	rake "db:create"
+		  	rake "db:migrate"
+		  	rake "db:schema:load"
+		  	rake "db:seed"
 		  end
 		end
 	end
