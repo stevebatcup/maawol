@@ -8,7 +8,7 @@ module Maawol
 											:cached_course_list, :column_browser_class, :recent_lessons, :results_per_row,
 											:is_auth_page?, :results_per_page, :cached_tags, :dynamic_site_colors, :recaptcha_site_key,
 											:homepage_video,	:user_signed_in?, :is_settings_page?, :site_theme, :use_recaptcha?,
-											:show_subscription_interstitial?, :show_subscription_nav_button?
+											:show_subscription_interstitial?, :show_subscription_nav_button?, :use_paypal?
 			end
 
 			def navbar
@@ -119,6 +119,10 @@ module Maawol
 
 			def show_subscription_nav_button?
 				show_subscription_interstitial?
+			end
+
+			def use_paypal?
+				false
 			end
 
 			def results_per_row

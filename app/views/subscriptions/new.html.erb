@@ -162,15 +162,18 @@
                 <i class="fab fa-cc-mastercard"></i>
               </label>
             </li>
+            <% if use_paypal? %>
             <li>
               <label class="payment_chooser">
                 <input type="radio" name="payment_type" value="paypal" ng-model="payment.type" />
                 <i class="fab fa-cc-paypal"></i>
               </label>
             </li>
+            <% end %>
           </ul>
           </div>
 
+          <% if use_paypal? %>
           <div ng-show="payment.type == 'paypal'">
            <button id="checkout_with_paypal" class="pay_btn" ng-if="!paying">
              <%= t('views.subscription.form.paypal.button') %>
@@ -180,6 +183,7 @@
               <span><%= t('views.subscription.form.paypal.processing') %></span>
             </h5>
           </div>
+          <% end %>
 
           <div ng-hide="payment.type == 'paypal'">
            <div class="form_item">

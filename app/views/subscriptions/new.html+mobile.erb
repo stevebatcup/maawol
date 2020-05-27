@@ -151,7 +151,7 @@
               <%= t('views.subscription.form.labels.card_type') %>
             </label>
 
-            <ul id="choose_payment_type" class="w-100 d-flex justify-content-between subscribe">
+            <ul id="choose_payment_type" class="w-100 d-flex justify-content-start subscribe">
               <li>
                <label class="payment_chooser d-flex justify-content-between">
                 <input type="radio" name="payment_type" value="visa" ng-model="payment.type" class="mr-2" />
@@ -164,15 +164,18 @@
                 <i class="fab fa-cc-mastercard"></i>
               </label>
             </li>
+            <% if use_paypal? %>
             <li>
               <label class="payment_chooser d-flex justify-content-between">
                 <input type="radio" name="payment_type" value="paypal" ng-model="payment.type" class="mr-2" />
                 <i class="fab fa-cc-paypal"></i>
               </label>
             </li>
+            <% end %>
           </ul>
           </div>
 
+          <% if use_paypal? %>
           <div ng-show="payment.type == 'paypal'">
             <button id="checkout_with_paypal" class="pay_btn" ng-if="!paying">
               <%= t('views.subscription.form.paypal.button') %>
@@ -182,6 +185,7 @@
               <span><%= t('views.subscription.form.paypal.processing') %></span>
             </h5>
           </div>
+          <% end %>
 
           <div ng-hide="payment.type == 'paypal'">
            <div class="form_item">
