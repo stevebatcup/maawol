@@ -1,23 +1,26 @@
 <article class="post type-post well">
-  <div class="entry-thumbnail">
+  <div class="entry-thumbnail mb-2">
     <a href="<%= locked_lesson_redirect_path %>">
       <img src="<%= lesson.listing_thumbnail_path %>" alt="<%= lesson.name %>" />
     </a>
   </div>
 
-  <div class="entry-content">
-    <h3 class="entry-title">
-      <a href="<%= locked_lesson_redirect_path %>">
-        <%= lesson.name %>
-      </a>
-    </h3>
+  <div class="entry-content d-flex align-items-start">
+    <img src="<%= lesson.author.avatar.url(:small) %>" alt="<%= lesson.author.name %>"
+          class="rounded-circle author_avatar ml-2 mr-2 mt-1 mb-0" />
 
-    <div class="entry-meta">
-      <span>
-        <i class="fa fa-clock-o"></i>
-        <time datetime="PT5M">
-          <%= time_ago_in_words(lesson.publish_date) %> ago</time>
-      </span>
+    <div class="pl-1">
+      <h3 class="entry-title">
+        <a href="<%= locked_lesson_redirect_path %>">
+          <%= lesson.name %>
+        </a>
+      </h3>
+
+      <div class="entry-meta bottom_meta">
+        <%= lesson.author.name %> <br /> <%= time_ago_in_words(lesson.publish_date) %> ago
+      </div>
     </div>
   </div>
 </article>
+
+

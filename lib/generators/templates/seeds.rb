@@ -51,7 +51,7 @@ blocks = [
 	{
 	  name: "Homepage introduction",
 	  title: "#{Maawol::Config.site_name}",
-	  content: lorem,
+		content: "<p>#{lorem}</p><p class='mb-4'>#{lorem}</p>",
 	  is_editable: 1,
 	  is_deletable: 0
 	},
