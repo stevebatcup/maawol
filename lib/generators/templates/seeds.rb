@@ -310,6 +310,14 @@ videos_data.each do |video_data|
 	end
 end
 
+puts "> Seeding Playlists...."
+playlists_data = [
+	{ name: "Big Band", spotify_url: "https://open.spotify.com/playlist/6YrkhXFSoo24wdaX680PXw" },
+	{ name: "Ballads", spotify_url: "https://open.spotify.com/playlist/5G6gcY3qRlB8oFjpEfMIUe" },
+	{ name: "ECM", spotify_url: "https://open.spotify.com/playlist/4KNkbxw74H0bIbf1Qm5nk5" }
+]
+playlists_data.each { |playlist_data| Playlist.find_or_create_by(playlist_data) }
+
 puts "> Seeding Lessons...."
 long_lorem = "
 <p>Do eiusmod tempor incididunt ut labore et dolore magna aliqua. Architecto beatae vitae dicta sunt explicabo. Eaque ipsa quae ab illo inventore veritatis et quasi. Do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -330,7 +338,7 @@ long_lorem = "
 tag_ids = Tag.all.map(&:id)
 category_ids = Category.all.map(&:id)
 video_ids = Video.where(is_for_homepage: false).all.map(&:id)
-lab_ids = ListeningLab.all.map(&:id)
+playlist_ids = Playlist.all.map(&:id)
 lessons_data = [
 	{
 		name: "Lesson sample",
@@ -345,7 +353,7 @@ lessons_data = [
 		downloadable_ids: [],
 		tag_ids: tag_ids.sample(2),
 		category_ids: category_ids.sample(1),
-		listening_lab_ids: lab_ids.sample(1)
+		playlist_ids: playlist_ids.sample(1)
 	},
 	{
 		name: "Another lesson sample",
@@ -360,7 +368,7 @@ lessons_data = [
 		downloadable_ids: downloadable_file.id,
 		tag_ids: tag_ids.sample(1),
 		category_ids: category_ids.sample(2),
-		listening_lab_ids: lab_ids.sample(1)
+		playlist_ids: playlist_ids.sample(1)
 	},
 	{
 		name: "One more lesson sample",
@@ -375,7 +383,7 @@ lessons_data = [
 		downloadable_ids: [],
 		tag_ids: tag_ids.sample(2),
 		category_ids: category_ids.sample(1),
-		listening_lab_ids: lab_ids.sample(1)
+		playlist_ids: playlist_ids.sample(1)
 	},
 	{
 		name: "Multiple video lesson sample",
@@ -390,7 +398,7 @@ lessons_data = [
 		downloadable_ids: [],
 		tag_ids: tag_ids.sample(2),
 		category_ids: category_ids.sample(1),
-		listening_lab_ids: lab_ids.sample(1)
+		playlist_ids: playlist_ids.sample(1)
 	}
 ]
 lessons_data.each do |lesson_data|
