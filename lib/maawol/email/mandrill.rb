@@ -4,21 +4,29 @@ module Maawol
       # extend ActiveSupport::Concern
 
       def send_mail(email_address, subject, body, recipient_name=nil, recipient_id=nil, email_override=nil)
-        if requires_interception?
-          email_address = Maawol::Config.mail_interceptor_to
-          subject = "#{subject} [for #{email_address}]"
-        else
-          email_address = email_override.nil? ? email_address : email_override
+        begin
+          if requires_interception?
+            email_address = Maawol::Config.mail_interceptor_to
+            subject = "#{subject} [for #{email_address}]"
+          else
+            email_address = email_override.nil? ? email_address : email_override
+          end
+          data = mail_data(email_address, subject, body, recipient_name)
+          response = api.messages.send(data)
+          log_request(recipient_id, "send_mail", data, response)
+        rescue Exception => e
+          log_request(nil, :mandrill_send_mail, data, { error: e.message, backtrace: e.backtrace })
         end
-        data = mail_data(email_address, subject, body, recipient_name)
-        response = api.messages.send(data)
-        log_request(recipient_id, "send_mail", data, response)
       end
 
       def send_admin_mail(subject, body)
-        data = mail_data(SiteSetting.admin_email_address, subject, body)
-        response = api.messages.send(data)
-        log_request(nil, "send_admin_mail", data, response)
+        begin
+          data = mail_data(SiteSetting.admin_email_address, subject, body)
+          response = api.messages.send(data)
+          log_request(nil, "send_admin_mail", data, response)
+        rescue Exception => e
+          log_request(nil, :mandrill_send_admin_mail, data, { error: e.message, backtrace: e.backtrace })
+        end
       end
 
       def mail_data(email_address, subject, body, recipient_name=nil)
@@ -40,8 +48,12 @@ module Maawol
       end
 
       def template(template_name, vars)
-        merge_vars = vars.merge(site_vars).map { |key, value| { name: key, content: value } }
-        api.templates.render(template_name, [], merge_vars)["html"]
+        begin
+          merge_vars = vars.merge(site_vars).map { |key, value| { name: key, content: value } }
+          api.templates.render(template_name, [], merge_vars)["html"]
+        rescue Exception => e
+          log_request(nil, :mandrill_template, merge_vars, { error: e.message, backtrace: e.backtrace })
+        end
       end
 
       protected

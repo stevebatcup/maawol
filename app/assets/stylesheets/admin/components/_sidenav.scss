@@ -106,11 +106,12 @@
 
 			a.navigation__link {
 				color: #fff;
-				padding: 0.5em 0.5em;
+				padding: 0.5em 1.5%;
 				font-weight: normal;
 				text-decoration: none;
 				display: inline-block;
 				background-color: transparent;
+				width: 93%;
 
 				&:hover {
 					background-color: inherit;
