@@ -99,7 +99,7 @@ module Maawol
 			end
 
 			def site_theme
-				school_setting("theme")
+				school_setting("theme") || 'dark-green'
 			end
 
 			def use_recaptcha?
