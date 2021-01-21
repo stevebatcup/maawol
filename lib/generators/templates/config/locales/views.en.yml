@@ -27,8 +27,8 @@ en:
           cancel: Cancel
           error: Sorry, there has been an error deleting your account
           account_deleted_html: "Sorry to see you go.
-                            Your data has now been deleted as per the privacy policy you signed up to upon registration.<br /><br />
-                            Feel free to rejoin %{school} at anytime. All the best, %{main_tutor}."
+            Your data has now been deleted as per the privacy policy you signed up to upon registration.<br /><br />
+            Feel free to rejoin %{school} at anytime. All the best, %{main_tutor}."
       password:
         title: Update your password
         submit: Change my password
@@ -86,9 +86,10 @@ en:
     cookie_acceptance:
       ok: Accept Cookies
       privacy_policy: View Privacy Policy
-      message_html: We use cookies to improve user experience, and analyze website traffic.
-              For these reasons, we may share your site usage data with our analytics partners.
-              By clicking "OK" you consent to store on your device all the technologies described in our <a href="/privacy-policy">Privacy Policy</a>.
+      message_html:
+        We use cookies to improve user experience, and analyze website traffic.
+        For these reasons, we may share your site usage data with our analytics partners.
+        By clicking "OK" you consent to store on your device all the technologies described in our <a href="/privacy-policy">Privacy Policy</a>.
 
     courses:
       show_all: show all courses
@@ -221,7 +222,8 @@ en:
       courses: Courses
 
     register:
-      tandcs_html: "I am over 18 and agree to the <a href='/terms-and-conditions' target='_blank'>
+      tandcs_html:
+        "I am over 18 and agree to the <a href='/terms-and-conditions' target='_blank'>
         Terms &amp; Conditions</a> and <a href='/privacy-policy' target='_blank'>Privacy Policy</a> for %{school}"
       redirected: "You must first create your account before you can view any of the lessons. Joining is quick, easy and FREE using the form below!"
       errors:
@@ -329,4 +331,3 @@ en:
       visits_restricted: You must be a subscriber to see who has visited your profile
       favourites_restricted: You must be a subscriber to see who has added you to their favourites
       messaging_restricted: You must be a subscriber to view and send messages
-

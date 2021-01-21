@@ -1,5 +1,4 @@
 class AvatarUploader < BaseUploader
-
   include CarrierWave::MiniMagick
 
   storage :fog
@@ -8,8 +7,8 @@ class AvatarUploader < BaseUploader
     image_extension_whitelist
   end
 
-  def default_url(*args)
-    ActionController::Base.helpers.asset_path "no-avatar.png"
+  def default_url(*_args)
+    ActionController::Base.helpers.asset_path 'no-avatar.png'
   end
 
   version :thumbnail do
